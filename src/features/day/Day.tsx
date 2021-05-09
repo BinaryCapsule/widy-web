@@ -7,7 +7,7 @@ import { Ribbon } from '../ribbon/Ribbon';
 
 interface Props {}
 
-export const Day: React.FC<Props> = () => {
+const Day: React.FC<Props> = () => {
   return (
     <Flex height="100%">
       <Ribbon />
@@ -20,3 +20,5 @@ export const Day: React.FC<Props> = () => {
     </Flex>
   );
 };
+
+export default Day;

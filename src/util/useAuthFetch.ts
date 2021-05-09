@@ -50,6 +50,8 @@ export const useAuthFetch = () => {
       // noinspection ExceptionCaughtLocallyJS
       throw new HttpError(jsonResponse);
     } catch (error) {
+      console.error(error.message);
+
       if (error instanceof HttpError) {
         throw error;
       }

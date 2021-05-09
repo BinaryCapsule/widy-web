@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
-interface Props {}
-
-export const Home: React.FC<Props> = () => {
+const Home: React.FC = () => {
   const history = useHistory();
 
   const { loginWithRedirect, isAuthenticated } = useAuth0();
@@ -19,9 +17,9 @@ export const Home: React.FC<Props> = () => {
     <div>
       Hello Home
       <button onClick={() => history.push('/day')}>Go to day</button>
-      <button onClick={loginWithRedirect}>
-        Login
-      </button>
+      <button onClick={loginWithRedirect}>Login</button>
     </div>
   );
 };
+
+export default Home;
