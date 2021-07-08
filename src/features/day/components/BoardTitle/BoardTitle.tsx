@@ -1,15 +1,14 @@
 import React from 'react';
 import { Flex, Skeleton, Text } from '@binarycapsule/ui-capsules';
 import moment from 'moment';
-import { useParams } from 'react-router-dom';
-import { DayRouteParams } from '../../../day.types';
-import { useDayQuery } from '../../../api/useDayQuery';
+import { useDayQuery } from '../../api/useDayQuery';
+import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 
 interface Props {
 }
 
 export const BoardTitle: React.FC<Props> = () => {
-  const { dayId } = useParams<DayRouteParams>();
+  const { dayId } = useDayRouteParams();
 
   const { data, isLoading, isIdle, isError } = useDayQuery({ dayId });
 

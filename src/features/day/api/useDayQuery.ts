@@ -34,10 +34,11 @@ export interface TaskDto {
   rank: number;
 }
 
-interface SectionDto {
+export interface SectionDto {
   id: number;
   title: string;
   isPlan: boolean;
+  isTomorrow: boolean;
   rank: number;
   tasks: TaskDto[];
 }
@@ -48,10 +49,14 @@ interface DayDto {
   sections: SectionDto[];
 }
 
+export type ITask = Omit<TaskDto, 'id'> & { id: string | number };
+
+export type ISection = Omit<SectionDto, 'tasks'> & { tasks: number[] };
+
 interface IDay {
   entities: {
     scope: Record<number, ScopeDto>;
-    tasks: Record<number, TaskDto>;
+    tasks: Record<number, ITask>;
     sections: Record<number, Omit<SectionDto, 'tasks'> & { tasks: number[] }>;
     day: Record<number, Omit<DayDto, 'sections'> & { sections: number[] }>;
   };

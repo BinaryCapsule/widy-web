@@ -47,7 +47,7 @@ export const DaysList: React.FC = () => {
 
   return (
     <>
-      <Flex flexDirection="column" overflow="auto">
+      <Flex flexDirection="column" overflow="auto" px="4">
         {data.pages.map(page =>
           page.items.map(({ id, day }) => {
             return (

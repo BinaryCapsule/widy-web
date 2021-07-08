@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled/macro';
-import { BoardHeader } from './components/BoardHeader/BoardHeader';
-import { Sections } from './components/Sections/Sections';
+import { BoardHeader } from '../BoardHeader/BoardHeader';
+import { Sections } from '../Sections/Sections';
 
 export const BoardWrapper = styled.div`
   display: flex;
