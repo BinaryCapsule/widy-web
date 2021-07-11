@@ -6,6 +6,6 @@ export interface FormValues {
 }
 
 export const validationSchema = yup.object().shape({
-  name: yup.string().required('Scope name is a required'),
-  shortCode: yup.string().required('Scope code is a required'),
+  name: yup.string().required('Scope name is required'),
+  shortCode: yup.string().required('Scope code is required'),
 });

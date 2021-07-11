@@ -7,5 +7,5 @@ export interface FormValues {
 }
 
 export const validationSchema = yup.object().shape({
-  summary: yup.string().required('Task summary is a required'),
+  summary: yup.string().required('Task summary is required'),
 });
