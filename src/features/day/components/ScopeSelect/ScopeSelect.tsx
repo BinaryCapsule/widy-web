@@ -6,12 +6,24 @@ import { ScopeOptionLabel } from './components/ScopeOptionLabel/ScopeOptionLabel
 interface Props {
   value: ScopeOption
   onChange(opt: ScopeOption): void;
+  onCreateScope(): void;
 }
 
-export const ScopeSelect: React.FC<Props> = ({ value, onChange }) => {
-  // const [isScopesModalOpen, setIsScopesModalOpen] = useState(false);
-
+export const ScopeSelect: React.FC<Props> = ({ value, onChange, onCreateScope }) => {
   const scopesOptions = useScopesOptions();
+
+  const filterScopes = (
+    { data: { label, shortCode } }: { data: { label: string; shortCode: string } },
+    input: string,
+  ) => {
+    if (input) {
+      return (
+        label.toLowerCase().includes(input.toLowerCase()) ||
+        shortCode.toLowerCase().includes(input.toLowerCase())
+      );
+    }
+    return true;
+  };
 
   return (
     <>
@@ -22,8 +34,8 @@ export const ScopeSelect: React.FC<Props> = ({ value, onChange }) => {
         isClearable
         placeholder="No scope"
         formatOptionLabel={ScopeOptionLabel}
-        // menuPortalTarget={isInsideModal ? document.body : undefined}
-        // filterOption={filterScopes}
+        menuPortalTarget={document.body}
+        filterOption={filterScopes}
       />
 
       <Button
@@ -31,15 +43,11 @@ export const ScopeSelect: React.FC<Props> = ({ value, onChange }) => {
         size="small"
         variant="ghost"
         variantColor="neutral"
-        onClick={() => {}}
+        onClick={onCreateScope}
         mt="4"
       >
         Create new scope
       </Button>
-
-      {/*{isScopesModalOpen && (*/}
-      {/*  <ScopeModal closeModal={() => setIsScopesModalOpen(false)} onUpsertScope={onChange} />*/}
-      {/*)}*/}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Input,
@@ -16,6 +16,8 @@ import { FormValues, validationSchema } from './AddTask.meta';
 import { useDayQuery } from '../../api/useDayQuery';
 import { useTaskRank } from '../../hooks/useTaskRank';
 import { ScopeSelect } from '../ScopeSelect/ScopeSelect';
+import { UpsertScope } from '../UpsertScope/UpsertScope';
+import { UpsertScopeResponse } from '../../api/useUpsertScopeMutation';
 
 interface Props {
   sectionId: number;
@@ -23,6 +25,8 @@ interface Props {
 }
 
 export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
+  const [isScopesModalOpen, setIsScopesModalOpen] = useState(false);
+
   const {
     register,
     control,
@@ -34,6 +38,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
       summary: '',
     },
     resolver: yupResolver(validationSchema),
+    shouldUnregister: false,
   });
 
   const { data } = useDayQuery();
@@ -63,50 +68,69 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
     }
   };
 
+  const onUpsertScope = (scope: UpsertScopeResponse) => {
+    const opt = {
+      value: scope.id,
+      label: scope.name,
+      shortCode: scope.shortCode,
+    };
+
+    setValue('scope', opt);
+  };
+
   return (
-    <Modal isOpen onRequestClose={onClose} contentLabel="Example Modal">
-      <ModalHeader>Add Task</ModalHeader>
+    <>
+      <Modal isOpen={!isScopesModalOpen} onRequestClose={onClose} contentLabel="Example Modal">
+        <ModalHeader>Add Task</ModalHeader>
 
-      <ModalCloseButton onClick={onClose} />
+        <ModalCloseButton onClick={onClose} />
 
-      <form onSubmit={handleSubmit(onCreateTask)}>
-        <ModalBody>
-          <Text color="neutral.700" fontWeight={600} fontSize="body" mb="4">
-            What will you be working on?
-          </Text>
+        <form onSubmit={handleSubmit(onCreateTask)}>
+          <ModalBody>
+            <Text color="neutral.700" fontWeight={600} fontSize="body" mb="4">
+              What will you be working on?
+            </Text>
 
-          <Input
-            {...register('summary')}
-            size="large"
-            autoFocus
-            placeholder="Task summary"
-            error={errors.summary?.message}
-            required
-          />
+            <Input
+              {...register('summary')}
+              size="large"
+              autoFocus
+              placeholder="Task summary"
+              error={errors.summary?.message}
+            />
 
-          <Text color="neutral.700" fontWeight={600} fontSize="body" mt="24" mb="4">
-            Task scope
-          </Text>
+            <Text color="neutral.700" fontWeight={600} fontSize="body" mt="24" mb="4">
+              Task scope
+            </Text>
 
-          <Controller
-            name="scope"
-            control={control}
-            render={({ field }) => (
-              <ScopeSelect value={field.value} onChange={opt => setValue('scope', opt)} />
-            )}
-          />
-        </ModalBody>
+            <Controller
+              name="scope"
+              control={control}
+              render={({ field }) => (
+                <ScopeSelect
+                  value={field.value}
+                  onChange={opt => setValue('scope', opt)}
+                  onCreateScope={() => setIsScopesModalOpen(true)}
+                />
+              )}
+            />
+          </ModalBody>
 
-        <ModalFooter>
-          <Button variant="ghost" variantColor="neutral" size="large" onClick={onClose}>
-            Cancel
-          </Button>
+          <ModalFooter>
+            <Button variant="ghost" variantColor="neutral" size="large" onClick={onClose}>
+              Cancel
+            </Button>
 
-          <Button type="submit" size="large" isLoading={isCreatingTask}>
-            Add Task
-          </Button>
-        </ModalFooter>
-      </form>
-    </Modal>
+            <Button type="submit" size="large" isLoading={isCreatingTask}>
+              Add Task
+            </Button>
+          </ModalFooter>
+        </form>
+      </Modal>
+
+      {isScopesModalOpen && (
+        <UpsertScope onClose={() => setIsScopesModalOpen(false)} onUpsertScope={onUpsertScope} />
+      )}
+    </>
   );
 };

@@ -1,4 +1,4 @@
-import '@binarycapsule/ui-capsules/assets/global.css';
+import '@binarycapsule/ui-capsules/dist/setup';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
