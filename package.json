@@ -1,12 +1,13 @@
 {
-  "name": "widy-frontend",
+  "name": "widy-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.3.0",
-    "@binarycapsule/ui-capsules": "^4.3.0",
+    "@binarycapsule/ui-capsules": "^4.4.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
+    "@hookform/resolvers": "^2.6.0",
     "@styled-system/should-forward-prop": "^5.1.5",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -22,11 +23,13 @@
     "normalizr": "^3.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-hook-form": "^7.10.1",
     "react-query": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "styled-system": "^5.1.5",
-    "typescript": "~4.2.3"
+    "typescript": "~4.2.3",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,6 +56,7 @@
     "@types/lodash": "^4.14.168",
     "@types/react-modal": "^3.12.0",
     "@types/react-router-dom": "^5.1.7",
+    "@types/react-select": "^4.0.17",
     "@types/styled-system": "^5.1.10",
     "prettier": "^2.2.1",
     "react-query-devtools": "^2.6.3"

@@ -2,15 +2,9 @@ import React from 'react';
 import { Flex, Skeleton, Text } from '@binarycapsule/ui-capsules';
 import moment from 'moment';
 import { useDayQuery } from '../../api/useDayQuery';
-import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 
-interface Props {
-}
-
-export const BoardTitle: React.FC<Props> = () => {
-  const { dayId } = useDayRouteParams();
-
-  const { data, isLoading, isIdle, isError } = useDayQuery({ dayId });
+export const BoardTitle = () => {
+  const { data, isLoading, isIdle, isError } = useDayQuery();
 
   if (isLoading) {
     return (

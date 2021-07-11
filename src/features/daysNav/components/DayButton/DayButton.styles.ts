@@ -35,7 +35,7 @@ export const StyledInput = styled.input`
   height: 0;
   width: 0;
 
-  &:focus {
+  &[data-focus-visible-added]:focus {
     & ~ .day-button {
       outline: none;
       box-shadow: 0 0 0 4px ${props => props.theme.colors.blue['100']};
