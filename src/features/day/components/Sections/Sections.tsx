@@ -4,9 +4,9 @@ import { SectionsLoading } from './Sections.loading';
 import { Section } from '../Section/Section';
 
 export const Sections: React.FC = () => {
-  const { data, isFetching, isError } = useDayQuery();
+  const { data, isLoading, isError } = useDayQuery();
 
-  if (isFetching) {
+  if (isLoading) {
     return <SectionsLoading />;
   }
 

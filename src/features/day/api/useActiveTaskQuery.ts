@@ -1,17 +1,19 @@
 import { useQuery } from 'react-query';
 import { useAuthFetch } from '../../../util/useAuthFetch';
-import { TaskDto } from './useDayQuery';
+import { queryKeys } from './queryKeys';
 
-interface ActiveTaskDto {
-  task: TaskDto;
+export interface ActiveTaskDto {
+  id: number | null;
 }
 
 export const useActiveTaskQuery = () => {
   const { authFetch } = useAuthFetch();
 
+  const activeTaskQK = queryKeys.activeTask();
+
   const fetchActiveTask = async (): Promise<ActiveTaskDto> => {
     return authFetch('/api/tasks/active');
   };
 
-  return useQuery<ActiveTaskDto, Error>(['activeTask'], () => fetchActiveTask());
+  return useQuery<ActiveTaskDto, Error>(activeTaskQK, fetchActiveTask);
 };

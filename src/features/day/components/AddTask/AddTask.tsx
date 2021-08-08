@@ -69,13 +69,13 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
   };
 
   const onUpsertScope = (scope: UpsertScopeResponse) => {
-    const opt = {
+    const scopeOption = {
       value: scope.id,
       label: scope.name,
       shortCode: scope.shortCode,
     };
 
-    setValue('scope', opt);
+    setValue('scope', scopeOption);
   };
 
   return (

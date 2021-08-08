@@ -1,8 +1,10 @@
 import { useMutation, useQueryClient } from 'react-query';
+import produce from 'immer';
 import { useAuthFetch } from '../../../util/useAuthFetch';
 import { useDayRouteParams } from '../hooks/useDayRouteParams';
 import { queryKeys } from './queryKeys';
 import { httpBody } from '../../../util/httpBody';
+import { IDay, TaskDto } from './useDayQuery';
 
 interface CreateTaskParams {
   sectionId: number;
@@ -18,6 +20,8 @@ export const useCreateTaskMutation = () => {
 
   const queryClient = useQueryClient();
 
+  const dayQK = queryKeys.day(dayId);
+
   const createTask = async ({ sectionId, summary, rank, scopeId }: CreateTaskParams) => {
     return authFetch('/api/tasks', {
       method: 'POST',
@@ -32,8 +36,32 @@ export const useCreateTaskMutation = () => {
   };
 
   return useMutation(createTask, {
-    onSuccess() {
-      queryClient.invalidateQueries(queryKeys.day(dayId));
+    onSuccess: async (task: TaskDto, { sectionId }: CreateTaskParams) => {
+      await queryClient.cancelQueries(dayQK);
+
+      queryClient.setQueryData<IDay | undefined>(dayQK, old => {
+        if (old) {
+          return produce(old, draft => {
+            if (draft.entities.sections) {
+              draft.entities.sections[sectionId].tasks.push(task.id);
+            }
+
+            if (draft.entities.tasks) {
+              draft.entities.tasks[task.id] = task;
+            } else {
+              draft.entities.tasks = {
+                [task.id]: task,
+              };
+            }
+          });
+        }
+
+        return old;
+      });
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries(dayQK);
     },
   });
 };

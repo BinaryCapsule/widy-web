@@ -18,9 +18,5 @@ interface Props {
 }
 
 export const Badge: React.FC<Props> = ({ children, ...rest }) => {
-  return (
-    <StyledBadge {...rest}>
-      {children}
-    </StyledBadge>
-  );
+  return <StyledBadge {...rest}>{children}</StyledBadge>;
 };

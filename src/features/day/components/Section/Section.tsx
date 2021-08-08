@@ -8,6 +8,7 @@ import { getTaskVariant } from '../../utils/getTaskVariant';
 import { useActiveTaskQuery } from '../../api/useActiveTaskQuery';
 import { SectionHeader } from './Section.styles';
 import { AddTask } from '../AddTask/AddTask';
+import { sectionTitleMap } from './Section.constants';
 
 interface Props {
   sectionId: number;
@@ -18,7 +19,7 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
 
   const { data } = useDayQuery();
 
-  const { data: activeTask } = useActiveTaskQuery();
+  const { data: activeTaskData } = useActiveTaskQuery();
 
   const [showAddTask, setShowAddTask] = useState(false);
 
@@ -32,7 +33,9 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
     <>
       <Box my="32">
         <SectionHeader isPlan={section.isPlan} hasTasks={section.tasks.length > 0}>
-          <Text fontWeight={600}>{section.title}</Text>
+          <Text fontWeight={600}>
+            {sectionTitleMap[section.title as keyof typeof sectionTitleMap]}
+          </Text>
         </SectionHeader>
 
         {section.tasks.length === 0 ? (
@@ -51,7 +54,7 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
               return (
                 <Task
                   key={taskId}
-                  variant={getTaskVariant(task, section, activeTask?.task)}
+                  variant={getTaskVariant(task, section, activeTaskData?.id)}
                   task={task}
                   isSelected={taskId.toString() === routeTaskId}
                 />
@@ -71,9 +74,7 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
         </Button>
       </Box>
 
-      {showAddTask && (
-        <AddTask sectionId={sectionId} onClose={() => setShowAddTask(false)} />
-      )}
+      {showAddTask && <AddTask sectionId={sectionId} onClose={() => setShowAddTask(false)} />}
     </>
   );
 };

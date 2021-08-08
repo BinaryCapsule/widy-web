@@ -51,14 +51,12 @@ interface DayDto {
   sections: SectionDto[];
 }
 
-export type ITask = Omit<TaskDto, 'id'> & { id: string | number };
-
 export type ISection = Omit<SectionDto, 'tasks'> & { tasks: number[] };
 
-interface IDay {
+export interface IDay {
   entities: {
     scope?: Record<number, ScopeDto>;
-    tasks?: Record<number, ITask>;
+    tasks?: Record<number, TaskDto>;
     sections: Record<number, Omit<SectionDto, 'tasks'> & { tasks: number[] }>;
     day: Record<number, Omit<DayDto, 'sections'> & { sections: number[] }>;
   };
