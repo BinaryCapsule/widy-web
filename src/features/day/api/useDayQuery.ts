@@ -1,6 +1,8 @@
 import { useQuery } from 'react-query';
 import { normalize, schema } from 'normalizr';
 import { useAuthFetch } from '../../../util/useAuthFetch';
+import { useDayRouteParams } from '../hooks/useDayRouteParams';
+import { queryKeys } from './queryKeys';
 
 const scopeSchema = new schema.Entity('scope');
 
@@ -32,6 +34,7 @@ export interface TaskDto {
   start: string | null;
   scope: ScopeDto | null;
   rank: number;
+  sectionId: number;
 }
 
 export interface SectionDto {
@@ -49,25 +52,21 @@ interface DayDto {
   sections: SectionDto[];
 }
 
-export type ITask = Omit<TaskDto, 'id'> & { id: string | number };
-
 export type ISection = Omit<SectionDto, 'tasks'> & { tasks: number[] };
 
-interface IDay {
+export interface IDay {
   entities: {
-    scope: Record<number, ScopeDto>;
-    tasks: Record<number, ITask>;
+    scope?: Record<number, ScopeDto>;
+    tasks?: Record<number, TaskDto>;
     sections: Record<number, Omit<SectionDto, 'tasks'> & { tasks: number[] }>;
     day: Record<number, Omit<DayDto, 'sections'> & { sections: number[] }>;
   };
   result: number;
 }
 
-interface DayQueryParams {
-  dayId: string;
-}
+export const useDayQuery = () => {
+  const { dayId } = useDayRouteParams();
 
-export const useDayQuery = ({ dayId }: DayQueryParams) => {
   const { authFetch } = useAuthFetch();
 
   const fetchDay = async (dayId: string): Promise<IDay> => {
@@ -76,5 +75,7 @@ export const useDayQuery = ({ dayId }: DayQueryParams) => {
     return normalize(data, daySchema);
   };
 
-  return useQuery<IDay, Error>(['days', dayId], () => fetchDay(dayId), { enabled: !!dayId });
+  const queryKey = queryKeys.day(dayId);
+
+  return useQuery<IDay, Error>(queryKey, () => fetchDay(dayId), { enabled: !!dayId });
 };

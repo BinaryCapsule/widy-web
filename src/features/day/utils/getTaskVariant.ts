@@ -1,10 +1,10 @@
-import { ISection, ITask, TaskDto } from '../api/useDayQuery';
+import { ISection, TaskDto } from '../api/useDayQuery';
 import { TaskVariant } from '../components/Task/Task.styles';
 
 export const getTaskVariant = (
-  task: ITask,
+  task: TaskDto,
   section: ISection,
-  activeTask?: TaskDto,
+  activeTaskId?: number | null,
 ): TaskVariant => {
   if (section.isPlan) {
     return 'plan';
@@ -18,11 +18,7 @@ export const getTaskVariant = (
     return 'completed';
   }
 
-  if (task.id === '__temp') {
-    return 'temp';
-  }
-
-  if (task.id === activeTask?.id) {
+  if (task.id === activeTaskId) {
     return 'active';
   }
 

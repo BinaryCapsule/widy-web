@@ -5,6 +5,6 @@ export const useRibbon = () => {
 
   return {
     ...queryResult,
-    isActive: queryResult.isSuccess && !!queryResult.data.task,
+    isActive: queryResult.isSuccess && !!queryResult.data.id,
   };
 };

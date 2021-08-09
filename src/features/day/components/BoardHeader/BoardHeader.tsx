@@ -11,6 +11,7 @@ export const Wrapper = styled(BaseWrapper)`
   align-items: center;
   background: ${({ theme }) => theme.colors.bg};
   top: 0;
+  z-index: 1;
 `;
 
 interface Props {}

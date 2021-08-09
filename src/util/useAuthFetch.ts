@@ -47,7 +47,6 @@ export const useAuthFetch = () => {
           console.log('Got 401');
       }
 
-      // noinspection ExceptionCaughtLocallyJS
       throw new HttpError(jsonResponse);
     } catch (error) {
       console.error(error.message);
