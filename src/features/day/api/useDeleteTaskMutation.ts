@@ -1,19 +1,17 @@
-import { useMutation, useQueryClient } from 'react-query';
 import { useAuthFetch } from '../../../util/useAuthFetch';
-import { httpBody } from '../../../util/httpBody';
-import { IDay, TaskDto } from './useDayQuery';
 import { useDayRouteParams } from '../hooks/useDayRouteParams';
 import { queryKeys } from './queryKeys';
+import { useMutation, useQueryClient } from 'react-query';
+import { IDay, TaskDto } from './useDayQuery';
 import produce from 'immer';
 import { ActiveTaskDto } from './useActiveTaskQuery';
 import { Toaster } from '@binarycapsule/ui-capsules';
 
-interface UpdateTaskParams {
-  taskId: number;
-  payload: Partial<TaskDto>;
+interface DeleteTaskParams {
+  task: TaskDto;
 }
 
-export const useUpdateTaskMutation = () => {
+export const useDeleteTaskMutation = () => {
   const { authFetch } = useAuthFetch();
 
   const { dayId } = useDayRouteParams();
@@ -23,15 +21,14 @@ export const useUpdateTaskMutation = () => {
   const dayQK = queryKeys.day(dayId);
   const activeTaskQK = queryKeys.activeTask();
 
-  const updateTask = async ({ taskId, payload }: UpdateTaskParams): Promise<TaskDto> => {
-    return authFetch(`/api/tasks/${taskId}`, {
-      method: 'PATCH',
-      ...httpBody(payload),
+  const deleteTask = async ({ task }: DeleteTaskParams) => {
+    return authFetch(`/api/tasks/${task.id}`, {
+      method: 'DELETE',
     });
   };
 
-  return useMutation(updateTask, {
-    onMutate: async ({ taskId, payload }: UpdateTaskParams) => {
+  return useMutation(deleteTask, {
+    onMutate: async ({ task }: DeleteTaskParams) => {
       await queryClient.cancelQueries(dayQK);
       await queryClient.cancelQueries(activeTaskQK);
 
@@ -39,14 +36,13 @@ export const useUpdateTaskMutation = () => {
         if (old) {
           return produce(old, draft => {
             if (draft.entities.tasks) {
-              const oldTask = draft.entities.tasks[taskId];
+              delete draft.entities.tasks[task.id];
+            }
 
-              if (oldTask) {
-                draft.entities.tasks[taskId] = {
-                  ...oldTask,
-                  ...payload,
-                };
-              }
+            if (draft.entities.sections && draft.entities.sections[task.sectionId]) {
+              const { tasks } = draft.entities.sections[task.sectionId];
+              const index = tasks.findIndex(id => id === task.id);
+              if (index !== -1) tasks.splice(index, 1);
             }
           });
         }
@@ -54,22 +50,14 @@ export const useUpdateTaskMutation = () => {
         return old;
       });
 
+      // We are deleting the active task
+      if (task.start) {
+        queryClient.setQueryData<ActiveTaskDto | undefined>(activeTaskQK, { id: null });
+      }
+
       const oldDay = queryClient.getQueryData<IDay>(dayQK);
 
       const oldActiveTask = queryClient.getQueryData<ActiveTaskDto>(activeTaskQK);
-
-      // We are starting a task
-      if (payload.start) {
-        queryClient.setQueryData<ActiveTaskDto | undefined>(activeTaskQK, { id: taskId });
-      }
-
-      // We are editing task time
-      if (payload.time) {
-        // We are stopping the active task
-        if (oldActiveTask?.id === taskId) {
-          queryClient.setQueryData(activeTaskQK, { id: null });
-        }
-      }
 
       return { oldDay, oldActiveTask };
     },

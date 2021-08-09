@@ -34,6 +34,7 @@ export interface TaskDto {
   start: string | null;
   scope: ScopeDto | null;
   rank: number;
+  sectionId: number;
 }
 
 export interface SectionDto {

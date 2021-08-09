@@ -1,13 +1,14 @@
 import React from 'react';
 import { TaskDto } from '../../api/useDayQuery';
 import { PlanTaskActions, StyledTask, TaskVariant } from './Task.styles';
-import { Box, Checkbox, IconButton, Toaster, TruncatedText } from '@binarycapsule/ui-capsules';
+import { Box, Checkbox, Toaster, TruncatedText } from '@binarycapsule/ui-capsules';
 import { useHistory } from 'react-router-dom';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { TimerButton } from '../TimerButton/TimerButton';
 import { PlanCheckBox } from './img/PlanCheckBox';
 import { Launcher } from '../Launcher/Launcher';
+import { TaskMenu } from '../TaskMenu/TaskMenu';
 
 interface Props {
   task: TaskDto;
@@ -40,8 +41,6 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
 
   const onTaskKeyDown = (evt: React.KeyboardEvent<HTMLDivElement>) => {
     if (evt.key === 'Enter' || evt.key === ' ') {
-      evt.preventDefault();
-
       onTaskClick();
     }
   };
@@ -76,7 +75,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
       {variant === 'plan' && (
         <PlanTaskActions>
           <Launcher />
-          <IconButton icon="dots_h" variant="ghost" variantColor="neutral" size="small" ml="4" />
+          <TaskMenu task={task} variant={variant} />
         </PlanTaskActions>
       )}
 
@@ -84,9 +83,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
         <TimerButton task={task} />
       )}
 
-      {variant !== 'completed' && variant !== 'plan' && (
-        <IconButton icon="dots_h" variant="ghost" variantColor="neutral" size="small" ml="4" />
-      )}
+      {variant !== 'completed' && variant !== 'plan' && <TaskMenu task={task} variant={variant} />}
     </StyledTask>
   );
 };
