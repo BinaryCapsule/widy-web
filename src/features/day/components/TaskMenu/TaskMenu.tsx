@@ -4,6 +4,7 @@ import { TaskDto } from '../../api/useDayQuery';
 import { RenameTask } from '../RenameTask/RenameTask';
 import { DeleteTask } from '../DeleteTask/DeleteTask';
 import { TaskVariant } from '../Task/Task.styles';
+import { RegisterTime } from '../RegisterTime/RegisterTime';
 
 interface Props {
   task: TaskDto;
@@ -14,6 +15,8 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
   const [showRenameTask, setShowRenameTask] = useState(false);
 
   const [showDeleteTask, setShowDeleteTask] = useState(false);
+
+  const [showRegisterTime, setShowRegisterTime] = useState(false);
 
   const canRegisterTime = variant === 'todo';
 
@@ -27,7 +30,11 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
         }
       >
         {canRegisterTime ? (
-          <MenuItem text="Register Time" leftIcon="clock" onClick={() => {}} />
+          <MenuItem
+            text="Register Time"
+            leftIcon="clock"
+            onClick={() => setShowRegisterTime(true)}
+          />
         ) : null}
 
         <MenuItem text="Rename" leftIcon="pencil" onClick={() => setShowRenameTask(true)} />
@@ -50,6 +57,10 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
       {showRenameTask && <RenameTask task={task} onRequestClose={() => setShowRenameTask(false)} />}
 
       {showDeleteTask && <DeleteTask task={task} onRequestClose={() => setShowDeleteTask(false)} />}
+
+      {showRegisterTime && (
+        <RegisterTime task={task} onRequestClose={() => setShowRegisterTime(false)} />
+      )}
     </>
   );
 };

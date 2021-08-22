@@ -56,10 +56,10 @@ export const TimerButton: React.FC<Props> = ({ task, size }) => {
       icon={isActive ? 'stop' : 'play'}
       onClick={handleClick}
       size={size}
-      primaryColor={isActive ? theme.colors.yellow['400'] : theme.colors.neutral['200']}
-      primaryColorHover={isActive ? theme.colors.yellow['500'] : theme.colors.neutral['300']}
-      secondaryColor={isActive ? theme.colors.yellow['900'] : theme.colors.neutral['500']}
-      secondaryColorHover={isActive ? theme.colors.yellow['900'] : theme.colors.neutral['600']}
+      primaryColor={isActive ? theme.colors.yellow['400'] : theme.colors.neutral['300']}
+      primaryColorHover={isActive ? theme.colors.yellow['500'] : theme.colors.neutral['400']}
+      secondaryColor={isActive ? theme.colors.yellow['900'] : theme.colors.neutral['600']}
+      secondaryColorHover={isActive ? theme.colors.yellow['900'] : theme.colors.neutral['700']}
     />
   );
 };

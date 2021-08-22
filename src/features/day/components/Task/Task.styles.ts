@@ -35,7 +35,7 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
     fontSize: theme.fontSizes.body,
     fontWeight: theme.fontWeights['500'],
     margin: '4px 0',
-    borderColor: theme.colors.neutral['200'],
+    borderColor: theme.colors.neutral['300'],
     cursor: 'pointer',
   }),
 
@@ -46,11 +46,11 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
     >({
       variants: {
         todo: {
-          borderColor: isSelected ? 'yellow.500' : 'neutral.200',
+          borderColor: isSelected ? 'yellow.500' : 'neutral.300',
           bg: isSelected ? 'yellow.50' : 'bg',
 
           '&:hover': {
-            bg: isSelected ? 'yellow.100' : 'neutral.50',
+            bg: isSelected ? 'yellow.100' : 'neutral.100',
           },
         },
 
@@ -60,13 +60,13 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
           bg: isSelected ? 'yellow.50' : 'bg',
 
           '&:hover': {
-            bg: isSelected ? 'yellow.100' : 'neutral.50',
+            bg: isSelected ? 'yellow.100' : 'neutral.100',
           },
         },
 
         completed: {
-          borderColor: isSelected ? 'yellow.500' : 'neutral.100',
-          bg: isSelected ? 'yellow.50' : 'neutral.50',
+          borderColor: isSelected ? 'yellow.500' : 'neutral.300',
+          bg: isSelected ? 'yellow.50' : 'neutral.100',
         },
 
         plan: {
@@ -78,7 +78,7 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
           bg: isSelected ? 'neutral.100' : 'bg',
 
           '&:hover': {
-            bg: isSelected ? 'neutral.100' : 'neutral.50',
+            bg: 'neutral.100',
 
             [`${PlanTaskActions}`]: {
               visibility: 'visible',

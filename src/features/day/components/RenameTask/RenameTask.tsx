@@ -59,12 +59,11 @@ export const RenameTask: React.FC<Props> = ({ task, onRequestClose }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost" variantColor="neutral" size="large" onClick={onRequestClose}>
+          <Button variant="ghost" variantColor="neutral" onClick={onRequestClose}>
             Cancel
           </Button>
-          <Button type="submit" size="large">
-            Rename task
-          </Button>
+
+          <Button type="submit">Rename</Button>
         </ModalFooter>
       </form>
     </Modal>

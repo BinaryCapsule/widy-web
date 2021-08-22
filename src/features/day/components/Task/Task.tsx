@@ -67,7 +67,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
       )}
 
       <Box flex={1}>
-        <TruncatedText fontWeight={500} color={task.isDone ? 'neutral.300' : 'neutral.700'}>
+        <TruncatedText fontWeight={500} color={task.isDone ? 'neutral.500' : 'neutral.700'}>
           {task.summary}
         </TruncatedText>
       </Box>

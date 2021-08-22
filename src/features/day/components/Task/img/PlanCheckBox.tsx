@@ -8,7 +8,7 @@ interface Props extends MarginProps {}
 export const PlanCheckBox: React.FC<Props> = props => {
   const theme = useTheme();
 
-  const color = theme.colors.neutral['300'];
+  const color = theme.colors.neutral['400'];
 
   return (
     <Box width={20} height={20} {...props}>
