@@ -46,8 +46,8 @@ export const TimerButton: React.FC<Props> = ({ task, size }) => {
         taskId: task.id,
         payload,
       });
-    } catch {
-      // Ignore
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -55,6 +55,7 @@ export const TimerButton: React.FC<Props> = ({ task, size }) => {
     <IllustratedIcon
       icon={isActive ? 'stop' : 'play'}
       onClick={handleClick}
+      disabled={isUpdatingTask}
       size={size}
       primaryColor={isActive ? theme.colors.yellow['400'] : theme.colors.neutral['300']}
       primaryColorHover={isActive ? theme.colors.yellow['500'] : theme.colors.neutral['400']}

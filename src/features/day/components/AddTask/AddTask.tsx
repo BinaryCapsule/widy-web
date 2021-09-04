@@ -117,11 +117,11 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button variant="ghost" variantColor="neutral" size="large" onClick={onClose}>
+            <Button variant="ghost" variantColor="neutral" onClick={onClose}>
               Cancel
             </Button>
 
-            <Button type="submit" size="large" isLoading={isCreatingTask}>
+            <Button type="submit" isLoading={isCreatingTask}>
               Add Task
             </Button>
           </ModalFooter>

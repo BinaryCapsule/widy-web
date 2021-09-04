@@ -32,7 +32,7 @@ export interface TaskDto {
   time: number;
   isDone: boolean;
   start: string | null;
-  scope: ScopeDto | null;
+  scopeId: number | null;
   rank: number;
   sectionId: number;
 }

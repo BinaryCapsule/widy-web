@@ -100,6 +100,7 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
               <Button
                 key={label}
                 variant="outline"
+                size="small"
                 onClick={() => {
                   setValue('hours', hours);
                   setValue('minutes', minutes);

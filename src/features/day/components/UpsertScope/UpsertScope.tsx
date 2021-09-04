@@ -91,11 +91,11 @@ export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) 
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost" variantColor="neutral" size="large" onClick={onClose}>
+          <Button variant="ghost" variantColor="neutral" onClick={onClose}>
             Cancel
           </Button>
 
-          <Button type="submit" size="large" isLoading={isLoading}>
+          <Button type="submit" isLoading={isLoading}>
             {scope ? 'Save Changes' : 'Create Scope'}
           </Button>
         </ModalFooter>

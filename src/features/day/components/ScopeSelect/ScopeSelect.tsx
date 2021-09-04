@@ -4,7 +4,7 @@ import { ScopeOption, useScopesOptions } from '../../api/useScopesQuery';
 import { ScopeOptionLabel } from './components/ScopeOptionLabel/ScopeOptionLabel';
 
 interface Props {
-  value: ScopeOption
+  value: ScopeOption | null;
   onChange(opt: ScopeOption): void;
   onCreateScope(): void;
 }

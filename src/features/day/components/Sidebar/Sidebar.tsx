@@ -1,14 +1,33 @@
 import React from 'react';
-import styled from '@emotion/styled/macro';
+import { useDayRouteParams } from '../../hooks/useDayRouteParams';
+import { useDayQuery } from '../../api/useDayQuery';
+import { EditableTaskSummary } from './components/EditableTaskSummary/EditableTaskSummary';
+import { ScopeSelection } from './components/ScopeSelection/ScopeSelection';
+import { SidebarWrapper } from './Sidebar.styles';
+import { SidebarEmpty } from './Sidebar.empty';
 
-export const SidebarWrapper = styled.div`
-  min-width: 360px;
-  flex-grow: 1;
-  background: ${({ theme }) => theme.colors.yellow['50']};
-`;
+export const Sidebar = () => {
+  const { taskId } = useDayRouteParams();
 
-interface Props {}
+  const { data } = useDayQuery();
 
-export const Sidebar: React.FC<Props> = () => {
-  return <SidebarWrapper as="aside">Hello Sidebar</SidebarWrapper>;
+  if (!data) {
+    return null;
+  }
+
+  const task = taskId ? data.entities.tasks?.[parseInt(taskId, 10)] : null;
+
+  if (!task) {
+    return <SidebarEmpty />;
+  }
+
+  const { id, summary } = task;
+
+  return (
+    <SidebarWrapper>
+      <EditableTaskSummary key={taskId} taskId={id} summary={summary} ml={-10} />
+
+      <ScopeSelection task={task} mt="16" />
+    </SidebarWrapper>
+  );
 };
