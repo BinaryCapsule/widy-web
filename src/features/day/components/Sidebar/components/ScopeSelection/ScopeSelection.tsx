@@ -36,7 +36,7 @@ export const ScopeSelection: React.FC<Props> = ({ task, ...rest }) => {
 
         <ScopeSelect
           value={scopesOptions.find(scopeOpt => scopeOpt.value === task.scopeId) || null}
-          onChange={opt => handleScopeChange({ id: opt.value })}
+          onChange={opt => handleScopeChange(opt ? { id: opt.value } : null)}
           onCreateScope={() => setIsScopesModalOpen(true)}
         />
       </Box>

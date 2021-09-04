@@ -5,7 +5,7 @@ import { ScopeOptionLabel } from './components/ScopeOptionLabel/ScopeOptionLabel
 
 interface Props {
   value: ScopeOption | null;
-  onChange(opt: ScopeOption): void;
+  onChange(opt: ScopeOption | null): void;
   onCreateScope(): void;
 }
 
@@ -30,7 +30,7 @@ export const ScopeSelect: React.FC<Props> = ({ value, onChange, onCreateScope })
       <Select
         value={value}
         options={scopesOptions}
-        onChange={opt => onChange(opt as ScopeOption)}
+        onChange={opt => onChange(opt as ScopeOption | null)}
         isClearable
         placeholder="No scope"
         formatOptionLabel={ScopeOptionLabel}

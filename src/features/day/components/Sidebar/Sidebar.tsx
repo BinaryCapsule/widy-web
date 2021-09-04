@@ -3,7 +3,7 @@ import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useDayQuery } from '../../api/useDayQuery';
 import { EditableTaskSummary } from './components/EditableTaskSummary/EditableTaskSummary';
 import { ScopeSelection } from './components/ScopeSelection/ScopeSelection';
-import { SidebarWrapper } from './Sidebar.styles';
+import { SidebarContent, SidebarWrapper } from './Sidebar.styles';
 import { SidebarEmpty } from './Sidebar.empty';
 
 export const Sidebar = () => {
@@ -25,9 +25,11 @@ export const Sidebar = () => {
 
   return (
     <SidebarWrapper>
-      <EditableTaskSummary key={taskId} taskId={id} summary={summary} ml={-10} />
+      <SidebarContent>
+        <EditableTaskSummary key={taskId} taskId={id} summary={summary} ml={-10} />
 
-      <ScopeSelection task={task} mt="16" />
+        <ScopeSelection task={task} mt="16" />
+      </SidebarContent>
     </SidebarWrapper>
   );
 };
