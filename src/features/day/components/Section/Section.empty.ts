@@ -13,9 +13,4 @@ export const SectionEmpty = styled(Box)(({ theme }) => ({
   transition: 'background-color 0.2s ease',
   border: `1px solid ${theme.colors.neutral['300']}`,
   borderRadius: theme.radii.medium,
-  cursor: 'pointer',
-
-  '&:hover': {
-    backgroundColor: theme.colors.neutral['100'],
-  },
 }));
