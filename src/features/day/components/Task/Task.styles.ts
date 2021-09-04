@@ -36,7 +36,6 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
     fontWeight: theme.fontWeights['500'],
     margin: '4px 0',
     borderColor: theme.colors.neutral['300'],
-    cursor: 'pointer',
   }),
 
   ({ isSelected, theme }) =>

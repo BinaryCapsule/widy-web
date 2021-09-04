@@ -10,5 +10,5 @@ export const SidebarWrapper = styled.div`
 interface Props {}
 
 export const Sidebar: React.FC<Props> = () => {
-  return <SidebarWrapper>Hello Sidebar</SidebarWrapper>;
+  return <SidebarWrapper as="aside">Hello Sidebar</SidebarWrapper>;
 };

@@ -6,7 +6,7 @@ import { DaysList } from './components/DaysList/DaysList';
 
 export const DaysNav: React.FC = () => {
   return (
-    <DaysNavWrapper>
+    <DaysNavWrapper as="nav">
       <Brand mb="24" />
 
       <DaysNavHeader mb="24" />

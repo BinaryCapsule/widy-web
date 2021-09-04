@@ -60,6 +60,7 @@ export const TimerButton: React.FC<Props> = ({ task, size }) => {
       primaryColorHover={isActive ? theme.colors.yellow['500'] : theme.colors.neutral['400']}
       secondaryColor={isActive ? theme.colors.yellow['900'] : theme.colors.neutral['600']}
       secondaryColorHover={isActive ? theme.colors.yellow['900'] : theme.colors.neutral['700']}
+      aria-label={isActive ? 'Stop task' : 'Start task'}
     />
   );
 };
