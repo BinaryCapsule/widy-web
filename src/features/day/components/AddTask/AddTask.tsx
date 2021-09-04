@@ -18,6 +18,7 @@ import { useTaskRank } from '../../hooks/useTaskRank';
 import { ScopeSelect } from '../ScopeSelect/ScopeSelect';
 import { UpsertScope } from '../UpsertScope/UpsertScope';
 import { UpsertScopeResponse } from '../../api/useUpsertScopeMutation';
+import { ScopeOption } from '../../api/useScopesQuery';
 
 interface Props {
   sectionId: number;
@@ -109,7 +110,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
               render={({ field }) => (
                 <ScopeSelect
                   value={field.value}
-                  onChange={opt => setValue('scope', opt)}
+                  onChange={opt => setValue('scope', opt as ScopeOption)}
                   onCreateScope={() => setIsScopesModalOpen(true)}
                 />
               )}
@@ -117,11 +118,11 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button variant="ghost" variantColor="neutral" size="large" onClick={onClose}>
+            <Button variant="ghost" variantColor="neutral" onClick={onClose}>
               Cancel
             </Button>
 
-            <Button type="submit" size="large" isLoading={isCreatingTask}>
+            <Button type="submit" isLoading={isCreatingTask}>
               Add Task
             </Button>
           </ModalFooter>

@@ -11,5 +11,5 @@ export const SectionHeader = styled(Box)<SectionHeaderProps>(({ theme, isPlan, h
   alignItems: 'center',
   justifyContent: 'space-between',
   height: 48,
-  borderBottom: isPlan && hasTasks ? `1px solid ${theme.colors.neutral['200']}` : 'none',
+  borderBottom: isPlan && hasTasks ? `1px solid ${theme.colors.neutral['300']}` : 'none',
 }));

@@ -46,15 +46,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
   };
 
   return (
-    <StyledTask
-      variant={variant}
-      isSelected={isSelected}
-      onClick={onTaskClick}
-      onKeyDown={onTaskKeyDown}
-      role="button"
-      tabIndex={0}
-      aria-label={`Task - ${task.summary}`}
-    >
+    <StyledTask variant={variant} isSelected={isSelected}>
       {variant === 'plan' && <PlanCheckBox mr="12" />}
 
       {variant !== 'plan' && variant !== 'tomorrow' && (
@@ -66,8 +58,16 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
         />
       )}
 
-      <Box flex={1}>
-        <TruncatedText fontWeight={500} color={task.isDone ? 'neutral.300' : 'neutral.700'}>
+      <Box
+        flex={1}
+        onClick={onTaskClick}
+        onKeyDown={onTaskKeyDown}
+        role="button"
+        tabIndex={0}
+        aria-label={`Task - ${task.summary}`}
+        style={{ cursor: 'pointer' }}
+      >
+        <TruncatedText fontWeight={500} color={task.isDone ? 'neutral.500' : 'neutral.700'}>
           {task.summary}
         </TruncatedText>
       </Box>

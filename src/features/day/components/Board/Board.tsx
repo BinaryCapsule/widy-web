@@ -15,7 +15,7 @@ export const BoardWrapper = styled.div`
 
 export const Board = () => {
   return (
-    <BoardWrapper>
+    <BoardWrapper as="main">
       <BoardHeader />
 
       <Sections />

@@ -34,10 +34,10 @@ export const Launcher: React.FC<Props> = ({ size, isButton }) => {
             icon="launch"
             onClick={() => setShowLaunchTaskModal(true)}
             size={size}
-            primaryColor={theme.colors.neutral['200']}
-            primaryColorHover={theme.colors.blue['100']}
-            secondaryColor={theme.colors.neutral['400']}
-            secondaryColorHover={theme.colors.blue['500']}
+            primaryColor={theme.colors.neutral['300']}
+            primaryColorHover={theme.colors.blue['200']}
+            secondaryColor={theme.colors.neutral['500']}
+            secondaryColorHover={theme.colors.blue['600']}
           />
         )}
       </Tooltip>

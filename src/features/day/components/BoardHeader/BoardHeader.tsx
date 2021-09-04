@@ -27,7 +27,7 @@ export const BoardHeader: React.FC<Props> = () => {
     });
 
   return (
-    <Wrapper>
+    <Wrapper as="header">
       <Flex justifyContent="space-between">
         <BoardTitle />
 

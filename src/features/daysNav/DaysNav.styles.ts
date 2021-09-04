@@ -5,8 +5,8 @@ export const DaysNavWrapper = styled.div`
   height: 100%;
   flex-shrink: 0;
   padding: 48px 24px 24px;
-  background: ${props => props.theme.colors.neutral['50']};
-  border-right: 1px solid ${({ theme }) => theme.colors.neutral['100']};
+  background: ${props => props.theme.colors.neutral['100']};
+  border-right: 1px solid ${({ theme }) => theme.colors.neutral['200']};
   display: flex;
   flex-direction: column;
 `;
