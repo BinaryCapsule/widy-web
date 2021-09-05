@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Box,
   Button,
   Input,
   Modal,
@@ -7,7 +8,6 @@ import {
   ModalCloseButton,
   ModalFooter,
   ModalHeader,
-  Text,
 } from '@binarycapsule/ui-capsules';
 import { Controller, useForm } from 'react-hook-form';
 import { useCreateTaskMutation } from '../../api/useCreateTaskMutation';
@@ -98,9 +98,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
               helpText={errors.summary?.message}
             />
 
-            <Text color="neutral.700" fontWeight={600} fontSize="body" mt="24" mb="4">
-              Task scope
-            </Text>
+            <Box mb="16" />
 
             <Controller
               name="scope"

@@ -29,6 +29,7 @@ export const ScopeSelect: React.FC<Props> = ({ value, onChange, onCreateScope })
   return (
     <>
       <Select
+        label="Scope"
         value={value}
         options={scopesOptions}
         onChange={opt => onChange(opt as ScopeOption | null)}
