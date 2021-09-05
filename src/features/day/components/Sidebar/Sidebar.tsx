@@ -5,6 +5,7 @@ import { EditableTaskSummary } from './components/EditableTaskSummary/EditableTa
 import { ScopeSelection } from './components/ScopeSelection/ScopeSelection';
 import { SidebarContent, SidebarWrapper } from './Sidebar.styles';
 import { SidebarEmpty } from './Sidebar.empty';
+import { NotesEditor } from '../NotesEditor/NotesEditor';
 
 export const Sidebar = () => {
   const { taskId } = useDayRouteParams();
@@ -21,7 +22,7 @@ export const Sidebar = () => {
     return <SidebarEmpty />;
   }
 
-  const { id, summary } = task;
+  const { id, summary, notes } = task;
 
   return (
     <SidebarWrapper>
@@ -29,6 +30,8 @@ export const Sidebar = () => {
         <EditableTaskSummary key={taskId} taskId={id} summary={summary} ml={-10} />
 
         <ScopeSelection task={task} mt="16" />
+
+        <NotesEditor taskId={id} notes={notes} mt="16" />
       </SidebarContent>
     </SidebarWrapper>
   );

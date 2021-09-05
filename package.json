@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.3.0",
+    "@binarycapsule/editor": "^2.0.4",
     "@binarycapsule/ui-capsules": "^4.6.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
