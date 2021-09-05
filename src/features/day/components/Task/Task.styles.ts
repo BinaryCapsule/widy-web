@@ -1,5 +1,5 @@
 import styled from '@emotion/styled/macro';
-import { Box } from '@binarycapsule/ui-capsules';
+import { Box, TruncatedText } from '@binarycapsule/ui-capsules';
 import { ShadowProps, variant } from 'styled-system';
 import {
   BorderProps,
@@ -8,11 +8,12 @@ import {
   PropsWithPseudo,
 } from '@binarycapsule/ui-capsules/dist/styledProps';
 
-export const PlanTaskActions = styled.div({
-  display: 'flex',
-  height: 24,
-  alignItems: 'center',
-  visibility: 'hidden',
+export const TaskSummary = styled(TruncatedText)({
+  cursor: 'pointer',
+
+  '&:hover': {
+    textDecoration: 'underline',
+  },
 });
 
 type Pseudo = '&:hover';
@@ -75,14 +76,6 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
           borderLeftWidth: 0,
           borderRightWidth: 0,
           bg: isSelected ? 'neutral.100' : 'bg',
-
-          '&:hover': {
-            bg: 'neutral.100',
-
-            [`${PlanTaskActions}`]: {
-              visibility: 'visible',
-            },
-          },
         },
 
         tomorrow: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TaskDto } from '../../api/useDayQuery';
-import { PlanTaskActions, StyledTask, TaskVariant } from './Task.styles';
-import { Box, Checkbox, Toaster, TruncatedText } from '@binarycapsule/ui-capsules';
+import { StyledTask, TaskSummary, TaskVariant } from './Task.styles';
+import { Box, Checkbox, Flex, Toaster } from '@binarycapsule/ui-capsules';
 import { useHistory } from 'react-router-dom';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
@@ -9,6 +9,7 @@ import { TimerButton } from '../TimerButton/TimerButton';
 import { PlanCheckBox } from './img/PlanCheckBox';
 import { Launcher } from '../Launcher/Launcher';
 import { TaskMenu } from '../TaskMenu/TaskMenu';
+import { TaskScope } from '../TaskScope/TaskScope';
 
 interface Props {
   task: TaskDto;
@@ -58,25 +59,27 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
         />
       )}
 
-      <Box
-        flex={1}
-        onClick={onTaskClick}
-        onKeyDown={onTaskKeyDown}
-        role="button"
-        tabIndex={0}
-        aria-label={`Task - ${task.summary}`}
-        style={{ cursor: 'pointer' }}
-      >
-        <TruncatedText fontWeight={500} color={task.isDone ? 'neutral.500' : 'neutral.700'}>
-          {task.summary}
-        </TruncatedText>
+      <Box flex={1}>
+        <Box
+          onClick={onTaskClick}
+          onKeyDown={onTaskKeyDown}
+          role="button"
+          tabIndex={0}
+          aria-label={`Task - ${task.summary}`}
+        >
+          <TaskSummary fontWeight={500} color={task.isDone ? 'neutral.500' : 'neutral.700'}>
+            {task.summary}
+          </TaskSummary>
+        </Box>
       </Box>
 
+      <TaskScope task={task} mr="4" />
+
       {variant === 'plan' && (
-        <PlanTaskActions>
+        <Flex height="24" alignItems="center">
           <Launcher />
           <TaskMenu task={task} variant={variant} />
-        </PlanTaskActions>
+        </Flex>
       )}
 
       {variant !== 'plan' && variant !== 'tomorrow' && variant !== 'completed' && (

@@ -1,6 +1,7 @@
 import { Button, Select } from '@binarycapsule/ui-capsules';
 import React from 'react';
 import { ScopeOption, useScopesOptions } from '../../api/useScopesQuery';
+import { ScopeOption as ScopeOptionComponent } from './components/ScopeOption/ScopeOption';
 import { ScopeOptionLabel } from './components/ScopeOptionLabel/ScopeOptionLabel';
 
 interface Props {
@@ -33,6 +34,7 @@ export const ScopeSelect: React.FC<Props> = ({ value, onChange, onCreateScope })
         onChange={opt => onChange(opt as ScopeOption | null)}
         isClearable
         placeholder="No scope"
+        components={{ Option: ScopeOptionComponent }}
         formatOptionLabel={ScopeOptionLabel}
         menuPortalTarget={document.body}
         filterOption={filterScopes}
