@@ -64,8 +64,8 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
       });
 
       onClose();
-    } catch {
-      // Ignore
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -88,16 +88,14 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
 
         <form onSubmit={handleSubmit(onCreateTask)}>
           <ModalBody>
-            <Text color="neutral.700" fontWeight={600} fontSize="body" mb="4">
-              What will you be working on?
-            </Text>
-
             <Input
+              label="What will you be working on?"
               {...register('summary')}
               size="large"
               autoFocus
               placeholder="Task summary"
-              error={errors.summary?.message}
+              variant={errors.summary ? 'error' : undefined}
+              helpText={errors.summary?.message}
             />
 
             <Text color="neutral.700" fontWeight={600} fontSize="body" mt="24" mb="4">

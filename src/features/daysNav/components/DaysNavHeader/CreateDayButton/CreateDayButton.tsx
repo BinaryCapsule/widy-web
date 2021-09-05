@@ -20,8 +20,8 @@ export const CreateDayButton: React.FC = () => {
   const handleCreateDay = async () => {
     try {
       await createDay();
-    } catch {
-      // Ignore
+    } catch (err) {
+      console.error(err);
     }
   };
 

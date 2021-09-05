@@ -9,7 +9,6 @@ import {
   ModalCloseButton,
   ModalFooter,
   ModalHeader,
-  Text,
 } from '@binarycapsule/ui-capsules';
 import { UpsertScopeResponse, useUpsertScopeMutation } from '../../api/useUpsertScopeMutation';
 import { ScopeDto } from '../../api/useScopesQuery';
@@ -64,30 +63,23 @@ export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) 
           {error && <Alert variant="error" message={error.message} mb="12" />}
 
           <Box mb="12">
-            <Text variant="label">Name</Text>
-
             <Input
+              label="Name"
               {...register('name')}
               placeholder="Scope name"
-              error={errors.name?.message}
+              variant={errors.name ? 'error' : undefined}
+              helpText={errors.name?.message}
               autoFocus
             />
           </Box>
 
-          <Box>
-            <Text variant="label">Short Code</Text>
-            <Text variant="helper" mb="4">
-              Choose a short code to identify this scope.
-            </Text>
-
-            <Box>
-              <Input
-                {...register('shortCode')}
-                placeholder="Scope code"
-                error={errors.name?.message}
-              />
-            </Box>
-          </Box>
+          <Input
+            label="Short Code"
+            {...register('shortCode')}
+            placeholder="Scope code"
+            variant={errors.shortCode ? 'error' : undefined}
+            helpText={errors.shortCode?.message}
+          />
         </ModalBody>
 
         <ModalFooter>
