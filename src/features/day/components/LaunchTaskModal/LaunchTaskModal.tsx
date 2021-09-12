@@ -13,13 +13,27 @@ import { ErrorMessage } from '@hookform/error-message';
 import { FormValues } from './LaunchTaskModal.meta';
 import { HelpText } from '@binarycapsule/ui-capsules/dist/HelpText/HelpText';
 import { useLaunchTaskModal } from './useLaunchTaskModal';
+import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
+import { useTaskRank } from '../../hooks/useTaskRank';
+import { useDayRouteNavigate } from '../../hooks/useDayRouteNavigate';
+import { useDayRouteParams } from '../../hooks/useDayRouteParams';
+import { getNow } from '../../utils/getNow';
 
 interface Props {
+  taskId: number;
   onClose(): void;
 }
 
-export const LaunchTaskModal: React.FC<Props> = ({ onClose }) => {
+export const LaunchTaskModal: React.FC<Props> = ({ taskId, onClose }) => {
   const { data } = useLaunchTaskModal();
+
+  const { mutateAsync: updateTask, isLoading: isUpdatingTask } = useUpdateTaskMutation();
+
+  const { getTaskRank } = useTaskRank();
+
+  const { dayId } = useDayRouteParams();
+
+  const { navigate } = useDayRouteNavigate();
 
   if (!data) {
     return null;
@@ -27,10 +41,27 @@ export const LaunchTaskModal: React.FC<Props> = ({ onClose }) => {
 
   const { sectionOpts, selectedSectionId, formBag } = data;
 
-  const onLaunchTask = ({ sectionId }: FormValues) => {
-    console.log('section', sectionId);
-    // TODO ➜ When launching a task we need to do the optimistic update and start the
-    //  task at the same time. Also, if there is any other task active, we need to stop it
+  const onLaunchTask = async ({ sectionId }: FormValues) => {
+    if (!sectionId) {
+      return;
+    }
+
+    try {
+      await updateTask({
+        taskId,
+        payload: {
+          sectionId,
+          rank: getTaskRank(sectionId),
+          start: getNow(),
+        },
+      });
+
+      navigate({ dayId, taskId: taskId.toString() });
+
+      onClose();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -64,7 +95,9 @@ export const LaunchTaskModal: React.FC<Props> = ({ onClose }) => {
             Cancel
           </Button>
 
-          <Button type="submit">Launch Task</Button>
+          <Button type="submit" isLoading={isUpdatingTask}>
+            Launch Task
+          </Button>
         </ModalFooter>
       </form>
     </Modal>

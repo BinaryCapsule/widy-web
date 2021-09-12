@@ -5,11 +5,12 @@ import { Button, IllustratedIcon, Tooltip } from '@binarycapsule/ui-capsules';
 import { LaunchTaskModal } from '../LaunchTaskModal/LaunchTaskModal';
 
 interface Props {
+  taskId: number;
   size?: number;
   isButton?: boolean;
 }
 
-export const Launcher: React.FC<Props> = ({ size, isButton }) => {
+export const Launcher: React.FC<Props> = ({ taskId, size, isButton }) => {
   const [showLaunchTaskModal, setShowLaunchTaskModal] = useState(false);
 
   const { dayId } = useDayRouteParams();
@@ -49,7 +50,9 @@ export const Launcher: React.FC<Props> = ({ size, isButton }) => {
         )}
       </Tooltip>
 
-      {showLaunchTaskModal && <LaunchTaskModal onClose={() => setShowLaunchTaskModal(false)} />}
+      {showLaunchTaskModal && (
+        <LaunchTaskModal taskId={taskId} onClose={() => setShowLaunchTaskModal(false)} />
+      )}
     </>
   );
 };

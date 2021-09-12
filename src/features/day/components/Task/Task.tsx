@@ -78,7 +78,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
 
       {variant === 'plan' && (
         <Flex height="24" alignItems="center">
-          <Launcher />
+          <Launcher taskId={task.id} />
           <TaskMenu task={task} variant={variant} />
         </Flex>
       )}

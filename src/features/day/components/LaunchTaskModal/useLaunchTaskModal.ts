@@ -21,18 +21,20 @@ export const useLaunchTaskModal = () => {
       entities: { sections },
     } = queryResult.data;
 
-    const sectionOpts = Object.values(sections).reduce((acc, cur) => {
-      if (cur.isPlan) {
+    const sectionOpts = Object.values(sections)
+      .sort((a, b) => a.rank - b.rank)
+      .reduce((acc, cur) => {
+        if (cur.isPlan) {
+          return acc;
+        }
+
+        acc.push({
+          id: cur.id,
+          label: cur.title,
+        });
+
         return acc;
-      }
-
-      acc.push({
-        id: cur.id,
-        label: cur.title,
-      });
-
-      return acc;
-    }, [] as { id: number; label: string }[]);
+      }, [] as { id: number; label: string }[]);
 
     return {
       selectedSectionId: formBag.watch('sectionId'),
