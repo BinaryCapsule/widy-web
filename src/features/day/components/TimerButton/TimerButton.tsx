@@ -6,6 +6,7 @@ import { TaskDto } from '../../api/useDayQuery';
 import { useActiveTaskQuery } from '../../api/useActiveTaskQuery';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { IllustratedIcon } from '@binarycapsule/ui-capsules';
+import { getNow } from '../../utils/getNow';
 
 interface Props {
   task: TaskDto;
@@ -38,7 +39,7 @@ export const TimerButton: React.FC<Props> = ({ task, size }) => {
           time: task.time + moment.utc().diff(task.start, 'seconds'),
         }
       : {
-          start: moment.utc().toISOString(),
+          start: getNow(),
         };
 
     try {

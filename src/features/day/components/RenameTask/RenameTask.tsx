@@ -50,11 +50,13 @@ export const RenameTask: React.FC<Props> = ({ task, onRequestClose }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalBody>
           <Input
+            label="Summary"
             {...register('summary')}
             size="large"
             autoFocus
             placeholder="Task summary"
-            error={errors.summary?.message}
+            variant={errors.summary ? 'error' : undefined}
+            helpText={errors.summary?.message}
           />
         </ModalBody>
 

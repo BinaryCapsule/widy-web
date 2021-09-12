@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Text } from '@binarycapsule/ui-capsules';
+import { Box } from '@binarycapsule/ui-capsules';
 import { ScopeSelect } from '../../../ScopeSelect/ScopeSelect';
 import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
 import { useScopesOptions } from '../../../../api/useScopesQuery';
@@ -30,10 +30,6 @@ export const ScopeSelection: React.FC<Props> = ({ task, ...rest }) => {
   return (
     <>
       <Box {...rest}>
-        <Text color="neutral.700" fontWeight={500} fontSize="small" mt="16" mb="4">
-          Scope
-        </Text>
-
         <ScopeSelect
           value={scopesOptions.find(scopeOpt => scopeOpt.value === task.scopeId) || null}
           onChange={opt => handleScopeChange(opt ? { id: opt.value } : null)}

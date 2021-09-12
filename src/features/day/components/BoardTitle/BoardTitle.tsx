@@ -7,13 +7,11 @@ export const BoardTitle = () => {
   const { data, isLoading, isIdle, isError } = useDayQuery();
 
   if (isLoading) {
-    return (
-      <Skeleton height={16} width={100} circular />
-    )
+    return <Skeleton height={16} width={100} circular />;
   }
 
   if (isIdle || isError || !data) {
-    return null;
+    return <div />;
   }
 
   const { entities, result } = data;
@@ -27,9 +25,7 @@ export const BoardTitle = () => {
       <Text fontSize="h5" fontWeight={500} mr="4">
         {`${moment(dayString).format('ddd DD')}`}
       </Text>
-      <Text>
-        {`${moment(dayString).format('MMM YYYY')}`}
-      </Text>
+      <Text>{`${moment(dayString).format('MMM YYYY')}`}</Text>
     </Flex>
   );
 };

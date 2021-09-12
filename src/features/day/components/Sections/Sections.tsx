@@ -2,15 +2,19 @@ import React from 'react';
 import { useDayQuery } from '../../api/useDayQuery';
 import { SectionsLoading } from './Sections.loading';
 import { Section } from '../Section/Section';
+import { useDaysQuery } from '../../../daysNav/api/useDaysQuery';
 
 export const Sections: React.FC = () => {
   const { data, isLoading, isError } = useDayQuery();
 
-  if (isLoading) {
+  const { isLoading: isLoadingDays, isError: isLoadingDaysError } = useDaysQuery();
+
+  if (isLoading || isLoadingDays) {
     return <SectionsLoading />;
   }
 
-  if (isError) {
+  if (isError || isLoadingDaysError) {
+    // TODO ➜ Sections error state
     return <div>Sections error</div>;
   }
 

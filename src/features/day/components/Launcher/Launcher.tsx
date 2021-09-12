@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { Button, IllustratedIcon, Tooltip } from '@binarycapsule/ui-capsules';
+import { LaunchTaskModal } from '../LaunchTaskModal/LaunchTaskModal';
 
 interface Props {
+  taskId: number;
   size?: number;
   isButton?: boolean;
 }
 
-export const Launcher: React.FC<Props> = ({ size, isButton }) => {
-  const [, setShowLaunchTaskModal] = useState(false);
+export const Launcher: React.FC<Props> = ({ taskId, size, isButton }) => {
+  const [showLaunchTaskModal, setShowLaunchTaskModal] = useState(false);
 
   const { dayId } = useDayRouteParams();
 
@@ -19,13 +21,19 @@ export const Launcher: React.FC<Props> = ({ size, isButton }) => {
 
   return (
     <>
-      <Tooltip content="Start working on this task" delay={1000} placement="bottom">
+      <Tooltip
+        content="Start working on this task"
+        delay={1000}
+        placement="bottom"
+        trigger="mouseenter"
+      >
         {isButton ? (
           <Button
             leftIcon="rocket"
             variant="ghost"
             variantColor="neutral"
             onClick={() => setShowLaunchTaskModal(true)}
+            aria-label="Start working on this task"
           >
             Launch task
           </Button>
@@ -41,6 +49,10 @@ export const Launcher: React.FC<Props> = ({ size, isButton }) => {
           />
         )}
       </Tooltip>
+
+      {showLaunchTaskModal && (
+        <LaunchTaskModal taskId={taskId} onClose={() => setShowLaunchTaskModal(false)} />
+      )}
     </>
   );
 };
