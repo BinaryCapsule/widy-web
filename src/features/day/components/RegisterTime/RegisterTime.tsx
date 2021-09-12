@@ -91,7 +91,7 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
             </Text>
           )}
 
-          <Text fontWeight={500} mt="24" mb="4">
+          <Text variant="label" mt="24" mb="4">
             Suggestions
           </Text>
 

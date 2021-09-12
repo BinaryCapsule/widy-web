@@ -56,6 +56,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
           variantColor="neutral"
           checked={task.isDone}
           onChange={() => toggleTaskDone({ isDone: !task.isDone })}
+          mt={1}
         />
       )}
 

@@ -3,7 +3,7 @@ import styled from '@emotion/styled/macro';
 export const StyledDayButton = styled.div`
   height: 42px;
   border-radius: 4px;
-  border: ${({ theme }) => `1px solid ${theme.colors.neutral['100']}`};
+  border: ${({ theme }) => `1px solid ${theme.colors.neutral['200']}`};
   background: ${({ theme }) => theme.colors.bg};
   font-size: 13px;
   font-weight: 500;

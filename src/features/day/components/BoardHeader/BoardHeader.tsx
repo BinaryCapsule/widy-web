@@ -14,9 +14,7 @@ export const Wrapper = styled(BaseWrapper)`
   z-index: 1;
 `;
 
-interface Props {}
-
-export const BoardHeader: React.FC<Props> = () => {
+export const BoardHeader = () => {
   const history = useHistory();
 
   const { logout } = useAuth0();

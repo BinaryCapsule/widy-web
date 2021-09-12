@@ -13,7 +13,11 @@ export const Sidebar = () => {
   const { data } = useDayQuery();
 
   if (!data) {
-    return null;
+    return (
+      <SidebarWrapper>
+        <SidebarContent />
+      </SidebarWrapper>
+    );
   }
 
   const task = taskId ? data.entities.tasks?.[parseInt(taskId, 10)] : null;
