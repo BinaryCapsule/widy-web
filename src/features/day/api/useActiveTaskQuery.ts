@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { useAuthFetch } from '../../../util/useAuthFetch';
+import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { queryKeys } from './queryKeys';
 
 export interface ActiveTaskDto {

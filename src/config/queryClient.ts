@@ -1,5 +1,5 @@
 import { QueryClient } from 'react-query';
-import { HttpError } from '../util/useAuthFetch';
+import { HttpError } from '../utils/useAuthFetch';
 
 export const queryClient = new QueryClient({
   defaultOptions: {

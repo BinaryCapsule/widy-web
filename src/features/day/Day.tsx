@@ -4,10 +4,11 @@ import { DaysNav } from '../daysNav/DaysNav';
 import { Board } from './components/Board/Board';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Ribbon } from '../ribbon/Ribbon';
+import { useDay } from './useDay';
 
-interface Props {}
+const Day = () => {
+  useDay();
 
-const Day: React.FC<Props> = () => {
   return (
     <Flex height="100%">
       <Ribbon />

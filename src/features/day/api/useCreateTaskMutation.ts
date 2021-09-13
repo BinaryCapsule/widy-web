@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from 'react-query';
 import produce from 'immer';
-import { useAuthFetch } from '../../../util/useAuthFetch';
+import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { useDayRouteParams } from '../hooks/useDayRouteParams';
 import { queryKeys } from './queryKeys';
-import { httpBody } from '../../../util/httpBody';
+import { httpBody } from '../../../utils/httpBody';
 import { IDay, TaskDto } from './useDayQuery';
 
 interface CreateTaskParams {

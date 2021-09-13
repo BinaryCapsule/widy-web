@@ -4,7 +4,7 @@ import moment from 'moment';
 import { useDaysQuery } from '../../api/useDaysQuery';
 import { Button, Flex } from '@binarycapsule/ui-capsules';
 import { DayButton } from '../DayButton/DayButton';
-import { isToday } from '../../../../util/dates';
+import { isToday } from '../../../../utils/dates';
 import { DaysListLoading } from './DaysList.loading';
 import { DaysListError } from './DaysList.error';
 

@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from 'react-query';
-import { useAuthFetch } from '../../../util/useAuthFetch';
+import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { DAYS_LIMIT } from '../DaysNav.constants';
 
 export interface DayDto {

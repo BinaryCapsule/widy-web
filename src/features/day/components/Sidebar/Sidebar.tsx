@@ -3,9 +3,10 @@ import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useDayQuery } from '../../api/useDayQuery';
 import { EditableTaskSummary } from './components/EditableTaskSummary/EditableTaskSummary';
 import { ScopeSelection } from './components/ScopeSelection/ScopeSelection';
-import { SidebarContent, SidebarWrapper } from './Sidebar.styles';
+import { SidebarWrapper } from './Sidebar.styles';
 import { SidebarEmpty } from './Sidebar.empty';
 import { NotesEditor } from '../NotesEditor/NotesEditor';
+import { Timer } from '../Timer/Timer';
 
 export const Sidebar = () => {
   const { taskId } = useDayRouteParams();
@@ -13,11 +14,7 @@ export const Sidebar = () => {
   const { data } = useDayQuery();
 
   if (!data) {
-    return (
-      <SidebarWrapper>
-        <SidebarContent />
-      </SidebarWrapper>
-    );
+    return <SidebarWrapper />;
   }
 
   const task = taskId ? data.entities.tasks?.[parseInt(taskId, 10)] : null;
@@ -30,13 +27,13 @@ export const Sidebar = () => {
 
   return (
     <SidebarWrapper>
-      <SidebarContent>
-        <EditableTaskSummary key={taskId} taskId={id} summary={summary} ml={-10} />
+      <EditableTaskSummary key={taskId} taskId={id} summary={summary} ml={-10} />
 
-        <ScopeSelection task={task} mt="16" />
+      <ScopeSelection task={task} mt="16" />
 
-        <NotesEditor taskId={id} notes={notes} mt="16" />
-      </SidebarContent>
+      <Timer task={task} mt="16" />
+
+      <NotesEditor taskId={id} notes={notes} mt="16" />
     </SidebarWrapper>
   );
 };

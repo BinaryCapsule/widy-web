@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from 'react-query';
-import { useAuthFetch } from '../../../util/useAuthFetch';
-import { httpBody } from '../../../util/httpBody';
+import { useAuthFetch } from '../../../utils/useAuthFetch';
+import { httpBody } from '../../../utils/httpBody';
 import { IDay, TaskDto } from './useDayQuery';
 import { useDayRouteParams } from '../hooks/useDayRouteParams';
 import { queryKeys } from './queryKeys';

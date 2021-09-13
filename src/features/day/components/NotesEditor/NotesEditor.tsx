@@ -35,6 +35,8 @@ export const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, ...rest
       try {
         await updateTask({ taskId, payload: { notes: notes || '' } });
       } catch (err) {
+        console.error(err);
+
         updateEditor();
       }
     },
