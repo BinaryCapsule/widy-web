@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useActiveTaskQuery } from '../../api/useActiveTaskQuery';
 import { TaskDto, useDayQuery } from '../../api/useDayQuery';
-import { Box, IconButton, Text } from '@binarycapsule/ui-capsules';
+import { Box, Flex, IconButton, Text } from '@binarycapsule/ui-capsules';
 import { TimerButton } from '../TimerButton/TimerButton';
-import { Time } from './Time';
+import { Time } from './components/Time/Time';
 import moment from 'moment';
 import { RegisterTime } from '../RegisterTime/RegisterTime';
 import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
@@ -47,7 +47,7 @@ export const Timer: React.FC<Props> = ({ task, ...rest }) => {
             <Launcher isButton taskId={task.id} />
           </Box>
         ) : (
-          <Box display="flex" alignItems="center">
+          <Flex alignItems="center">
             {!task.isDone && (
               <>
                 <TimerButton task={task} size={48} />
@@ -74,7 +74,7 @@ export const Timer: React.FC<Props> = ({ task, ...rest }) => {
                 aria-label="Edit task time"
               />
             )}
-          </Box>
+          </Flex>
         )}
       </Box>
 

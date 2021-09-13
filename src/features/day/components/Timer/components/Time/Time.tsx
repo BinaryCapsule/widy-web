@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Text } from '@binarycapsule/ui-capsules';
-import { getTotalTime } from '../../../../utils/time';
+import { Flex, Text } from '@binarycapsule/ui-capsules';
+import { getTotalTime } from '../../../../../../utils/time';
 import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
 
 interface Props extends MarginProps {
@@ -11,7 +11,7 @@ export const Time: React.FC<Props> = ({ time, ...rest }) => {
   const { hours, minutes, seconds } = getTotalTime(time);
 
   return (
-    <Box display="flex" alignItems="baseline" {...rest}>
+    <Flex alignItems="baseline" {...rest}>
       {hours > 0 && (
         <>
           <Text fontSize="h4" mr="4">
@@ -32,6 +32,6 @@ export const Time: React.FC<Props> = ({ time, ...rest }) => {
         </Text>
         <Text mr="8">s</Text>
       </>
-    </Box>
+    </Flex>
   );
 };
