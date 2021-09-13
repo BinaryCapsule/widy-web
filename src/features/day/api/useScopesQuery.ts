@@ -1,4 +1,4 @@
-import { useAuthFetch } from '../../../util/useAuthFetch';
+import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { queryKeys } from './queryKeys';
 import { useQuery } from 'react-query';
 import { useMemo } from 'react';

@@ -76,7 +76,7 @@ export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) 
           <Input
             label="Short Code"
             {...register('shortCode')}
-            placeholder="Scope code"
+            placeholder="e.g. SCOPE-123"
             variant={errors.shortCode ? 'error' : undefined}
             helpText={errors.shortCode?.message}
           />

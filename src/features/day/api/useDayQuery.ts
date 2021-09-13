@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { normalize, schema } from 'normalizr';
-import { useAuthFetch } from '../../../util/useAuthFetch';
+import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { useDayRouteParams } from '../hooks/useDayRouteParams';
 import { queryKeys } from './queryKeys';
 

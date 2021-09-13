@@ -1,6 +1,6 @@
-import { useAuthFetch } from '../../../util/useAuthFetch';
+import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { useMutation, useQueryClient } from 'react-query';
-import { httpBody } from '../../../util/httpBody';
+import { httpBody } from '../../../utils/httpBody';
 import { queryKeys } from './queryKeys';
 
 interface UpsertScopeBody {
@@ -37,4 +37,4 @@ export const useUpsertScopeMutation = () => {
       queryClient.invalidateQueries(queryKeys.scopes());
     },
   });
-}
+};
