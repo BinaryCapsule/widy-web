@@ -1,5 +1,6 @@
 import { useDayQuery } from '../api/useDayQuery';
 import { RANK_BLOCK_SIZE } from '../Day.constants';
+import { getSectionTasks } from '../utils/getSectionTasks';
 
 export const useTaskRank = () => {
   const { data } = useDayQuery();
@@ -11,7 +12,7 @@ export const useTaskRank = () => {
   }
 
   const {
-    entities: { sections, tasks },
+    entities: { tasks },
   } = data;
 
   return {
@@ -20,27 +21,25 @@ export const useTaskRank = () => {
         return RANK_BLOCK_SIZE;
       }
 
-      const sectionTasks = sections[sectionId].tasks;
+      const sectionTasks = getSectionTasks(sectionId, tasks);
 
       let previousTaskRank;
 
       if (previousTaskId) {
         previousTaskRank = tasks[previousTaskId] ? tasks[previousTaskId].rank : undefined;
       } else {
-        const section = sections[sectionId];
+        const lastTask = sectionTasks.length > 0 ? sectionTasks[sectionTasks.length - 1] : null;
 
-        const lastTaskId = section.tasks[section.tasks.length - 1];
-
-        previousTaskRank = tasks[lastTaskId] ? tasks[lastTaskId].rank : null;
+        previousTaskRank = lastTask && tasks[lastTask.id] ? tasks[lastTask.id].rank : null;
       }
 
       let afterTaskRank;
 
       if (sectionTasks.length > 1 && previousTaskId) {
-        const afterTaskIndex = sectionTasks.findIndex(id => previousTaskId === id);
+        const afterTaskIndex = sectionTasks.findIndex(({ id }) => previousTaskId === id);
 
         if (afterTaskIndex > -1) {
-          const afterTaskId = sectionTasks[afterTaskIndex + 1];
+          const afterTaskId = sectionTasks[afterTaskIndex + 1].id;
 
           const afterTask = tasks[afterTaskId];
 

@@ -44,7 +44,7 @@ export const Timer: React.FC<Props> = ({ task, ...rest }) => {
 
         {section.isPlan ? (
           <Box>
-            <Launcher isButton taskId={task.id} />
+            <Launcher isButton task={task} />
           </Box>
         ) : (
           <Flex alignItems="center">

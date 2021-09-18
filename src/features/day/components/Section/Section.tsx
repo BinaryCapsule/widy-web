@@ -9,6 +9,7 @@ import { useActiveTaskQuery } from '../../api/useActiveTaskQuery';
 import { SectionHeader } from './Section.styles';
 import { AddTask } from '../AddTask/AddTask';
 import { sectionTitleMap } from './Section.constants';
+import { getSectionTasks } from '../../utils/getSectionTasks';
 
 interface Props {
   sectionId: number;
@@ -29,34 +30,28 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
 
   const section = data.entities.sections[sectionId];
 
+  const tasks = getSectionTasks(sectionId, data.entities.tasks);
+
   return (
     <>
       <Box my="32">
-        <SectionHeader isPlan={section.isPlan} hasTasks={section.tasks.length > 0}>
+        <SectionHeader isPlan={section.isPlan} hasTasks={tasks.length > 0}>
           <Text fontWeight={600}>
             {sectionTitleMap[section.title as keyof typeof sectionTitleMap]}
           </Text>
         </SectionHeader>
 
-        {section.tasks.length === 0 ? (
+        {tasks.length === 0 ? (
           <SectionEmpty>No tasks in section "{section.title}"</SectionEmpty>
         ) : (
           <Box>
-            {section.tasks.map(taskId => {
-              const { tasks } = data.entities;
-
-              if (!tasks) {
-                return null;
-              }
-
-              const task = tasks[taskId];
-
+            {tasks.map(task => {
               return (
                 <Task
-                  key={taskId}
+                  key={task.id}
                   variant={getTaskVariant(task, section, activeTaskData?.id)}
                   task={task}
-                  isSelected={taskId.toString() === routeTaskId}
+                  isSelected={task.id.toString() === routeTaskId}
                 />
               );
             })}

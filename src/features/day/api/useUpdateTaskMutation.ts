@@ -35,6 +35,10 @@ export const useUpdateTaskMutation = () => {
       await queryClient.cancelQueries(dayQK);
       await queryClient.cancelQueries(activeTaskQK);
 
+      const oldDay = queryClient.getQueryData<IDay>(dayQK);
+
+      const oldActiveTask = queryClient.getQueryData<ActiveTaskDto>(activeTaskQK);
+
       queryClient.setQueryData<IDay | undefined>(dayQK, old => {
         if (old) {
           return produce(old, draft => {
@@ -53,10 +57,6 @@ export const useUpdateTaskMutation = () => {
 
         return old;
       });
-
-      const oldDay = queryClient.getQueryData<IDay>(dayQK);
-
-      const oldActiveTask = queryClient.getQueryData<ActiveTaskDto>(activeTaskQK);
 
       // We are starting a task
       if (payload.start) {
