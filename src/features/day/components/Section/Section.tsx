@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Text } from '@binarycapsule/ui-capsules';
+import { Box, Button, Icon, Text } from '@binarycapsule/ui-capsules';
 import { useDayQuery } from '../../api/useDayQuery';
 import { SectionEmpty } from './Section.empty';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
@@ -10,6 +10,7 @@ import { SectionHeader } from './Section.styles';
 import { AddTask } from '../AddTask/AddTask';
 import { sectionTitleMap } from './Section.constants';
 import { getSectionTasks } from '../../utils/getSectionTasks';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 interface Props {
   sectionId: number;
@@ -41,22 +42,53 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
           </Text>
         </SectionHeader>
 
-        {tasks.length === 0 ? (
-          <SectionEmpty>No tasks in section "{section.title}"</SectionEmpty>
-        ) : (
-          <Box>
-            {tasks.map(task => {
-              return (
-                <Task
-                  key={task.id}
-                  variant={getTaskVariant(task, section, activeTaskData?.id)}
-                  task={task}
-                  isSelected={task.id.toString() === routeTaskId}
-                />
-              );
-            })}
-          </Box>
-        )}
+        <Droppable droppableId={sectionId.toString()}>
+          {droppableProvided => (
+            <div {...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
+              {tasks.length === 0 ? (
+                <>
+                  <SectionEmpty>No tasks in section "{section.title}"</SectionEmpty>
+
+                  {/* Hack to remove the no-placeholder warning in development */}
+                  <div style={{ display: 'none' }}>{droppableProvided.placeholder}</div>
+                </>
+              ) : (
+                <Box>
+                  {tasks.map((task, index) => {
+                    console.log(`task id: ${task.id} rank`, task.rank);
+                    return (
+                      <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
+                        {(provided, snapshot) => (
+                          <div ref={provided.innerRef} {...provided.draggableProps}>
+                            <Box position="relative" py={section.isPlan ? 0 : 4}>
+                              <Box
+                                position="absolute"
+                                top={section.isPlan ? 12 : 17}
+                                left={3}
+                                {...provided.dragHandleProps}
+                              >
+                                <Icon icon="grip" color="neutral.400" />
+                              </Box>
+
+                              <Task
+                                variant={getTaskVariant(task, section, activeTaskData?.id)}
+                                task={task}
+                                isSelected={task.id.toString() === routeTaskId}
+                                isDragging={snapshot.isDragging}
+                              />
+                            </Box>
+                          </div>
+                        )}
+                      </Draggable>
+                    );
+                  })}
+
+                  {droppableProvided.placeholder}
+                </Box>
+              )}
+            </div>
+          )}
+        </Droppable>
 
         <Button
           leftIcon="plus"

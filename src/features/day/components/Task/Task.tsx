@@ -15,9 +15,10 @@ interface Props {
   task: TaskDto;
   variant: TaskVariant;
   isSelected: boolean;
+  isDragging: boolean;
 }
 
-export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
+export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging }) => {
   const { dayId } = useDayRouteParams();
 
   const history = useHistory();
@@ -47,8 +48,8 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
   };
 
   return (
-    <StyledTask variant={variant} isSelected={isSelected}>
-      {variant === 'plan' && <PlanCheckBox mr="12" />}
+    <StyledTask variant={variant} isSelected={isSelected} isDragging={isDragging}>
+      {variant === 'plan' && <PlanCheckBox mr="12" ml={2} />}
 
       {variant !== 'plan' && variant !== 'tomorrow' && (
         <Checkbox
@@ -68,7 +69,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
           tabIndex={0}
           aria-label={`Task - ${task.summary}`}
         >
-          <TaskSummary fontWeight={500} color={task.isDone ? 'neutral.500' : 'neutral.700'}>
+          <TaskSummary fontWeight={500} color="inherit">
             {task.summary}
           </TaskSummary>
         </Box>

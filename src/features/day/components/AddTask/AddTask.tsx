@@ -53,7 +53,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
   }
 
   const onCreateTask = async (values: FormValues) => {
-    const rank = getTaskRank(sectionId);
+    const rank = getTaskRank({ isAppend: true, sectionId });
 
     try {
       await createTask({

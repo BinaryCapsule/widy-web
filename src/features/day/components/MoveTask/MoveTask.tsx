@@ -57,7 +57,7 @@ export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) =>
         taskId: task.id,
         payload: {
           sectionId,
-          rank: getTaskRank(sectionId),
+          rank: getTaskRank({ isAppend: true, sectionId }),
           start: isLaunch ? getNow() : undefined,
         },
       });
