@@ -31,7 +31,14 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
     <>
       <Menu
         trigger={
-          <IconButton icon="dots_h" variant="ghost" variantColor="neutral" size="small" ml="4" />
+          <IconButton
+            icon="dots_h"
+            variant="ghost"
+            variantColor="neutral"
+            size="small"
+            aria-label="Task menu"
+            ml="4"
+          />
         }
       >
         <MenuItem text="Rename" leftIcon="pencil" onClick={() => setShowRenameTask(true)} />

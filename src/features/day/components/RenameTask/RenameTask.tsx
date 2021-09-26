@@ -36,13 +36,13 @@ export const RenameTask: React.FC<Props> = ({ task, onRequestClose }) => {
       onRequestClose();
 
       await updateTask({ taskId: task.id, payload: { summary } });
-    } catch {
-      // Ignore
+    } catch (error) {
+      console.error(error);
     }
   };
 
   return (
-    <Modal isOpen onRequestClose={onRequestClose} contentLabel="Modal - Rename a task">
+    <Modal isOpen onRequestClose={onRequestClose} contentLabel="Rename a task">
       <ModalHeader>Rename task</ModalHeader>
 
       <ModalCloseButton onClick={onRequestClose} />

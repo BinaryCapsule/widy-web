@@ -67,7 +67,12 @@ export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) =>
   };
 
   return (
-    <Modal isOpen onRequestClose={onRequestClose} contentLabel="Launch task" size="small">
+    <Modal
+      isOpen
+      onRequestClose={onRequestClose}
+      contentLabel={isLaunch ? 'Launch task' : 'Move task'}
+      size="small"
+    >
       <form onSubmit={formBag.handleSubmit(onMoveTask)}>
         <ModalHeader>Select section</ModalHeader>
         <ModalCloseButton onClick={onRequestClose} />

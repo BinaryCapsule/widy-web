@@ -81,7 +81,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
 
   return (
     <>
-      <Modal isOpen={!isScopesModalOpen} onRequestClose={onClose} contentLabel="Example Modal">
+      <Modal isOpen={!isScopesModalOpen} onRequestClose={onClose} contentLabel="Add task">
         <ModalHeader>Add Task</ModalHeader>
 
         <ModalCloseButton onClick={onClose} />

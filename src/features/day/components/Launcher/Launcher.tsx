@@ -34,7 +34,6 @@ export const Launcher: React.FC<Props> = ({ task, size, isButton }) => {
             variant="ghost"
             variantColor="neutral"
             onClick={() => setShowLaunchTaskModal(true)}
-            aria-label="Start working on this task"
           >
             Launch task
           </Button>
@@ -47,6 +46,7 @@ export const Launcher: React.FC<Props> = ({ task, size, isButton }) => {
             primaryColorHover={theme.colors.blue['200']}
             secondaryColor={theme.colors.neutral['500']}
             secondaryColorHover={theme.colors.blue['600']}
+            aria-label="Launch task"
           />
         )}
       </Tooltip>

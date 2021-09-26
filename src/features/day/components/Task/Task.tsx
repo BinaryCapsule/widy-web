@@ -57,6 +57,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging })
           variantColor="neutral"
           checked={task.isDone}
           onChange={() => toggleTaskDone({ isDone: !task.isDone })}
+          aria-label={task.isDone ? 'Mark task as todo' : 'Mark task as done'}
           mt={1}
         />
       )}
@@ -67,7 +68,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging })
           onKeyDown={onTaskKeyDown}
           role="button"
           tabIndex={0}
-          aria-label={`Task - ${task.summary}`}
+          aria-label={`Task ${variant} - ${task.summary}`}
         >
           <TaskSummary fontWeight={500} color="inherit">
             {task.summary}
