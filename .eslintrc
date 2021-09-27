@@ -1,6 +1,14 @@
 {
   "extends": ["react-app", "prettier"],
-  "rules": {},
+  "rules": {
+    "no-console": [
+      "warn",
+      {
+        "allow": ["error"]
+      }
+    ],
+    "no-debugger": "warn"
+  },
   "overrides": [
     {
       "files": ["**/*.ts?(x)"],

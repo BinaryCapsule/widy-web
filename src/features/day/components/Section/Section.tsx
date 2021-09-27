@@ -54,34 +54,32 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
                 </>
               ) : (
                 <Box>
-                  {tasks.map((task, index) => {
-                    console.log(`task id: ${task.id} rank`, task.rank);
-                    return (
-                      <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
-                        {(provided, snapshot) => (
-                          <div ref={provided.innerRef} {...provided.draggableProps}>
-                            <Box position="relative" py={section.isPlan ? 0 : 4}>
-                              <Box
-                                position="absolute"
-                                top={section.isPlan ? 12 : 17}
-                                left={3}
-                                {...provided.dragHandleProps}
-                              >
-                                <Icon icon="grip" color="neutral.400" />
-                              </Box>
-
-                              <Task
-                                variant={getTaskVariant(task, section, activeTaskData?.id)}
-                                task={task}
-                                isSelected={task.id.toString() === routeTaskId}
-                                isDragging={snapshot.isDragging}
-                              />
+                  {tasks.map((task, index) => (
+                    <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
+                      {(provided, snapshot) => (
+                        <div ref={provided.innerRef} {...provided.draggableProps}>
+                          <Box position="relative" py={section.isPlan ? 0 : 4}>
+                            <Box
+                              position="absolute"
+                              top={section.isPlan ? 12 : 17}
+                              left={3}
+                              {...provided.dragHandleProps}
+                              aria-label="Drag a task"
+                            >
+                              <Icon icon="grip" color="neutral.400" />
                             </Box>
-                          </div>
-                        )}
-                      </Draggable>
-                    );
-                  })}
+
+                            <Task
+                              variant={getTaskVariant(task, section, activeTaskData?.id)}
+                              task={task}
+                              isSelected={task.id.toString() === routeTaskId}
+                              isDragging={snapshot.isDragging}
+                            />
+                          </Box>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
 
                   {droppableProvided.placeholder}
                 </Box>
