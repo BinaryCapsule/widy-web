@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Text } from '@binarycapsule/ui-capsules';
+import { Box, Button, Icon, Text } from '@binarycapsule/ui-capsules';
 import { useDayQuery } from '../../api/useDayQuery';
 import { SectionEmpty } from './Section.empty';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
@@ -9,6 +9,8 @@ import { useActiveTaskQuery } from '../../api/useActiveTaskQuery';
 import { SectionHeader } from './Section.styles';
 import { AddTask } from '../AddTask/AddTask';
 import { sectionTitleMap } from './Section.constants';
+import { getSectionTasks } from '../../utils/getSectionTasks';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 interface Props {
   sectionId: number;
@@ -29,39 +31,62 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
 
   const section = data.entities.sections[sectionId];
 
+  const tasks = getSectionTasks(sectionId, data.entities.tasks);
+
   return (
     <>
       <Box my="32">
-        <SectionHeader isPlan={section.isPlan} hasTasks={section.tasks.length > 0}>
+        <SectionHeader isPlan={section.isPlan} hasTasks={tasks.length > 0}>
           <Text fontWeight={600}>
             {sectionTitleMap[section.title as keyof typeof sectionTitleMap]}
           </Text>
         </SectionHeader>
 
-        {section.tasks.length === 0 ? (
-          <SectionEmpty>No tasks in section "{section.title}"</SectionEmpty>
-        ) : (
-          <Box>
-            {section.tasks.map(taskId => {
-              const { tasks } = data.entities;
+        <Droppable droppableId={sectionId.toString()}>
+          {droppableProvided => (
+            <div {...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
+              {tasks.length === 0 ? (
+                <>
+                  <SectionEmpty>No tasks in section "{section.title}"</SectionEmpty>
 
-              if (!tasks) {
-                return null;
-              }
+                  {/* Hack to remove the no-placeholder warning in development */}
+                  <div style={{ display: 'none' }}>{droppableProvided.placeholder}</div>
+                </>
+              ) : (
+                <Box>
+                  {tasks.map((task, index) => (
+                    <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
+                      {(provided, snapshot) => (
+                        <div ref={provided.innerRef} {...provided.draggableProps}>
+                          <Box position="relative" py={section.isPlan ? 0 : 4}>
+                            <Box
+                              position="absolute"
+                              top={section.isPlan ? 12 : 17}
+                              left={3}
+                              {...provided.dragHandleProps}
+                              aria-label="Drag a task"
+                            >
+                              <Icon icon="grip" color="neutral.400" />
+                            </Box>
 
-              const task = tasks[taskId];
+                            <Task
+                              variant={getTaskVariant(task, section, activeTaskData?.id)}
+                              task={task}
+                              isSelected={task.id.toString() === routeTaskId}
+                              isDragging={snapshot.isDragging}
+                            />
+                          </Box>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
 
-              return (
-                <Task
-                  key={taskId}
-                  variant={getTaskVariant(task, section, activeTaskData?.id)}
-                  task={task}
-                  isSelected={taskId.toString() === routeTaskId}
-                />
-              );
-            })}
-          </Box>
-        )}
+                  {droppableProvided.placeholder}
+                </Box>
+              )}
+            </div>
+          )}
+        </Droppable>
 
         <Button
           leftIcon="plus"

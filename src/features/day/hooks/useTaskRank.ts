@@ -1,5 +1,12 @@
 import { useDayQuery } from '../api/useDayQuery';
 import { RANK_BLOCK_SIZE } from '../Day.constants';
+import { getSectionTasks } from '../utils/getSectionTasks';
+
+interface GetTaskRankParams {
+  sectionId: number;
+  isAppend?: boolean;
+  previousTaskId?: number;
+}
 
 export const useTaskRank = () => {
   const { data } = useDayQuery();
@@ -11,49 +18,58 @@ export const useTaskRank = () => {
   }
 
   const {
-    entities: { sections, tasks },
+    entities: { tasks },
   } = data;
 
   return {
-    getTaskRank: (sectionId: number, previousTaskId?: number) => {
+    getTaskRank: ({ sectionId, previousTaskId, isAppend }: GetTaskRankParams) => {
       if (!tasks) {
         return RANK_BLOCK_SIZE;
       }
 
-      const sectionTasks = sections[sectionId].tasks;
+      const sectionTasks = getSectionTasks(sectionId, tasks);
+
+      if (sectionTasks.length === 0) {
+        return RANK_BLOCK_SIZE;
+      }
+
+      if (isAppend) {
+        const lastTask = sectionTasks.length > 0 ? sectionTasks[sectionTasks.length - 1] : null;
+
+        return lastTask && tasks[lastTask.id]
+          ? tasks[lastTask.id].rank + RANK_BLOCK_SIZE
+          : RANK_BLOCK_SIZE;
+      }
 
       let previousTaskRank;
 
       if (previousTaskId) {
         previousTaskRank = tasks[previousTaskId] ? tasks[previousTaskId].rank : undefined;
-      } else {
-        const section = sections[sectionId];
-
-        const lastTaskId = section.tasks[section.tasks.length - 1];
-
-        previousTaskRank = tasks[lastTaskId] ? tasks[lastTaskId].rank : null;
       }
 
       let afterTaskRank;
 
-      if (sectionTasks.length > 1 && previousTaskId) {
-        const afterTaskIndex = sectionTasks.findIndex(id => previousTaskId === id);
+      const afterTaskIndex = previousTaskId
+        ? sectionTasks.findIndex(({ id }) => previousTaskId === id) + 1
+        : 0;
 
-        if (afterTaskIndex > -1) {
-          const afterTaskId = sectionTasks[afterTaskIndex + 1];
+      const afterTaskId =
+        afterTaskIndex < sectionTasks.length ? sectionTasks[afterTaskIndex].id : null;
 
-          const afterTask = tasks[afterTaskId];
+      const afterTask = afterTaskId !== null ? tasks[afterTaskId] : null;
 
-          afterTaskRank = afterTask ? afterTask.rank : undefined;
-        }
-      }
+      afterTaskRank = afterTask ? afterTask.rank : undefined;
 
       if (previousTaskRank && afterTaskRank) {
-        return (previousTaskRank + afterTaskRank) / 2;
+        return Math.floor((previousTaskRank + afterTaskRank) / 2);
       }
 
       if (previousTaskRank) {
         return previousTaskRank + RANK_BLOCK_SIZE;
+      }
+
+      if (afterTaskRank) {
+        return Math.floor(afterTaskRank / 2);
       }
 
       return RANK_BLOCK_SIZE;

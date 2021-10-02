@@ -23,6 +23,7 @@ export type TaskVariant = 'todo' | 'completed' | 'active' | 'plan' | 'tomorrow';
 interface StyledTaskProps {
   variant: TaskVariant;
   isSelected?: boolean;
+  isDragging?: boolean;
 }
 
 export const StyledTask = styled(Box)<StyledTaskProps>(
@@ -32,15 +33,14 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
     border: '1px solid',
     background: theme.colors.bg,
     borderRadius: theme.radii.medium,
-    padding: 8,
+    padding: '8px 8px 8px 24px',
     fontSize: theme.fontSizes.body,
     fontWeight: theme.fontWeights['500'],
-    margin: '4px 0',
     borderColor: theme.colors.neutral['300'],
     height: 45,
   }),
 
-  ({ isSelected, theme }) =>
+  ({ isSelected, isDragging, theme }) =>
     variant<
       PropsWithPseudo<BorderProps & ColorProps & ShadowProps & MarginProps, Pseudo>,
       TaskVariant
@@ -68,14 +68,15 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
         completed: {
           borderColor: isSelected ? 'yellow.500' : 'neutral.300',
           bg: isSelected ? 'yellow.50' : 'neutral.100',
+          color: 'neutral.500',
         },
 
         plan: {
           my: 0,
-          borderRadius: 'none',
-          borderTopWidth: 0,
-          borderLeftWidth: 0,
-          borderRightWidth: 0,
+          borderRadius: isDragging ? 'medium' : 'none',
+          borderTopWidth: isDragging ? 1 : 0,
+          borderLeftWidth: isDragging ? 1 : 0,
+          borderRightWidth: isDragging ? 1 : 0,
           bg: isSelected ? 'neutral.100' : 'bg',
         },
 

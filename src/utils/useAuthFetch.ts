@@ -44,7 +44,7 @@ export const useAuthFetch = () => {
 
       switch (response.status) {
         case 401:
-          console.log('Got 401');
+          console.error('401');
       }
 
       throw new HttpError(jsonResponse);

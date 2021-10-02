@@ -1,10 +1,14 @@
 import { useForm } from 'react-hook-form';
-import { FormValues, validationSchema } from './LaunchTaskModal.meta';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMemo } from 'react';
-import { useDayQuery } from '../../api/useDayQuery';
+import { TaskDto, useDayQuery } from '../../api/useDayQuery';
+import { FormValues, validationSchema } from './MoveTask.meta';
 
-export const useLaunchTaskModal = () => {
+interface UseMoveTaskParams {
+  task: TaskDto;
+}
+
+export const useMoveTask = ({ task }: UseMoveTaskParams) => {
   const formBag = useForm<FormValues>({
     defaultValues: { sectionId: null },
     resolver: yupResolver(validationSchema),
@@ -24,7 +28,7 @@ export const useLaunchTaskModal = () => {
     const sectionOpts = Object.values(sections)
       .sort((a, b) => a.rank - b.rank)
       .reduce((acc, cur) => {
-        if (cur.isPlan) {
+        if (cur.id === task.sectionId) {
           return acc;
         }
 
@@ -41,7 +45,7 @@ export const useLaunchTaskModal = () => {
       sectionOpts,
       formBag,
     };
-  }, [formBag, queryResult.data]);
+  }, [formBag, queryResult.data, task.sectionId]);
 
   return {
     ...queryResult,

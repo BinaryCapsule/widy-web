@@ -5,6 +5,7 @@ import { RenameTask } from '../RenameTask/RenameTask';
 import { DeleteTask } from '../DeleteTask/DeleteTask';
 import { TaskVariant } from '../Task/Task.styles';
 import { RegisterTime } from '../RegisterTime/RegisterTime';
+import { MoveTask } from '../MoveTask/MoveTask';
 
 interface Props {
   task: TaskDto;
@@ -18,17 +19,30 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
 
   const [showRegisterTime, setShowRegisterTime] = useState(false);
 
+  const [showMoveTask, setShowMoveTask] = useState(false);
+
   const canRegisterTime = variant === 'todo';
 
   const canMoveToTomorrow = variant !== 'active';
+
+  const canMove = variant !== 'active';
 
   return (
     <>
       <Menu
         trigger={
-          <IconButton icon="dots_h" variant="ghost" variantColor="neutral" size="small" ml="4" />
+          <IconButton
+            icon="dots_h"
+            variant="ghost"
+            variantColor="neutral"
+            size="small"
+            aria-label="Task menu"
+            ml="4"
+          />
         }
       >
+        <MenuItem text="Rename" leftIcon="pencil" onClick={() => setShowRenameTask(true)} />
+
         {canRegisterTime ? (
           <MenuItem
             text="Register Time"
@@ -37,14 +51,16 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
           />
         ) : null}
 
-        <MenuItem text="Rename" leftIcon="pencil" onClick={() => setShowRenameTask(true)} />
-
         {canMoveToTomorrow ? (
           <MenuItem
             text={`${task.time > 0 ? 'Copy' : 'Move'} to "Tomorrow"`}
             leftIcon="calendar"
             onClick={() => {}}
           />
+        ) : null}
+
+        {canMove ? (
+          <MenuItem text="Move" leftIcon="switch_v" onClick={() => setShowMoveTask(true)} />
         ) : null}
 
         <MenuItem
@@ -57,6 +73,8 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
       {showRenameTask && <RenameTask task={task} onRequestClose={() => setShowRenameTask(false)} />}
 
       {showDeleteTask && <DeleteTask task={task} onRequestClose={() => setShowDeleteTask(false)} />}
+
+      {showMoveTask && <MoveTask task={task} onRequestClose={() => setShowMoveTask(false)} />}
 
       {showRegisterTime && (
         <RegisterTime task={task} onRequestClose={() => setShowRegisterTime(false)} />

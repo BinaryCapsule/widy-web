@@ -10,24 +10,26 @@ import {
   RadioPicker,
 } from '@binarycapsule/ui-capsules';
 import { ErrorMessage } from '@hookform/error-message';
-import { FormValues } from './LaunchTaskModal.meta';
 import { HelpText } from '@binarycapsule/ui-capsules/dist/HelpText/HelpText';
-import { useLaunchTaskModal } from './useLaunchTaskModal';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { useTaskRank } from '../../hooks/useTaskRank';
 import { useDayRouteNavigate } from '../../hooks/useDayRouteNavigate';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { getNow } from '../../utils/getNow';
+import { FormValues } from './MoveTask.meta';
+import { useMoveTask } from './useMoveTask';
+import { TaskDto } from '../../api/useDayQuery';
 
 interface Props {
-  taskId: number;
-  onClose(): void;
+  task: TaskDto;
+  isLaunch?: boolean;
+  onRequestClose(): void;
 }
 
-export const LaunchTaskModal: React.FC<Props> = ({ taskId, onClose }) => {
-  const { data } = useLaunchTaskModal();
+export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) => {
+  const { data } = useMoveTask({ task });
 
-  const { mutateAsync: updateTask, isLoading: isUpdatingTask } = useUpdateTaskMutation();
+  const { mutateAsync: updateTask } = useUpdateTaskMutation();
 
   const { getTaskRank } = useTaskRank();
 
@@ -41,34 +43,39 @@ export const LaunchTaskModal: React.FC<Props> = ({ taskId, onClose }) => {
 
   const { sectionOpts, selectedSectionId, formBag } = data;
 
-  const onLaunchTask = async ({ sectionId }: FormValues) => {
+  const onMoveTask = async ({ sectionId }: FormValues) => {
     if (!sectionId) {
       return;
     }
 
     try {
+      onRequestClose();
+
+      navigate({ dayId, taskId: task.id.toString() });
+
       await updateTask({
-        taskId,
+        taskId: task.id,
         payload: {
           sectionId,
-          rank: getTaskRank(sectionId),
-          start: getNow(),
+          rank: getTaskRank({ isAppend: true, sectionId }),
+          start: isLaunch ? getNow() : undefined,
         },
       });
-
-      navigate({ dayId, taskId: taskId.toString() });
-
-      onClose();
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <Modal isOpen onRequestClose={onClose} contentLabel="Launch task" size="small">
-      <form onSubmit={formBag.handleSubmit(onLaunchTask)}>
+    <Modal
+      isOpen
+      onRequestClose={onRequestClose}
+      contentLabel={isLaunch ? 'Launch task' : 'Move task'}
+      size="small"
+    >
+      <form onSubmit={formBag.handleSubmit(onMoveTask)}>
         <ModalHeader>Select section</ModalHeader>
-        <ModalCloseButton onClick={onClose} />
+        <ModalCloseButton onClick={onRequestClose} />
 
         <ModalBody>
           <Box display="flex" flexDirection="column">
@@ -91,13 +98,11 @@ export const LaunchTaskModal: React.FC<Props> = ({ taskId, onClose }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost" variantColor="neutral" onClick={onClose}>
+          <Button variant="ghost" variantColor="neutral" onClick={onRequestClose}>
             Cancel
           </Button>
 
-          <Button type="submit" isLoading={isUpdatingTask}>
-            Launch Task
-          </Button>
+          <Button type="submit">{`${isLaunch ? 'Launch' : 'Move'} task`}</Button>
         </ModalFooter>
       </form>
     </Modal>

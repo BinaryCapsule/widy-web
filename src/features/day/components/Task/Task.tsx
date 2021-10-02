@@ -15,9 +15,10 @@ interface Props {
   task: TaskDto;
   variant: TaskVariant;
   isSelected: boolean;
+  isDragging: boolean;
 }
 
-export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
+export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging }) => {
   const { dayId } = useDayRouteParams();
 
   const history = useHistory();
@@ -47,8 +48,8 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
   };
 
   return (
-    <StyledTask variant={variant} isSelected={isSelected}>
-      {variant === 'plan' && <PlanCheckBox mr="12" />}
+    <StyledTask variant={variant} isSelected={isSelected} isDragging={isDragging}>
+      {variant === 'plan' && <PlanCheckBox mr="12" ml={2} />}
 
       {variant !== 'plan' && variant !== 'tomorrow' && (
         <Checkbox
@@ -56,6 +57,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
           variantColor="neutral"
           checked={task.isDone}
           onChange={() => toggleTaskDone({ isDone: !task.isDone })}
+          aria-label={task.isDone ? 'Mark task as todo' : 'Mark task as done'}
           mt={1}
         />
       )}
@@ -66,9 +68,9 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
           onKeyDown={onTaskKeyDown}
           role="button"
           tabIndex={0}
-          aria-label={`Task - ${task.summary}`}
+          aria-label={`Task ${variant} - ${task.summary}`}
         >
-          <TaskSummary fontWeight={500} color={task.isDone ? 'neutral.500' : 'neutral.700'}>
+          <TaskSummary fontWeight={500} color="inherit">
             {task.summary}
           </TaskSummary>
         </Box>
@@ -78,7 +80,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected }) => {
 
       {variant === 'plan' && (
         <Flex height="24" alignItems="center">
-          <Launcher taskId={task.id} />
+          <Launcher task={task} />
           <TaskMenu task={task} variant={variant} />
         </Flex>
       )}
