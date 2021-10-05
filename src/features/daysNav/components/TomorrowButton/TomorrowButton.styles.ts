@@ -14,7 +14,7 @@ export const StyledTomorrowButton = styled.button<StyledTomorrowButtonProps>`
   font-size: 13px;
   font-weight: 500;
   color: ${props => props.theme.colors.pink['700']};
-  padding: 0 8px 0 16px;
+  padding: 0 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;

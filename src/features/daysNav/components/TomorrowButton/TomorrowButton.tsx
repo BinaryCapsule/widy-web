@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@binarycapsule/ui-capsules';
+import { Box, Icon } from '@binarycapsule/ui-capsules';
 import { useHistory } from 'react-router-dom';
 import { StyledTomorrowButton } from './TomorrowButton.styles';
 import { useDayRouteParams } from '../../../day/hooks/useDayRouteParams';
@@ -15,7 +15,10 @@ export const TomorrowButton: React.FC<MarginProps> = props => {
       onClick={() => history.push('/day/tomorrow')}
       {...props}
     >
-      <span>Tomorrow</span>
+      <Box as="span" display="flex" alignItems="center">
+        <Icon icon="calendar" variant="outline" mr="4" size={14} />
+        <span>Tomorrow</span>
+      </Box>
 
       <Icon icon="chev_right" size={16} />
     </StyledTomorrowButton>

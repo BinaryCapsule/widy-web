@@ -6,6 +6,7 @@ import { DeleteTask } from '../DeleteTask/DeleteTask';
 import { TaskVariant } from '../Task/Task.styles';
 import { RegisterTime } from '../RegisterTime/RegisterTime';
 import { MoveTask } from '../MoveTask/MoveTask';
+import { useMoveToTomorrowMutation } from '../../api/useMoveToTomorrowMutation';
 
 interface Props {
   task: TaskDto;
@@ -20,6 +21,8 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
   const [showRegisterTime, setShowRegisterTime] = useState(false);
 
   const [showMoveTask, setShowMoveTask] = useState(false);
+
+  const { mutateAsync: moveToTomorrow } = useMoveToTomorrowMutation();
 
   const canRegisterTime = variant === 'todo';
 
@@ -55,7 +58,13 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
           <MenuItem
             text={`${task.time > 0 ? 'Copy' : 'Move'} to "Tomorrow"`}
             leftIcon="calendar"
-            onClick={() => {}}
+            onClick={async () => {
+              try {
+                await moveToTomorrow({ task });
+              } catch (err) {
+                console.error(err);
+              }
+            }}
           />
         ) : null}
 

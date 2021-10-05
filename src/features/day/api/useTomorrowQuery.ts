@@ -11,7 +11,7 @@ const tomorrowSchema = new schema.Entity('tomorrow', {
   tasks: [taskSchema],
 });
 
-interface ITomorrow {
+export interface ITomorrow {
   entities: {
     tasks?: Record<number, TaskDto>;
     tomorrow: Record<number, SectionDto>;
