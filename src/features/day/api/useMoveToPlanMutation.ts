@@ -1,41 +1,44 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { IDay, TaskDto } from './useDayQuery';
-import { useDayRouteParams } from '../hooks/useDayRouteParams';
 import { queryKeys } from './queryKeys';
 import produce from 'immer';
 import { Toaster } from '@binarycapsule/ui-capsules';
 import { ITomorrow } from './useTomorrowQuery';
 import { getSectionTasks } from '../utils/getSectionTasks';
 import { RANK_BLOCK_SIZE } from '../Day.constants';
+import { httpBody } from '../../../utils/httpBody';
 
-interface MoveToTomorrowParams {
+interface MoveToPlanParams {
   task: TaskDto;
+  dayId: number;
 }
 
-export const useMoveToTomorrowMutation = () => {
-  const { authFetch } = useAuthFetch();
+interface MoveToPlanMutationParams {
+  dayId: number;
+}
 
-  const { dayId } = useDayRouteParams();
+export const useMoveToPlanMutation = ({ dayId }: MoveToPlanMutationParams) => {
+  const { authFetch } = useAuthFetch();
 
   const queryClient = useQueryClient();
 
-  const dayQK = queryKeys.day(dayId);
+  const dayQK = queryKeys.day(dayId.toString());
   const tomorrowQK = queryKeys.tomorrow();
 
-  const moveToTomorrow = async ({ task }: MoveToTomorrowParams): Promise<TaskDto> => {
-    return authFetch(`/api/tasks/${task.id}/to-tomorrow`, { method: 'PATCH' });
+  const moveToPlan = async ({ task }: MoveToPlanParams): Promise<TaskDto> => {
+    return authFetch(`/api/tasks/${task.id}/to-plan`, { method: 'PATCH', ...httpBody({ dayId }) });
   };
 
-  return useMutation(moveToTomorrow, {
-    onMutate: async ({ task }: MoveToTomorrowParams) => {
+  return useMutation(moveToPlan, {
+    onMutate: async ({ task, dayId }: MoveToPlanParams) => {
       await queryClient.cancelQueries(dayQK);
       await queryClient.cancelQueries(tomorrowQK);
 
       const oldDay = queryClient.getQueryData<IDay>(dayQK);
       const oldTomorrow = queryClient.getQueryData<ITomorrow>(tomorrowQK);
 
-      queryClient.setQueryData<IDay | undefined>(dayQK, old => {
+      queryClient.setQueryData<ITomorrow | undefined>(tomorrowQK, old => {
         if (old) {
           return produce(old, draft => {
             if (draft.entities.tasks) {
@@ -47,28 +50,32 @@ export const useMoveToTomorrowMutation = () => {
         return old;
       });
 
-      queryClient.setQueryData<ITomorrow | undefined>(tomorrowQK, old => {
+      queryClient.setQueryData<IDay | undefined>(dayQK, old => {
         if (old) {
           const {
-            result: sectionId,
-            entities: { tasks },
+            entities: { tasks, sections },
           } = old;
 
-          const sortedTasks = getSectionTasks(sectionId, tasks);
+          const planSection = Object.values(sections).find(({ variant }) => variant === 'plan');
 
-          const newRank =
-            RANK_BLOCK_SIZE +
-            (sortedTasks.length > 0 ? sortedTasks[sortedTasks.length - 1].rank : 0);
+          if (planSection) {
+            const sortedTasks = getSectionTasks(planSection.id, tasks);
 
-          return produce(old, draft => {
-            if (draft.entities.tasks) {
-              draft.entities.tasks[task.id] = {
-                ...task,
-                sectionId,
-                rank: newRank,
-              };
-            }
-          });
+            const newRank =
+              RANK_BLOCK_SIZE +
+              (sortedTasks.length > 0 ? sortedTasks[sortedTasks.length - 1].rank : 0);
+
+            return produce(old, draft => {
+              if (draft.entities.tasks) {
+                draft.entities.tasks[task.id] = {
+                  ...task,
+                  dayId,
+                  sectionId: planSection.id,
+                  rank: newRank,
+                };
+              }
+            });
+          }
         }
 
         return old;

@@ -10,15 +10,17 @@ import { PlanCheckBox } from './img/PlanCheckBox';
 import { Launcher } from '../Launcher/Launcher';
 import { TaskMenu } from '../TaskMenu/TaskMenu';
 import { TaskScope } from '../TaskScope/TaskScope';
+import { AddToPlan } from '../AddToPlan/AddToPlan';
 
 interface Props {
   task: TaskDto;
   variant: TaskVariant;
   isSelected: boolean;
   isDragging: boolean;
+  todayDayId?: number | null;
 }
 
-export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging }) => {
+export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, todayDayId }) => {
   const { dayId } = useDayRouteParams();
 
   const history = useHistory();
@@ -58,6 +60,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging })
           checked={task.isDone}
           onChange={() => toggleTaskDone({ isDone: !task.isDone })}
           aria-label={task.isDone ? 'Mark task as todo' : 'Mark task as done'}
+          isDisabled={isUpdatingTask}
           mt={1}
         />
       )}
@@ -85,11 +88,20 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging })
         </Flex>
       )}
 
+      {variant === 'tomorrow' && (
+        <Flex height="24" alignItems="center">
+          {todayDayId && <AddToPlan task={task} dayId={todayDayId} />}
+          <TaskMenu task={task} variant={variant} />
+        </Flex>
+      )}
+
       {variant !== 'plan' && variant !== 'tomorrow' && variant !== 'completed' && (
         <TimerButton task={task} />
       )}
 
-      {variant !== 'completed' && variant !== 'plan' && <TaskMenu task={task} variant={variant} />}
+      {variant !== 'completed' && variant !== 'plan' && variant !== 'tomorrow' && (
+        <TaskMenu task={task} variant={variant} />
+      )}
     </StyledTask>
   );
 };

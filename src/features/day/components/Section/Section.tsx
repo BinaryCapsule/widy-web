@@ -37,7 +37,7 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
 
   return (
     <>
-      <Box my="32">
+      <Box as="section" my="32">
         <SectionHeader isPlan={isPlan} hasTasks={tasks.length > 0}>
           <Text fontWeight={600}>
             {sectionTitleMap[section.title as keyof typeof sectionTitleMap]}

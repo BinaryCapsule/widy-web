@@ -8,11 +8,15 @@ import { SidebarEmpty } from './Sidebar.empty';
 import { NotesEditor } from '../NotesEditor/NotesEditor';
 import { Timer } from '../Timer/Timer';
 import { useTomorrowQuery } from '../../api/useTomorrowQuery';
+import { AddToPlan } from '../AddToPlan/AddToPlan';
+import { useTodayDayId } from '../../hooks/useTodayDayId';
 
 export const Sidebar = () => {
   const { dayId, taskId } = useDayRouteParams();
 
   const { data: dayData } = useDayQuery();
+
+  const { todayDayId } = useTodayDayId();
 
   const { data: tomorrowData } = useTomorrowQuery();
 
@@ -42,7 +46,11 @@ export const Sidebar = () => {
 
       <ScopeSelection task={task} mt="16" />
 
-      <Timer task={task} mt="16" />
+      {todayDayId && dayId === 'tomorrow' && (
+        <AddToPlan isButton dayId={todayDayId} task={task} mt="16" />
+      )}
+
+      {dayId !== 'tomorrow' && <Timer task={task} mt="16" />}
 
       <NotesEditor taskId={id} notes={notes} mt="16" />
     </SidebarWrapper>

@@ -41,6 +41,7 @@ export interface TaskDto {
   scopeId: number | null;
   rank: number;
   sectionId: number;
+  dayId: number | null;
 }
 
 export interface SectionDto {

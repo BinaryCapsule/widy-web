@@ -9,6 +9,7 @@ import { getSectionTasks } from '../../utils/getSectionTasks';
 import { Task } from '../Task/Task';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { SectionsLoading } from '../Sections/Sections.loading';
+import { useTodayDayId } from '../../hooks/useTodayDayId';
 
 export const Tomorrow = () => {
   const { isLoading, data } = useTomorrowQuery();
@@ -16,6 +17,8 @@ export const Tomorrow = () => {
   const [showAddTask, setShowAddTask] = useState(false);
 
   const { taskId: routeTaskId } = useDayRouteParams();
+
+  const { todayDayId } = useTodayDayId();
 
   if (isLoading) {
     return <SectionsLoading count={1} />;
@@ -51,6 +54,7 @@ export const Tomorrow = () => {
                 task={task}
                 isSelected={task.id.toString() === routeTaskId}
                 isDragging={false}
+                todayDayId={todayDayId}
               />
             ))}
           </Box>
