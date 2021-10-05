@@ -20,13 +20,13 @@ export const useCreateTaskMutation = () => {
 
   const queryClient = useQueryClient();
 
-  const dayQK = queryKeys.day(dayId);
+  const dayQK = dayId === 'tomorrow' ? queryKeys.tomorrow() : queryKeys.day(dayId);
 
   const createTask = async ({ sectionId, summary, rank, scopeId }: CreateTaskParams) => {
     return authFetch('/api/tasks', {
       method: 'POST',
       ...httpBody({
-        dayId,
+        dayId: dayId === 'tomorrow' ? undefined : dayId,
         sectionId,
         summary,
         rank,

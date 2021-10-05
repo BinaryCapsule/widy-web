@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Icon, Text } from '@binarycapsule/ui-capsules';
-import { useDayQuery } from '../../api/useDayQuery';
+import { SectionVariant, useDayQuery } from '../../api/useDayQuery';
 import { SectionEmpty } from './Section.empty';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { Task } from '../Task/Task';
@@ -33,10 +33,12 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
 
   const tasks = getSectionTasks(sectionId, data.entities.tasks);
 
+  const isPlan = section.variant === SectionVariant.Plan;
+
   return (
     <>
       <Box my="32">
-        <SectionHeader isPlan={section.isPlan} hasTasks={tasks.length > 0}>
+        <SectionHeader isPlan={isPlan} hasTasks={tasks.length > 0}>
           <Text fontWeight={600}>
             {sectionTitleMap[section.title as keyof typeof sectionTitleMap]}
           </Text>
@@ -58,10 +60,10 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
                     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
                       {(provided, snapshot) => (
                         <div ref={provided.innerRef} {...provided.draggableProps}>
-                          <Box position="relative" py={section.isPlan ? 0 : 4}>
+                          <Box position="relative" py={isPlan ? 0 : 4}>
                             <Box
                               position="absolute"
-                              top={section.isPlan ? 12 : 17}
+                              top={isPlan ? 12 : 17}
                               left={3}
                               {...provided.dragHandleProps}
                               aria-label="Drag a task"
@@ -95,7 +97,7 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
           onClick={() => setShowAddTask(true)}
           mt="8"
         >
-          {section.isPlan ? 'Add to Plan' : 'Add task'}
+          {isPlan ? 'Add to Plan' : 'Add task'}
         </Button>
       </Box>
 

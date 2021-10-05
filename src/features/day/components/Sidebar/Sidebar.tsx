@@ -7,11 +7,22 @@ import { SidebarWrapper } from './Sidebar.styles';
 import { SidebarEmpty } from './Sidebar.empty';
 import { NotesEditor } from '../NotesEditor/NotesEditor';
 import { Timer } from '../Timer/Timer';
+import { useTomorrowQuery } from '../../api/useTomorrowQuery';
 
 export const Sidebar = () => {
-  const { taskId } = useDayRouteParams();
+  const { dayId, taskId } = useDayRouteParams();
 
-  const { data } = useDayQuery();
+  const { data: dayData } = useDayQuery();
+
+  const { data: tomorrowData } = useTomorrowQuery();
+
+  let data;
+
+  if (dayId === 'tomorrow' && tomorrowData) {
+    data = tomorrowData;
+  } else {
+    data = dayData;
+  }
 
   if (!data) {
     return <SidebarWrapper />;

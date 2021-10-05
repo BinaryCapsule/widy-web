@@ -5,6 +5,7 @@ import {
   BorderProps,
   ColorProps,
   MarginProps,
+  PaddingProps,
   PropsWithPseudo,
 } from '@binarycapsule/ui-capsules/dist/styledProps';
 
@@ -42,7 +43,7 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
 
   ({ isSelected, isDragging, theme }) =>
     variant<
-      PropsWithPseudo<BorderProps & ColorProps & ShadowProps & MarginProps, Pseudo>,
+      PropsWithPseudo<BorderProps & ColorProps & ShadowProps & MarginProps & PaddingProps, Pseudo>,
       TaskVariant
     >({
       variants: {
@@ -82,6 +83,12 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
 
         tomorrow: {
           my: 0,
+          borderRadius: isDragging ? 'medium' : 'none',
+          borderTopWidth: isDragging ? 1 : 0,
+          borderLeftWidth: isDragging ? 1 : 0,
+          borderRightWidth: isDragging ? 1 : 0,
+          bg: isSelected ? 'neutral.100' : 'bg',
+          p: '8',
         },
       },
     }),

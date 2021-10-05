@@ -23,9 +23,9 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
 
   const canRegisterTime = variant === 'todo';
 
-  const canMoveToTomorrow = variant !== 'active';
+  const canMoveToTomorrow = variant !== 'active' && variant !== 'tomorrow';
 
-  const canMove = variant !== 'active';
+  const canMove = variant !== 'active' && variant !== 'tomorrow';
 
   return (
     <>

@@ -49,7 +49,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging })
 
   return (
     <StyledTask variant={variant} isSelected={isSelected} isDragging={isDragging}>
-      {variant === 'plan' && <PlanCheckBox mr="12" ml={2} />}
+      {(variant === 'plan' || variant === 'tomorrow') && <PlanCheckBox mr="12" ml={2} />}
 
       {variant !== 'plan' && variant !== 'tomorrow' && (
         <Checkbox

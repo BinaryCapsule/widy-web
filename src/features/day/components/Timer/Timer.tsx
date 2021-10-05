@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useActiveTaskQuery } from '../../api/useActiveTaskQuery';
-import { TaskDto, useDayQuery } from '../../api/useDayQuery';
+import { SectionVariant, TaskDto, useDayQuery } from '../../api/useDayQuery';
 import { Box, Flex, IconButton, Text } from '@binarycapsule/ui-capsules';
 import { TimerButton } from '../TimerButton/TimerButton';
 import { Time } from './components/Time/Time';
@@ -35,6 +35,8 @@ export const Timer: React.FC<Props> = ({ task, ...rest }) => {
 
   const section = sections[task.sectionId];
 
+  const isPlan = section.variant === SectionVariant.Plan;
+
   return (
     <>
       <Box {...rest}>
@@ -42,7 +44,7 @@ export const Timer: React.FC<Props> = ({ task, ...rest }) => {
           Timer
         </Text>
 
-        {section.isPlan ? (
+        {isPlan ? (
           <Box>
             <Launcher isButton task={task} />
           </Box>

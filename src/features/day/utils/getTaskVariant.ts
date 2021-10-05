@@ -1,4 +1,4 @@
-import { ISection, TaskDto } from '../api/useDayQuery';
+import { ISection, SectionVariant, TaskDto } from '../api/useDayQuery';
 import { TaskVariant } from '../components/Task/Task.styles';
 
 export const getTaskVariant = (
@@ -6,11 +6,11 @@ export const getTaskVariant = (
   section: ISection,
   activeTaskId?: number | null,
 ): TaskVariant => {
-  if (section.isPlan) {
+  if (section.variant === SectionVariant.Plan) {
     return 'plan';
   }
 
-  if (section.isTomorrow) {
+  if (section.variant === SectionVariant.Tomorrow) {
     return 'tomorrow';
   }
 
