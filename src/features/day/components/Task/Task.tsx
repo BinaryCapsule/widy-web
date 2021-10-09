@@ -1,7 +1,7 @@
 import React from 'react';
 import { TaskDto } from '../../api/useDayQuery';
 import { StyledTask, TaskSummary, TaskVariant } from './Task.styles';
-import { Box, Checkbox, Flex, Toaster } from '@binarycapsule/ui-capsules';
+import { Box, Checkbox, Toaster } from '@binarycapsule/ui-capsules';
 import { useHistory } from 'react-router-dom';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
@@ -81,27 +81,15 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
 
       <TaskScope task={task} mr="4" />
 
-      {variant === 'plan' && (
-        <Flex height="24" alignItems="center">
-          <Launcher task={task} />
-          <TaskMenu task={task} variant={variant} />
-        </Flex>
-      )}
+      {variant === 'plan' && <Launcher task={task} />}
 
-      {variant === 'tomorrow' && (
-        <Flex height="24" alignItems="center">
-          {todayDayId && <AddToPlan task={task} dayId={todayDayId} />}
-          <TaskMenu task={task} variant={variant} />
-        </Flex>
-      )}
+      {variant === 'tomorrow' && !!todayDayId && <AddToPlan task={task} dayId={todayDayId} />}
 
       {variant !== 'plan' && variant !== 'tomorrow' && variant !== 'completed' && (
         <TimerButton task={task} />
       )}
 
-      {variant !== 'completed' && variant !== 'plan' && variant !== 'tomorrow' && (
-        <TaskMenu task={task} variant={variant} />
-      )}
+      {variant !== 'completed' && <TaskMenu task={task} variant={variant} />}
     </StyledTask>
   );
 };

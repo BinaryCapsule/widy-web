@@ -56,7 +56,7 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
 
         {canMoveToTomorrow ? (
           <MenuItem
-            text={`${task.time > 0 ? 'Copy' : 'Move'} to "Tomorrow"`}
+            text="Move to Tomorrow"
             leftIcon="calendar"
             onClick={async () => {
               try {
