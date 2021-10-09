@@ -11,6 +11,7 @@ import { AddTask } from '../AddTask/AddTask';
 import { sectionTitleMap } from './Section.constants';
 import { getSectionTasks } from '../../utils/getSectionTasks';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { MoveAllToTomorrow } from '../MoveAllToTomorrow/MoveAllToTomorrow';
 
 interface Props {
   sectionId: number;
@@ -42,6 +43,8 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
           <Text fontWeight={600}>
             {sectionTitleMap[section.title as keyof typeof sectionTitleMap]}
           </Text>
+
+          {tasks.length > 0 && isPlan && <MoveAllToTomorrow />}
         </SectionHeader>
 
         <Droppable droppableId={sectionId.toString()}>
