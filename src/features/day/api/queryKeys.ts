@@ -1,9 +1,15 @@
-const DAY_QK = 'day';
-const SCOPES_QK = 'scopes';
-const ACTIVE_TASK_QK = 'activeTask';
+import { Feature } from '../../../config/queryClient';
+
+enum QueryKey {
+  Day = 'Day',
+  Tomorrow = 'Tomorrow',
+  Scopes = 'Scopes',
+  ActiveTask = 'ActiveTask',
+}
 
 export const queryKeys = {
-  day: (dayId: string) => [DAY_QK, dayId],
-  scopes: () => [SCOPES_QK],
-  activeTask: () => [ACTIVE_TASK_QK],
+  day: (dayId: string) => [Feature.Day, QueryKey.Day, dayId],
+  tomorrow: () => [Feature.Day, QueryKey.Tomorrow],
+  scopes: () => [Feature.Day, QueryKey.Scopes],
+  activeTask: () => [Feature.Day, QueryKey.ActiveTask],
 };

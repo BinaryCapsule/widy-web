@@ -20,7 +20,7 @@ export const useUpdateTaskMutation = () => {
 
   const queryClient = useQueryClient();
 
-  const dayQK = queryKeys.day(dayId);
+  const dayQK = dayId === 'tomorrow' ? queryKeys.tomorrow() : queryKeys.day(dayId);
   const activeTaskQK = queryKeys.activeTask();
 
   const updateTask = async ({ taskId, payload }: UpdateTaskParams): Promise<TaskDto> => {

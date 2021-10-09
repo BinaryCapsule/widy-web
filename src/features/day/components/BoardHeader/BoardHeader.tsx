@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from '@emotion/styled/macro';
 import { BoardTitle } from '../BoardTitle/BoardTitle';
+import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 
 export const Wrapper = styled(BaseWrapper)`
   padding-top: 48px;
@@ -15,6 +16,8 @@ export const Wrapper = styled(BaseWrapper)`
 `;
 
 export const BoardHeader = () => {
+  const { dayId } = useDayRouteParams();
+
   const history = useHistory();
 
   const { logout } = useAuth0();
@@ -27,7 +30,7 @@ export const BoardHeader = () => {
   return (
     <Wrapper as="header">
       <Flex justifyContent="space-between">
-        <BoardTitle />
+        {dayId === 'tomorrow' ? <div /> : <BoardTitle />}
 
         <Flex>
           <button onClick={() => history.push('/')}>Go to Home</button>

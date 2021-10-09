@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled/macro';
 import { BoardHeader } from '../BoardHeader/BoardHeader';
 import { Sections } from '../Sections/Sections';
+import { useDayRouteParams } from '../../hooks/useDayRouteParams';
+import { Tomorrow } from '../Tomorrow/Tomorrow';
 
 export const BoardWrapper = styled.div`
   display: flex;
@@ -13,11 +15,13 @@ export const BoardWrapper = styled.div`
 `;
 
 export const Board = () => {
+  const { dayId } = useDayRouteParams();
+
   return (
     <BoardWrapper as="main">
       <BoardHeader />
 
-      <Sections />
+      {dayId === 'tomorrow' ? <Tomorrow /> : <Sections />}
     </BoardWrapper>
   );
 };

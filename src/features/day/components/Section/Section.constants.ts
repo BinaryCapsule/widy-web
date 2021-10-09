@@ -1,5 +1,5 @@
 export const sectionTitleMap = {
-  Schedule: '🗓️ Schedule',
+  Tomorrow: '🗓️ Tomorrow',
   Plan: '📝 Plan',
   'In the morning': '🌤️ In the morning',
   'In the afternoon': '☀️ In the afternoon',

@@ -2,8 +2,8 @@ import styled from '@emotion/styled/macro';
 import { Box } from '@binarycapsule/ui-capsules';
 
 interface SectionHeaderProps {
-  isPlan: boolean;
-  hasTasks: boolean;
+  isPlan?: boolean;
+  hasTasks?: boolean;
 }
 
 export const SectionHeader = styled(Box)<SectionHeaderProps>(({ theme, isPlan, hasTasks }) => ({

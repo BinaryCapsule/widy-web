@@ -1,6 +1,9 @@
 import { useDayQuery } from '../api/useDayQuery';
 import { RANK_BLOCK_SIZE } from '../Day.constants';
 import { getSectionTasks } from '../utils/getSectionTasks';
+import { useTomorrowQuery } from '../api/useTomorrowQuery';
+import { useDayRouteParams } from './useDayRouteParams';
+import { useMemo } from 'react';
 
 interface GetTaskRankParams {
   sectionId: number;
@@ -9,17 +12,39 @@ interface GetTaskRankParams {
 }
 
 export const useTaskRank = () => {
-  const { data } = useDayQuery();
+  const { data: dayData } = useDayQuery();
+  const { data: tomorrowData } = useTomorrowQuery();
+  const { dayId } = useDayRouteParams();
 
-  if (!data) {
+  const tasks = useMemo(() => {
+    if (dayId === 'tomorrow') {
+      if (!tomorrowData) {
+        return null;
+      }
+
+      const {
+        entities: { tasks: tomorrowTasks },
+      } = tomorrowData;
+
+      return tomorrowTasks;
+    }
+
+    if (!dayData) {
+      return null;
+    }
+
+    const {
+      entities: { tasks: sectionTasks },
+    } = dayData;
+
+    return sectionTasks;
+  }, [dayData, dayId, tomorrowData]);
+
+  if (!tasks) {
     return {
       getTaskRank: () => 0,
     };
   }
-
-  const {
-    entities: { tasks },
-  } = data;
 
   return {
     getTaskRank: ({ sectionId, previousTaskId, isAppend }: GetTaskRankParams) => {

@@ -13,7 +13,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { useCreateTaskMutation } from '../../api/useCreateTaskMutation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormValues, validationSchema } from './AddTask.meta';
-import { useDayQuery } from '../../api/useDayQuery';
 import { useTaskRank } from '../../hooks/useTaskRank';
 import { ScopeSelect } from '../ScopeSelect/ScopeSelect';
 import { UpsertScope } from '../UpsertScope/UpsertScope';
@@ -42,15 +41,9 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
     shouldUnregister: false,
   });
 
-  const { data } = useDayQuery();
-
   const { mutateAsync: createTask, isLoading: isCreatingTask } = useCreateTaskMutation();
 
   const { getTaskRank } = useTaskRank();
-
-  if (!data) {
-    return null;
-  }
 
   const onCreateTask = async (values: FormValues) => {
     const rank = getTaskRank({ isAppend: true, sectionId });

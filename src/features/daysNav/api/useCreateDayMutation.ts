@@ -6,6 +6,7 @@ import { Toaster } from '@binarycapsule/ui-capsules';
 import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { ISO_8601_FORMAT } from '../../../utils/dates';
 import { DayDto, DaysDto } from './useDaysQuery';
+import { queryKeys } from './queryKeys';
 
 export const useCreateDayMutation = () => {
   const { authFetch } = useAuthFetch();
@@ -13,6 +14,8 @@ export const useCreateDayMutation = () => {
   const history = useHistory();
 
   const queryClient = useQueryClient();
+
+  const daysQK = queryKeys.days();
 
   const createDay = async (): Promise<DayDto> => {
     return authFetch('/api/days', {
@@ -24,7 +27,7 @@ export const useCreateDayMutation = () => {
   return useMutation<DayDto, Error>(createDay, {
     onSuccess: data => {
       if (data && data.day) {
-        queryClient.setQueryData<InfiniteData<DaysDto> | undefined>('days', currentDaysCache => {
+        queryClient.setQueryData<InfiniteData<DaysDto> | undefined>(daysQK, currentDaysCache => {
           if (currentDaysCache) {
             return produce(currentDaysCache, draftState => {
               draftState.pages[0].items.unshift(data);

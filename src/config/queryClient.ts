@@ -16,7 +16,7 @@ export const queryClient = new QueryClient({
         return failureCount <= 3;
       },
 
-      refetchOnWindowFocus: false,
+      refetchOnWindowFocus: 'always',
       staleTime: Infinity,
       cacheTime: 30 * 60 * 1000,
     },
@@ -26,3 +26,8 @@ export const queryClient = new QueryClient({
     },
   },
 });
+
+export enum Feature {
+  Days = 'Days',
+  Day = 'Day',
+}

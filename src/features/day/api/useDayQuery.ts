@@ -18,6 +18,12 @@ const daySchema = new schema.Entity('day', {
   sections: [sectionSchema],
 });
 
+export enum SectionVariant {
+  Plan = 'plan',
+  Work = 'work',
+  Tomorrow = 'tomorrow',
+}
+
 interface ScopeDto {
   id: number;
   name: string;
@@ -35,13 +41,13 @@ export interface TaskDto {
   scopeId: number | null;
   rank: number;
   sectionId: number;
+  dayId: number | null;
 }
 
 export interface SectionDto {
   id: number;
   title: string;
-  isPlan: boolean;
-  isTomorrow: boolean;
+  variant: SectionVariant;
   rank: number;
   tasks: TaskDto[];
 }
@@ -77,5 +83,7 @@ export const useDayQuery = () => {
 
   const queryKey = queryKeys.day(dayId);
 
-  return useQuery<IDay, Error>(queryKey, () => fetchDay(dayId), { enabled: !!dayId });
+  return useQuery<IDay, Error>(queryKey, () => fetchDay(dayId), {
+    enabled: !!dayId && dayId !== 'tomorrow',
+  });
 };

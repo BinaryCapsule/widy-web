@@ -2,10 +2,14 @@ import React from 'react';
 import { Skeleton, Wrapper } from '@binarycapsule/ui-capsules';
 import times from 'lodash/times';
 
-export const SectionsLoading: React.FC = () => {
+interface Props {
+  count?: number;
+}
+
+export const SectionsLoading: React.FC<Props> = ({ count = 3 }) => {
   return (
     <>
-      {times(3).map(key => (
+      {times(count).map(key => (
         <Wrapper key={key} my="32">
           <Skeleton width={100} height={12} circular mb="12" />
           {times(3).map(key => (
