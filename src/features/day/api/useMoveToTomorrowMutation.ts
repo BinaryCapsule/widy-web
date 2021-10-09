@@ -91,7 +91,7 @@ export const useMoveToTomorrowMutation = () => {
 
     onSettled: () => {
       queryClient.invalidateQueries(dayQK);
-      queryClient.invalidateQueries(tomorrowQK);
+      queryClient.refetchQueries(tomorrowQK, { inactive: true });
     },
   });
 };

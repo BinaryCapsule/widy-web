@@ -1,4 +1,4 @@
-import { Box, Button, Text } from '@binarycapsule/ui-capsules';
+import { Box, Button, Flex, Text } from '@binarycapsule/ui-capsules';
 import React, { useState } from 'react';
 import { useTomorrowQuery } from '../../api/useTomorrowQuery';
 import { sectionTitleMap } from '../Section/Section.constants';
@@ -10,6 +10,7 @@ import { Task } from '../Task/Task';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { SectionsLoading } from '../Sections/Sections.loading';
 import { useTodayDayId } from '../../hooks/useTodayDayId';
+import { useMoveAllToPlanMutation } from '../../api/useMoveAllToPlanMutation';
 
 export const Tomorrow = () => {
   const { isLoading, data } = useTomorrowQuery();
@@ -19,6 +20,8 @@ export const Tomorrow = () => {
   const { taskId: routeTaskId } = useDayRouteParams();
 
   const { todayDayId } = useTodayDayId();
+
+  const { mutateAsync: moveAllToPlan } = useMoveAllToPlanMutation({ dayId: todayDayId });
 
   if (isLoading) {
     return <SectionsLoading count={1} />;
@@ -36,11 +39,32 @@ export const Tomorrow = () => {
 
   const tasks = getSectionTasks(sectionId, entities.tasks);
 
+  const handleMoveAllToPlan = async (dayId: number) => {
+    try {
+      await moveAllToPlan({ dayId });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <Box my="32">
         <SectionHeader isPlan hasTasks={tasks.length > 0}>
-          <Text fontWeight={600}>{sectionTitleMap[title as keyof typeof sectionTitleMap]}</Text>
+          <Flex justifyContent="space-between" alignItems="center" width="100%">
+            <Text fontWeight={600}>{sectionTitleMap[title as keyof typeof sectionTitleMap]}</Text>
+
+            {tasks.length > 0 && !!todayDayId && (
+              <Button
+                onClick={() => handleMoveAllToPlan(todayDayId)}
+                variant="ghost"
+                variantColor="neutral"
+                leftIcon="plus_c"
+              >
+                Add all to plan
+              </Button>
+            )}
+          </Flex>
         </SectionHeader>
 
         {tasks.length === 0 ? (
