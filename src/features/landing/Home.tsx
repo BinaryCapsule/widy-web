@@ -20,7 +20,7 @@ const Home: React.FC = () => {
     if (isAuthenticated) {
       history.push('/day');
     }
-  });
+  }, [history, isAuthenticated]);
 
   return (
     <>
