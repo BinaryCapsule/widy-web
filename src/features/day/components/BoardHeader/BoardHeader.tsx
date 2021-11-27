@@ -1,6 +1,5 @@
 import React from 'react';
-import { Flex, Wrapper as BaseWrapper } from '@binarycapsule/ui-capsules';
-import { useHistory } from 'react-router-dom';
+import { Button, Flex, Menu, MenuItem, Wrapper as BaseWrapper } from '@binarycapsule/ui-capsules';
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from '@emotion/styled/macro';
 import { BoardTitle } from '../BoardTitle/BoardTitle';
@@ -18,8 +17,6 @@ export const Wrapper = styled(BaseWrapper)`
 export const BoardHeader = () => {
   const { dayId } = useDayRouteParams();
 
-  const history = useHistory();
-
   const { logout } = useAuth0();
 
   const logoutWithRedirect = () =>
@@ -29,12 +26,42 @@ export const BoardHeader = () => {
 
   return (
     <Wrapper as="header">
-      <Flex justifyContent="space-between">
+      <Flex alignItems="center" justifyContent="space-between">
         {dayId === 'tomorrow' ? <div /> : <BoardTitle />}
 
         <Flex>
-          <button onClick={() => history.push('/')}>Go to Home</button>
-          <button onClick={logoutWithRedirect}>Log out</button>
+          <Button
+            leftIcon="chart_pie"
+            iconVariant="outline"
+            variant="ghost"
+            variantColor="neutral"
+            onClick={() => {}}
+            mr="4"
+          >
+            Report
+          </Button>
+
+          <Menu
+            placement="left"
+            trigger={
+              <Button
+                leftIcon="user_circle"
+                rightIcon="chev_down"
+                variant="ghost"
+                variantColor="neutral"
+                aria-label="User menu"
+              />
+            }
+          >
+            <MenuItem text="Settings" leftIcon="cog" onClick={() => {}} />
+
+            <MenuItem
+              text="Log out"
+              leftIcon="logout"
+              onClick={logoutWithRedirect}
+              closeOnAction={false}
+            />
+          </Menu>
         </Flex>
       </Flex>
     </Wrapper>
