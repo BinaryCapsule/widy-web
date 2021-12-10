@@ -5,7 +5,7 @@ import { EditableTaskSummary } from './components/EditableTaskSummary/EditableTa
 import { ScopeSelection } from './components/ScopeSelection/ScopeSelection';
 import { SidebarWrapper } from './Sidebar.styles';
 import { SidebarEmpty } from './Sidebar.empty';
-import { NotesEditor } from '../NotesEditor/NotesEditor';
+// import { NotesEditor } from '../NotesEditor/NotesEditor';
 import { Timer } from '../Timer/Timer';
 import { useTomorrowQuery } from '../../api/useTomorrowQuery';
 import { AddToPlan } from '../AddToPlan/AddToPlan';
@@ -38,21 +38,22 @@ export const Sidebar = () => {
     return <SidebarEmpty />;
   }
 
-  const { id, summary, notes } = task;
+  const { id, summary } = task;
+  // const { id, summary, notes } = task;
 
   return (
     <SidebarWrapper>
-      <EditableTaskSummary key={taskId} taskId={id} summary={summary} ml={-10} />
+      <EditableTaskSummary key={taskId} taskId={id} summary={summary} css={{ ml: -10 }} />
 
-      <ScopeSelection task={task} mt="16" />
+      <ScopeSelection task={task} css={{ mt: '$4' }} />
 
       {todayDayId && dayId === 'tomorrow' && (
-        <AddToPlan isButton dayId={todayDayId} task={task} mt="16" />
+        <AddToPlan isButton dayId={todayDayId} task={task} css={{ mt: '$4' }} />
       )}
 
-      {dayId !== 'tomorrow' && <Timer task={task} mt="16" />}
+      {dayId !== 'tomorrow' && <Timer task={task} css={{ mt: '$4' }} />}
 
-      <NotesEditor taskId={id} notes={notes} mt="16" />
+      {/*<NotesEditor taskId={id} notes={notes} css={{ mt: '$4' }} />*/}
     </SidebarWrapper>
   );
 };

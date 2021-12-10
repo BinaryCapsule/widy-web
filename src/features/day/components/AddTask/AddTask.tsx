@@ -74,7 +74,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
 
   return (
     <>
-      <Modal isOpen={!isScopesModalOpen} onRequestClose={onClose} contentLabel="Add task">
+      <Modal isOpen={!isScopesModalOpen} onClose={onClose} contentLabel="Add task">
         <ModalHeader>Add Task</ModalHeader>
 
         <ModalCloseButton onClick={onClose} />
@@ -91,7 +91,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
               helpText={errors.summary?.message}
             />
 
-            <Box mb="16" />
+            <Box css={{ mb: '$4' }} />
 
             <Controller
               name="scope"
@@ -107,7 +107,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button variant="ghost" variantColor="neutral" onClick={onClose}>
+            <Button variant="ghostGray" onClick={onClose}>
               Cancel
             </Button>
 

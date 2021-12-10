@@ -1,22 +1,17 @@
 import React from 'react';
-import styled from '@emotion/styled/macro';
-import { Flex } from '@binarycapsule/ui-capsules';
+import { CSSProp, styled } from '@binarycapsule/ui-capsules';
 
-const StyledBadge = styled(Flex)`
-  align-items: center;
-  border-radius: 999px;
-  height: 12px;
-  font-size: 8px;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 0 4px;
-`;
+const StyledBadge = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  borderRadius: '999px',
+  height: 12,
+  fontSize: '8px',
+  fontWeight: 700,
+  textTransform: 'uppercase',
+  padding: '0 4px',
+});
 
-interface Props {
-  color: string;
-  bg: string;
-}
-
-export const Badge: React.FC<Props> = ({ children, ...rest }) => {
-  return <StyledBadge {...rest}>{children}</StyledBadge>;
+export const Badge: React.FC<CSSProp> = ({ children, css }) => {
+  return <StyledBadge css={css}>{children}</StyledBadge>;
 };

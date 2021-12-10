@@ -22,7 +22,7 @@ export const DeleteTask: React.FC<Props> = ({ task, onRequestClose }) => {
   const actions: Action[] = [
     {
       text: 'Cancel',
-      variant: 'neutral',
+      variant: 'ghostGray',
       onClick: onRequestClose,
     },
     {
@@ -35,7 +35,7 @@ export const DeleteTask: React.FC<Props> = ({ task, onRequestClose }) => {
   return (
     <Dialog
       isOpen
-      onRequestClose={onRequestClose}
+      onClose={onRequestClose}
       contentLabel="Delete task dialog"
       actions={actions}
       title="Delete task"

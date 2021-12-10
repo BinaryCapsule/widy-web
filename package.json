@@ -5,20 +5,11 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.3.0",
     "@binarycapsule/editor": "^2.0.4",
-    "@binarycapsule/ui-capsules": "^4.7.1",
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
+    "@binarycapsule/ui-capsules": "^5.0.1",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.6.0",
     "@reduxjs/toolkit": "^1.6.1",
-    "@styled-system/should-forward-prop": "^5.1.5",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.20",
-    "@types/node": "^14.14.34",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.2",
+    "@stitches/react": "^1.2.5",
     "history": "^5.0.0",
     "immer": "^9.0.7",
     "lodash": "^4.17.21",
@@ -31,10 +22,7 @@
     "react-query": "^3.19.2",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
     "react-use": "^17.3.1",
-    "styled-system": "^5.1.5",
-    "typescript": "~4.2.3",
     "yup": "^0.32.9"
   },
   "scripts": {
@@ -58,8 +46,15 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
+    "@types/node": "^14.14.34",
+    "@types/react": "^17.0.3",
     "@types/react-beautiful-dnd": "^13.1.2",
+    "@types/react-dom": "^17.0.2",
     "@types/react-modal": "^3.12.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-select": "^4.0.17",
@@ -68,7 +63,9 @@
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
     "prettier": "^2.2.1",
-    "react-query-devtools": "^2.6.3"
+    "react-query-devtools": "^2.6.3",
+    "react-scripts": "4.0.3",
+    "typescript": "~4.2.3"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,md}": "prettier --write"

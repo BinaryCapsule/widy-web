@@ -9,7 +9,7 @@ import {
   ModalFooter,
   ModalHeader,
   Text,
-  Toaster,
+  toast,
 } from '@binarycapsule/ui-capsules';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -49,12 +49,12 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
     } catch (err) {
       console.error(err);
 
-      Toaster.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: 'Oops, something went wrong' });
     }
   };
 
   return (
-    <Modal isOpen size="small" contentLabel="Register Time">
+    <Modal isOpen size="small" contentLabel="Register Time" onClose={() => {}}>
       <ModalHeader>Register time</ModalHeader>
 
       <ModalCloseButton onClick={onRequestClose} />
@@ -62,50 +62,50 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalBody>
           <Flex>
-            <Flex alignItems="center">
-              <Flex width={68}>
+            <Flex align="center">
+              <Flex css={{ width: 68 }}>
                 <Input {...register('hours')} autoFocus type="number" />
               </Flex>
 
-              <Text ml="8">h</Text>
+              <Text css={{ ml: '$2' }}>h</Text>
             </Flex>
 
-            <Flex alignItems="center" ml="16">
-              <Flex width={68}>
+            <Flex align="center" css={{ ml: '$4' }}>
+              <Flex css={{ width: 68 }}>
                 <Input {...register('minutes')} type="number" />
               </Flex>
 
-              <Text ml="8">min</Text>
+              <Text css={{ ml: '$2' }}>min</Text>
             </Flex>
           </Flex>
 
           {errors.hours?.message && (
-            <Text fontSize="small" color="error.500" mt="4">
+            <Text size={1} css={{ color: '$error500', mt: '$1' }}>
               {errors.hours.message}
             </Text>
           )}
 
           {errors.minutes?.message && (
-            <Text fontSize="small" color="error.500" mt="4">
+            <Text size={1} css={{ color: '$error500', mt: '$1' }}>
               {errors.minutes.message}
             </Text>
           )}
 
-          <Text variant="label" mt="24" mb="4">
+          <Text variant="label" css={{ mt: '$5', mb: '$1' }}>
             Suggestions
           </Text>
 
-          <Flex flexWrap="wrap">
+          <Flex wrap="wrap">
             {suggestions.map(({ label, hours, minutes }) => (
               <Button
                 key={label}
-                variant="outline"
+                variant="ghost"
                 size="small"
                 onClick={() => {
                   setValue('hours', hours);
                   setValue('minutes', minutes);
                 }}
-                m="4"
+                css={{ m: '$1' }}
               >
                 {label}
               </Button>
@@ -114,7 +114,7 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost" variantColor="neutral" onClick={onRequestClose}>
+          <Button variant="ghostGray" onClick={onRequestClose}>
             Cancel
           </Button>
 

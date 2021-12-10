@@ -11,16 +11,12 @@ interface Props {
 
 export const DayButton: React.FC<Props> = ({ isSelected, isToday, onClick, children }) => {
   return (
-    <Box as="label" my="4">
+    <Box as="label" css={{ my: '$1' }}>
       <StyledInput type="radio" name="day-button" checked={isSelected} onChange={onClick} />
 
       <StyledDayButton className="day-button">
         <Content isToday={isToday}>
-          {isToday && (
-            <Badge color="blue.50" bg="blue.600">
-              Today
-            </Badge>
-          )}
+          {isToday && <Badge css={{ color: '$blue50', background: '$blue500' }}>Today</Badge>}
 
           <span>{children}</span>
         </Content>

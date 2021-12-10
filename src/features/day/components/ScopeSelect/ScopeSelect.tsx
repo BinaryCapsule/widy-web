@@ -44,10 +44,9 @@ export const ScopeSelect: React.FC<Props> = ({ value, onChange, onCreateScope })
       <Button
         leftIcon="plus"
         size="small"
-        variant="ghost"
-        variantColor="neutral"
+        variant="ghostGray"
         onClick={onCreateScope}
-        mt="4"
+        css={{ mt: '$1' }}
       >
         Create new scope
       </Button>

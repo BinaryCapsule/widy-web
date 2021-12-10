@@ -1,19 +1,15 @@
 import React from 'react';
-import { Box, Button, IllustratedIcon, Text, Tooltip } from '@binarycapsule/ui-capsules';
-import { useTheme } from '@emotion/react';
+import { Button, CSSProp, Flex, IllustratedIcon, Text, Tooltip } from '@binarycapsule/ui-capsules';
 import { TaskDto } from '../../api/useDayQuery';
 import { useMoveToPlanMutation } from '../../api/useMoveToPlanMutation';
-import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
 
-interface Props extends MarginProps {
+interface Props extends CSSProp {
   isButton?: boolean;
   dayId: number;
   task: TaskDto;
 }
 
-export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, ...rest }) => {
-  const theme = useTheme();
-
+export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, css }) => {
   const { mutateAsync: moveToPlan } = useMoveToPlanMutation({ dayId });
 
   const handleMoveToPlan = async () => {
@@ -27,28 +23,23 @@ export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, ...rest }) =
   return (
     <>
       {isButton ? (
-        <Box display="flex" flexDirection="column" alignItems="flex-start" {...rest}>
-          <Text variant="label" mb="4">
+        <Flex direction="column" align="start" css={css}>
+          <Text variant="label" css={{ mb: '$1' }}>
             Timer
           </Text>
-          <Button
-            variant="ghost"
-            variantColor="neutral"
-            leftIcon="plus_c"
-            onClick={handleMoveToPlan}
-          >
+          <Button variant="ghostGray" leftIcon="plus_c" onClick={handleMoveToPlan}>
             Add to Plan
           </Button>
-        </Box>
+        </Flex>
       ) : (
-        <Tooltip content="Add task to Plan" delay={1000} placement="top">
+        <Tooltip label="Add task to Plan">
           <IllustratedIcon
             icon="circle_add"
             onClick={handleMoveToPlan}
-            primaryColor={theme.colors.neutral['300']}
-            secondaryColor={theme.colors.neutral['500']}
-            primaryColorHover={theme.colors.pink['100']}
-            secondaryColorHover={theme.colors.pink['600']}
+            primaryColor="#d1d4dc"
+            secondaryColor="#6c727f"
+            primaryColorHover="#FAB8D9"
+            secondaryColorHover="#AD2167"
           />
         </Tooltip>
       )}

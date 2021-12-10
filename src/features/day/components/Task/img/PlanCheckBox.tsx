@@ -1,17 +1,11 @@
 import React from 'react';
-import { Box } from '@binarycapsule/ui-capsules';
-import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
-import { useTheme } from '@emotion/react';
+import { Box, CSSProp } from '@binarycapsule/ui-capsules';
 
-interface Props extends MarginProps {}
-
-export const PlanCheckBox: React.FC<Props> = props => {
-  const theme = useTheme();
-
-  const color = theme.colors.neutral['400'];
+export const PlanCheckBox: React.FC<CSSProp> = ({ css }) => {
+  const color = '#9fa5b2';
 
   return (
-    <Box width={20} height={20} {...props}>
+    <Box css={{ width: 20, height: 20, ...css }}>
       <svg
         viewBox="0 0 20 20"
         width={20}

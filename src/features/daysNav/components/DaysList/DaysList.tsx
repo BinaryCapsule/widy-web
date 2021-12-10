@@ -47,7 +47,7 @@ export const DaysList: React.FC = () => {
 
   return (
     <>
-      <Flex flexDirection="column" overflow="auto" px="4">
+      <Flex direction="column" css={{ overflow: 'auto', px: '$1', mx: -4 }}>
         {data.pages.map(page =>
           page.items.map(({ id, day }) => {
             return (
@@ -65,10 +65,9 @@ export const DaysList: React.FC = () => {
       </Flex>
 
       {hasNextPage && (
-        <Flex justifyContent="center" mt="8">
+        <Flex justify="center" css={{ mt: '$8' }}>
           <Button
-            variant="ghost"
-            variantColor="neutral"
+            variant="ghostGray"
             size="small"
             isLoading={isFetchingNextPage}
             onClick={() => fetchNextPage()}

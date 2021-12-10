@@ -5,9 +5,9 @@ import { DayButtonLoading } from '../DayButton/DayButton.loading';
 
 export const DaysListLoading: React.FC = () => {
   return (
-    <Flex flexDirection="column">
+    <Flex direction="column">
       {times(5).map(key => (
-        <DayButtonLoading key={key} my="4" />
+        <DayButtonLoading key={key} css={{ my: '$1' }} />
       ))}
     </Flex>
   );

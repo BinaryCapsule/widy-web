@@ -1,36 +1,35 @@
 import React from 'react';
-import { Flex, Text } from '@binarycapsule/ui-capsules';
+import { CSSProp, Flex, Text } from '@binarycapsule/ui-capsules';
 import { getTotalTime } from '../../../../../../utils/time';
-import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
 
-interface Props extends MarginProps {
+interface Props extends CSSProp {
   time: number;
 }
 
-export const Time: React.FC<Props> = ({ time, ...rest }) => {
+export const Time: React.FC<Props> = ({ time, css }) => {
   const { hours, minutes, seconds } = getTotalTime(time);
 
   return (
-    <Flex alignItems="baseline" {...rest}>
+    <Flex align="baseline" css={css}>
       {hours > 0 && (
         <>
-          <Text fontSize="h4" mr="4">
+          <Text size={4} css={{ mr: '$1' }}>
             {hours}
           </Text>
-          <Text mr="8">h</Text>
+          <Text css={{ mr: '$2' }}>h</Text>
         </>
       )}
       <>
-        <Text fontSize="h4" mr="4">
+        <Text size={4} css={{ mr: '$1' }}>
           {minutes}
         </Text>
-        <Text mr="8">min</Text>
+        <Text css={{ mr: '$2' }}>min</Text>
       </>
       <>
-        <Text fontSize="h4" mr="4">
+        <Text size={4} css={{ mr: '$1' }}>
           {seconds}
         </Text>
-        <Text mr="8">s</Text>
+        <Text css={{ mr: '$2' }}>s</Text>
       </>
     </Flex>
   );

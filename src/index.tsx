@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ThemeProvider, theme, ToastContainer, setAppElement } from '@binarycapsule/ui-capsules';
+import { ToastContainer, setAppElement } from '@binarycapsule/ui-capsules';
 import { App } from './App';
 import { Auth0ProviderWithHistory } from './auth/auth0-provider-with-history';
 import { QueryClientProvider } from 'react-query';
@@ -16,13 +16,11 @@ ReactDOM.render(
   <QueryClientProvider client={queryClient}>
     <Router>
       <Auth0ProviderWithHistory>
-        <ThemeProvider theme={theme}>
-          <Provider store={store}>
-            <App />
-          </Provider>
+        <Provider store={store}>
+          <App />
+        </Provider>
 
-          <ToastContainer />
-        </ThemeProvider>
+        <ToastContainer />
       </Auth0ProviderWithHistory>
     </Router>
   </QueryClientProvider>,

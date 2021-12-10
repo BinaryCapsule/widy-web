@@ -2,7 +2,7 @@ import { InfiniteData, useMutation, useQueryClient } from 'react-query';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { produce } from 'immer';
-import { Toaster } from '@binarycapsule/ui-capsules';
+import { toast } from '@binarycapsule/ui-capsules';
 import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { ISO_8601_FORMAT } from '../../../utils/dates';
 import { DayDto, DaysDto } from './useDaysQuery';
@@ -42,7 +42,7 @@ export const useCreateDayMutation = () => {
     },
 
     onError: () => {
-      Toaster.error({
+      toast.error({
         title: 'Oops, something went wrong',
       });
     },

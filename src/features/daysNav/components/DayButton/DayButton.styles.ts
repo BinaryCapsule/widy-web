@@ -1,51 +1,58 @@
-import styled from '@emotion/styled/macro';
+import { styled } from '@binarycapsule/ui-capsules';
 
-export const StyledDayButton = styled.div`
-  height: 42px;
-  border-radius: 4px;
-  border: ${({ theme }) => `1px solid ${theme.colors.neutral['200']}`};
-  background: ${({ theme }) => theme.colors.bg};
-  font-size: 13px;
-  font-weight: 500;
-  color: ${props => props.theme.colors.neutral['700']};
-  padding: 0 8px 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  flex-shrink: 0;
-  user-select: none;
+export const StyledDayButton = styled('div', {
+  height: 42,
+  borderRadius: '$medium',
+  border: '1px solid $neutral200',
+  background: '$bg',
+  fontSize: '13px',
+  fontWeight: 500,
+  color: '$neutral700',
+  padding: '0 8px 0 16px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  cursor: 'pointer',
+  flexShrink: 0,
+  userSelect: 'none',
 
-  &:hover {
-    border: 1px solid ${props => props.theme.colors.blue['700']};
-  }
-`;
+  '&:hover': {
+    border: '1px solid $primary600',
+  },
+});
 
-export const Content = styled.div<{ isToday: boolean }>`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: ${({ isToday }) => isToday && '4px'};
-`;
+export const Content = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
 
-export const StyledInput = styled.input`
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+  variants: {
+    isToday: {
+      true: {
+        marginTop: '$1',
+      },
+    },
+  },
+});
 
-  &[data-focus-visible-added]:focus {
-    & ~ .day-button {
-      outline: none;
-      box-shadow: 0 0 0 4px ${props => props.theme.colors.blue['100']};
-    }
-  }
+export const StyledInput = styled('input', {
+  position: 'absolute',
+  opacity: 0,
+  cursor: 'pointer',
+  height: 0,
+  width: 0,
 
-  &:checked {
-    ~ .day-button {
-      border: ${({ theme }) => `1px solid ${theme.colors.blue['700']}`};
-      background: ${({ theme }) => theme.colors.blue['50']};
-    }
-  }
-`;
+  '&[data-focus-visible-added]:focus': {
+    '& ~ .day-button': {
+      outline: 'none',
+      boxShadow: '0 0 0 4px $colors$primary300',
+    },
+  },
+
+  '&:checked': {
+    '~ .day-button': {
+      border: '1px solid $primary600',
+      background: '$primary100',
+    },
+  },
+});

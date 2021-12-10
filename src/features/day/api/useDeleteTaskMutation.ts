@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { IDay, TaskDto } from './useDayQuery';
 import produce from 'immer';
 import { ActiveTaskDto } from './useActiveTaskQuery';
-import { Toaster } from '@binarycapsule/ui-capsules';
+import { toast } from '@binarycapsule/ui-capsules';
 
 interface DeleteTaskParams {
   task: TaskDto;
@@ -63,7 +63,7 @@ export const useDeleteTaskMutation = () => {
     },
 
     onError: (_, __, context) => {
-      Toaster.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: 'Oops, something went wrong' });
 
       if (context?.oldDay) {
         queryClient.setQueryData(dayQK, context.oldDay);

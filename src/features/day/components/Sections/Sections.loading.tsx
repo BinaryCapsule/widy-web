@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton, Wrapper } from '@binarycapsule/ui-capsules';
+import { Box, Skeleton } from '@binarycapsule/ui-capsules';
 import times from 'lodash/times';
 
 interface Props {
@@ -10,12 +10,27 @@ export const SectionsLoading: React.FC<Props> = ({ count = 3 }) => {
   return (
     <>
       {times(count).map(key => (
-        <Wrapper key={key} my="32">
-          <Skeleton width={100} height={12} circular mb="12" />
+        <Box key={key} css={{ mb: '$3' }}>
+          <Skeleton
+            circular
+            css={{
+              height: 12,
+              width: 100,
+              mb: '$3',
+            }}
+          />
+
           {times(3).map(key => (
-            <Skeleton key={key} height={32} circular mb="12" />
+            <Skeleton
+              key={key}
+              circular
+              css={{
+                height: 32,
+                mb: '$3',
+              }}
+            />
           ))}
-        </Wrapper>
+        </Box>
       ))}
     </>
   );

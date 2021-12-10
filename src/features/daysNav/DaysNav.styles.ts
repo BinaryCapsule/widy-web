@@ -1,12 +1,12 @@
-import styled from '@emotion/styled/macro';
+import { styled } from '@binarycapsule/ui-capsules';
 
-export const DaysNavWrapper = styled.div`
-  width: 254px;
-  height: 100%;
-  flex-shrink: 0;
-  padding: 48px 24px 24px;
-  background: ${props => props.theme.colors.neutral['100']};
-  border-right: 1px solid ${({ theme }) => theme.colors.neutral['200']};
-  display: flex;
-  flex-direction: column;
-`;
+export const DaysNavWrapper = styled('div', {
+  width: 254,
+  height: '100%',
+  flexShrink: 0,
+  padding: '48px 24px 24px',
+  background: '$neutral100',
+  borderRight: '1px solid $neutral200',
+  display: 'flex',
+  flexDirection: 'column',
+});

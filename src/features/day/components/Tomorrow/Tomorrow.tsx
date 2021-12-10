@@ -1,4 +1,4 @@
-import { Box, Button, Text } from '@binarycapsule/ui-capsules';
+import { Box, Button, Flex, Text } from '@binarycapsule/ui-capsules';
 import React, { useState } from 'react';
 import { useTomorrowQuery } from '../../api/useTomorrowQuery';
 import { sectionTitleMap } from '../Section/Section.constants';
@@ -39,9 +39,11 @@ export const Tomorrow = () => {
 
   return (
     <>
-      <Box my="32">
-        <SectionHeader isPlan hasTasks={tasks.length > 0}>
-          <Text fontWeight={600}>{sectionTitleMap[title as keyof typeof sectionTitleMap]}</Text>
+      <Box css={{ my: '$6' }}>
+        <SectionHeader css={{ borderBottom: tasks.length > 0 ? '1px solid $neutral300' : 'none' }}>
+          <Text css={{ fontWeight: 600 }}>
+            {sectionTitleMap[title as keyof typeof sectionTitleMap]}
+          </Text>
 
           {tasks.length > 0 && !!todayDayId && <MoveAllToPlan dayId={todayDayId} />}
         </SectionHeader>
@@ -65,20 +67,19 @@ export const Tomorrow = () => {
 
         <Button
           leftIcon="plus"
-          variant="ghost"
-          variantColor="neutral"
+          variant="ghostGray"
           onClick={() => setShowAddTask(true)}
-          mt="8"
+          css={{ mt: '$2' }}
         >
           Add task
         </Button>
       </Box>
 
-      <Box display="flex" justifyContent="center">
-        <Text variant="helper" textAlign="center">
+      <Flex justify="center">
+        <Text variant="helper" css={{ textAlign: 'center' }}>
           These tasks will be added to the plan in the next working day.
         </Text>
-      </Box>
+      </Flex>
 
       {showAddTask && <AddTask sectionId={sectionId} onClose={() => setShowAddTask(false)} />}
     </>

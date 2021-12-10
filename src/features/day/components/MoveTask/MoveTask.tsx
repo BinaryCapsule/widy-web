@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  Box,
   Button,
+  Flex,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -69,7 +69,7 @@ export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) =>
   return (
     <Modal
       isOpen
-      onRequestClose={onRequestClose}
+      onClose={onRequestClose}
       contentLabel={isLaunch ? 'Launch task' : 'Move task'}
       size="small"
     >
@@ -78,17 +78,17 @@ export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) =>
         <ModalCloseButton onClick={onRequestClose} />
 
         <ModalBody>
-          <Box display="flex" flexDirection="column">
+          <Flex direction="column">
             {sectionOpts.map(({ id, label }, index) => (
               <RadioPicker
                 key={id}
                 checked={id === selectedSectionId}
                 label={label}
                 onChange={() => formBag.setValue('sectionId', id)}
-                mb={index !== sectionOpts.length - 1 ? '16' : 0}
+                css={{ mb: index !== sectionOpts.length - 1 ? 16 : 0 }}
               />
             ))}
-          </Box>
+          </Flex>
 
           <ErrorMessage
             errors={formBag.formState.errors}
@@ -98,7 +98,7 @@ export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) =>
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost" variantColor="neutral" onClick={onRequestClose}>
+          <Button variant="ghostGray" onClick={onRequestClose}>
             Cancel
           </Button>
 

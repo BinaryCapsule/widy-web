@@ -4,7 +4,7 @@ import { httpBody } from '../../../utils/httpBody';
 import { queryKeys } from './queryKeys';
 import produce from 'immer';
 import { ITomorrow } from './useTomorrowQuery';
-import { Toaster } from '@binarycapsule/ui-capsules';
+import { toast } from '@binarycapsule/ui-capsules';
 
 interface MoveAllToPlanMutationParams {
   dayId: number | null;
@@ -52,7 +52,7 @@ export const useMoveAllToPlanMutation = ({ dayId }: MoveAllToPlanMutationParams)
     },
 
     onError: (_, __, context) => {
-      Toaster.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: 'Oops, something went wrong' });
 
       if (context?.oldTomorrow) {
         queryClient.setQueryData(tomorrowQK, context.oldTomorrow);

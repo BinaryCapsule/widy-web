@@ -53,16 +53,16 @@ export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) 
   };
 
   return (
-    <Modal isOpen onRequestClose={onClose} contentLabel="Create scope modal" size="small">
+    <Modal isOpen onClose={onClose} contentLabel="Create scope modal" size="small">
       <ModalHeader>{scope ? 'Edit scope' : 'Create new scope'}</ModalHeader>
 
       <ModalCloseButton onClick={onClose} />
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalBody>
-          {error && <Alert variant="error" message={error.message} mb="12" />}
+          {error && <Alert variant="error" message={error.message} css={{ mb: '$3' }} />}
 
-          <Box mb="12">
+          <Box css={{ mb: '$3' }}>
             <Input
               label="Name"
               {...register('name')}
@@ -83,7 +83,7 @@ export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) 
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost" variantColor="neutral" onClick={onClose}>
+          <Button variant="ghostGray" onClick={onClose}>
             Cancel
           </Button>
 

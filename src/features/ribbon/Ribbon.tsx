@@ -6,6 +6,13 @@ export const Ribbon: React.FC = () => {
   const { isActive } = useRibbon();
 
   return (
-    <Box width={12} bg={isActive ? 'yellow.400' : 'neutral.500'} height="100%" flexShrink={0} />
+    <Box
+      css={{
+        width: 12,
+        height: '100%',
+        bg: isActive ? '$yellow400' : '$neutral500',
+        flexShrink: 0,
+      }}
+    />
   );
 };

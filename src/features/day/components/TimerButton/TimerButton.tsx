@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from '@emotion/react';
 import moment from 'moment';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { TaskDto } from '../../api/useDayQuery';
@@ -14,8 +13,6 @@ interface Props {
 }
 
 export const TimerButton: React.FC<Props> = ({ task, size }) => {
-  const theme = useTheme();
-
   const { dayId } = useDayRouteParams();
 
   const { isLoading: isLoadingActiveTask, data: activeTaskData } = useActiveTaskQuery();
@@ -58,10 +55,10 @@ export const TimerButton: React.FC<Props> = ({ task, size }) => {
       onClick={handleClick}
       disabled={isUpdatingTask}
       size={size}
-      primaryColor={isActive ? theme.colors.yellow['400'] : theme.colors.neutral['300']}
-      primaryColorHover={isActive ? theme.colors.yellow['500'] : theme.colors.neutral['400']}
-      secondaryColor={isActive ? theme.colors.yellow['900'] : theme.colors.neutral['600']}
-      secondaryColorHover={isActive ? theme.colors.yellow['900'] : theme.colors.neutral['700']}
+      primaryColor="#d1d4dc"
+      secondaryColor="#6c727f"
+      primaryColorHover="#FAB8D9"
+      secondaryColorHover="#AD2167"
       aria-label={isActive ? 'Stop task' : 'Start task'}
     />
   );
