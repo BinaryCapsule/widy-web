@@ -42,8 +42,8 @@ const Home = () => {
 
       <Box css={{ flex: 1 }}>
         <Flex align="end" css={{ mb: '$2' }}>
-          <IconWidy size={isWide ? 90 : 60} yesterdayColor="#1960A6" />
-          <IconWidyText size={isWide ? 180 : 120} textColor="#1960A6" />
+          <IconWidy size={isWide ? 90 : 60} yesterdayColor="$blue600" />
+          <IconWidyText size={isWide ? 180 : 120} textColor="$blue600" css={{ ml: '$3' }} />
         </Flex>
 
         <Text size={isWide ? '7' : '5'} css={{ fontWeight: 500, mb: '$2' }}>

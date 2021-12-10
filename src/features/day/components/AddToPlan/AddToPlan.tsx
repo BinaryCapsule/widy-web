@@ -36,10 +36,11 @@ export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, css }) => {
           <IllustratedIcon
             icon="circle_add"
             onClick={handleMoveToPlan}
-            primaryColor="#d1d4dc"
-            secondaryColor="#6c727f"
-            primaryColorHover="#FAB8D9"
-            secondaryColorHover="#AD2167"
+            primaryColor="$neutral300"
+            secondaryColor="$neutral500"
+            primaryColorHover="$pink100"
+            secondaryColorHover="$pink600"
+            css={{ mx: '$1' }}
           />
         </Tooltip>
       )}

@@ -60,7 +60,7 @@ export const useMoveAllToPlanMutation = ({ dayId }: MoveAllToPlanMutationParams)
     },
 
     onSettled() {
-      queryClient.refetchQueries(dayQK, { inactive: true });
+      queryClient.refetchQueries(dayQK);
       queryClient.invalidateQueries(tomorrowQK);
     },
   });

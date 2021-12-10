@@ -99,7 +99,7 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
             {suggestions.map(({ label, hours, minutes }) => (
               <Button
                 key={label}
-                variant="ghost"
+                variant="ghostGray"
                 size="small"
                 onClick={() => {
                   setValue('hours', hours);

@@ -5,7 +5,7 @@ import { IconWidyText } from '../../icons/Widy';
 export const SplashScreen = () => {
   return (
     <Splash variant="splash">
-      <IconWidyText size={125} />
+      <IconWidyText size={125} textColor="$blue600" />
     </Splash>
   );
 };

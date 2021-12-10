@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.3.0",
-    "@binarycapsule/editor": "^2.0.4",
-    "@binarycapsule/ui-capsules": "^5.0.1",
+    "@binarycapsule/editor": "^3.0.0",
+    "@binarycapsule/ui-capsules": "^5.0.2",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.6.0",
     "@reduxjs/toolkit": "^1.6.1",

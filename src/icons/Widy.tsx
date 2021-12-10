@@ -15,25 +15,32 @@ export const IconWidy: React.FC<IconWidyProps> = ({
   yesterdayColor,
   css,
 }) => (
-  <Box css={css}>
+  <Box
+    css={{
+      svg: {
+        '.calendar-color': {
+          fill: calendarColor || 'currentColor',
+        },
+
+        '.yesterday-color': {
+          fill: yesterdayColor || 'currentColor',
+        },
+
+        '.today-color': {
+          fill: todayColor || 'currentColor',
+        },
+      },
+
+      ...css,
+    }}
+  >
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 200 200">
       <path
         className="calendar-color"
-        fill={calendarColor || 'currentColor'}
         d="M173.68 21.05h-10.52V10.53a10.53 10.53 0 1 0-21 0v10.52H57.89V10.53a10.53 10.53 0 1 0-21 0v10.52H26.32A21.13 21.13 0 0 0 5.26 42.11V179a21.06 21.06 0 0 0 21.06 21h147.36a21.06 21.06 0 0 0 21.06-21V42.11a21.06 21.06 0 0 0-21.06-21.06zm0 157.9H26.32V73.68h147.36z"
       />
-      <path
-        className="yesterday-color"
-        fill={yesterdayColor || 'currentColor'}
-        d="M41.16 99.49h51.42v51.42H41.16z"
-      />
-      <circle
-        className="today-color"
-        fill={todayColor || 'currentColor'}
-        cx="133.13"
-        cy="125.2"
-        r="25.71"
-      />
+      <path className="yesterday-color" d="M41.16 99.49h51.42v51.42H41.16z" />
+      <circle className="today-color" cx="133.13" cy="125.2" r="25.71" />
     </svg>
   </Box>
 );
@@ -44,7 +51,17 @@ interface IconWidyTextProps extends CSSProp {
 }
 
 export const IconWidyText: React.FC<IconWidyTextProps> = ({ size = 200, textColor, css }) => (
-  <Box css={css}>
+  <Box
+    css={{
+      svg: {
+        '.text-color': {
+          fill: textColor || 'currentColor',
+        },
+      },
+
+      ...css,
+    }}
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={`${size}`}

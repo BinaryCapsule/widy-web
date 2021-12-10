@@ -5,7 +5,7 @@ import { EditableTaskSummary } from './components/EditableTaskSummary/EditableTa
 import { ScopeSelection } from './components/ScopeSelection/ScopeSelection';
 import { SidebarWrapper } from './Sidebar.styles';
 import { SidebarEmpty } from './Sidebar.empty';
-// import { NotesEditor } from '../NotesEditor/NotesEditor';
+import { NotesEditor } from '../NotesEditor/NotesEditor';
 import { Timer } from '../Timer/Timer';
 import { useTomorrowQuery } from '../../api/useTomorrowQuery';
 import { AddToPlan } from '../AddToPlan/AddToPlan';
@@ -38,8 +38,7 @@ export const Sidebar = () => {
     return <SidebarEmpty />;
   }
 
-  const { id, summary } = task;
-  // const { id, summary, notes } = task;
+  const { id, summary, notes } = task;
 
   return (
     <SidebarWrapper>
@@ -53,7 +52,7 @@ export const Sidebar = () => {
 
       {dayId !== 'tomorrow' && <Timer task={task} css={{ mt: '$4' }} />}
 
-      {/*<NotesEditor taskId={id} notes={notes} css={{ mt: '$4' }} />*/}
+      <NotesEditor taskId={id} notes={notes} css={{ mt: '$4' }} />
     </SidebarWrapper>
   );
 };

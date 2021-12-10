@@ -33,11 +33,12 @@ export const Launcher: React.FC<Props> = ({ task, size, isButton }) => {
             icon="launch"
             onClick={() => setShowLaunchTaskModal(true)}
             size={size}
-            primaryColor="#d1d4dc"
-            primaryColorHover="#CCE7FF"
-            secondaryColor="#6c727f"
-            secondaryColorHover="#1960A6"
+            primaryColor="$neutral300"
+            primaryColorHover="$blue200"
+            secondaryColor="$neutral500"
+            secondaryColorHover="$blue500"
             aria-label="Launch task"
+            css={{ mx: '$1' }}
           />
         )}
       </Tooltip>

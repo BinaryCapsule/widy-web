@@ -55,11 +55,12 @@ export const TimerButton: React.FC<Props> = ({ task, size }) => {
       onClick={handleClick}
       disabled={isUpdatingTask}
       size={size}
-      primaryColor="#d1d4dc"
-      secondaryColor="#6c727f"
-      primaryColorHover="#FAB8D9"
-      secondaryColorHover="#AD2167"
+      primaryColor={isActive ? '$yellow400' : '$neutral300'}
+      primaryColorHover={isActive ? '$yellow500' : '$neutral400'}
+      secondaryColor={isActive ? '$yellow900' : '$neutral600'}
+      secondaryColorHover={isActive ? '$yellow900' : '$neutral700'}
       aria-label={isActive ? 'Stop task' : 'Start task'}
+      css={{ mx: '$1' }}
     />
   );
 };
