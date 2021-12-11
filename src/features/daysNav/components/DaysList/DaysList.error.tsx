@@ -10,7 +10,7 @@ export const DaysListError: React.FC<Props> = ({ onRetry }) => {
     <Flex direction="column">
       <Flex align="center">
         <Icon icon="exclamation_c" css={{ color: '$error600', mr: '$2' }} />
-        <Text css={{ fontWeight: 500, color: '$error600' }}>Something went wrong...</Text>
+        <Text css={{ fontWeight: 500, color: '$error600' }}>Something went wrong</Text>
       </Flex>
 
       <Box css={{ alignSelf: 'center', mt: '$3' }}>

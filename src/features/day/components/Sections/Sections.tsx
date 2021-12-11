@@ -7,6 +7,7 @@ import { useDaysQuery } from '../../../daysNav/api/useDaysQuery';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { useTaskRank } from '../../hooks/useTaskRank';
 import { getSectionTasks } from '../../utils/getSectionTasks';
+import { SectionsError } from './Sections.error';
 
 export const Sections = () => {
   const { data, isLoading, isError } = useDayQuery();
@@ -22,8 +23,7 @@ export const Sections = () => {
   }
 
   if (isError || isLoadingDaysError) {
-    // TODO ➜ Sections error state
-    return <div>Sections error</div>;
+    return <SectionsError />;
   }
 
   if (!data) {
