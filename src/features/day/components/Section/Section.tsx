@@ -38,9 +38,11 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
 
   return (
     <>
-      <Box as="section" my="32">
-        <SectionHeader isPlan={isPlan} hasTasks={tasks.length > 0}>
-          <Text fontWeight={600}>
+      <Box as="section" css={{ my: '$5' }}>
+        <SectionHeader
+          css={{ borderBottom: isPlan && tasks.length > 0 ? '1px solid $neutral300' : 'none' }}
+        >
+          <Text css={{ fontWeight: 600 }}>
             {sectionTitleMap[section.title as keyof typeof sectionTitleMap]}
           </Text>
 
@@ -63,15 +65,18 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
                     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
                       {(provided, snapshot) => (
                         <div ref={provided.innerRef} {...provided.draggableProps}>
-                          <Box position="relative" py={isPlan ? 0 : 4}>
+                          <Box css={{ position: 'relative', py: isPlan ? 0 : 4 }}>
                             <Box
-                              position="absolute"
-                              top={isPlan ? 12 : 17}
-                              left={3}
+                              css={{
+                                position: 'absolute',
+                                top: isPlan ? 12 : 17,
+                                left: 3,
+                                height: 20,
+                              }}
                               {...provided.dragHandleProps}
                               aria-label="Drag a task"
                             >
-                              <Icon icon="grip" color="neutral.400" />
+                              <Icon icon="grip" css={{ color: '$neutral400' }} />
                             </Box>
 
                             <Task
@@ -95,10 +100,9 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
 
         <Button
           leftIcon="plus"
-          variant="ghost"
-          variantColor="neutral"
+          variant="ghostGray"
           onClick={() => setShowAddTask(true)}
-          mt="8"
+          css={{ mt: '$2' }}
         >
           {isPlan ? 'Add to Plan' : 'Add task'}
         </Button>

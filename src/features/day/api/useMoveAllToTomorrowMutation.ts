@@ -3,7 +3,7 @@ import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { httpBody } from '../../../utils/httpBody';
 import { queryKeys } from './queryKeys';
 import produce from 'immer';
-import { Toaster } from '@binarycapsule/ui-capsules';
+import { toast } from '@binarycapsule/ui-capsules';
 import { useDayRouteParams } from '../hooks/useDayRouteParams';
 import { IDay } from './useDayQuery';
 
@@ -61,7 +61,7 @@ export const useMoveAllToTomorrowMutation = () => {
     },
 
     onError: (_, __, context) => {
-      Toaster.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: 'Oops, something went wrong' });
 
       if (context?.oldDay) {
         queryClient.setQueryData(dayQK, context.oldDay);

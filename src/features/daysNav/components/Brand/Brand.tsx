@@ -1,17 +1,13 @@
 import React from 'react';
-import { useTheme } from '@emotion/react';
-import { Flex } from '@binarycapsule/ui-capsules';
+import { CSSProp, Flex } from '@binarycapsule/ui-capsules';
 import { IconWidy, IconWidyText } from '../../../../icons/Widy';
-import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
 
-export const Brand: React.FC<MarginProps> = props => {
-  const theme = useTheme();
-
+export const Brand: React.FC<CSSProp> = ({ css }) => {
   return (
-    <Flex alignItems="flex-end" {...props}>
-      <IconWidy size={30} yesterdayColor={theme.colors.blue['600']} mr="8" />
+    <Flex align="end" css={css}>
+      <IconWidy size={30} yesterdayColor="$blue600" css={{ mr: '$2' }} />
 
-      <IconWidyText size={60} textColor={theme.colors.blue['600']} />
+      <IconWidyText size={60} textColor="$blue600" />
     </Flex>
   );
 };

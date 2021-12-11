@@ -1,30 +1,30 @@
-import styled from '@emotion/styled/macro';
-import { margin } from 'styled-system';
-import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
+import { styled } from '@binarycapsule/ui-capsules';
 
-interface StyledTomorrowButtonProps extends MarginProps {
-  selected: boolean;
-}
+export const StyledTomorrowButton = styled('button', {
+  height: 32,
+  borderRadius: '$medium',
+  border: '1px dashed $pink200',
+  background: '$bg',
+  fontSize: '13px',
+  fontWeight: 500,
+  color: '$pink700',
+  padding: '0 8px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  cursor: 'pointer',
+  flexShrink: 0,
+  userSelect: 'none',
 
-export const StyledTomorrowButton = styled.button<StyledTomorrowButtonProps>`
-  height: 32px;
-  border-radius: 4px;
-  border: ${({ theme }) => `1px dashed ${theme.colors.pink['200']}`};
-  background: ${({ theme, selected }) => (selected ? theme.colors.pink['50'] : theme.colors.bg)};
-  font-size: 13px;
-  font-weight: 500;
-  color: ${props => props.theme.colors.pink['700']};
-  padding: 0 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  flex-shrink: 0;
-  user-select: none;
+  '&:hover': {
+    border: '1px dashed $pink700',
+  },
 
-  &:hover {
-    border: 1px dashed ${props => props.theme.colors.pink['700']};
-  }
-
-  ${margin}
-`;
+  variants: {
+    isSelected: {
+      true: {
+        background: '$pink50',
+      },
+    },
+  },
+});

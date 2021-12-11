@@ -10,7 +10,7 @@ const Day = () => {
   useDay();
 
   return (
-    <Flex height="100%">
+    <Flex css={{ height: '100%', minWidth: 1400 }}>
       <Ribbon />
 
       <DaysNav />

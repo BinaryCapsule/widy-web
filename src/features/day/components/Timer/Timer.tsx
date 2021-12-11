@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { useActiveTaskQuery } from '../../api/useActiveTaskQuery';
 import { SectionVariant, TaskDto, useDayQuery } from '../../api/useDayQuery';
-import { Box, Flex, IconButton, Text } from '@binarycapsule/ui-capsules';
+import { Box, CSSProp, Flex, IconButton, Text } from '@binarycapsule/ui-capsules';
 import { TimerButton } from '../TimerButton/TimerButton';
 import { Time } from './components/Time/Time';
 import moment from 'moment';
 import { RegisterTime } from '../RegisterTime/RegisterTime';
-import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
 import { useActiveTaskTick } from '../../state/activeTaskSlice';
 import { Launcher } from '../Launcher/Launcher';
 
-interface Props extends MarginProps {
+interface Props extends CSSProp {
   task: TaskDto;
 }
 
-export const Timer: React.FC<Props> = ({ task, ...rest }) => {
+export const Timer: React.FC<Props> = ({ task, css }) => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const { data: activeTaskId } = useActiveTaskQuery();
@@ -39,8 +38,8 @@ export const Timer: React.FC<Props> = ({ task, ...rest }) => {
 
   return (
     <>
-      <Box {...rest}>
-        <Text variant="label" mb="4">
+      <Box css={css}>
+        <Text variant="label" css={{ mb: '$1' }}>
           Timer
         </Text>
 
@@ -49,12 +48,12 @@ export const Timer: React.FC<Props> = ({ task, ...rest }) => {
             <Launcher isButton task={task} />
           </Box>
         ) : (
-          <Flex alignItems="center">
+          <Flex align="center">
             {!task.isDone && (
               <>
                 <TimerButton task={task} size={48} />
 
-                <Box mr="12" />
+                <Box css={{ mr: '$3' }} />
               </>
             )}
 
@@ -64,13 +63,12 @@ export const Timer: React.FC<Props> = ({ task, ...rest }) => {
                   ? task.time + moment().diff(task.start, 'seconds')
                   : task.time
               }
-              mr="4"
+              css={{ mr: '$1' }}
             />
 
             {!isTaskActive && (
               <IconButton
-                variant="ghost"
-                variantColor="neutral"
+                variant="ghostGray"
                 icon="pencil"
                 onClick={() => setIsRegisterModalOpen(true)}
                 aria-label="Edit task time"

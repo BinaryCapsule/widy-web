@@ -3,7 +3,7 @@ import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { IDay, TaskDto } from './useDayQuery';
 import { queryKeys } from './queryKeys';
 import produce from 'immer';
-import { Toaster } from '@binarycapsule/ui-capsules';
+import { toast } from '@binarycapsule/ui-capsules';
 import { ITomorrow } from './useTomorrowQuery';
 import { getSectionTasks } from '../utils/getSectionTasks';
 import { RANK_BLOCK_SIZE } from '../Day.constants';
@@ -85,7 +85,7 @@ export const useMoveToPlanMutation = ({ dayId }: MoveToPlanMutationParams) => {
     },
 
     onError: (_, __, context) => {
-      Toaster.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: 'Oops, something went wrong' });
 
       if (context?.oldDay) {
         queryClient.setQueryData(dayQK, context.oldDay);

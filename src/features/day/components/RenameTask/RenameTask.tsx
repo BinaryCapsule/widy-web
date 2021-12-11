@@ -42,7 +42,7 @@ export const RenameTask: React.FC<Props> = ({ task, onRequestClose }) => {
   };
 
   return (
-    <Modal isOpen onRequestClose={onRequestClose} contentLabel="Rename a task">
+    <Modal isOpen onClose={onRequestClose} contentLabel="Rename a task">
       <ModalHeader>Rename task</ModalHeader>
 
       <ModalCloseButton onClick={onRequestClose} />
@@ -61,7 +61,7 @@ export const RenameTask: React.FC<Props> = ({ task, onRequestClose }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost" variantColor="neutral" onClick={onRequestClose}>
+          <Button variant="ghostGray" onClick={onRequestClose}>
             Cancel
           </Button>
 

@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Editor, EditorRef } from '@binarycapsule/editor';
-import { Wrapper, WrapperProps, Text } from '@binarycapsule/ui-capsules';
+import { Box, CSSProp, Text } from '@binarycapsule/ui-capsules';
 import useDebounce from 'react-use/lib/useDebounce';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { EditorWrapper } from './NotesEditor.styles';
 
-interface NotesEditorProps extends WrapperProps {
+interface NotesEditorProps extends CSSProp {
   taskId: number;
   notes: string;
 }
 
-export const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, ...rest }) => {
+export const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, css }) => {
   const editorRef = React.useRef<EditorRef>(null);
 
   const { mutateAsync: updateTask } = useUpdateTaskMutation();
@@ -45,8 +45,8 @@ export const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, ...rest
   );
 
   return (
-    <Wrapper {...rest}>
-      <Text variant="label" mb="4">
+    <Box css={css}>
+      <Text variant="label" css={{ mb: '$1' }}>
         Notes
       </Text>
 
@@ -58,6 +58,6 @@ export const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, ...rest
           onChange={val => setValue(val)}
         />
       </EditorWrapper>
-    </Wrapper>
+    </Box>
   );
 };

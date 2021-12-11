@@ -1,11 +1,10 @@
-import { Box } from '@binarycapsule/ui-capsules';
-import styled from '@emotion/styled/macro';
+import { Box, styled } from '@binarycapsule/ui-capsules';
 
-export const EditorWrapper = styled(Box)(({ theme }) => ({
+export const EditorWrapper = styled(Box, {
   width: '100%',
   height: '100%',
   flex: 1,
-  border: `1px solid ${theme.colors.neutral['400']}`,
+  border: '1px solid $neutral400',
   borderRadius: 4,
   overflow: 'hidden',
   minHeight: 250,
@@ -13,10 +12,10 @@ export const EditorWrapper = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
 
   '&:hover': {
-    background: theme.colors.neutral['50'],
+    background: '$neutral50',
   },
 
   '.ProseMirror': {
     flex: 1,
   },
-}));
+});

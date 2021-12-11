@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
-import { Icon, IconButton, Menu, MenuItem } from '@binarycapsule/ui-capsules';
+import {
+  Flex,
+  Icon,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  styled,
+} from '@binarycapsule/ui-capsules';
 import { TaskDto } from '../../api/useDayQuery';
 import { RenameTask } from '../RenameTask/RenameTask';
 import { DeleteTask } from '../DeleteTask/DeleteTask';
-import { TaskVariant } from '../Task/Task.styles';
 import { RegisterTime } from '../RegisterTime/RegisterTime';
 import { MoveTask } from '../MoveTask/MoveTask';
 import { useMoveToTomorrowMutation } from '../../api/useMoveToTomorrowMutation';
+import { TaskVariant } from '../Task/Task.styles';
+
+const Trigger = styled(IconButton, {
+  '&[data-reach-menu-button][aria-expanded="true"]': {
+    bg: '$neutral200',
+  },
+});
 
 interface Props {
   task: TaskDto;
@@ -32,51 +47,89 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
 
   return (
     <>
-      <Menu
-        trigger={
-          <IconButton
-            icon="dots_h"
-            variant="ghost"
-            variantColor="neutral"
-            size="small"
-            aria-label="Task menu"
-            ml="4"
-          />
-        }
-      >
-        <MenuItem text="Rename" leftIcon="pencil" onClick={() => setShowRenameTask(true)} />
-
-        {canRegisterTime ? (
-          <MenuItem
-            text="Register Time"
-            leftIcon="clock"
-            onClick={() => setShowRegisterTime(true)}
-          />
-        ) : null}
-
-        {canMoveToTomorrow ? (
-          <MenuItem
-            text="Move to Tomorrow"
-            leftIcon="calendar"
-            onClick={async () => {
-              try {
-                await moveToTomorrow({ task });
-              } catch (err) {
-                console.error(err);
-              }
-            }}
-          />
-        ) : null}
-
-        {canMove ? (
-          <MenuItem text="Move" leftIcon="switch_v" onClick={() => setShowMoveTask(true)} />
-        ) : null}
-
-        <MenuItem
-          text="Delete"
-          leftAddon={<Icon icon="trash" color="error.500" size={18} />}
-          onClick={() => setShowDeleteTask(true)}
+      <Menu>
+        <MenuButton
+          as={Trigger}
+          icon="dots_h"
+          variant="ghostGray"
+          size="small"
+          aria-label="Task menu"
         />
+        <MenuList>
+          <MenuItem onSelect={() => setShowRenameTask(true)}>
+            <Flex align="center">
+              <Icon
+                icon="pencil"
+                size={18}
+                variant="outline"
+                css={{ color: '$neutral500', mr: '$2' }}
+              />
+              Rename
+            </Flex>
+          </MenuItem>
+
+          {canRegisterTime && (
+            <MenuItem onSelect={() => setShowRegisterTime(true)}>
+              <Flex align="center">
+                <Icon
+                  icon="clock"
+                  size={18}
+                  variant="outline"
+                  css={{ color: '$neutral500', mr: '$2' }}
+                />
+                Register Time
+              </Flex>
+            </MenuItem>
+          )}
+
+          {canMoveToTomorrow && (
+            <MenuItem
+              onSelect={async () => {
+                try {
+                  await moveToTomorrow({ task });
+                } catch (err) {
+                  console.error(err);
+                }
+              }}
+            >
+              <Flex align="center">
+                <Icon
+                  icon="calendar"
+                  size={18}
+                  variant="outline"
+                  css={{ color: '$neutral500', mr: '$2' }}
+                />
+                Move to Tomorrow
+              </Flex>
+            </MenuItem>
+          )}
+
+          {canMove && (
+            <MenuItem onSelect={() => setShowMoveTask(true)}>
+              <Flex align="center">
+                <Icon
+                  icon="switch_v"
+                  size={18}
+                  variant="outline"
+                  css={{ color: '$neutral500', mr: '$2' }}
+                />
+                Move
+              </Flex>
+            </MenuItem>
+          )}
+
+          <MenuItem onSelect={() => setShowDeleteTask(true)}>
+            <Flex align="center">
+              <Icon
+                icon="trash"
+                size={18}
+                variant="outline"
+                css={{ color: '$error500', mr: '$2' }}
+              />
+              Delete
+            </Flex>
+          </MenuItem>
+        </MenuList>
       </Menu>
 
       {showRenameTask && <RenameTask task={task} onRequestClose={() => setShowRenameTask(false)} />}

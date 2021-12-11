@@ -1,14 +1,13 @@
 import React from 'react';
-import { Box, EditableInput } from '@binarycapsule/ui-capsules';
+import { Box, CSSProp, EditableInput } from '@binarycapsule/ui-capsules';
 import { useUpdateTaskMutation } from '../../../../api/useUpdateTaskMutation';
-import { MarginProps } from '@binarycapsule/ui-capsules/dist/styledProps';
 
-interface Props extends MarginProps {
+interface Props extends CSSProp {
   taskId: number;
   summary: string;
 }
 
-export const EditableTaskSummary: React.FC<Props> = ({ taskId, summary, ...rest }) => {
+export const EditableTaskSummary: React.FC<Props> = ({ taskId, summary, css }) => {
   const { mutateAsync: updateTask } = useUpdateTaskMutation();
 
   const handleInputChange = async (summary: string) => {
@@ -20,7 +19,7 @@ export const EditableTaskSummary: React.FC<Props> = ({ taskId, summary, ...rest 
   };
 
   return (
-    <Box {...rest}>
+    <Box css={css}>
       <EditableInput size="large" value={summary} action={handleInputChange} />
     </Box>
   );

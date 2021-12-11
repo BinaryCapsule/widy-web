@@ -7,22 +7,14 @@ interface Props {
 
 export const DaysListError: React.FC<Props> = ({ onRetry }) => {
   return (
-    <Flex flexDirection="column">
-      <Flex alignItems="center">
-        <Icon icon="exclamation_c" mr="8" color="error.600" />
-        <Text fontWeight={500} color="red.600">
-          Something went wrong...
-        </Text>
+    <Flex direction="column">
+      <Flex align="center">
+        <Icon icon="exclamation_c" css={{ color: '$error600', mr: '$2' }} />
+        <Text css={{ fontWeight: 500, color: '$error600' }}>Something went wrong...</Text>
       </Flex>
 
-      <Box alignSelf="center" mt="12">
-        <Button
-          onClick={onRetry}
-          variant="ghost"
-          variantColor="neutral"
-          leftIcon="refresh"
-          size="small"
-        >
+      <Box css={{ alignSelf: 'center', mt: '$3' }}>
+        <Button onClick={onRetry} variant="ghostGray" leftIcon="refresh" size="small">
           Retry
         </Button>
       </Box>

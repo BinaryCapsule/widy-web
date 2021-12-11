@@ -7,7 +7,15 @@ export const BoardTitle = () => {
   const { data, isLoading, isIdle, isError } = useDayQuery();
 
   if (isLoading) {
-    return <Skeleton height={16} width={100} circular />;
+    return (
+      <Skeleton
+        circular
+        css={{
+          height: 16,
+          width: 100,
+        }}
+      />
+    );
   }
 
   if (isIdle || isError || !data) {
@@ -21,8 +29,8 @@ export const BoardTitle = () => {
   const { day: dayString } = day;
 
   return (
-    <Flex alignItems="baseline">
-      <Text fontSize="h5" fontWeight={500} mr="4">
+    <Flex align="baseline">
+      <Text size={5} css={{ fontWeight: 500, mr: '$1' }}>
         {`${moment(dayString).format('ddd DD')}`}
       </Text>
       <Text>{`${moment(dayString).format('MMM YYYY')}`}</Text>

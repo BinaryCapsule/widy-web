@@ -1,16 +1,15 @@
-import styled from '@emotion/styled/macro';
-import { Box } from '@binarycapsule/ui-capsules';
+import { Box, styled } from '@binarycapsule/ui-capsules';
 
-export const SectionEmpty = styled(Box)(({ theme }) => ({
+export const SectionEmpty = styled(Box, {
   width: '100%',
   height: 96,
-  color: theme.colors.neutral['500'],
+  color: '$neutral500',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: theme.colors.bg,
-  fontSize: theme.fontSizes.body,
+  backgroundColor: '$bg',
+  fontSize: 'body',
   transition: 'background-color 0.2s ease',
-  border: `1px solid ${theme.colors.neutral['300']}`,
-  borderRadius: theme.radii.medium,
-}));
+  border: '1px solid $neutral300',
+  borderRadius: '$medium',
+});

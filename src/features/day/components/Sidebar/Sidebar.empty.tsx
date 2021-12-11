@@ -6,10 +6,16 @@ import { IllustrationTodoList } from '../../../../img/IllustrationTodoList';
 export const SidebarEmpty = () => {
   return (
     <SidebarWrapper>
-      <Flex flexDirection="column" alignItems="center" mt="48">
+      <Flex direction="column" align="center" css={{ mt: '$8' }}>
         <IllustrationTodoList />
 
-        <Text fontWeight={500} color="neutral.500" mt="24">
+        <Text
+          css={{
+            fontWeight: 500,
+            color: '$neutral500',
+            mt: '$5',
+          }}
+        >
           Select a task to see more info here
         </Text>
       </Flex>

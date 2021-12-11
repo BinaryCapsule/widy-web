@@ -6,7 +6,7 @@ import { useDayRouteParams } from '../hooks/useDayRouteParams';
 import { queryKeys } from './queryKeys';
 import produce from 'immer';
 import { ActiveTaskDto } from './useActiveTaskQuery';
-import { Toaster } from '@binarycapsule/ui-capsules';
+import { toast } from '@binarycapsule/ui-capsules';
 
 interface UpdateTaskParams {
   taskId: number;
@@ -75,7 +75,7 @@ export const useUpdateTaskMutation = () => {
     },
 
     onError: (_, __, context) => {
-      Toaster.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: 'Oops, something went wrong' });
 
       if (context?.oldDay) {
         queryClient.setQueryData(dayQK, context.oldDay);

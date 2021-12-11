@@ -1,9 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { css, Global } from '@emotion/react';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { SplashScreen } from './components/SplashScreen/SplashScreen';
+import { useGlobalStyles } from '@binarycapsule/ui-capsules';
 
 const onRedirecting = () => {
   return <SplashScreen />;
@@ -15,6 +15,8 @@ const Day = lazy(() => import('./features/day/Day'));
 
 export const App = () => {
   const { isLoading, error } = useAuth0();
+
+  useGlobalStyles();
 
   if (error) {
     return <div>Oops... {error.message}</div>;
@@ -34,19 +36,6 @@ export const App = () => {
           component={withAuthenticationRequired(Day, { onRedirecting })}
         />
       </Switch>
-
-      <Global
-        styles={css`
-          html {
-            height: 100%;
-          }
-
-          body,
-          #root {
-            height: 100%;
-          }
-        `}
-      />
 
       <ReactQueryDevtools initialIsOpen={false} />
     </Suspense>

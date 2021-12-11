@@ -18,8 +18,7 @@ export const MoveAllToTomorrow = () => {
   return (
     <Button
       onClick={() => handleMoveAllToTomorrow()}
-      variant="ghost"
-      variantColor="neutral"
+      variant="ghostGray"
       leftIcon="calendar"
       iconVariant="outline"
     >

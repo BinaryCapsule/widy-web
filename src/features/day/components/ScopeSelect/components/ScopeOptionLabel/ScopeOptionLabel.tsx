@@ -8,12 +8,12 @@ interface Props {
 
 export const ScopeOptionLabel: React.FC<Props> = ({ label, shortCode }) => {
   return (
-    <Flex alignItems="baseline" width="100%">
-      <Box flex={1}>
+    <Flex align="baseline" css={{ width: '100%' }}>
+      <Box css={{ flex: 1 }}>
         <TruncatedText mr="4">{label}&nbsp;</TruncatedText>
       </Box>
 
-      <Text variant="smallCaps" mr="8">
+      <Text variant="smallCaps" css={{ mr: '$2' }}>
         {shortCode}
       </Text>
     </Flex>

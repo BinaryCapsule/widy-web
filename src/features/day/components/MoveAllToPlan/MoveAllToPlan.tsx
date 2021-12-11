@@ -18,12 +18,7 @@ export const MoveAllToPlan: React.FC<Props> = ({ dayId }) => {
   };
 
   return (
-    <Button
-      onClick={() => handleMoveAllToPlan()}
-      variant="ghost"
-      variantColor="neutral"
-      leftIcon="plus_c"
-    >
+    <Button onClick={() => handleMoveAllToPlan()} variant="ghostGray" leftIcon="plus_c">
       Add all to Plan
     </Button>
   );
