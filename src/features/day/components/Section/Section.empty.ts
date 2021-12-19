@@ -8,8 +8,9 @@ export const SectionEmpty = styled(Box, {
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: '$bg',
-  fontSize: 'body',
+  fontSize: '$1',
   transition: 'background-color 0.2s ease',
   border: '1px solid $neutral300',
   borderRadius: '$medium',
+  userSelect: 'none',
 });
