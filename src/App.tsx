@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { SplashScreen } from './components/SplashScreen/SplashScreen';
 import { useGlobalStyles } from '@binarycapsule/ui-capsules';
+import { NoInternet } from './components/NoInternet/NoInternet';
 
 const onRedirecting = () => {
   return <SplashScreen />;
@@ -36,6 +37,8 @@ export const App = () => {
           component={withAuthenticationRequired(Day, { onRedirecting })}
         />
       </Switch>
+
+      <NoInternet />
 
       <ReactQueryDevtools initialIsOpen={false} />
     </Suspense>

@@ -1,8 +1,9 @@
 import React from 'react';
+import moment from 'moment';
+import { useHistory } from 'react-router-dom';
+import { Box, Checkbox, toast } from '@binarycapsule/ui-capsules';
 import { TaskDto } from '../../api/useDayQuery';
 import { StyledTask, TaskSummary, TaskVariant } from './Task.styles';
-import { Box, Checkbox, toast } from '@binarycapsule/ui-capsules';
-import { useHistory } from 'react-router-dom';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { TimerButton } from '../TimerButton/TimerButton';
@@ -27,13 +28,24 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
 
   const { mutateAsync: updateTask, isLoading: isUpdatingTask } = useUpdateTaskMutation();
 
-  const toggleTaskDone = async (payload: Partial<TaskDto>) => {
+  const toggleTaskDone = async () => {
     if (isUpdatingTask) {
       return;
     }
 
     try {
-      await updateTask({ taskId: task.id, payload });
+      await updateTask({
+        taskId: task.id,
+        payload: {
+          isDone: !task.isDone,
+          ...(task.start
+            ? {
+                start: null,
+                time: task.time + moment.utc().diff(task.start, 'seconds'),
+              }
+            : {}),
+        },
+      });
     } catch {
       toast.error({ title: 'Oops, something went wrong' });
     }
@@ -57,7 +69,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
         <Checkbox
           size="large"
           checked={task.isDone}
-          onChange={() => toggleTaskDone({ isDone: !task.isDone })}
+          onChange={toggleTaskDone}
           aria-label={task.isDone ? 'Mark task as todo' : 'Mark task as done'}
           disabled={isUpdatingTask}
         />
