@@ -69,7 +69,7 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
                             <Box
                               css={{
                                 position: 'absolute',
-                                top: isPlan ? 12 : 17,
+                                top: isPlan ? 12 : 16,
                                 left: 3,
                                 height: 20,
                               }}

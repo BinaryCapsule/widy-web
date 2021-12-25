@@ -2,9 +2,12 @@ import React from 'react';
 import { Flex, Skeleton, Text } from '@binarycapsule/ui-capsules';
 import moment from 'moment';
 import { useDayQuery } from '../../api/useDayQuery';
+import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 
 export const BoardTitle = () => {
   const { data, isLoading, isIdle, isError } = useDayQuery();
+
+  const { dayId } = useDayRouteParams();
 
   if (isLoading) {
     return (
@@ -15,6 +18,14 @@ export const BoardTitle = () => {
           width: 100,
         }}
       />
+    );
+  }
+
+  if (dayId === 'tomorrow') {
+    return (
+      <Text as="h1" size={5} css={{ fontWeight: 500 }}>
+        Tomorrow
+      </Text>
     );
   }
 

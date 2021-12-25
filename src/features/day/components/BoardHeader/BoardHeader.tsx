@@ -11,7 +11,6 @@ import {
 } from '@binarycapsule/ui-capsules';
 import { useAuth0 } from '@auth0/auth0-react';
 import { BoardTitle } from '../BoardTitle/BoardTitle';
-import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 
 export const Wrapper = styled('header', {
   paddingTop: 48,
@@ -29,8 +28,6 @@ const Trigger = styled(Button, {
 });
 
 export const BoardHeader = () => {
-  const { dayId } = useDayRouteParams();
-
   const { logout } = useAuth0();
 
   const logoutWithRedirect = () =>
@@ -41,7 +38,7 @@ export const BoardHeader = () => {
   return (
     <Wrapper as="header">
       <Flex align="center" justify="between">
-        {dayId === 'tomorrow' ? <div /> : <BoardTitle />}
+        <BoardTitle />
 
         <Flex>
           <Button

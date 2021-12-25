@@ -8,7 +8,7 @@ export const SectionEmpty = styled(Box, {
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: '$bg',
-  fontSize: '$1',
+  fontSize: '$2',
   transition: 'background-color 0.2s ease',
   border: '1px solid $neutral300',
   borderRadius: '$medium',

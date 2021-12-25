@@ -69,7 +69,7 @@ export const useMoveAllToTomorrowMutation = () => {
     },
 
     onSettled() {
-      queryClient.refetchQueries(tomorrowQK, { inactive: true });
+      queryClient.invalidateQueries(tomorrowQK, { refetchInactive: true });
       queryClient.invalidateQueries(dayQK);
     },
   });
