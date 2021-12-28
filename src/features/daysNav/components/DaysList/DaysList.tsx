@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, useRouteMatch } from 'react-router-dom';
 import moment from 'moment';
 import { useDaysQuery } from '../../api/useDaysQuery';
 import { Button, Flex } from '@binarycapsule/ui-capsules';
@@ -10,6 +10,8 @@ import { DaysListError } from './DaysList.error';
 
 export const DaysList: React.FC = () => {
   const { dayId } = useParams<{ dayId?: string }>();
+
+  const reportRouteMatch = useRouteMatch('/report');
 
   const {
     data,
@@ -55,7 +57,9 @@ export const DaysList: React.FC = () => {
                 key={id}
                 isSelected={dayId === id.toString()}
                 isToday={isToday(day)}
-                onClick={() => history.push(`/day/${id}`)}
+                onClick={() => {
+                  !!reportRouteMatch ? history.push(`/report/${id}`) : history.push(`/day/${id}`);
+                }}
               >
                 {moment(day).format('ddd DD MMM YYYY')}
               </DayButton>

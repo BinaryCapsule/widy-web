@@ -7,6 +7,7 @@ import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { ISO_8601_FORMAT } from '../../../utils/dates';
 import { DayDto, DaysDto } from './useDaysQuery';
 import { queryKeys } from './queryKeys';
+import { GENERIC_ERROR_MSG } from '../../../constants';
 
 export const useCreateDayMutation = () => {
   const { authFetch } = useAuthFetch();
@@ -43,7 +44,7 @@ export const useCreateDayMutation = () => {
 
     onError: () => {
       toast.error({
-        title: 'Oops, something went wrong',
+        title: GENERIC_ERROR_MSG,
       });
     },
   });

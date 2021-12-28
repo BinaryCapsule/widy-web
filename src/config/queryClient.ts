@@ -30,4 +30,5 @@ export const queryClient = new QueryClient({
 export enum Feature {
   Days = 'Days',
   Day = 'Day',
+  Reports = 'Reports',
 }

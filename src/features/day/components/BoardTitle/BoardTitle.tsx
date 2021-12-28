@@ -1,8 +1,9 @@
 import React from 'react';
-import { Flex, Skeleton, Text } from '@binarycapsule/ui-capsules';
+import { Skeleton } from '@binarycapsule/ui-capsules';
 import moment from 'moment';
 import { useDayQuery } from '../../api/useDayQuery';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
+import { PageTitle } from '../../../../components/PageTitle/PageTitle';
 
 export const BoardTitle = () => {
   const { data, isLoading, isIdle, isError } = useDayQuery();
@@ -22,11 +23,7 @@ export const BoardTitle = () => {
   }
 
   if (dayId === 'tomorrow') {
-    return (
-      <Text as="h1" size={5} css={{ fontWeight: 500 }}>
-        Tomorrow
-      </Text>
-    );
+    return <PageTitle subTitle="Plan your next work day">Tomorrow</PageTitle>;
   }
 
   if (isIdle || isError || !data) {
@@ -40,11 +37,8 @@ export const BoardTitle = () => {
   const { day: dayString } = day;
 
   return (
-    <Flex align="baseline">
-      <Text size={5} css={{ fontWeight: 500, mr: '$1' }}>
-        {`${moment(dayString).format('ddd DD')}`}
-      </Text>
-      <Text>{`${moment(dayString).format('MMM YYYY')}`}</Text>
-    </Flex>
+    <PageTitle subTitle={`${moment(dayString).format('MMMM YYYY')}`}>
+      {`${moment(dayString).format('dddd DD')}`}
+    </PageTitle>
   );
 };
