@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@binarycapsule/ui-capsules';
+import { Button, Splash } from '@binarycapsule/ui-capsules';
 import { useMoveAllToPlanMutation } from '../../api/useMoveAllToPlanMutation';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const MoveAllToPlan: React.FC<Props> = ({ dayId }) => {
-  const { mutateAsync: moveAllToPlan } = useMoveAllToPlanMutation({ dayId });
+  const { mutateAsync: moveAllToPlan, isLoading } = useMoveAllToPlanMutation({ dayId });
 
   const handleMoveAllToPlan = async () => {
     try {
@@ -16,6 +16,10 @@ export const MoveAllToPlan: React.FC<Props> = ({ dayId }) => {
       console.error(error);
     }
   };
+
+  if (isLoading) {
+    return <Splash variant="spinner">Adding to Plan</Splash>;
+  }
 
   return (
     <Button onClick={() => handleMoveAllToPlan()} variant="ghostGray" leftIcon="plus_c">

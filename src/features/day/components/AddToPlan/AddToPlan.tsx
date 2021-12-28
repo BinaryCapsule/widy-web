@@ -10,7 +10,7 @@ interface Props extends CSSProp {
 }
 
 export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, css }) => {
-  const { mutateAsync: moveToPlan } = useMoveToPlanMutation({ dayId });
+  const { mutateAsync: moveToPlan, isLoading } = useMoveToPlanMutation({ dayId });
 
   const handleMoveToPlan = async () => {
     try {
@@ -27,7 +27,12 @@ export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, css }) => {
           <Text variant="label" css={{ mb: '$1' }}>
             Timer
           </Text>
-          <Button variant="ghostGray" leftIcon="plus_c" onClick={handleMoveToPlan}>
+          <Button
+            variant="ghostGray"
+            leftIcon="plus_c"
+            onClick={handleMoveToPlan}
+            isLoading={isLoading}
+          >
             Add to Plan
           </Button>
         </Flex>
@@ -40,7 +45,12 @@ export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, css }) => {
             secondaryColor="$neutral500"
             primaryColorHover="$pink100"
             secondaryColorHover="$pink600"
-            css={{ mx: '$1' }}
+            disabled={isLoading}
+            css={{
+              mx: '$1',
+              opacity: isLoading ? 0.5 : 1,
+              pointerEvents: isLoading ? 'none' : 'initial',
+            }}
           />
         </Tooltip>
       )}

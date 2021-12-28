@@ -1,11 +1,12 @@
 import React from 'react';
-import { Button } from '@binarycapsule/ui-capsules';
+import { Button, Splash } from '@binarycapsule/ui-capsules';
 import { useMoveAllToTomorrowMutation } from '../../api/useMoveAllToTomorrowMutation';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 
 export const MoveAllToTomorrow = () => {
   const { dayId } = useDayRouteParams();
-  const { mutateAsync: moveAllToTomorrow } = useMoveAllToTomorrowMutation();
+
+  const { mutateAsync: moveAllToTomorrow, isLoading } = useMoveAllToTomorrowMutation();
 
   const handleMoveAllToTomorrow = async () => {
     try {
@@ -14,6 +15,10 @@ export const MoveAllToTomorrow = () => {
       console.error(error);
     }
   };
+
+  if (isLoading) {
+    return <Splash variant="spinner">Moving to Tomorrow</Splash>;
+  }
 
   return (
     <Button

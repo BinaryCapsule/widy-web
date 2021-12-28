@@ -14,6 +14,8 @@ const Home = lazy(() => import('./features/landing/Home'));
 
 const Day = lazy(() => import('./features/day/Day'));
 
+const Report = lazy(() => import('./features/report/Report'));
+
 export const App = () => {
   const { isLoading, error } = useAuth0();
 
@@ -36,6 +38,7 @@ export const App = () => {
           path="/day/:dayId?/:taskId?"
           component={withAuthenticationRequired(Day, { onRedirecting })}
         />
+        <Route exact path="/report/:dayId" component={Report} />
       </Switch>
 
       <NoInternet />

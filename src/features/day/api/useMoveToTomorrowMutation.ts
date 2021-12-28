@@ -8,6 +8,7 @@ import { toast } from '@binarycapsule/ui-capsules';
 import { ITomorrow } from './useTomorrowQuery';
 import { getSectionTasks } from '../utils/getSectionTasks';
 import { RANK_BLOCK_SIZE } from '../Day.constants';
+import { GENERIC_ERROR_MSG } from '../../../constants';
 
 interface MoveToTomorrowParams {
   task: TaskDto;
@@ -78,7 +79,7 @@ export const useMoveToTomorrowMutation = () => {
     },
 
     onError: (_, __, context) => {
-      toast.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: GENERIC_ERROR_MSG });
 
       if (context?.oldDay) {
         queryClient.setQueryData(dayQK, context.oldDay);
@@ -89,7 +90,7 @@ export const useMoveToTomorrowMutation = () => {
       }
     },
 
-    onSettled: () => {
+    onSuccess: () => {
       queryClient.invalidateQueries(dayQK);
       queryClient.refetchQueries(tomorrowQK, { inactive: true });
     },

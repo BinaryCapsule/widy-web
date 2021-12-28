@@ -7,6 +7,7 @@ import { queryKeys } from './queryKeys';
 import produce from 'immer';
 import { ActiveTaskDto } from './useActiveTaskQuery';
 import { toast } from '@binarycapsule/ui-capsules';
+import { GENERIC_ERROR_MSG } from '../../../constants';
 
 interface UpdateTaskParams {
   taskId: number;
@@ -75,7 +76,7 @@ export const useUpdateTaskMutation = () => {
     },
 
     onError: (_, __, context) => {
-      toast.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: GENERIC_ERROR_MSG });
 
       if (context?.oldDay) {
         queryClient.setQueryData(dayQK, context.oldDay);

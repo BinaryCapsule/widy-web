@@ -26,7 +26,6 @@ export const useCreateTaskMutation = () => {
     return authFetch('/api/tasks', {
       method: 'POST',
       ...httpBody({
-        dayId: dayId === 'tomorrow' ? undefined : dayId,
         sectionId,
         summary,
         rank,

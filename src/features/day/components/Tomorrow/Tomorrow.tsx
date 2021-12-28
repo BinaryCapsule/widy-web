@@ -1,7 +1,6 @@
 import { Box, Button, Flex, Text } from '@binarycapsule/ui-capsules';
 import React, { useState } from 'react';
 import { useTomorrowQuery } from '../../api/useTomorrowQuery';
-import { sectionTitleMap } from '../Section/Section.constants';
 import { SectionEmpty } from '../Section/Section.empty';
 import { SectionHeader } from '../Section/Section.styles';
 import { AddTask } from '../AddTask/AddTask';
@@ -31,22 +30,20 @@ export const Tomorrow = () => {
 
   const { entities, result: sectionId } = data;
 
-  const tomorrow = entities.tomorrow[sectionId];
-
-  const { title } = tomorrow;
-
   const tasks = getSectionTasks(sectionId, entities.tasks);
 
   return (
     <>
       <Box css={{ my: '$6' }}>
-        <SectionHeader css={{ borderBottom: tasks.length > 0 ? '1px solid $neutral300' : 'none' }}>
-          <Text css={{ fontWeight: 600 }}>
-            {sectionTitleMap[title as keyof typeof sectionTitleMap]}
-          </Text>
+        {tasks.length > 0 && !!todayDayId && (
+          <SectionHeader
+            css={{ borderBottom: tasks.length > 0 ? '1px solid $neutral300' : 'none' }}
+          >
+            <div />
 
-          {tasks.length > 0 && !!todayDayId && <MoveAllToPlan dayId={todayDayId} />}
-        </SectionHeader>
+            <MoveAllToPlan dayId={todayDayId} />
+          </SectionHeader>
+        )}
 
         {tasks.length === 0 ? (
           <SectionEmpty>No tasks</SectionEmpty>

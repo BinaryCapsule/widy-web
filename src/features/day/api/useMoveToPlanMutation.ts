@@ -1,13 +1,12 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useAuthFetch } from '../../../utils/useAuthFetch';
-import { IDay, TaskDto } from './useDayQuery';
+import { TaskDto } from './useDayQuery';
 import { queryKeys } from './queryKeys';
-import produce from 'immer';
-import { toast } from '@binarycapsule/ui-capsules';
-import { ITomorrow } from './useTomorrowQuery';
-import { getSectionTasks } from '../utils/getSectionTasks';
-import { RANK_BLOCK_SIZE } from '../Day.constants';
 import { httpBody } from '../../../utils/httpBody';
+import { toast } from '@binarycapsule/ui-capsules';
+import { GENERIC_ERROR_MSG } from '../../../constants';
+import { produce } from 'immer';
+import { ITomorrow } from './useTomorrowQuery';
 
 interface MoveToPlanParams {
   task: TaskDto;
@@ -31,18 +30,12 @@ export const useMoveToPlanMutation = ({ dayId }: MoveToPlanMutationParams) => {
   };
 
   return useMutation(moveToPlan, {
-    onMutate: async ({ task, dayId }: MoveToPlanParams) => {
-      await queryClient.cancelQueries(dayQK);
-      await queryClient.cancelQueries(tomorrowQK);
-
-      const oldDay = queryClient.getQueryData<IDay>(dayQK);
-      const oldTomorrow = queryClient.getQueryData<ITomorrow>(tomorrowQK);
-
+    onSuccess({ id }) {
       queryClient.setQueryData<ITomorrow | undefined>(tomorrowQK, old => {
         if (old) {
           return produce(old, draft => {
             if (draft.entities.tasks) {
-              delete draft.entities.tasks[task.id];
+              delete draft.entities.tasks[id];
             }
           });
         }
@@ -50,55 +43,11 @@ export const useMoveToPlanMutation = ({ dayId }: MoveToPlanMutationParams) => {
         return old;
       });
 
-      queryClient.setQueryData<IDay | undefined>(dayQK, old => {
-        if (old) {
-          const {
-            entities: { tasks, sections },
-          } = old;
-
-          const planSection = Object.values(sections).find(({ variant }) => variant === 'plan');
-
-          if (planSection) {
-            const sortedTasks = getSectionTasks(planSection.id, tasks);
-
-            const newRank =
-              RANK_BLOCK_SIZE +
-              (sortedTasks.length > 0 ? sortedTasks[sortedTasks.length - 1].rank : 0);
-
-            return produce(old, draft => {
-              if (draft.entities.tasks) {
-                draft.entities.tasks[task.id] = {
-                  ...task,
-                  dayId,
-                  sectionId: planSection.id,
-                  rank: newRank,
-                };
-              }
-            });
-          }
-        }
-
-        return old;
-      });
-
-      return { oldDay, oldTomorrow };
-    },
-
-    onError: (_, __, context) => {
-      toast.error({ title: 'Oops, something went wrong' });
-
-      if (context?.oldDay) {
-        queryClient.setQueryData(dayQK, context.oldDay);
-      }
-
-      if (context?.oldTomorrow) {
-        queryClient.setQueryData(tomorrowQK, context.oldTomorrow);
-      }
-    },
-
-    onSettled: () => {
       queryClient.refetchQueries(dayQK, { inactive: true });
-      queryClient.invalidateQueries(tomorrowQK);
+    },
+
+    onError() {
+      toast.error({ title: GENERIC_ERROR_MSG });
     },
   });
 };

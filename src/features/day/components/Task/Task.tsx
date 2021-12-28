@@ -12,6 +12,7 @@ import { Launcher } from '../Launcher/Launcher';
 import { TaskMenu } from '../TaskMenu/TaskMenu';
 import { TaskScope } from '../TaskScope/TaskScope';
 import { AddToPlan } from '../AddToPlan/AddToPlan';
+import { GENERIC_ERROR_MSG } from '../../../../constants';
 
 interface Props {
   task: TaskDto;
@@ -47,7 +48,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
         },
       });
     } catch {
-      toast.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: GENERIC_ERROR_MSG });
     }
   };
 

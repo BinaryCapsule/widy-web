@@ -16,6 +16,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormValues, suggestions, validationSchema } from './RegisterTime.meta';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { TaskDto } from '../../api/useDayQuery';
+import { GENERIC_ERROR_MSG } from '../../../../constants';
 
 interface Props {
   task: TaskDto;
@@ -49,7 +50,7 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
     } catch (err) {
       console.error(err);
 
-      toast.error({ title: 'Oops, something went wrong' });
+      toast.error({ title: GENERIC_ERROR_MSG });
     }
   };
 
