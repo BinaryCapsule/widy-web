@@ -3,7 +3,7 @@ import { toast } from '@binarycapsule/ui-capsules';
 import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { httpBody } from '../../../utils/httpBody';
 import { queryKeys } from './queryKeys';
-import { GENERIC_ERROR_MSG } from '../../../constants';
+import { GENERIC_ERROR_MSG } from '../../../common/constants';
 
 interface MoveAllToPlanMutationParams {
   dayId: number | null;

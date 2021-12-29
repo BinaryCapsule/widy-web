@@ -16,7 +16,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormValues, suggestions, validationSchema } from './RegisterTime.meta';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { TaskDto } from '../../api/useDayQuery';
-import { GENERIC_ERROR_MSG } from '../../../../constants';
+import { GENERIC_ERROR_MSG } from '../../../../common/constants';
 
 interface Props {
   task: TaskDto;

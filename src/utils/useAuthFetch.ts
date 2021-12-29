@@ -30,7 +30,7 @@ export const useAuthFetch = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}${url}`,
+        `${import.meta.env.VITE_API_URL}${url}`,
         merge(init, {
           headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
         }),
@@ -49,7 +49,9 @@ export const useAuthFetch = () => {
 
       throw new HttpError(jsonResponse);
     } catch (error) {
-      console.error(error.message);
+      if (error instanceof Error) {
+        console.error(error.message);
+      }
 
       if (error instanceof HttpError) {
         throw error;

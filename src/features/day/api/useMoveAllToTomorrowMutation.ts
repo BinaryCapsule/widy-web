@@ -4,7 +4,7 @@ import { httpBody } from '../../../utils/httpBody';
 import { queryKeys } from './queryKeys';
 import { toast } from '@binarycapsule/ui-capsules';
 import { useDayRouteParams } from '../hooks/useDayRouteParams';
-import { GENERIC_ERROR_MSG } from '../../../constants';
+import { GENERIC_ERROR_MSG } from '../../../common/constants';
 
 interface MoveAllToTomorrowParams {
   dayId: number;

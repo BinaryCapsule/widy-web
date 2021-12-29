@@ -12,7 +12,7 @@ import { Launcher } from '../Launcher/Launcher';
 import { TaskMenu } from '../TaskMenu/TaskMenu';
 import { TaskScope } from '../TaskScope/TaskScope';
 import { AddToPlan } from '../AddToPlan/AddToPlan';
-import { GENERIC_ERROR_MSG } from '../../../../constants';
+import { GENERIC_ERROR_MSG } from '../../../../common/constants';
 
 interface Props {
   task: TaskDto;

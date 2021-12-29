@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from '@binarycapsule/ui-capsules';
 import { useRibbon } from './useRibbon';
 
-export const Ribbon: React.FC = () => {
+export const Ribbon = () => {
   const { isActive } = useRibbon();
 
   return (
