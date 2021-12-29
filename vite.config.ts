@@ -8,8 +8,5 @@ export default defineConfig({
   build: {
     outDir: 'build',
   },
-  preview: {
-    port: 4040,
-  },
   plugins: [reactRefresh()],
 });

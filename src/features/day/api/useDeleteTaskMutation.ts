@@ -6,7 +6,7 @@ import { IDay, TaskDto } from './useDayQuery';
 import produce from 'immer';
 import { ActiveTaskDto } from './useActiveTaskQuery';
 import { toast } from '@binarycapsule/ui-capsules';
-import { GENERIC_ERROR_MSG } from '../../../constants';
+import { GENERIC_ERROR_MSG } from '../../../common/constants';
 
 interface DeleteTaskParams {
   task: TaskDto;

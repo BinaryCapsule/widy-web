@@ -7,7 +7,7 @@ import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { ISO_8601_FORMAT } from '../../../utils/dates';
 import { DayDto, DaysDto } from './useDaysQuery';
 import { queryKeys } from './queryKeys';
-import { GENERIC_ERROR_MSG } from '../../../constants';
+import { GENERIC_ERROR_MSG } from '../../../common/constants';
 
 export const useCreateDayMutation = () => {
   const { authFetch } = useAuthFetch();

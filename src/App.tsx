@@ -6,6 +6,7 @@ import { SplashScreen } from './components/SplashScreen/SplashScreen';
 import { useGlobalStyles } from '@binarycapsule/ui-capsules';
 import { NoInternet } from './components/NoInternet/NoInternet';
 import { ProtectedRoute } from './auth/protected-route';
+import { useEffectOnce } from 'react-use';
 
 const Home = lazy(() => import('./features/landing/Home'));
 
@@ -17,6 +18,15 @@ export const App = () => {
   const { isLoading, error } = useAuth0();
 
   useGlobalStyles();
+
+  // Remove initial splash screen (see index.html)
+  useEffectOnce(() => {
+    const item = document.getElementById('splash');
+
+    if (item && item.parentNode) {
+      item.parentNode.removeChild(item);
+    }
+  });
 
   if (error) {
     return <div>Oops... {error.message}</div>;

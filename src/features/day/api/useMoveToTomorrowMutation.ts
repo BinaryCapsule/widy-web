@@ -8,7 +8,7 @@ import { toast } from '@binarycapsule/ui-capsules';
 import { ITomorrow } from './useTomorrowQuery';
 import { getSectionTasks } from '../utils/getSectionTasks';
 import { RANK_BLOCK_SIZE } from '../Day.constants';
-import { GENERIC_ERROR_MSG } from '../../../constants';
+import { GENERIC_ERROR_MSG } from '../../../common/constants';
 
 interface MoveToTomorrowParams {
   task: TaskDto;

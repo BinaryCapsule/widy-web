@@ -4,7 +4,7 @@ import { TaskDto } from './useDayQuery';
 import { queryKeys } from './queryKeys';
 import { httpBody } from '../../../utils/httpBody';
 import { toast } from '@binarycapsule/ui-capsules';
-import { GENERIC_ERROR_MSG } from '../../../constants';
+import { GENERIC_ERROR_MSG } from '../../../common/constants';
 import { produce } from 'immer';
 import { ITomorrow } from './useTomorrowQuery';
 
