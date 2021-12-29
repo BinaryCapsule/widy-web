@@ -5,9 +5,9 @@ import { AppState } from '@auth0/auth0-react/dist/auth0-provider';
 
 export const Auth0ProviderWithHistory: React.FC = ({ children }) => {
   const history = useHistory();
-  const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-  const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-  const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
+  const domain = import.meta.env.VITE_AUTH0_DOMAIN as string;
+  const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID as string;
+  const audience = import.meta.env.VITE_AUTH0_AUDIENCE as string;
 
   const onRedirectCallback = (appState: AppState) => {
     history.push(appState?.returnTo || window.location.pathname);

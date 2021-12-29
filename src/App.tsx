@@ -1,14 +1,11 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { SplashScreen } from './components/SplashScreen/SplashScreen';
 import { useGlobalStyles } from '@binarycapsule/ui-capsules';
 import { NoInternet } from './components/NoInternet/NoInternet';
-
-const onRedirecting = () => {
-  return <SplashScreen />;
-};
+import { ProtectedRoute } from './auth/protected-route';
 
 const Home = lazy(() => import('./features/landing/Home'));
 
@@ -33,12 +30,10 @@ export const App = () => {
     <Suspense fallback={<SplashScreen />}>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route
-          exact
-          path="/day/:dayId?/:taskId?"
-          component={withAuthenticationRequired(Day, { onRedirecting })}
-        />
-        <Route exact path="/report/:dayId" component={Report} />
+
+        <ProtectedRoute exact path="/day/:dayId?/:taskId?" component={Day} />
+
+        <ProtectedRoute exact path="/report/:dayId" component={Report} />
       </Switch>
 
       <NoInternet />

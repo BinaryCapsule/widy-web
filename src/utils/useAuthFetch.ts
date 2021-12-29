@@ -30,7 +30,7 @@ export const useAuthFetch = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}${url}`,
+        `${import.meta.env.VITE_API_URL}${url}`,
         merge(init, {
           headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
         }),
