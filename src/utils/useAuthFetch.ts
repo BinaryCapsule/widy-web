@@ -49,7 +49,9 @@ export const useAuthFetch = () => {
 
       throw new HttpError(jsonResponse);
     } catch (error) {
-      console.error(error.message);
+      if (error instanceof Error) {
+        console.error(error.message);
+      }
 
       if (error instanceof HttpError) {
         throw error;
