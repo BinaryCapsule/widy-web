@@ -16,7 +16,7 @@ export const TomorrowButton: React.FC<CSSProp> = ({ css }) => {
     >
       <Flex as="span" align="center">
         <Icon icon="calendar" variant="outline" size={14} css={{ mr: '$1' }} />
-        <span>Tomorrow</span>
+        <span>Next</span>
       </Flex>
 
       <Icon icon="chev_right" size={16} />
