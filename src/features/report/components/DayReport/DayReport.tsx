@@ -4,6 +4,7 @@ import { DayReportHeader } from './components/DayReportHeader/DayReportHeader';
 import { useDayReportQuery } from '../../api/useDayReportQuery';
 import { DayReportLoading } from './DayReport.loading';
 import { Stats } from './components/Stats/Stats';
+import { SectionsChart } from './components/SectionsChart/SectionsChart';
 
 export const DayReport = () => {
   const { isLoading, isFetching, data } = useDayReportQuery();
@@ -21,6 +22,8 @@ export const DayReport = () => {
       {isLoading && <DayReportLoading />}
 
       <Stats data={data} />
+
+      <SectionsChart data={data} />
     </Box>
   );
 };

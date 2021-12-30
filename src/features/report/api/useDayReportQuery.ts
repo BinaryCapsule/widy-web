@@ -1,12 +1,17 @@
 import { useQuery } from 'react-query';
 import { useAuthFetch } from '../../../utils/useAuthFetch';
-import { TaskDto } from '../../day/api/useDayQuery';
+import { SectionVariant, TaskDto } from '../../day/api/useDayQuery';
 import { useReportRouteParams } from '../hooks/useReportRouteParams';
 import { queryKeys } from './queryKeys';
 
 export interface DayReportDto {
   day: string;
   tasks: TaskDto[];
+  sections: {
+    id: number;
+    variant: SectionVariant;
+    title: string;
+  }[];
   totalTime: number;
   completedTasks: number;
 }
