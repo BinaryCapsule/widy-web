@@ -69,7 +69,6 @@ export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) 
               placeholder="Scope name"
               variant={errors.name ? 'error' : undefined}
               helpText={errors.name?.message}
-              autoFocus
             />
           </Box>
 

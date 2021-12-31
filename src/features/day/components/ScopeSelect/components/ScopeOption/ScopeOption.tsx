@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Text, styled } from '@binarycapsule/ui-capsules';
+import { Box, Flex, styled, Text } from '@binarycapsule/ui-capsules';
 
 const OptionWrapper = styled(Box, {
   display: 'flex',

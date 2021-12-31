@@ -53,7 +53,6 @@ export const RenameTask: React.FC<Props> = ({ task, onRequestClose }) => {
             label="Summary"
             {...register('summary')}
             size="large"
-            autoFocus
             placeholder="Task summary"
             variant={errors.summary ? 'error' : undefined}
             helpText={errors.summary?.message}

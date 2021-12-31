@@ -58,7 +58,11 @@ export const BoardHeader = () => {
             rightIcon="chev_down"
           />
           <MenuList>
-            <MenuItem onSelect={() => {}}>
+            <MenuItem
+              onSelect={() => {
+                /* noop */
+              }}
+            >
               <Flex align="center">
                 <Icon
                   icon="cog"

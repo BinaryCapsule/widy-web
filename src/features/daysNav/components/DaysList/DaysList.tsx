@@ -8,7 +8,7 @@ import { isToday } from '../../../../utils/dates';
 import { DaysListLoading } from './DaysList.loading';
 import { DaysListError } from './DaysList.error';
 
-export const DaysList: React.FC = () => {
+export const DaysList = () => {
   const { dayId } = useParams<{ dayId?: string }>();
 
   const reportRouteMatch = useRouteMatch('/report');
@@ -58,7 +58,7 @@ export const DaysList: React.FC = () => {
                 isSelected={dayId === id.toString()}
                 isToday={isToday(day)}
                 onClick={() => {
-                  !!reportRouteMatch ? history.push(`/report/${id}`) : history.push(`/day/${id}`);
+                  reportRouteMatch ? history.push(`/report/${id}`) : history.push(`/day/${id}`);
                 }}
               >
                 {moment(day).format('ddd DD MMM YYYY')}

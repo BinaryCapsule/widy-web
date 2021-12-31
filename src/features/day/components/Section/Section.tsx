@@ -54,7 +54,7 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
             <div {...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
               {tasks.length === 0 ? (
                 <>
-                  <SectionEmpty>No tasks in section "{section.title}"</SectionEmpty>
+                  <SectionEmpty>No tasks in section &quot;{section.title}&quot;</SectionEmpty>
 
                   {/* Hack to remove the no-placeholder warning in development */}
                   <div style={{ display: 'none' }}>{droppableProvided.placeholder}</div>
