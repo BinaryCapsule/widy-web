@@ -4,9 +4,19 @@ import { SectionVariant, TaskDto } from '../../day/api/useDayQuery';
 import { useReportRouteParams } from '../hooks/useReportRouteParams';
 import { queryKeys } from './queryKeys';
 
+interface ReportScopeDto {
+  id: number;
+  name: string;
+  shortCode: string;
+}
+
+export interface ReportTaskDto extends TaskDto {
+  scope: ReportScopeDto | null;
+}
+
 export interface DayReportDto {
   day: string;
-  tasks: TaskDto[];
+  tasks: ReportTaskDto[];
   sections: {
     id: number;
     variant: SectionVariant;

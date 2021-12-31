@@ -29,34 +29,30 @@ export const SectionsChart: React.FC<Props> = ({ data: dayReport }) => {
       </Box>
 
       <Table>
-        <table>
-          <colgroup>
-            <col width="100%" />
-            <col width="0%" />
-          </colgroup>
+        <colgroup>
+          <col width="100%" />
+          <col width="0%" />
+        </colgroup>
 
-          <thead>
-            <tr>
-              <th style={{ textAlign: 'left' }}>Section</th>
-              <th style={{ textAlign: 'right' }}>Time</th>
+        <thead>
+          <tr>
+            <th style={{ textAlign: 'left' }}>Section</th>
+            <th style={{ textAlign: 'right' }}>Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {data.map(({ color, value, label }) => (
+            <tr key={label}>
+              <td style={{ textAlign: 'left', display: 'flex', alignItems: 'center' }}>
+                <Dot backgroundColor={color} css={{ mr: '$2' }} />
+                {label}
+              </td>
+
+              <td style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>{formatTotalTime(value)}</td>
             </tr>
-          </thead>
-
-          <tbody>
-            {data.map(({ color, value, label }) => (
-              <tr key={label}>
-                <td style={{ textAlign: 'left', display: 'flex', alignItems: 'center' }}>
-                  <Dot backgroundColor={color} css={{ mr: '$2' }} />
-                  {label}
-                </td>
-
-                <td style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
-                  {formatTotalTime(value)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          ))}
+        </tbody>
       </Table>
     </Card>
   );

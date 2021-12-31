@@ -23,7 +23,7 @@ export const BoardTitle = () => {
   }
 
   if (dayId === 'tomorrow') {
-    return <PageTitle subTitle="Plan your next work day">Tomorrow</PageTitle>;
+    return <PageTitle subTitle="Plan your next work day">Next</PageTitle>;
   }
 
   if (isIdle || isError || !data) {
