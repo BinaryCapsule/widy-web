@@ -41,7 +41,7 @@ export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) =>
     return null;
   }
 
-  const { sectionOpts, selectedSectionId, formBag } = data;
+  const { sectionOpts, formBag } = data;
 
   const onMoveTask = async ({ sectionId }: FormValues) => {
     if (!sectionId) {
@@ -78,13 +78,16 @@ export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) =>
         <ModalCloseButton onClick={onRequestClose} />
 
         <ModalBody>
-          <Flex direction="column">
+          <Flex direction="column" role="radiogroup">
             {sectionOpts.map(({ id, label }, index) => (
               <RadioPicker
                 key={id}
-                checked={id === selectedSectionId}
+                name="sectionId"
+                checked={id === formBag.watch('sectionId')}
                 label={label}
-                onChange={() => formBag.setValue('sectionId', id)}
+                onChange={() => {
+                  formBag.setValue('sectionId', id);
+                }}
                 css={{ mb: index !== sectionOpts.length - 1 ? 16 : 0 }}
               />
             ))}

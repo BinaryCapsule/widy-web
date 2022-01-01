@@ -41,7 +41,6 @@ export const useMoveTask = ({ task }: UseMoveTaskParams) => {
       }, [] as { id: number; label: string }[]);
 
     return {
-      selectedSectionId: formBag.watch('sectionId'),
       sectionOpts,
       formBag,
     };
