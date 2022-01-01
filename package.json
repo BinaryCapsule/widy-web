@@ -34,7 +34,7 @@
     "lint": "eslint src",
     "types": "tsc -p tsconfig.json",
     "format": "npx prettier src --check --ignore-unknown",
-    "validate": "run-p lint format build"
+    "validate": "run-p lint format types build"
   },
   "browserslist": {
     "production": [
