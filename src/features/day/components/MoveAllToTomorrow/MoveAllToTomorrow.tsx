@@ -17,7 +17,7 @@ export const MoveAllToTomorrow = () => {
   };
 
   if (isLoading) {
-    return <Splash variant="spinner">Moving to Tomorrow</Splash>;
+    return <Splash variant="spinner">Moving to &quot;Next&quot;</Splash>;
   }
 
   return (
