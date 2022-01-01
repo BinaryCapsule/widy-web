@@ -55,7 +55,7 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
   };
 
   return (
-    <Modal isOpen size="small" contentLabel="Register Time" onClose={() => {}}>
+    <Modal isOpen size="small" contentLabel="Register Time" onClose={onRequestClose}>
       <ModalHeader>Register time</ModalHeader>
 
       <ModalCloseButton onClick={onRequestClose} />
@@ -65,7 +65,7 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
           <Flex>
             <Flex align="center">
               <Flex css={{ width: 68 }}>
-                <Input {...register('hours')} autoFocus type="number" />
+                <Input {...register('hours')} type="number" />
               </Flex>
 
               <Text css={{ ml: '$2' }}>h</Text>

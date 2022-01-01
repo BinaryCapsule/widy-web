@@ -27,7 +27,7 @@ export const MoveAllToTomorrow = () => {
       leftIcon="calendar"
       iconVariant="outline"
     >
-      Move all to "Tomorrow"
+      Move all to &quot;Next&quot;
     </Button>
   );
 };

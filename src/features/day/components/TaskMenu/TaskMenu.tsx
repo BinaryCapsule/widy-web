@@ -99,7 +99,7 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
                   variant="outline"
                   css={{ color: '$neutral500', mr: '$2' }}
                 />
-                Move to Tomorrow
+                Move to &quot;Next&quot;
               </Flex>
             </MenuItem>
           )}

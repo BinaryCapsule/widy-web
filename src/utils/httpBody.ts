@@ -1,4 +1,4 @@
-export function httpBody(payload: any) {
+export function httpBody(payload: unknown) {
   return {
     headers: {
       'Content-Type': 'application/json',

@@ -8,11 +8,12 @@ import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { useTaskRank } from '../../hooks/useTaskRank';
 import { getSectionTasks } from '../../utils/getSectionTasks';
 import { SectionsError } from './Sections.error';
+import { DayEmpty } from '../../Day.empty';
 
 export const Sections = () => {
   const { data, isLoading, isError } = useDayQuery();
 
-  const { isLoading: isLoadingDays, isError: isLoadingDaysError } = useDaysQuery();
+  const { data: daysData, isLoading: isLoadingDays, isError: isLoadingDaysError } = useDaysQuery();
 
   const { mutateAsync: updateTask } = useUpdateTaskMutation();
 
@@ -24,6 +25,10 @@ export const Sections = () => {
 
   if (isError || isLoadingDaysError) {
     return <SectionsError />;
+  }
+
+  if (daysData && daysData.pages[0].items.length === 0) {
+    return <DayEmpty />;
   }
 
   if (!data) {

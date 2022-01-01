@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, Flex } from '@binarycapsule/ui-capsules';
+import { Flex } from '@binarycapsule/ui-capsules';
 import { DaysNav } from '../daysNav/DaysNav';
 import { Ribbon } from '../ribbon/Ribbon';
 import { DayReport } from './components/DayReport/DayReport';
 import { PageWrapper } from '../../components/PageWrapper/PageWrapper';
+import { Sidebar } from './components/Sidebar/Sidebar';
 
 const Report = () => {
   return (
@@ -16,7 +17,7 @@ const Report = () => {
         <DayReport />
       </PageWrapper>
 
-      <Box css={{ flex: 1, bg: '$yellow50' }}>TODO</Box>
+      <Sidebar />
     </Flex>
   );
 };

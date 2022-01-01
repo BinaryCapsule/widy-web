@@ -72,8 +72,6 @@ export const useTaskRank = () => {
         previousTaskRank = tasks[previousTaskId] ? tasks[previousTaskId].rank : undefined;
       }
 
-      let afterTaskRank;
-
       const afterTaskIndex = previousTaskId
         ? sectionTasks.findIndex(({ id }) => previousTaskId === id) + 1
         : 0;
@@ -83,7 +81,7 @@ export const useTaskRank = () => {
 
       const afterTask = afterTaskId !== null ? tasks[afterTaskId] : null;
 
-      afterTaskRank = afterTask ? afterTask.rank : undefined;
+      const afterTaskRank = afterTask ? afterTask.rank : undefined;
 
       if (previousTaskRank && afterTaskRank) {
         return Math.floor((previousTaskRank + afterTaskRank) / 2);

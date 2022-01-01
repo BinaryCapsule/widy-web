@@ -15,7 +15,9 @@ export const CreateDayButton: React.FC = () => {
     return null;
   }
 
-  const isTodayCreated = data.pages[0] && data.pages[0].items[0].day === today;
+  const firstDay = data.pages[0].items.length > 0 ? data.pages[0].items[0].day : null;
+
+  const isTodayCreated = firstDay ? firstDay === today : false;
 
   const handleCreateDay = async () => {
     try {

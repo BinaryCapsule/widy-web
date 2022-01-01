@@ -85,7 +85,6 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
               label="What will you be working on?"
               {...register('summary')}
               size="large"
-              autoFocus
               placeholder="Task summary"
               variant={errors.summary ? 'error' : undefined}
               helpText={errors.summary?.message}

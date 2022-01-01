@@ -1,44 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img alt="Widy logo" src="https://raw.githubusercontent.com/jcmnunes/widy/master/frontend/src/images/logo_full.png" width="200px" height="100px">
 
-## Available Scripts
+# Widy - What I did yesterday
 
-In the project directory, you can run:
+This is the frontend code of the Widy web app (a React SPA).
 
-### `yarn start`
+It consumes the Widy API ([repo](https://github.com/BinaryCapsule/widy-api)).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> 🚨 Note: This app is actually my personal **breakable toy** 🧫🧪
+>
+> Also, the api is hosted on a free Heroku dyno and therefore may go to sleep
+> during periods of inactivity.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<img src="https://user-images.githubusercontent.com/13286745/147857987-5ec6b590-e6ab-45ec-9d7f-d1169f871b31.png" alt="Widy screenshot" width="100%">
 
-### `yarn test`
+Widy is a productivity app. It has three main features:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Helps you organize your daily tasks.
+2. Helps you track your daily work.
+3. Generates handy reports.
 
-### `yarn build`
+UI components from the [UI-Capsules kit](https://uic.binarycapsule.tech/).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech stack:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [React](https://beta.reactjs.org/)
+- [React Query](https://react-query.tanstack.com/)
+- [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd)
+- [Stitches](https://stitches.dev/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Netlify](https://www.netlify.com/)
+- [Auth0](https://auth0.com/)
+- [Typescript](https://www.typescriptlang.org/)
+- and more...
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This app also uses two of my other projects:
 
-### `yarn eject`
+- [UI-Capsules](https://uic.binarycapsule.tech/)
+- [BC Editor](https://editor.binarycapsule.tech/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Licensing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Licensed under the [MIT License](./LICENSE).

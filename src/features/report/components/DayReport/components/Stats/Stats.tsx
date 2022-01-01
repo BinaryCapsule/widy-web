@@ -1,8 +1,7 @@
 import React from 'react';
-import { Card as BaseCard, Flex, Stat } from '@binarycapsule/ui-capsules';
+import { Card as BaseCard, Flex, Stat, styled } from '@binarycapsule/ui-capsules';
 import { DayReportDto } from '../../../../api/useDayReportQuery';
 import { formatTotalTime } from '../../../../../../utils/time';
-import { styled } from '@stitches/react';
 
 const Card = styled(BaseCard, {
   padding: '$4',

@@ -38,7 +38,7 @@ export const BoardHeader = () => {
       <BoardTitle />
 
       <Flex>
-        {dayId !== 'tomorrow' && (
+        {dayId && dayId !== 'tomorrow' && (
           <Button
             leftIcon="chart_pie"
             iconVariant="outline"
@@ -58,7 +58,11 @@ export const BoardHeader = () => {
             rightIcon="chev_down"
           />
           <MenuList>
-            <MenuItem onSelect={() => {}}>
+            <MenuItem
+              onSelect={() => {
+                /* noop */
+              }}
+            >
               <Flex align="center">
                 <Icon
                   icon="cog"
