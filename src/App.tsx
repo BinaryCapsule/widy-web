@@ -6,6 +6,7 @@ import { SplashScreen } from './components/SplashScreen/SplashScreen';
 import { useGlobalStyles } from '@binarycapsule/ui-capsules';
 import { NoInternet } from './components/NoInternet/NoInternet';
 import { useEffectOnce } from 'react-use';
+import { version } from '../package.json';
 
 const onRedirecting = () => {
   return <SplashScreen />;
@@ -22,12 +23,19 @@ export const App = () => {
 
   useGlobalStyles();
 
-  // Remove initial splash screen (see index.html)
   useEffectOnce(() => {
+    // Remove initial splash screen (see index.html)
     const item = document.getElementById('splash');
 
     if (item && item.parentNode) {
       item.parentNode.removeChild(item);
+    }
+
+    // Add app version to the root element
+    const root = document.getElementById('root');
+
+    if (root) {
+      root.dataset.version = version;
     }
   });
 
