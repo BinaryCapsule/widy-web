@@ -28,6 +28,7 @@ UI components from the [UI-Capsules kit](https://uic.binarycapsule.tech/).
 - [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd)
 - [Stitches](https://stitches.dev/)
 - [React Hook Form](https://react-hook-form.com/)
+- [Vite](https://vitejs.dev/)
 - [Netlify](https://www.netlify.com/)
 - [Auth0](https://auth0.com/)
 - [Typescript](https://www.typescriptlang.org/)
