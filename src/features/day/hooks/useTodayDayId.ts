@@ -5,7 +5,7 @@ export const useTodayDayId = () => {
   const { data: daysData } = useDaysQuery();
 
   const todayDayId =
-    daysData && daysData.pages && isToday(daysData.pages[0].items[0].day)
+    daysData && daysData.pages[0].items.length > 0 && isToday(daysData.pages[0].items[0].day)
       ? daysData.pages[0].items[0].id
       : null;
 

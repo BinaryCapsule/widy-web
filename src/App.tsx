@@ -41,21 +41,23 @@ export const App = () => {
 
   return (
     <Suspense fallback={<SplashScreen />}>
-      <Switch>
-        <Route exact path="/" component={Home} />
+      <React.StrictMode>
+        <Switch>
+          <Route exact path="/" component={Home} />
 
-        <Route
-          exact
-          path="/day/:dayId?/:taskId?"
-          component={withAuthenticationRequired(Day, { onRedirecting })}
-        />
+          <Route
+            exact
+            path="/day/:dayId?/:taskId?"
+            component={withAuthenticationRequired(Day, { onRedirecting })}
+          />
 
-        <Route
-          exact
-          path="/report/:dayId"
-          component={withAuthenticationRequired(Report, { onRedirecting })}
-        />
-      </Switch>
+          <Route
+            exact
+            path="/report/:dayId"
+            component={withAuthenticationRequired(Report, { onRedirecting })}
+          />
+        </Switch>
+      </React.StrictMode>
 
       <NoInternet />
 
