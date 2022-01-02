@@ -1,14 +1,13 @@
 import React from 'react';
 
 interface Props {
-  width?: number;
+  className?: string;
 }
 
-export const HeroIllustration: React.FC<Props> = ({ width = 800 }) => {
+export const HeroIllustration: React.FC<Props> = ({ className }) => {
   return (
     <svg
-      width={width}
-      height={(650 * width) / 800}
+      className={className}
       viewBox="0 0 800 675"
       xmlns="http://www.w3.org/2000/svg"
       fillRule="evenodd"

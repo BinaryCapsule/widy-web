@@ -12,7 +12,7 @@ const onRedirecting = () => {
   return <SplashScreen />;
 };
 
-const Home = lazy(() => import('./features/landing/Home'));
+const Landing = lazy(() => import('./features/landing/Landing'));
 
 const Day = lazy(() => import('./features/day/Day'));
 
@@ -51,7 +51,7 @@ export const App = () => {
     <Suspense fallback={<SplashScreen />}>
       <React.StrictMode>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Landing} />
 
           <Route
             exact

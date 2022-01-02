@@ -4,9 +4,9 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Button, Flex, IconButton, Text } from '@binarycapsule/ui-capsules';
 import { IconWidy, IconWidyText } from '../../icons/Widy';
 import useMedia from 'react-use/lib/useMedia';
-import { HeroIllustration } from '../../img/HeroIllustration';
+import { StyledHeroIllustration } from './Landing.styles';
 
-const Home = () => {
+const Landing = () => {
   const history = useHistory();
 
   const isWide = useMedia('(min-width: 600px)');
@@ -40,7 +40,7 @@ const Home = () => {
         </Button>
       </Flex>
 
-      <Box css={{ flex: 1 }}>
+      <Box css={{ flex: 1, position: 'relative' }}>
         <Flex align="end" css={{ mb: '$2' }}>
           <IconWidy size={isWide ? 90 : 60} yesterdayColor="$blue600" />
           <IconWidyText size={isWide ? 180 : 120} textColor="$blue600" css={{ ml: '$3' }} />
@@ -57,9 +57,7 @@ const Home = () => {
           </Text>
         </Box>
 
-        <Box css={{ ml: isWide ? -250 : -100, mt: isWide ? -45 : 12 }}>
-          <HeroIllustration width={isWide ? 800 : 500} />
-        </Box>
+        <StyledHeroIllustration />
       </Box>
 
       <Flex justify="end" css={{ py: '$5' }}>
@@ -77,4 +75,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Landing;
