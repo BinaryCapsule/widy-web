@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Box,
   Flex,
@@ -20,16 +20,38 @@ export const UserMenu = () => {
       returnTo: window.location.origin,
     });
 
+  const userInfo = useMemo(() => {
+    if (!user) {
+      return null;
+    }
+
+    const primary = user.name && user.name !== user.email ? user.name : user.nickname;
+    const secondary = user.email || user.nickname;
+
+    return {
+      primary,
+      secondary,
+    };
+  }, [user]);
+
   return (
     <Menu>
       <MenuButton as={MenuTrigger} picture={user?.picture} />
 
       <MenuList>
-        {user?.name && (
+        {userInfo && (
           <Box css={{ padding: '6px 12px', mt: -8 }}>
-            <Text size={1} css={{ fontWeight: 500 }}>
-              {user.name}
-            </Text>
+            {userInfo.primary && (
+              <Text as="p" size={2} css={{ fontWeight: 500 }}>
+                {userInfo.primary}
+              </Text>
+            )}
+
+            {userInfo.secondary && (
+              <Text as="p" size={1} css={{ color: '$neutral500' }}>
+                {userInfo.secondary}
+              </Text>
+            )}
           </Box>
         )}
 

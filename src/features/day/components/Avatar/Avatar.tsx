@@ -16,7 +16,7 @@ const StyledAvatar = styled(AvatarPrimitive.Avatar, {
   backgroundColor: '$neutral100',
 });
 
-const StyledImage = styled('img', {
+const StyledImage = styled(AvatarPrimitive.Image, {
   width: '100%',
   height: '100%',
   objectFit: 'cover',
