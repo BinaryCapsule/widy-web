@@ -2,6 +2,8 @@
 
 # Widy - What I did yesterday
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2548a709-302a-483d-9f5b-b1b7528ce23c/deploy-status)](https://app.netlify.com/sites/widy-web/deploys)
+
 This is the frontend code of the Widy web app (a React SPA).
 
 It consumes the Widy API ([repo](https://github.com/BinaryCapsule/widy-api)).

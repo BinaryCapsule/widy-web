@@ -39,13 +39,15 @@ const Landing = () => {
           Log in
         </Button>
 
-        <Button
-          variant="secondary"
-          onClick={() => loginWithRedirect({ screen_hint: 'signup' })}
-          css={{ ml: '$2' }}
-        >
-          Sign up
-        </Button>
+        {import.meta.env.VITE_SIGNUP_ENABLED === 'true' && (
+          <Button
+            variant="secondary"
+            onClick={() => loginWithRedirect({ screen_hint: 'signup' })}
+            css={{ ml: '$2' }}
+          >
+            Sign up
+          </Button>
+        )}
       </Flex>
 
       <Box css={{ flex: 1, position: 'relative' }}>
