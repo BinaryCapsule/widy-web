@@ -1,6 +1,6 @@
 {
   "name": "widy-web",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
