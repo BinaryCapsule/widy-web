@@ -14,4 +14,9 @@ export const StyledButton = styled('button', {
   '&[data-reach-menu-button][aria-expanded="true"]': {
     bg: '$neutral200',
   },
+
+  '&:focus': {
+    outlineColor: '$colors$primary500',
+    outlineOffset: '3px',
+  },
 });

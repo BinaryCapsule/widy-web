@@ -1,11 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useLayoutEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { SplashScreen } from './components/SplashScreen/SplashScreen';
 import { useGlobalStyles } from '@binarycapsule/ui-capsules';
 import { NoInternet } from './components/NoInternet/NoInternet';
-import { useEffectOnce } from 'react-use';
 import { version } from '../package.json';
 
 const onRedirecting = () => {
@@ -23,7 +22,7 @@ export const App = () => {
 
   useGlobalStyles();
 
-  useEffectOnce(() => {
+  useLayoutEffect(() => {
     // Remove initial splash screen (see index.html)
     const item = document.getElementById('splash');
 
@@ -37,7 +36,7 @@ export const App = () => {
     if (root) {
       root.dataset.version = version;
     }
-  });
+  }, []);
 
   if (error) {
     return <div>Oops... {error.message}</div>;

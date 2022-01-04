@@ -1,8 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 import { useCreateDayMutation } from '../../../api/useCreateDayMutation';
 import { useDaysQuery } from '../../../api/useDaysQuery';
-import { Button } from '@binarycapsule/ui-capsules';
-import moment from 'moment';
+import { StyledButton } from './CreateDayButton.styles';
 
 const today = moment().format('YYYY-MM-DD');
 
@@ -28,13 +28,14 @@ export const CreateDayButton: React.FC = () => {
   };
 
   return (
-    <Button
+    <StyledButton
       leftIcon="plus"
       onClick={handleCreateDay}
       isLoading={isLoading}
       disabled={isTodayCreated}
+      noDays={!firstDay}
     >
       Add day
-    </Button>
+    </StyledButton>
   );
 };
