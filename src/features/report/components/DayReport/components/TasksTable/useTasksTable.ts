@@ -29,9 +29,9 @@ export const selectTasksTableData = ({ tasks }: DayReportDto) => {
     } else {
       const scopeIndex = acc.findIndex(({ id: scopeId }) => scopeId === task.scopeId);
 
-      if (scopeIndex === -1) {
+      if (scopeIndex === -1 && task.scopeId) {
         acc.push({
-          id: scope.id,
+          id: task.scopeId,
           scopeTitle: `${scope.name} - ${scope.shortCode.toUpperCase()}`,
           tasks: [task],
           time: task.time,
