@@ -44,3 +44,5 @@ This app also uses two of my other projects:
 ## Licensing
 
 Licensed under the [MIT License](./LICENSE).
+
+-
