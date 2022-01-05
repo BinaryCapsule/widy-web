@@ -6,22 +6,14 @@ on:
 
 jobs:
   deploy:
+    name: 'Deploy'
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v1
+      - uses: jsmrcaga/action-netlify-deploy@master
         with:
-          node-version: '14'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run validate
-
-      - name: Deploy to netlify
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy --dir=build --prod
-        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
-
+          NETLIFY_DEPLOY_MESSAGE: "Prod deploy v${{ github.ref }}"
+          NETLIFY_DEPLOY_TO_PROD: true
