@@ -4,6 +4,8 @@
 
 ![Build Status](https://github.com/binarycapsule/widy-web/actions/workflows/validate-project.yml/badge.svg)
 
+<a href="https://github.com/binarycapsule/widy-web"><img alt="Build Status" src="https://github.com/binarycapsule/widy-web/actions/workflows/validate-project.yml/badge.svg"></a>
+
 This is the frontend code of the Widy web app (a React SPA).
 
 It consumes the Widy API ([repo](https://github.com/BinaryCapsule/widy-api)).
