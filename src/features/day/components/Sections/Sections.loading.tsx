@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Skeleton } from '@binarycapsule/ui-capsules';
-import times from 'lodash/times';
+import { times } from '../../../../utils/misc';
 
 interface Props {
   count?: number;

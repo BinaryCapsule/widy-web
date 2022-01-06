@@ -1,5 +1,4 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import merge from 'lodash/merge';
 
 export interface HttpErrorResponse {
   error: string;
@@ -29,12 +28,14 @@ export const useAuthFetch = () => {
     const accessToken = await getAccessTokenSilently();
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}${url}`,
-        merge(init, {
-          headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
-        }),
-      );
+      const response = await fetch(`${import.meta.env.VITE_API_URL}${url}`, {
+        ...init,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+          ...(init ? init.headers : {}),
+        },
+      });
 
       const jsonResponse = await response.json();
 

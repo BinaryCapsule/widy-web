@@ -1,7 +1,7 @@
 import React from 'react';
-import times from 'lodash/times';
 import { Flex } from '@binarycapsule/ui-capsules';
 import { DayButtonLoading } from '../DayButton/DayButton.loading';
+import { times } from '../../../../utils/misc';
 
 export const DaysListLoading: React.FC = () => {
   return (
