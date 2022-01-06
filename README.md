@@ -2,7 +2,7 @@
 
 # Widy - What I did yesterday
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2548a709-302a-483d-9f5b-b1b7528ce23c/deploy-status)](https://app.netlify.com/sites/widy-web/deploys)
+![Build Status](https://github.com/binarycapsule/widy-web/actions/workflows/validate-project.yml/badge.svg)
 
 This is the frontend code of the Widy web app (a React SPA).
 
