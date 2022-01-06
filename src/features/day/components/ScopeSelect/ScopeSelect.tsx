@@ -32,7 +32,7 @@ export const ScopeSelect: React.FC<Props> = ({ value, onChange, onCreateScope })
         label="Scope"
         value={value}
         options={scopesOptions}
-        onChange={opt => onChange(opt as ScopeOption | null)}
+        onChange={opt => onChange(opt)}
         isClearable
         placeholder="No scope"
         components={{ Option: ScopeOptionComponent }}
