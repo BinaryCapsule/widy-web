@@ -1,3 +1,12 @@
+## [0.8.3](https://github.com/BinaryCapsule/widy-web/compare/v0.8.2...v0.8.3) (2022-01-07)
+
+
+### Bug Fixes
+
+* optimize deploy perf ([d9b8484](https://github.com/BinaryCapsule/widy-web/commit/d9b84843b42f139c0ec9becb810ec0b5b623fda1))
+
+
+
 ## [0.8.2](https://github.com/BinaryCapsule/widy-web/compare/v0.8.1...v0.8.2) (2022-01-07)
 
 
@@ -36,16 +45,6 @@
 ### Bug Fixes
 
 * update release.yml ([6009f07](https://github.com/BinaryCapsule/widy-web/commit/6009f0770fede26666e39b16c8013bc2b5dd143b))
-
-
-
-## [0.7.17](https://github.com/BinaryCapsule/widy-web/compare/v0.7.16...v0.7.17) (2022-01-06)
-
-
-### Bug Fixes
-
-* create release with conventional commits ([bbccda1](https://github.com/BinaryCapsule/widy-web/commit/bbccda16c9badf25003685416af6ef9071031476))
-* rename release.yml ([9f0511f](https://github.com/BinaryCapsule/widy-web/commit/9f0511f19e21f0d161f0fc6f1fed9ff0f51f940e))
 
 
 
