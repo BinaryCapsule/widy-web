@@ -2,7 +2,7 @@
 
 # Widy - What I did yesterday
 
-<a href="https://github.com/BinaryCapsule/widy-web/actions/workflows/validate-project.yml"><img alt="Build Status" src="https://github.com/binarycapsule/widy-web/actions/workflows/validate-project.yml/badge.svg"></a>
+<a href="https://github.com/BinaryCapsule/widy-web/actions/workflows/build.yml"><img alt="Build Status" src="https://github.com/binarycapsule/widy-web/actions/workflows/build.yml/badge.svg"></a>
 
 This is the frontend code of the Widy web app (a React SPA).
 
