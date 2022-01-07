@@ -1,12 +1,11 @@
-#
-name: Development workflow
+name: Staging
 
 on:
   pull_request:
     branches: ['main']
 
 jobs:
-  deploy:
+  staging:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,10 +29,10 @@ jobs:
           VITE_AUTH0_AUDIENCE: ${{ secrets.VITE_AUTH0_AUDIENCE }}
           VITE_SIGNUP_ENABLED: ${{ secrets.VITE_SIGNUP_ENABLED }}
 
-      - name: Deploy to netlify
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy --dir=build --prod --message "${{ github.event.number }}"
+      - name: Deploy
+        run: |
+          yarn global add netlify-cli
+          "$(yarn global bin)/netlify" deploy --dir=build --prod --message "${{ github.event.number }}"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
