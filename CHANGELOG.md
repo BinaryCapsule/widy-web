@@ -1,3 +1,15 @@
+## [0.8.4](https://github.com/BinaryCapsule/widy-web/compare/v0.8.3...v0.8.4) (2022-01-07)
+
+
+### Bug Fixes
+
+* deploy wf ([ce77b6b](https://github.com/BinaryCapsule/widy-web/commit/ce77b6bae43daed9b4cf429ed0d1db9915785ca1))
+* deploy wf name ([b3b5b16](https://github.com/BinaryCapsule/widy-web/commit/b3b5b1661bbceead2a4c68775b8138cdd67d3071))
+* staging wf ([8718291](https://github.com/BinaryCapsule/widy-web/commit/8718291650585f4c5629966d125438bb8b01a19c))
+* update build wf ([221ea94](https://github.com/BinaryCapsule/widy-web/commit/221ea946cf1f79d5335d4173610daa01873d9bbd))
+
+
+
 ## [0.8.3](https://github.com/BinaryCapsule/widy-web/compare/v0.8.2...v0.8.3) (2022-01-07)
 
 
@@ -36,15 +48,6 @@
 ### Features
 
 * just testing release.yml ([12133a1](https://github.com/BinaryCapsule/widy-web/commit/12133a15db93a209a10bc5d354786e0059560e26))
-
-
-
-## [0.7.18](https://github.com/BinaryCapsule/widy-web/compare/v0.7.17...v0.7.18) (2022-01-06)
-
-
-### Bug Fixes
-
-* update release.yml ([6009f07](https://github.com/BinaryCapsule/widy-web/commit/6009f0770fede26666e39b16c8013bc2b5dd143b))
 
 
 
