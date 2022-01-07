@@ -1,3 +1,15 @@
+## [0.8.5](https://github.com/BinaryCapsule/widy-web/compare/v0.8.4...v0.8.5) (2022-01-07)
+
+
+### Bug Fixes
+
+* add build env vars (deploy) ([e8b16b2](https://github.com/BinaryCapsule/widy-web/commit/e8b16b274c05dec2aa1c4bb5f4c730bbd8c9d725))
+* add env build vars (release) ([28a988a](https://github.com/BinaryCapsule/widy-web/commit/28a988afbae399691c0161eba57db3038c682c52))
+* rename staging wf ([4810058](https://github.com/BinaryCapsule/widy-web/commit/4810058d56b217b2cfd7cdb5c2c4d2749286e6d7))
+* update readme ([96da12b](https://github.com/BinaryCapsule/widy-web/commit/96da12b42c20d074d672141f2da15267bcb8cb48))
+
+
+
 ## [0.8.4](https://github.com/BinaryCapsule/widy-web/compare/v0.8.3...v0.8.4) (2022-01-07)
 
 
@@ -39,15 +51,6 @@
 * link to actions in badge ([cfde99c](https://github.com/BinaryCapsule/widy-web/commit/cfde99c2da08bba6048a3bd35809cecd9b4102c4))
 * test the new badge ([87b6ec9](https://github.com/BinaryCapsule/widy-web/commit/87b6ec9dd8039cd514cea43183571f819711e4f9))
 * update actions checkout ([5961b19](https://github.com/BinaryCapsule/widy-web/commit/5961b19c53930c5596c17b23824f5fb2ccebd494))
-
-
-
-# [0.8.0](https://github.com/BinaryCapsule/widy-web/compare/v0.7.18...v0.8.0) (2022-01-06)
-
-
-### Features
-
-* just testing release.yml ([12133a1](https://github.com/BinaryCapsule/widy-web/commit/12133a15db93a209a10bc5d354786e0059560e26))
 
 
 
