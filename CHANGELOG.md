@@ -1,3 +1,16 @@
+## [0.8.1](https://github.com/BinaryCapsule/widy-web/compare/v0.8.0...v0.8.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* add build status ([99b785a](https://github.com/BinaryCapsule/widy-web/commit/99b785afe3459567a39e2be51c8416b8f0868e8e))
+* add the validate project wf ([db12012](https://github.com/BinaryCapsule/widy-web/commit/db1201219664c88976686ec74f6a5a5997000321))
+* link to actions in badge ([cfde99c](https://github.com/BinaryCapsule/widy-web/commit/cfde99c2da08bba6048a3bd35809cecd9b4102c4))
+* test the new badge ([87b6ec9](https://github.com/BinaryCapsule/widy-web/commit/87b6ec9dd8039cd514cea43183571f819711e4f9))
+* update actions checkout ([5961b19](https://github.com/BinaryCapsule/widy-web/commit/5961b19c53930c5596c17b23824f5fb2ccebd494))
+
+
+
 # [0.8.0](https://github.com/BinaryCapsule/widy-web/compare/v0.7.18...v0.8.0) (2022-01-06)
 
 
@@ -32,15 +45,6 @@
 ### Bug Fixes
 
 * test wfs ([37daa3c](https://github.com/BinaryCapsule/widy-web/commit/37daa3c67fcf9c1e4928f4d699f6017f0ac136af))
-
-
-
-## [0.7.15](https://github.com/BinaryCapsule/widy-web/compare/v0.7.14...v0.7.15) (2022-01-05)
-
-
-### Bug Fixes
-
-* test full wf ([5f30669](https://github.com/BinaryCapsule/widy-web/commit/5f306692b712c8662d78e9465650cf034b23a11f))
 
 
 
