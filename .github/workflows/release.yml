@@ -7,18 +7,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v1
 
-      - name: Conventional Changelog Action
+      - name: Update changelog
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          git-message: 'chore(release): {version}'
+          git-message: '{version}'
           git-user-name: 'Jose Nunes'
           git-user-email: 'josenunes@hey.com'
-          
 
-      - name: create release
+      - name: Create release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -26,3 +26,23 @@ jobs:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=build --prod --message "Pull Request ${{github.event.number}}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
