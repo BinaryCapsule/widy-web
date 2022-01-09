@@ -5,12 +5,13 @@ import { ScopeOption as ScopeOptionComponent } from './components/ScopeOption/Sc
 import { ScopeOptionLabel } from './components/ScopeOptionLabel/ScopeOptionLabel';
 
 interface Props {
+  isPortal?: boolean;
   value: ScopeOption | null;
   onChange(opt: ScopeOption | null): void;
   onCreateScope(): void;
 }
 
-export const ScopeSelect: React.FC<Props> = ({ value, onChange, onCreateScope }) => {
+export const ScopeSelect: React.FC<Props> = ({ isPortal, value, onChange, onCreateScope }) => {
   const scopesOptions = useScopesOptions();
 
   const filterScopes = (
@@ -37,7 +38,7 @@ export const ScopeSelect: React.FC<Props> = ({ value, onChange, onCreateScope })
         placeholder="No scope"
         components={{ Option: ScopeOptionComponent }}
         formatOptionLabel={ScopeOptionLabel}
-        menuPortalTarget={document.body}
+        menuPortalTarget={isPortal ? document.body : undefined}
         filterOption={filterScopes}
       />
 

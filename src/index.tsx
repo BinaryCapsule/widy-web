@@ -2,13 +2,11 @@ import '@binarycapsule/ui-capsules/dist/setup';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { setAppElement, ToastContainer } from '@binarycapsule/ui-capsules';
+import { ToastContainer } from '@binarycapsule/ui-capsules';
 import { App } from './App';
 import { Auth0ProviderWithHistory } from './auth/auth0-provider-with-history';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from './config/queryClient';
-
-setAppElement('#root');
 
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>

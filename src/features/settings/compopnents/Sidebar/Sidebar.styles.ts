@@ -9,7 +9,7 @@ export const StyledSidebar = styled('aside', {
   position: 'relative',
   display: 'none',
 
-  '@media (min-width: 1024px)': {
+  '@lg': {
     display: 'block',
   },
 });
