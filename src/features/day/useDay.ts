@@ -1,14 +1,13 @@
 import { useActiveTaskQuery } from './api/useActiveTaskQuery';
-import { useAppDispatch } from '../../store';
 import { useEffect } from 'react';
-import { activeTaskActions } from './state/activeTaskSlice';
+import { useActiveTaskTick } from '../../stores/activeTaskTick';
 
 let timer: number | undefined;
 
 export const useDay = () => {
   const { data: activeTask } = useActiveTaskQuery();
 
-  const dispatch = useAppDispatch();
+  const activeTaskTick = useActiveTaskTick(state => state.activeTaskTick);
 
   // Start active task ticking
   useEffect(() => {
@@ -19,8 +18,8 @@ export const useDay = () => {
     }
     // If there is an active task ➜ start ticking
     if (activeTask?.id) {
-      timer = window.setInterval(() => dispatch(activeTaskActions.activeTaskTick()), 1000);
+      timer = window.setInterval(activeTaskTick, 1000);
     }
     return () => clearInterval(timer);
-  }, [activeTask?.id, dispatch]);
+  }, [activeTask?.id, activeTaskTick]);
 };

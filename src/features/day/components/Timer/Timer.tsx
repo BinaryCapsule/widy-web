@@ -6,7 +6,7 @@ import { TimerButton } from '../TimerButton/TimerButton';
 import { Time } from './components/Time/Time';
 import moment from 'moment';
 import { RegisterTime } from '../RegisterTime/RegisterTime';
-import { useActiveTaskTick } from '../../state/activeTaskSlice';
+import { useActiveTaskTick } from '../../../../stores/activeTaskTick';
 import { Launcher } from '../Launcher/Launcher';
 
 interface Props extends CSSProp {
