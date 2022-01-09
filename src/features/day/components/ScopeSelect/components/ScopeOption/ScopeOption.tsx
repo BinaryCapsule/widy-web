@@ -26,10 +26,12 @@ export const ScopeOption: React.FC<any> = ({ innerProps, isFocused, innerRef, da
     <OptionWrapper isFocused={isFocused} ref={innerRef} {...innerProps}>
       <Flex align="baseline" css={{ width: '100%' }}>
         <Flex css={{ flex: 1 }}>
-          <Text css={{ mr: '$1' }}>{label}&nbsp;</Text>
+          <Text css={{ mr: '$1', fontWeight: 500 }}>{label}&nbsp;</Text>
         </Flex>
 
-        <Text variant="smallCaps">{shortCode}</Text>
+        <Text variant="smallCaps" css={{ fontWeight: 500, fontSize: '13px' }}>
+          {shortCode}
+        </Text>
       </Flex>
     </OptionWrapper>
   );

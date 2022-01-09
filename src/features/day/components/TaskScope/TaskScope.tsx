@@ -25,7 +25,7 @@ export const TaskScope: React.FC<Props> = ({ task, css }) => {
   }
 
   return (
-    <Text variant="smallCaps" css={css}>
+    <Text variant="smallCaps" css={{ fontWeight: 500, fontSize: '13px', ...css }}>
       {taskScope.shortCode}
     </Text>
   );

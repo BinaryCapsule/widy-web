@@ -2,7 +2,7 @@ import React from 'react';
 import { BoardHeader } from '../BoardHeader/BoardHeader';
 import { Sections } from '../Sections/Sections';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
-import { Tomorrow } from '../Tomorrow/Tomorrow';
+import { Next } from '../Next/Next';
 import { PageWrapper } from '../../../../components/PageWrapper/PageWrapper';
 
 export const Board = () => {
@@ -12,7 +12,7 @@ export const Board = () => {
     <PageWrapper>
       <BoardHeader />
 
-      {dayId === 'tomorrow' ? <Tomorrow /> : <Sections />}
+      {dayId === 'tomorrow' ? <Next /> : <Sections />}
     </PageWrapper>
   );
 };

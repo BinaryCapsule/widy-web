@@ -17,6 +17,8 @@ const Day = lazy(() => import('./features/day/Day'));
 
 const Report = lazy(() => import('./features/report/Report'));
 
+const Settings = lazy(() => import('./features/settings/Settings'));
+
 export const App = () => {
   const { isLoading, error } = useAuth0();
 
@@ -62,6 +64,12 @@ export const App = () => {
             exact
             path="/report/:dayId"
             component={withAuthenticationRequired(Report, { onRedirecting })}
+          />
+
+          <Route
+            exact
+            path="/settings/:pageId"
+            component={withAuthenticationRequired(Settings, { onRedirecting })}
           />
         </Switch>
       </React.StrictMode>
