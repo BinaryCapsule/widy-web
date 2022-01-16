@@ -31,4 +31,5 @@ export enum Feature {
   Days = 'Days',
   Day = 'Day',
   Reports = 'Reports',
+  Scopes = 'Scopes',
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex } from '@binarycapsule/ui-capsules';
 import { Route, Switch } from 'react-router-dom';
 import { NavBar } from './compopnents/NavBar/NavBar';
-import { Scopes } from './pages/Scopes';
+import { Scopes } from './pages/scopes/Scopes';
 import { Sidebar } from './compopnents/Sidebar/Sidebar';
 
 const Settings = () => {

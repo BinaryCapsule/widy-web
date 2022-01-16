@@ -2,6 +2,7 @@ import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { useMutation, useQueryClient } from 'react-query';
 import { httpBody } from '../../../utils/httpBody';
 import { queryKeys } from './queryKeys';
+import { ScopeDto } from './useScopesQuery';
 
 interface UpsertScopeBody {
   name: string;
@@ -25,6 +26,8 @@ export const useUpsertScopeMutation = () => {
 
   const queryClient = useQueryClient();
 
+  const scopesQK = queryKeys.scopes();
+
   const upsertScope = async ({ scopeId, body }: UpsertScopeParams) => {
     return authFetch(`/api/scopes${scopeId ? `/${scopeId}` : ''}`, {
       method: scopeId ? 'PATCH' : 'POST',
@@ -33,7 +36,17 @@ export const useUpsertScopeMutation = () => {
   };
 
   return useMutation<UpsertScopeResponse, Error, UpsertScopeParams>(upsertScope, {
-    onSuccess() {
+    onSuccess(scope, { scopeId }) {
+      queryClient.setQueryData<ScopeDto[] | undefined>(scopesQK, old => {
+        if (scopeId) {
+          return old ? old.map(oldScope => (oldScope.id === scopeId ? scope : oldScope)) : old;
+        }
+
+        return old ? [scope, ...old] : old;
+      });
+    },
+
+    onSettled() {
       queryClient.invalidateQueries(queryKeys.scopes());
     },
   });

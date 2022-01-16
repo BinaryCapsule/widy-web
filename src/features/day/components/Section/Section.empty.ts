@@ -3,7 +3,7 @@ import { Box, styled } from '@binarycapsule/ui-capsules';
 export const SectionEmpty = styled(Box, {
   width: '100%',
   height: 96,
-  color: '$neutral700',
+  color: '$neutral500',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

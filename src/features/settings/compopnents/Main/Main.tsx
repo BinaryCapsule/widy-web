@@ -5,4 +5,6 @@ export const Main = styled('main', {
   flex: 1,
   minWidth: 600,
   maxWidth: 800,
+  overflowY: 'auto',
+  position: 'relative',
 });

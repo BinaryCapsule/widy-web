@@ -74,7 +74,9 @@ export const TasksTable: React.FC<Props> = ({ data: dayReport }) => {
                   <TaskCell>{summary}</TaskCell>
 
                   <TaskCell style={{ textAlign: 'center', position: 'relative' }}>
-                    {isDone && <Icon icon="check" css={centerStyles} />}
+                    {isDone && (
+                      <Icon icon="check_c" css={{ ...centerStyles, color: '$success500' }} />
+                    )}
                   </TaskCell>
 
                   <TaskCell style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>

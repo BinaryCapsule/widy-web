@@ -5,7 +5,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
     "@binarycapsule/editor": "^3.0.0",
-    "@binarycapsule/ui-capsules": "^6.2.0",
+    "@binarycapsule/ui-capsules": "^6.2.4",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.8.5",
     "@radix-ui/react-avatar": "^0.1.3",
