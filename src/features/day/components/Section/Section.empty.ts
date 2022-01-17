@@ -10,7 +10,8 @@ export const SectionEmpty = styled(Box, {
   backgroundColor: '$bg',
   fontSize: '$2',
   transition: 'background-color 0.2s ease',
-  border: '1px solid $neutral300',
+  border: '1px solid $neutral200',
+  background: '$neutral100',
   borderRadius: '$medium',
   userSelect: 'none',
 });

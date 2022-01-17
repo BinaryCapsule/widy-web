@@ -97,6 +97,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
               control={control}
               render={({ field }) => (
                 <ScopeSelect
+                  isPortal
                   value={field.value}
                   onChange={opt => setValue('scope', opt as ScopeOption)}
                   onCreateScope={() => setIsScopesModalOpen(true)}

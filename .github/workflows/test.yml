@@ -1,12 +1,14 @@
-name: Build
+name: Test
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:

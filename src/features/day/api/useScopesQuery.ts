@@ -2,6 +2,7 @@ import { useAuthFetch } from '../../../utils/useAuthFetch';
 import { queryKeys } from './queryKeys';
 import { useQuery } from 'react-query';
 import { useMemo } from 'react';
+import { PaginationMeta } from '../../../common/types';
 
 export interface ScopeDto {
   id: number;
@@ -12,13 +13,7 @@ export interface ScopeDto {
 
 export interface ScopesDto {
   items: ScopeDto[];
-  meta: {
-    totalItems: number;
-    itemCount: number;
-    itemsPerPage: number;
-    totalPages: number;
-    currentPage: number;
-  };
+  meta: PaginationMeta;
 }
 
 export const useScopesQuery = () => {
@@ -32,7 +27,7 @@ export const useScopesQuery = () => {
 
   const queryKey = queryKeys.scopes();
 
-  return useQuery<ScopeDto[], Error>(queryKey, () => fetchScopes());
+  return useQuery<ScopeDto[], Error>(queryKey, fetchScopes);
 };
 
 export interface ScopeOption {

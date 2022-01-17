@@ -1,17 +1,17 @@
-import { Box, Button, Flex, Text } from '@binarycapsule/ui-capsules';
 import React, { useState } from 'react';
+import { Box, Button, Flex, Text } from '@binarycapsule/ui-capsules';
 import { useTomorrowQuery } from '../../api/useTomorrowQuery';
+import { useDayRouteParams } from '../../hooks/useDayRouteParams';
+import { useTodayDayId } from '../../hooks/useTodayDayId';
+import { getSectionTasks } from '../../utils/getSectionTasks';
+import { AddTask } from '../AddTask/AddTask';
+import { MoveAllToPlan } from '../MoveAllToPlan/MoveAllToPlan';
 import { SectionEmpty } from '../Section/Section.empty';
 import { SectionHeader } from '../Section/Section.styles';
-import { AddTask } from '../AddTask/AddTask';
-import { getSectionTasks } from '../../utils/getSectionTasks';
 import { Task } from '../Task/Task';
-import { useDayRouteParams } from '../../hooks/useDayRouteParams';
-import { SectionsLoading } from '../Sections/Sections.loading';
-import { useTodayDayId } from '../../hooks/useTodayDayId';
-import { MoveAllToPlan } from '../MoveAllToPlan/MoveAllToPlan';
+import { NextLoading } from './Next.loading';
 
-export const Tomorrow = () => {
+export const Next = () => {
   const { isLoading, data } = useTomorrowQuery();
 
   const [showAddTask, setShowAddTask] = useState(false);
@@ -21,7 +21,7 @@ export const Tomorrow = () => {
   const { todayDayId } = useTodayDayId();
 
   if (isLoading) {
-    return <SectionsLoading count={1} />;
+    return <NextLoading />;
   }
 
   if (!data) {
@@ -35,15 +35,16 @@ export const Tomorrow = () => {
   return (
     <>
       <Box css={{ my: '$6' }}>
-        {tasks.length > 0 && !!todayDayId && (
-          <SectionHeader
-            css={{ borderBottom: tasks.length > 0 ? '1px solid $neutral300' : 'none' }}
-          >
-            <div />
-
-            <MoveAllToPlan dayId={todayDayId} />
-          </SectionHeader>
-        )}
+        <SectionHeader
+          css={{
+            borderBottom: tasks.length > 0 ? '1px solid $neutral300' : 'none',
+            height: tasks.length === 0 || (tasks.length > 0 && !todayDayId) ? 0 : 48,
+          }}
+        >
+          {tasks.length > 0 && !!todayDayId && (
+            <MoveAllToPlan dayId={todayDayId} css={{ ml: 'auto' }} />
+          )}
+        </SectionHeader>
 
         {tasks.length === 0 ? (
           <SectionEmpty>No tasks</SectionEmpty>

@@ -19,7 +19,7 @@ import { FormValues, validationSchema } from './UpsertScope.meta';
 interface Props {
   scope?: ScopeDto;
   onClose(): void;
-  onUpsertScope(scope: UpsertScopeResponse): void;
+  onUpsertScope?(scope: UpsertScopeResponse): void;
 }
 
 export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) => {
@@ -29,8 +29,8 @@ export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) 
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
-      name: '',
-      shortCode: '',
+      name: scope ? scope.name : '',
+      shortCode: scope ? scope.shortCode : '',
     },
     resolver: yupResolver(validationSchema),
   });
@@ -44,7 +44,7 @@ export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) 
         body: { name, shortCode },
       });
 
-      onUpsertScope(newScope);
+      onUpsertScope?.(newScope);
 
       onClose();
     } catch {
