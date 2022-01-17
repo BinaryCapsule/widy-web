@@ -15,9 +15,10 @@ export const StyledDayButton = styled('div', {
   cursor: 'pointer',
   flexShrink: 0,
   userSelect: 'none',
+  position: 'relative',
 
   '&:hover': {
-    border: '1px solid $primary600',
+    background: '$primary200',
   },
 });
 
@@ -51,8 +52,20 @@ export const StyledInput = styled('input', {
 
   '&:checked': {
     '~ .day-button': {
-      border: '1px solid $primary600',
-      background: '$primary100',
+      background: '$primary200',
+      color: '$primary800',
+      borderColor: '$primary200',
+
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        height: 24,
+        width: 4,
+        left: 0,
+        top: 8,
+        borderRadius: '0 2px 2px 0',
+        background: '$primary500',
+      },
     },
   },
 });

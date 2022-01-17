@@ -40,6 +40,7 @@ export const DeleteTask: React.FC<Props> = ({ task, onRequestClose }) => {
       actions={actions}
       title="Delete task"
       message="Are you sure you want to delete this task?"
+      variant="warning"
     />
   );
 };

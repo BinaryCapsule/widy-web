@@ -15,6 +15,7 @@ export const StyledTomorrowButton = styled('button', {
   cursor: 'pointer',
   flexShrink: 0,
   userSelect: 'none',
+  position: 'relative',
 
   '&:hover': {
     border: '1px dashed $pink700',
@@ -24,6 +25,17 @@ export const StyledTomorrowButton = styled('button', {
     isSelected: {
       true: {
         background: '$pink50',
+
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          height: 18,
+          width: 4,
+          left: 0,
+          top: 6,
+          borderRadius: '0 2px 2px 0',
+          background: '$pink500',
+        },
       },
     },
   },

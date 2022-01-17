@@ -13,7 +13,7 @@ export const ScopeOptionLabel: React.FC<Props> = ({ label, shortCode }) => {
         <TruncatedText mr="4">{label}&nbsp;</TruncatedText>
       </Box>
 
-      <Text variant="smallCaps" css={{ mr: '$2' }}>
+      <Text variant="smallCaps" css={{ fontWeight: 500, fontSize: '13px' }}>
         {shortCode}
       </Text>
     </Flex>

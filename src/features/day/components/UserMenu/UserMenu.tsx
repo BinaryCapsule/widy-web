@@ -11,9 +11,15 @@ import {
 } from '@binarycapsule/ui-capsules';
 import { MenuTrigger } from './components/MenuTrigger/MenuTrigger';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useHistory } from 'react-router-dom';
+import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 
 export const UserMenu = () => {
   const { logout, user } = useAuth0();
+
+  const history = useHistory();
+
+  const { dayId } = useDayRouteParams();
 
   const logoutWithRedirect = () =>
     logout({
@@ -56,9 +62,7 @@ export const UserMenu = () => {
         )}
 
         <MenuItem
-          onSelect={() => {
-            /* noop */
-          }}
+          onSelect={() => history.push(`/settings/scopes${dayId ? `?dayId=${dayId}` : ''}`)}
         >
           <Flex align="center">
             <Icon icon="cog" size={18} variant="outline" css={{ color: '$neutral500', mr: '$2' }} />
