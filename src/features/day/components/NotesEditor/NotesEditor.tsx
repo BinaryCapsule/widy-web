@@ -10,7 +10,7 @@ interface NotesEditorProps extends CSSProp {
   notes: string;
 }
 
-export const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, css }) => {
+const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, css }) => {
   const editorRef = React.useRef<EditorRef>(null);
 
   const { mutateAsync: updateTask } = useUpdateTaskMutation();
@@ -61,3 +61,5 @@ export const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, css }) 
     </Box>
   );
 };
+
+export default NotesEditor;
