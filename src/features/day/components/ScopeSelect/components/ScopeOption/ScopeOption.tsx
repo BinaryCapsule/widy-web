@@ -6,7 +6,7 @@ const OptionWrapper = styled(Box, {
   cursor: 'pointer',
   fontWeight: 500,
   color: '$neutral700',
-  background: 'bg',
+  background: '$bg',
   height: 'auto',
   padding: 8,
 

@@ -1,4 +1,4 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { darkTheme, styled } from '@binarycapsule/ui-capsules';
 
 export const SidebarWrapper = styled('aside', {
   minWidth: 360,
@@ -6,4 +6,9 @@ export const SidebarWrapper = styled('aside', {
   background: '$yellow50',
   padding: '38px 32px',
   borderLeft: '1px solid $yellow100',
+
+  [`.${darkTheme} &`]: {
+    background: '$neutral100',
+    borderLeft: '1px solid $neutral200',
+  },
 });

@@ -8,6 +8,7 @@ import {
   MenuItem,
   MenuList,
   Text,
+  useTheme,
 } from '@binarycapsule/ui-capsules';
 import { MenuTrigger } from './components/MenuTrigger/MenuTrigger';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -20,6 +21,8 @@ export const UserMenu = () => {
   const history = useHistory();
 
   const { dayId } = useDayRouteParams();
+
+  const { isDark, setTheme } = useTheme();
 
   const logoutWithRedirect = () =>
     logout({
@@ -67,6 +70,18 @@ export const UserMenu = () => {
           <Flex align="center">
             <Icon icon="cog" size={18} variant="outline" css={{ color: '$neutral500', mr: '$2' }} />
             Settings
+          </Flex>
+        </MenuItem>
+
+        <MenuItem onSelect={() => setTheme(isDark ? 'light' : 'dark')}>
+          <Flex align="center">
+            <Icon
+              icon={isDark ? 'sun' : 'moon'}
+              size={18}
+              variant="outline"
+              css={{ color: '$neutral500', mr: '$2' }}
+            />
+            {isDark ? 'Light theme' : 'Dark theme'}
           </Flex>
         </MenuItem>
 
