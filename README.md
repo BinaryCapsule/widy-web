@@ -13,7 +13,16 @@ It consumes the Widy API ([repo](https://github.com/BinaryCapsule/widy-api)).
 > Also, the api is hosted on a free Heroku dyno and therefore may go to sleep
 > during periods of inactivity.
 
-<img src="https://user-images.githubusercontent.com/13286745/147857987-5ec6b590-e6ab-45ec-9d7f-d1169f871b31.png" alt="Widy screenshot" width="100%">
+<table>
+  <tr>
+    <td>
+      <img src="https://user-images.githubusercontent.com/13286745/150674272-59c5ee2e-2952-429a-a830-a8feed0d3a15.png" alt="Widy - light theme" width="100%" />
+    </td>
+    <td>
+      <img src="https://user-images.githubusercontent.com/13286745/150674292-b59311d4-8dd9-44b3-8471-24072c102e64.png" alt="Widy - dark theme" width="100%" />
+    </td>
+  </tr>
+</table>
 
 Widy is a productivity app. It has three main features:
 
