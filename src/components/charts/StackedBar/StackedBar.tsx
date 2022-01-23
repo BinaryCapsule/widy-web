@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Box, Flex, Text, Tooltip } from '@binarycapsule/ui-capsules';
+import { Box, darkTheme, Flex, styled, Text, Tooltip } from '@binarycapsule/ui-capsules';
 
 interface TooltipContentProps {
   label: string;
@@ -7,14 +7,22 @@ interface TooltipContentProps {
   color: string;
 }
 
+const TooltipText = styled(Text, {
+  color: '$neutral100',
+
+  [`.${darkTheme} &`]: {
+    color: '$neutral700',
+  },
+});
+
 const TooltipContent: React.FC<TooltipContentProps> = ({ label, value, color }) => {
   return (
     <Flex align="center">
       <Box css={{ width: 8, height: 9, bg: color, mr: '$1' }} />
 
-      <Text css={{ color: '$neutral100', fontSize: '$1', mr: '$1' }}>{`${label}:`}</Text>
+      <TooltipText css={{ fontSize: '$1', mr: '$1' }}>{`${label}:`}</TooltipText>
 
-      <Text css={{ color: '$neutral100', fontSize: '$1', fontWeight: 600 }}>{value}</Text>
+      <TooltipText css={{ fontSize: '$1', fontWeight: 600 }}>{value}</TooltipText>
     </Flex>
   );
 };

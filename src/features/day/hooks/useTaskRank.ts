@@ -40,12 +40,6 @@ export const useTaskRank = () => {
     return sectionTasks;
   }, [dayData, dayId, tomorrowData]);
 
-  if (!tasks) {
-    return {
-      getTaskRank: () => 0,
-    };
-  }
-
   return {
     getTaskRank: ({ sectionId, previousTaskId, isAppend }: GetTaskRankParams) => {
       if (!tasks) {

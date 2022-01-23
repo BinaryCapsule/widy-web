@@ -52,20 +52,13 @@ const Landing = () => {
 
       <Box css={{ flex: 1, position: 'relative' }}>
         <Flex align="end" css={{ mb: '$2' }}>
-          <IconWidy size={isWide ? 90 : 60} yesterdayColor="$blue600" />
-          <IconWidyText size={isWide ? 180 : 120} textColor="$blue600" css={{ ml: '$3' }} />
+          <IconWidy size={isWide ? 90 : 60} />
+          <IconWidyText size={isWide ? 180 : 120} css={{ ml: '$3' }} />
         </Flex>
 
         <Text size={isWide ? '7' : '5'} css={{ fontWeight: 500, mb: '$2' }}>
           What I did Yesterday?
         </Text>
-
-        <Box css={{ maxWidth: 500 }}>
-          <Text css={{ fontWeight: 500 }}>
-            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            Nulla vitae elit libero, a pharetra augue.
-          </Text>
-        </Box>
 
         <StyledHeroIllustration />
       </Box>

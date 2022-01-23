@@ -4,8 +4,8 @@ import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { TaskDto } from '../../api/useDayQuery';
 import { useActiveTaskQuery } from '../../api/useActiveTaskQuery';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
-import { IllustratedIcon } from '@binarycapsule/ui-capsules';
 import { getNow } from '../../utils/getNow';
+import { StyledTimerButton } from './TimerButton.styles';
 
 interface Props {
   task: TaskDto;
@@ -50,15 +50,12 @@ export const TimerButton: React.FC<Props> = ({ task, size }) => {
   };
 
   return (
-    <IllustratedIcon
+    <StyledTimerButton
+      isActive={isActive}
       icon={isActive ? 'stop' : 'play'}
       onClick={handleClick}
       disabled={isUpdatingTask}
       size={size}
-      primaryColor={isActive ? '$yellow400' : '$neutral300'}
-      primaryColorHover={isActive ? '$yellow500' : '$neutral400'}
-      secondaryColor={isActive ? '$yellow900' : '$neutral600'}
-      secondaryColorHover={isActive ? '$yellow900' : '$neutral700'}
       aria-label={isActive ? 'Stop task' : 'Start task'}
       css={{ mx: '$1' }}
     />

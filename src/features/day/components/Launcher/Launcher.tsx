@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
-import { Button, IllustratedIcon, Tooltip } from '@binarycapsule/ui-capsules';
+import { Button, Tooltip } from '@binarycapsule/ui-capsules';
 import { MoveTask } from '../MoveTask/MoveTask';
 import { TaskDto } from '../../api/useDayQuery';
+import { StyledLauncher } from './Launcher.styles';
 
 interface Props {
   task: TaskDto;
@@ -29,14 +30,10 @@ export const Launcher: React.FC<Props> = ({ task, size, isButton }) => {
             Launch task
           </Button>
         ) : (
-          <IllustratedIcon
+          <StyledLauncher
             icon="launch"
             onClick={() => setShowLaunchTaskModal(true)}
             size={size}
-            primaryColor="$neutral300"
-            primaryColorHover="$blue200"
-            secondaryColor="$neutral500"
-            secondaryColorHover="$blue500"
             aria-label="Launch task"
             css={{ mx: '$1' }}
           />
