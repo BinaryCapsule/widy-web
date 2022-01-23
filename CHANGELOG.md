@@ -1,3 +1,12 @@
+# [0.10.0](https://github.com/BinaryCapsule/widy-web/compare/v0.9.0...v0.10.0) (2022-01-23)
+
+
+### Features
+
+* dark theme ([3183e58](https://github.com/BinaryCapsule/widy-web/commit/3183e58dcd4ac9876d871c18c36cbc0cd834b189))
+
+
+
 # [0.9.0](https://github.com/BinaryCapsule/widy-web/compare/v0.8.5...v0.9.0) (2022-01-17)
 
 
@@ -37,16 +46,6 @@
 ### Bug Fixes
 
 * optimize deploy perf ([d9b8484](https://github.com/BinaryCapsule/widy-web/commit/d9b84843b42f139c0ec9becb810ec0b5b623fda1))
-
-
-
-## [0.8.2](https://github.com/BinaryCapsule/widy-web/compare/v0.8.1...v0.8.2) (2022-01-07)
-
-
-### Bug Fixes
-
-* send tag in deploy message ([4a1ab0a](https://github.com/BinaryCapsule/widy-web/commit/4a1ab0a550168f443378de6861fc5652df13fcf7))
-* update the deploy message ([40a12c3](https://github.com/BinaryCapsule/widy-web/commit/40a12c3f235c6d1582e711093ffa2902c9c6dc50))
 
 
 
