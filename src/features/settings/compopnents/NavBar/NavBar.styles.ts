@@ -14,7 +14,7 @@ export const NavBarStyles = styled('div', {
 
 export const NavHeading = styled('h2', {
   color: '$neutral600',
-  fontSize: '$2',
+  fontSize: '$sm',
   textTransform: 'uppercase',
   fontWeight: 600,
   letterSpacing: '0.5px',

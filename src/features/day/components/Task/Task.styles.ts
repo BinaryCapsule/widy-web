@@ -17,7 +17,7 @@ export const StyledTask = styled(Box, {
   background: '$bg',
   borderRadius: '$medium',
   padding: '8px 8px 8px 28px',
-  fontSize: 'body',
+  fontSize: '$md',
   fontWeight: 500,
   borderColor: '$neutral300',
   height: 44,
