@@ -5,7 +5,7 @@ export const StyledDayButton = styled('div', {
   borderRadius: '$medium',
   border: '1px solid $neutral200',
   background: '$bg',
-  fontSize: '13px',
+  fontSize: '$sm',
   fontWeight: 500,
   color: '$neutral700',
   padding: '0 8px 0 16px',

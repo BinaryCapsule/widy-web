@@ -81,13 +81,13 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
           </Flex>
 
           {errors.hours?.message && (
-            <Text size={1} css={{ color: '$error500', mt: '$1' }}>
+            <Text size="xs" css={{ color: '$error500', mt: '$1' }}>
               {errors.hours.message}
             </Text>
           )}
 
           {errors.minutes?.message && (
-            <Text size={1} css={{ color: '$error500', mt: '$1' }}>
+            <Text size="xs" css={{ color: '$error500', mt: '$1' }}>
               {errors.minutes.message}
             </Text>
           )}

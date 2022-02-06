@@ -14,7 +14,7 @@ export const NoInternet = () => {
             size={138}
           />
 
-          <Text size={3} css={{ fontWeight: 500 }}>
+          <Text size="md" css={{ fontWeight: 500 }}>
             No internet connection!
           </Text>
 

@@ -51,13 +51,13 @@ export const UserMenu = () => {
         {userInfo && (
           <Box css={{ padding: '6px 12px', mt: -8 }}>
             {userInfo.primary && (
-              <Text as="p" size={2} css={{ fontWeight: 500 }}>
+              <Text as="p" size="md" css={{ fontWeight: 500 }}>
                 {userInfo.primary}
               </Text>
             )}
 
             {userInfo.secondary && (
-              <Text as="p" size={1} css={{ color: '$neutral500' }}>
+              <Text as="p" size="sm" css={{ color: '$neutral500' }}>
                 {userInfo.secondary}
               </Text>
             )}
