@@ -56,7 +56,7 @@ const Landing = () => {
           <IconWidyText size={isWide ? 180 : 120} css={{ ml: '$3' }} />
         </Flex>
 
-        <Text size={isWide ? '3xl' : 'xl'} css={{ fontWeight: 500, mb: '$2' }}>
+        <Text size={isWide ? '4xl' : '2xl'} css={{ fontWeight: 500, mb: '$2' }}>
           What I did Yesterday?
         </Text>
 

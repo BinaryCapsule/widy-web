@@ -1,11 +1,11 @@
 import { darkTheme, styled } from '@binarycapsule/ui-capsules';
 
 export const StyledTomorrowButton = styled('button', {
-  height: 36,
+  height: 32,
   borderRadius: '$medium',
   border: '1px dashed $secondary200',
   background: '$bg',
-  fontSize: '$md',
+  fontSize: '0.8125rem',
   fontWeight: 500,
   color: '$secondary700',
   padding: '0 8px',
@@ -36,7 +36,7 @@ export const StyledTomorrowButton = styled('button', {
           height: 18,
           width: 4,
           left: 0,
-          top: 8,
+          top: 6,
           borderRadius: '0 2px 2px 0',
           background: '$secondary500',
         },

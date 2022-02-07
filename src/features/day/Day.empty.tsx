@@ -9,7 +9,7 @@ export const DayEmpty = () => {
         <NoDaysIllustration />
       </Box>
 
-      <Text as="h1" size="xl" css={{ fontWeight: 500, mb: '$2' }}>
+      <Text as="h1" size="2xl" css={{ fontWeight: 500, mb: '$2' }}>
         <span role="img" aria-label="tada">
           🎉
         </span>{' '}

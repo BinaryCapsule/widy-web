@@ -20,9 +20,9 @@ const TooltipContent: React.FC<TooltipContentProps> = ({ label, value, color }) 
     <Flex align="center">
       <Box css={{ width: 8, height: 9, bg: color, mr: '$1' }} />
 
-      <TooltipText css={{ fontSize: '$xs', mr: '$1' }}>{`${label}:`}</TooltipText>
+      <TooltipText css={{ fontSize: '$sm', mr: '$1' }}>{`${label}:`}</TooltipText>
 
-      <TooltipText css={{ fontSize: '$xs', fontWeight: 600 }}>{value}</TooltipText>
+      <TooltipText css={{ fontSize: '$sm', fontWeight: 600 }}>{value}</TooltipText>
     </Flex>
   );
 };
