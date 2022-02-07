@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
-    "@binarycapsule/editor": "^3.0.3",
+    "@binarycapsule/editor": "^3.0.4",
     "@binarycapsule/ui-capsules": "^6.3.1",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.8.8",
