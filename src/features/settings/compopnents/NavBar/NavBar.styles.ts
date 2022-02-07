@@ -14,7 +14,7 @@ export const NavBarStyles = styled('div', {
 
 export const NavHeading = styled('h2', {
   color: '$neutral600',
-  fontSize: '$sm',
+  fontSize: '$md',
   textTransform: 'uppercase',
   fontWeight: 600,
   letterSpacing: '0.5px',
@@ -34,6 +34,9 @@ export const StyledNavLink = styled(NavLink, {
   position: 'relative',
   fontWeight: 500,
   borderRadius: '4px',
+  fontSize: '0.8125rem',
+  lineHeight: 1.5,
+  height: 36,
 
   '&.active': {
     background: '$primary200',
@@ -50,7 +53,7 @@ export const StyledNavLink = styled(NavLink, {
     height: 20,
     width: 4,
     left: 0,
-    top: 10,
+    top: 8,
     borderRadius: '0 2px 2px 0',
     background: '$primary500',
   },

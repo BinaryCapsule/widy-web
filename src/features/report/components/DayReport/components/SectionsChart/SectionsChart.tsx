@@ -21,7 +21,7 @@ export const SectionsChart: React.FC<Props> = ({ data: dayReport }) => {
   return (
     <Card css={{ my: '$4' }}>
       <Box css={{ padding: '$4' }}>
-        <Text as="p" size="md" css={{ fontWeight: 600, mb: '$2' }}>
+        <Text as="p" size="lg" css={{ fontWeight: 600, mb: '$2' }}>
           Sections
         </Text>
 

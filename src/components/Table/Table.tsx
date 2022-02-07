@@ -5,13 +5,13 @@ export const Table = styled('table', {
   background: '$bg',
   fontFamily: '$inter',
   fontWeight: 400,
-  fontSize: '$sm',
+  fontSize: '$md',
   color: '$neutral700',
   borderCollapse: 'collapse',
 
   caption: {
-    fontSize: '$md',
-    lineHeight: '$md',
+    fontSize: '$lg',
+    lineHeight: '$lg',
     fontWeight: 600,
   },
 
@@ -21,8 +21,8 @@ export const Table = styled('table', {
 
       th: {
         fontWeight: 600,
-        fontSize: '$xs',
-        lineHeight: '$xs',
+        fontSize: '$sm',
+        lineHeight: '$sm',
         color: '$neutral500',
         letterSpacing: '$wide',
         textTransform: 'uppercase',

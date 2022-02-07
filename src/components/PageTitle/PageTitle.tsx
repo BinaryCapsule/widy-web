@@ -8,12 +8,12 @@ interface Props {
 export const PageTitle: React.FC<Props> = ({ children, subTitle }) => {
   return (
     <Box>
-      <Text as="h1" size="lg" css={{ fontWeight: 500 }}>
+      <Text as="h1" size="xl" css={{ fontWeight: 500 }}>
         {children}
       </Text>
 
       {subTitle && (
-        <Text as="p" size="sm" css={{ fontWeight: 500, color: '$neutral500' }}>
+        <Text as="p" size="md" css={{ fontWeight: 500, color: '$neutral500' }}>
           {subTitle}
         </Text>
       )}

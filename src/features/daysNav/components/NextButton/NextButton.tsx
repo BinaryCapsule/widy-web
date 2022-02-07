@@ -1,10 +1,10 @@
 import React from 'react';
 import { CSSProp, Flex, Icon } from '@binarycapsule/ui-capsules';
 import { useHistory } from 'react-router-dom';
-import { StyledTomorrowButton } from './TomorrowButton.styles';
+import { StyledTomorrowButton } from './NextButton.styles';
 import { useDayRouteParams } from '../../../day/hooks/useDayRouteParams';
 
-export const TomorrowButton: React.FC<CSSProp> = ({ css }) => {
+export const NextButton: React.FC<CSSProp> = ({ css }) => {
   const history = useHistory();
   const { dayId } = useDayRouteParams();
 
@@ -15,7 +15,7 @@ export const TomorrowButton: React.FC<CSSProp> = ({ css }) => {
       css={css}
     >
       <Flex as="span" align="center">
-        <Icon icon="calendar" variant="outline" size={16} css={{ mr: '$1' }} />
+        <Icon icon="calendar" variant="outline" size={14} css={{ mr: '$1' }} />
         <span>Next</span>
       </Flex>
 

@@ -80,19 +80,19 @@ export const StyledTask = styled(Box, {
       plan: {
         my: 0,
         borderRadius: 0,
-        borderTopWidth: 0,
         borderLeftWidth: 0,
         borderRightWidth: 0,
+        borderTopColor: 'transparent',
         background: '$bg',
       },
 
       tomorrow: {
         my: 0,
         borderRadius: 0,
-        borderTopWidth: 0,
         borderLeftWidth: 0,
         borderRightWidth: 0,
         background: '$bg',
+        borderTopColor: 'transparent',
         p: 8,
       },
     },
@@ -176,8 +176,7 @@ export const StyledTask = styled(Box, {
       css: {
         borderRadius: 'medium',
         borderTopWidth: 1,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
+        borderTopColor: '$neutral300',
       },
     },
 

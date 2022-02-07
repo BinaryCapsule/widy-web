@@ -13,20 +13,20 @@ export const Time: React.FC<Props> = ({ time, css }) => {
     <Flex align="baseline" css={css}>
       {hours > 0 && (
         <>
-          <Text size="lg" css={{ mr: '$1' }}>
+          <Text size="xl" css={{ mr: '$1' }}>
             {hours}
           </Text>
           <Text css={{ mr: '$2' }}>h</Text>
         </>
       )}
       <>
-        <Text size="lg" css={{ mr: '$1' }}>
+        <Text size="xl" css={{ mr: '$1' }}>
           {minutes}
         </Text>
         <Text css={{ mr: '$2' }}>min</Text>
       </>
       <>
-        <Text size="lg" css={{ mr: '$1' }}>
+        <Text size="xl" css={{ mr: '$1' }}>
           {seconds}
         </Text>
         <Text css={{ mr: '$2' }}>s</Text>
