@@ -13,6 +13,7 @@ import { TaskMenu } from '../TaskMenu/TaskMenu';
 import { TaskScope } from '../TaskScope/TaskScope';
 import { AddToPlan } from '../AddToPlan/AddToPlan';
 import { GENERIC_ERROR_MSG } from '../../../../common/constants';
+import { useSidebarStore } from '../../stores/sidebarStore';
 
 interface Props {
   task: TaskDto;
@@ -28,6 +29,8 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
   const history = useHistory();
 
   const { mutateAsync: updateTask, isLoading: isUpdatingTask } = useUpdateTaskMutation();
+
+  const setSidebarOpen = useSidebarStore(state => state.setIsOpen);
 
   const toggleTaskDone = async () => {
     if (isUpdatingTask) {
@@ -54,6 +57,8 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
 
   const onTaskClick = () => {
     history.push(`/day/${dayId}/${task.id}`);
+
+    setSidebarOpen(true);
   };
 
   const onTaskKeyDown = (evt: React.KeyboardEvent<HTMLDivElement>) => {
