@@ -4,9 +4,14 @@ import { darkTheme, Flex, IllustratedIcon, styled } from '@binarycapsule/ui-caps
 const StyledSidebar = styled(Flex, {
   flex: 1,
   background: '$tertiary50',
+  display: 'none',
 
   [`.${darkTheme} &`]: {
     background: '$neutral100',
+  },
+
+  '@xl': {
+    display: 'block',
   },
 });
 
