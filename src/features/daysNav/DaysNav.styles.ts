@@ -15,8 +15,7 @@ export const DaysNavWrapper = styled('div', {
 
   '@md': {
     position: 'relative',
-    right: 'revert',
-    transform: 'revert',
+    boxShadow: 'revert',
     display: 'flex',
   },
 

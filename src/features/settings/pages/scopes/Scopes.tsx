@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { TopBar } from '../../compopnents/TopBar/TopBar';
-import { Main } from '../../compopnents/Main/Main';
-import { Box, Button, Flex, Input, Spinner } from '@binarycapsule/ui-capsules';
+import { TopBar } from '../../components/Topbar/TopBar';
+import { Main } from '../../components/Main/Main';
+import { Box, Button, Input, Spinner } from '@binarycapsule/ui-capsules';
 import { ScopesList } from './components/ScopesList/ScopesList';
 import { UpsertScope } from '../../../day/components/UpsertScope/UpsertScope';
 import { useScopesQuery } from '../../../day/api/useScopesQuery';
+import { Actions } from './Scopes.styles';
 
 export const Scopes = () => {
   const [filter, setFilter] = useState('');
@@ -24,13 +25,13 @@ export const Scopes = () => {
           </Box>
         )}
 
-        <Flex as="section" css={{ my: '$6' }}>
+        <Actions>
           <Button
             leftIcon="plus"
             onClick={() => {
               setIsAddScopeModalOpen(true);
             }}
-            css={{ mr: 'auto' }}
+            css={{ width: '100%', '@sm': { width: 'revert', mr: 'auto' } }}
           >
             New scope
           </Button>
@@ -41,9 +42,9 @@ export const Scopes = () => {
             onChange={evt => {
               setFilter(evt.target.value);
             }}
-            css={{ width: 250 }}
+            css={{ width: '100%', '@sm': { width: 250 } }}
           />
-        </Flex>
+        </Actions>
 
         <section>
           <ScopesList filter={filter} />

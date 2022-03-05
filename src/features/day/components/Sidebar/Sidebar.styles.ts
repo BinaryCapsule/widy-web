@@ -30,7 +30,6 @@ export const SidebarWrapper = styled('aside', {
   variants: {
     isOpen: {
       true: {
-        transform: 'translateX(0px)',
         display: 'block',
       },
     },
