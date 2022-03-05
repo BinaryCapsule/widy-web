@@ -9,22 +9,21 @@ export const DaysNavWrapper = styled('div', {
   background: '$neutral100',
   borderRight: '1px solid $neutral200',
   boxShadow: '$500',
-  transition: 'transform 0.2s cubic-bezier(0, 0.52, 0, 1)',
-  transform: 'translateX(-254px)',
   zIndex: 1,
-  display: 'flex',
+  display: 'none',
   flexDirection: 'column',
 
   '@md': {
     position: 'relative',
     right: 'revert',
     transform: 'revert',
+    display: 'flex',
   },
 
   variants: {
     isOpen: {
       true: {
-        transform: 'translateX(0px)',
+        display: 'flex',
       },
     },
   },

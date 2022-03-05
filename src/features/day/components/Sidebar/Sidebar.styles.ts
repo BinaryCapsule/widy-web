@@ -9,11 +9,10 @@ export const SidebarWrapper = styled('aside', {
   minWidth: sidebarWidth,
   flex: 1,
   background: '$yellow50',
-  padding: '38px 32px',
+  padding: '38px 24px',
   borderLeft: '1px solid $yellow100',
   boxShadow: '$500',
-  transition: 'transform 0.2s cubic-bezier(0, 0.52, 0, 1)',
-  transform: `translateX(${sidebarWidth}px)`,
+  display: 'none',
 
   [`.${darkTheme} &`]: {
     background: '$neutral100',
@@ -24,12 +23,15 @@ export const SidebarWrapper = styled('aside', {
     position: 'relative',
     right: 'revert',
     transform: 'revert',
+    padding: '38px 32px',
+    display: 'block',
   },
 
   variants: {
     isOpen: {
       true: {
         transform: 'translateX(0px)',
+        display: 'block',
       },
     },
   },
