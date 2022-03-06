@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloseButton, DaysNavWrapper } from './DaysNav.styles';
+import { CloseButton, DaysNavWrapper, StickyHeader } from './DaysNav.styles';
 import { DaysNavHeader } from './components/DaysNavHeader/DaysNavHeader';
 import { Brand } from './components/Brand/Brand';
 import { DaysList } from './components/DaysList/DaysList';
@@ -20,11 +20,13 @@ export const DaysNav: React.FC = () => {
         aria-label="Close"
       />
 
-      <Brand css={{ mb: '$5' }} />
+      <StickyHeader>
+        <Brand css={{ mb: '$5' }} />
 
-      <NextButton css={{ mb: '$5' }} />
+        <NextButton css={{ mb: '$5' }} />
 
-      <DaysNavHeader css={{ mb: '$5' }} />
+        <DaysNavHeader />
+      </StickyHeader>
 
       <DaysList />
     </DaysNavWrapper>
