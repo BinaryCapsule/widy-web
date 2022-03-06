@@ -8,7 +8,6 @@ export const StyledNavbar = styled('div', {
   flexShrink: 0,
   padding: '48px 24px 24px',
   background: '$neutral100',
-  borderRight: '1px solid $neutral200',
   display: 'none',
   flexDirection: 'column',
   zIndex: 1,
@@ -18,6 +17,7 @@ export const StyledNavbar = styled('div', {
     position: 'relative',
     boxShadow: 'revert',
     display: 'flex',
+    borderRight: '1px solid $neutral200',
   },
 
   variants: {

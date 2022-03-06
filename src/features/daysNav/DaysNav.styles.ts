@@ -2,20 +2,22 @@ import { Box, IconButton, styled } from '@binarycapsule/ui-capsules';
 
 export const DaysNavWrapper = styled('div', {
   position: 'fixed',
+  top: 0,
+  left: 0,
+  bottom: 0,
   width: 254,
   height: '100%',
   flexShrink: 0,
   background: '$neutral100',
-  borderRight: '1px solid $neutral200',
   boxShadow: '$500',
-  zIndex: 1,
+  zIndex: 2,
   display: 'none',
   flexDirection: 'column',
-  overflowY: 'auto',
 
   '@md': {
     position: 'relative',
     boxShadow: 'revert',
+    borderRight: '1px solid $neutral200',
     display: 'flex',
   },
 
@@ -42,7 +44,6 @@ export const CloseButton = styled(IconButton, {
 export const StickyHeader = styled(Box, {
   position: 'sticky',
   top: 0,
-  zIndex: 1,
   background: '$neutral100',
   padding: '$5',
   paddingTop: '$8',
