@@ -1,3 +1,13 @@
+## [0.10.3](https://github.com/BinaryCapsule/widy-web/compare/v0.10.2...v0.10.3) (2022-03-06)
+
+
+### Bug Fixes
+
+* responsive designs ([052c6e1](https://github.com/BinaryCapsule/widy-web/commit/052c6e165734deaeb35b1bd13ea8096fd2e12ab1))
+* upgrade caps -> fix select text color ([dae0a24](https://github.com/BinaryCapsule/widy-web/commit/dae0a24d6784725b74a6852ce41f1de086ef80e4))
+
+
+
 ## [0.10.2](https://github.com/BinaryCapsule/widy-web/compare/v0.10.1...v0.10.2) (2022-02-07)
 
 
@@ -32,18 +42,6 @@
 ### Features
 
 * Scopes settings page ([ca8389e](https://github.com/BinaryCapsule/widy-web/commit/ca8389e0b58a0cc00845385a08d538ec3dbf900b))
-
-
-
-## [0.8.5](https://github.com/BinaryCapsule/widy-web/compare/v0.8.4...v0.8.5) (2022-01-07)
-
-
-### Bug Fixes
-
-* add build env vars (deploy) ([e8b16b2](https://github.com/BinaryCapsule/widy-web/commit/e8b16b274c05dec2aa1c4bb5f4c730bbd8c9d725))
-* add env build vars (release) ([28a988a](https://github.com/BinaryCapsule/widy-web/commit/28a988afbae399691c0161eba57db3038c682c52))
-* rename staging wf ([4810058](https://github.com/BinaryCapsule/widy-web/commit/4810058d56b217b2cfd7cdb5c2c4d2749286e6d7))
-* update readme ([96da12b](https://github.com/BinaryCapsule/widy-web/commit/96da12b42c20d074d672141f2da15267bcb8cb48))
 
 
 
