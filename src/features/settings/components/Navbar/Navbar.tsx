@@ -4,6 +4,7 @@ import { Brand } from '../../../daysNav/components/Brand/Brand';
 import { useQueryString } from '../../../../hooks/useQueryString';
 import { useNavbarStore } from '../../stores/navbarStore';
 import { CloseButton } from '../../../daysNav/DaysNav.styles';
+import { Overlay } from '../../../../components/Overlay/Overlay';
 
 export const Navbar = () => {
   const queryString = useQueryString();
@@ -16,28 +17,34 @@ export const Navbar = () => {
   const setNavbarOpen = useNavbarStore(state => state.setIsOpen);
 
   return (
-    <StyledNavbar isOpen={isOpen}>
-      <CloseButton
-        icon="x"
-        variant="ghostGray"
-        size="small"
-        onClick={() => setNavbarOpen(false)}
-        aria-label="Close"
-      />
+    <>
+      {isOpen && (
+        <Overlay onClick={() => setNavbarOpen(false)} css={{ '@md': { display: 'none' } }} />
+      )}
 
-      <Brand css={{ mb: '$5' }} />
+      <StyledNavbar isOpen={isOpen}>
+        <CloseButton
+          icon="x"
+          variant="ghostGray"
+          size="small"
+          onClick={() => setNavbarOpen(false)}
+          aria-label="Close"
+        />
 
-      <nav>
-        <NavHeading>Settings</NavHeading>
+        <Brand css={{ mb: '$5' }} />
 
-        <NavItems>
-          <li>
-            <StyledNavLink to={getRoute('scopes')} activeClassName="active">
-              Scopes
-            </StyledNavLink>
-          </li>
-        </NavItems>
-      </nav>
-    </StyledNavbar>
+        <nav>
+          <NavHeading>Settings</NavHeading>
+
+          <NavItems>
+            <li>
+              <StyledNavLink to={getRoute('scopes')} activeClassName="active">
+                Scopes
+              </StyledNavLink>
+            </li>
+          </NavItems>
+        </nav>
+      </StyledNavbar>
+    </>
   );
 };

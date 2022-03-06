@@ -5,7 +5,7 @@ import { times } from '../../../../utils/misc';
 
 export const DaysListLoading: React.FC = () => {
   return (
-    <Flex direction="column">
+    <Flex direction="column" css={{ px: '$5' }}>
       {times(5).map(key => (
         <DayButtonLoading key={key} css={{ my: '$1' }} />
       ))}

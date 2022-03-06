@@ -7,6 +7,7 @@ import { DayButton } from '../DayButton/DayButton';
 import { isToday } from '../../../../utils/dates';
 import { DaysListLoading } from './DaysList.loading';
 import { DaysListError } from './DaysList.error';
+import { DaysListWrapper } from './DaysList.styles';
 
 export const DaysList = () => {
   const { dayId } = useParams<{ dayId?: string }>();
@@ -48,8 +49,8 @@ export const DaysList = () => {
   }
 
   return (
-    <>
-      <Flex direction="column" css={{ mx: '$5', mb: '$5' }}>
+    <DaysListWrapper>
+      <Flex direction="column">
         {data.pages.map(page =>
           page.items.map(({ id, day }) => {
             return (
@@ -69,7 +70,7 @@ export const DaysList = () => {
       </Flex>
 
       {hasNextPage && (
-        <Flex justify="center" css={{ mt: '$8' }}>
+        <Flex justify="center" css={{ mt: '$5' }}>
           <Button
             variant="ghostGray"
             size="small"
@@ -80,6 +81,6 @@ export const DaysList = () => {
           </Button>
         </Flex>
       )}
-    </>
+    </DaysListWrapper>
   );
 };
