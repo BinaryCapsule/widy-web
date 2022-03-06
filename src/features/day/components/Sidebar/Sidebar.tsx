@@ -3,12 +3,13 @@ import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useDayQuery } from '../../api/useDayQuery';
 import { EditableTaskSummary } from './components/EditableTaskSummary/EditableTaskSummary';
 import { ScopeSelection } from './components/ScopeSelection/ScopeSelection';
-import { SidebarWrapper } from './Sidebar.styles';
+import { CloseButton, SidebarWrapper } from './Sidebar.styles';
 import { SidebarEmpty } from './Sidebar.empty';
 import { Timer } from '../Timer/Timer';
 import { useTomorrowQuery } from '../../api/useTomorrowQuery';
 import { AddToPlan } from '../AddToPlan/AddToPlan';
 import { useTodayDayId } from '../../hooks/useTodayDayId';
+import { useSidebarStore } from '../../stores/sidebarStore';
 
 const NotesEditor = lazy(() => import('../NotesEditor/NotesEditor'));
 
@@ -20,6 +21,9 @@ export const Sidebar = () => {
   const { todayDayId } = useTodayDayId();
 
   const { data: tomorrowData } = useTomorrowQuery();
+
+  const isSidebarOpen = useSidebarStore(state => state.isOpen);
+  const setSidebarOpen = useSidebarStore(state => state.setIsOpen);
 
   let data;
 
@@ -42,7 +46,15 @@ export const Sidebar = () => {
   const { id, summary, notes } = task;
 
   return (
-    <SidebarWrapper>
+    <SidebarWrapper isOpen={isSidebarOpen}>
+      <CloseButton
+        icon="x"
+        variant="ghostGray"
+        size="small"
+        onClick={() => setSidebarOpen(false)}
+        aria-label="Close"
+      />
+
       <EditableTaskSummary key={taskId} taskId={id} summary={summary} css={{ ml: -10 }} />
 
       <ScopeSelection task={task} css={{ mt: '$4' }} />

@@ -1,15 +1,32 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { IconButton, styled } from '@binarycapsule/ui-capsules';
 import { NavLink } from 'react-router-dom';
 
-export const NavBarStyles = styled('div', {
+export const StyledNavbar = styled('div', {
+  position: 'fixed',
   width: 254,
   height: '100%',
   flexShrink: 0,
   padding: '48px 24px 24px',
   background: '$neutral100',
   borderRight: '1px solid $neutral200',
-  display: 'flex',
+  display: 'none',
   flexDirection: 'column',
+  zIndex: 1,
+  boxShadow: '$500',
+
+  '@md': {
+    position: 'relative',
+    boxShadow: 'revert',
+    display: 'flex',
+  },
+
+  variants: {
+    isOpen: {
+      true: {
+        display: 'flex',
+      },
+    },
+  },
 });
 
 export const NavHeading = styled('h2', {
@@ -64,5 +81,15 @@ export const StyledNavLink = styled(NavLink, {
     outlineColor: '$colors$primary500',
     outlineOffset: '-1px',
     zIndex: 1,
+  },
+});
+
+export const CloseButton = styled(IconButton, {
+  position: 'absolute',
+  top: 12,
+  right: 12,
+
+  '@md': {
+    display: 'none',
   },
 });

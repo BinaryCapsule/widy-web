@@ -1,17 +1,30 @@
 import React from 'react';
-import { NavBarStyles, NavHeading, NavItems, StyledNavLink } from './NavBar.styles';
+import { NavHeading, NavItems, StyledNavbar, StyledNavLink } from './Navbar.styles';
 import { Brand } from '../../../daysNav/components/Brand/Brand';
 import { useQueryString } from '../../../../hooks/useQueryString';
+import { useNavbarStore } from '../../stores/navbarStore';
+import { CloseButton } from '../../../daysNav/DaysNav.styles';
 
-export const NavBar = () => {
+export const Navbar = () => {
   const queryString = useQueryString();
 
   const dayId = queryString.get('dayId');
 
   const getRoute = (pageId: string) => `/settings/${pageId}${dayId ? `?dayId=${dayId}` : ''}`;
 
+  const isOpen = useNavbarStore(state => state.isOpen);
+  const setNavbarOpen = useNavbarStore(state => state.setIsOpen);
+
   return (
-    <NavBarStyles>
+    <StyledNavbar isOpen={isOpen}>
+      <CloseButton
+        icon="x"
+        variant="ghostGray"
+        size="small"
+        onClick={() => setNavbarOpen(false)}
+        aria-label="Close"
+      />
+
       <Brand css={{ mb: '$5' }} />
 
       <nav>
@@ -25,6 +38,6 @@ export const NavBar = () => {
           </li>
         </NavItems>
       </nav>
-    </NavBarStyles>
+    </StyledNavbar>
   );
 };

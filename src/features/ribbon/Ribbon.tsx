@@ -7,9 +7,14 @@ const StyledRibbon = styled(Box, {
   height: '100%',
   background: '$neutral500',
   flexShrink: 0,
+  display: 'none',
 
   [`.${darkTheme} &`]: {
     background: '$neutral300',
+  },
+
+  '@md': {
+    display: 'block',
   },
 
   variants: {

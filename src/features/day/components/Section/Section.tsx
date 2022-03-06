@@ -65,7 +65,9 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
                     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
                       {(provided, snapshot) => (
                         <div ref={provided.innerRef} {...provided.draggableProps}>
-                          <Box css={{ position: 'relative', py: isPlan ? 0 : 4 }}>
+                          <Box
+                            css={{ position: 'relative', py: isPlan ? 0 : 4, isolation: 'isolate' }}
+                          >
                             <Box
                               css={{
                                 position: 'absolute',

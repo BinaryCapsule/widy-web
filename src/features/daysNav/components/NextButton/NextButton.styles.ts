@@ -1,6 +1,6 @@
 import { darkTheme, styled } from '@binarycapsule/ui-capsules';
 
-export const StyledTomorrowButton = styled('button', {
+export const StyledNextButton = styled('button', {
   height: 32,
   borderRadius: '$medium',
   border: '1px dashed $secondary200',
@@ -16,6 +16,7 @@ export const StyledTomorrowButton = styled('button', {
   flexShrink: 0,
   userSelect: 'none',
   position: 'relative',
+  width: '100%',
 
   '&:hover': {
     border: '1px dashed $secondary700',

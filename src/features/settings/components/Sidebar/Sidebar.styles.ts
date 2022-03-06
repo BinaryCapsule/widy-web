@@ -9,7 +9,7 @@ export const StyledSidebar = styled('aside', {
   position: 'relative',
   display: 'none',
 
-  '@lg': {
+  '@xl': {
     display: 'block',
   },
 });

@@ -3,6 +3,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQueryString } from '../../../../hooks/useQueryString';
 import { PageTitle } from '../../../../components/PageTitle/PageTitle';
+import { useNavbarStore } from '../../stores/navbarStore';
+import { MenuButton } from './Topbar.styles';
 
 interface Props {
   title: string;
@@ -16,8 +18,19 @@ export const TopBar: React.FC<Props> = ({ title, subTitle }) => {
 
   const dayId = queryString.get('dayId');
 
+  const setNavbarOpen = useNavbarStore(state => state.setIsOpen);
+
   return (
-    <Flex as="header">
+    <Flex as="header" css={{ position: 'relative' }}>
+      <MenuButton
+        icon="menu"
+        variant="ghostGray"
+        size="small"
+        iconVariant="outline"
+        onClick={() => setNavbarOpen(true)}
+        aria-label="Open days nav"
+      />
+
       <PageTitle subTitle={subTitle}>{title}</PageTitle>
 
       <Button
