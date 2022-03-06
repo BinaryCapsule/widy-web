@@ -1,3 +1,12 @@
+## [0.10.4](https://github.com/BinaryCapsule/widy-web/compare/v0.10.3...v0.10.4) (2022-03-06)
+
+
+### Bug Fixes
+
+* navbar overlay ([#45](https://github.com/BinaryCapsule/widy-web/issues/45)) ([9c5b09c](https://github.com/BinaryCapsule/widy-web/commit/9c5b09c63a9831f59abdb6e20d2f91db776d643f))
+
+
+
 ## [0.10.3](https://github.com/BinaryCapsule/widy-web/compare/v0.10.2...v0.10.3) (2022-03-06)
 
 
@@ -33,15 +42,6 @@
 ### Features
 
 * dark theme ([3183e58](https://github.com/BinaryCapsule/widy-web/commit/3183e58dcd4ac9876d871c18c36cbc0cd834b189))
-
-
-
-# [0.9.0](https://github.com/BinaryCapsule/widy-web/compare/v0.8.5...v0.9.0) (2022-01-17)
-
-
-### Features
-
-* Scopes settings page ([ca8389e](https://github.com/BinaryCapsule/widy-web/commit/ca8389e0b58a0cc00845385a08d538ec3dbf900b))
 
 
 
