@@ -17,8 +17,10 @@ export const StyledDayButton = styled('div', {
   userSelect: 'none',
   position: 'relative',
 
-  '&:hover': {
-    background: '$primary200',
+  '@media (hover: hover)': {
+    '&:hover': {
+      background: '$primary200',
+    },
   },
 });
 

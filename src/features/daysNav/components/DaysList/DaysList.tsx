@@ -49,7 +49,7 @@ export const DaysList = () => {
 
   return (
     <>
-      <Flex direction="column" css={{ mx: '$5', mb: '$8' }}>
+      <Flex direction="column" css={{ mx: '$5', mb: '$5' }}>
         {data.pages.map(page =>
           page.items.map(({ id, day }) => {
             return (
