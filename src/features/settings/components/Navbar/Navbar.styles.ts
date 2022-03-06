@@ -16,7 +16,7 @@ export const StyledNavbar = styled('div', {
 
   '@md': {
     position: 'relative',
-    right: 'revert',
+    boxShadow: 'revert',
     display: 'flex',
   },
 

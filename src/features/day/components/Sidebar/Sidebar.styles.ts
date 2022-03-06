@@ -23,6 +23,7 @@ export const SidebarWrapper = styled('aside', {
     position: 'relative',
     right: 'revert',
     transform: 'revert',
+    boxShadow: 'revert',
     padding: '38px 32px',
     display: 'block',
   },
