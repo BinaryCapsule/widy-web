@@ -52,7 +52,6 @@ export const RenameTask: React.FC<Props> = ({ task, onRequestClose }) => {
           <Input
             label="Summary"
             {...register('summary')}
-            size="large"
             placeholder="Task summary"
             variant={errors.summary ? 'error' : undefined}
             helpText={errors.summary?.message}
