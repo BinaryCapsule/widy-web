@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Editor, EditorRef } from '@binarycapsule/editor';
 import { Box, CSSProp, Text } from '@binarycapsule/ui-capsules';
-import useDebounce from 'react-use/lib/useDebounce';
+import debounce from 'lodash.debounce';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { EditorWrapper } from './NotesEditor.styles';
 
@@ -17,8 +17,6 @@ const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, css }) => {
 
   const [editorKey, setEditorKey] = useState(Date.now());
 
-  const [value, setValue] = useState(notes);
-
   const updateEditor = useCallback(() => {
     setEditorKey(Date.now());
   }, []);
@@ -28,21 +26,17 @@ const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, css }) => {
     updateEditor();
   }, [taskId, updateEditor]);
 
-  useDebounce(
-    async () => {
-      const notes = editorRef.current?.value;
+  const saveEditorValue = async (notes: string) => {
+    try {
+      await updateTask({ taskId, payload: { notes: notes || '' } });
+    } catch (err) {
+      console.error(err);
 
-      try {
-        await updateTask({ taskId, payload: { notes: notes || '' } });
-      } catch (err) {
-        console.error(err);
+      updateEditor();
+    }
+  };
 
-        updateEditor();
-      }
-    },
-    500,
-    [value],
-  );
+  const debouncedSaveEditor = useRef(debounce(saveEditorValue, 500)).current;
 
   return (
     <Box css={css}>
@@ -55,7 +49,7 @@ const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, css }) => {
           key={editorKey}
           ref={editorRef}
           defaultValue={notes}
-          onChange={val => setValue(val)}
+          onChange={debouncedSaveEditor}
         />
       </EditorWrapper>
     </Box>
