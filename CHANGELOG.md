@@ -1,3 +1,12 @@
+## [0.10.6](https://github.com/BinaryCapsule/widy-web/compare/v0.10.5...v0.10.6) (2022-03-21)
+
+
+### Bug Fixes
+
+* notes editor save ([a693e53](https://github.com/BinaryCapsule/widy-web/commit/a693e53603876624b2c01aae1e2a08ce9a8bb10c))
+
+
+
 ## [0.10.5](https://github.com/BinaryCapsule/widy-web/compare/v0.10.4...v0.10.5) (2022-03-20)
 
 
@@ -33,16 +42,6 @@
 ### Bug Fixes
 
 * revert font size 16px ([ff717b2](https://github.com/BinaryCapsule/widy-web/commit/ff717b2db549e3087ac1a6d6ecef49a50839cd4e))
-
-
-
-## [0.10.1](https://github.com/BinaryCapsule/widy-web/compare/v0.10.0...v0.10.1) (2022-02-06)
-
-
-### Bug Fixes
-
-* upgrade all minors ([49ea7c7](https://github.com/BinaryCapsule/widy-web/commit/49ea7c7ada27c950b5014ec734f974b721cf557d))
-* upgrade caps and node ([097df88](https://github.com/BinaryCapsule/widy-web/commit/097df88717bc5504f42a3a5d2856d087813d59b6))
 
 
 
