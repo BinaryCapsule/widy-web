@@ -24,7 +24,7 @@
   },
 
   "rules": {
-    "prettier/prettier": ["warn"],
+    "prettier/prettier": "warn",
     "no-console": [
       "warn",
       {
@@ -33,6 +33,7 @@
     ],
     "no-debugger": "warn",
     "@typescript-eslint/no-explicit-any": "off",
-    "consistent-return": ["error"]
+    "consistent-return": "error",
+    "object-shorthand": "error"
   }
 }
