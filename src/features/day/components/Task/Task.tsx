@@ -3,7 +3,14 @@ import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 import { Box, Checkbox, toast } from '@binarycapsule/ui-capsules';
 import { TaskDto } from '../../api/useDayQuery';
-import { StyledTask, TaskSummary, TaskVariant } from './Task.styles';
+import {
+  CheckboxWrapper,
+  StyledTask,
+  TaskActionsWrapper,
+  TaskSummary,
+  TaskSummaryWrapper,
+  TaskVariant,
+} from './Task.styles';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { TimerButton } from '../TimerButton/TimerButton';
@@ -69,19 +76,23 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
 
   return (
     <StyledTask variant={variant} isSelected={isSelected} isDragging={isDragging}>
-      {(variant === 'plan' || variant === 'tomorrow') && <PlanCheckBox css={{ mr: '$3', ml: 2 }} />}
+      <CheckboxWrapper>
+        {(variant === 'plan' || variant === 'tomorrow') && (
+          <PlanCheckBox css={{ mr: '$3', ml: 2 }} />
+        )}
 
-      {variant !== 'plan' && variant !== 'tomorrow' && (
-        <Checkbox
-          size="large"
-          checked={task.isDone}
-          onChange={toggleTaskDone}
-          aria-label={task.isDone ? 'Mark task as todo' : 'Mark task as done'}
-          disabled={isUpdatingTask}
-        />
-      )}
+        {variant !== 'plan' && variant !== 'tomorrow' && (
+          <Checkbox
+            size="large"
+            checked={task.isDone}
+            onChange={toggleTaskDone}
+            aria-label={task.isDone ? 'Mark task as todo' : 'Mark task as done'}
+            disabled={isUpdatingTask}
+          />
+        )}
+      </CheckboxWrapper>
 
-      <Box css={{ flex: 1, minWidth: 0 }}>
+      <TaskSummaryWrapper>
         <Box
           onClick={onTaskClick}
           onKeyDown={onTaskKeyDown}
@@ -91,19 +102,21 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
         >
           <TaskSummary css={{ fontWeight: 500, color: 'inherit' }}>{task.summary}</TaskSummary>
         </Box>
-      </Box>
+      </TaskSummaryWrapper>
 
-      <TaskScope task={task} css={{ mr: '$1' }} />
+      <TaskActionsWrapper>
+        <TaskScope task={task} css={{ mr: '$1', ml: '$2' }} />
 
-      {variant === 'plan' && <Launcher task={task} />}
+        {variant === 'plan' && <Launcher task={task} />}
 
-      {variant === 'tomorrow' && !!todayDayId && <AddToPlan task={task} dayId={todayDayId} />}
+        {variant === 'tomorrow' && !!todayDayId && <AddToPlan task={task} dayId={todayDayId} />}
 
-      {variant !== 'plan' && variant !== 'tomorrow' && variant !== 'completed' && (
-        <TimerButton task={task} />
-      )}
+        {variant !== 'plan' && variant !== 'tomorrow' && variant !== 'completed' && (
+          <TimerButton task={task} />
+        )}
 
-      {variant !== 'completed' && <TaskMenu task={task} variant={variant} />}
+        {variant !== 'completed' && <TaskMenu task={task} variant={variant} />}
+      </TaskActionsWrapper>
     </StyledTask>
   );
 };
