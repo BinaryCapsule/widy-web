@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Icon, styled } from '@binarycapsule/ui-capsules';
+import useMedia from 'react-use/lib/useMedia';
 import { DayReportDto } from '../../../../api/useDayReportQuery';
 import { Table } from '../../../../../../components/Table/Table';
 import { formatTotalTime } from '../../../../../../utils/time';
@@ -29,6 +30,8 @@ interface Props {
 }
 
 export const TasksTable: React.FC<Props> = ({ data: dayReport }) => {
+  const isWide = useMedia('(min-width: 600px)');
+
   const data = useTasksTable({ data: dayReport });
 
   if (!data) {
@@ -50,7 +53,7 @@ export const TasksTable: React.FC<Props> = ({ data: dayReport }) => {
           <tr>
             <th style={{ textAlign: 'left' }}>Task/Scope</th>
 
-            <th style={{ textAlign: 'center' }}>Completed</th>
+            {isWide && <th style={{ textAlign: 'center' }}>Completed</th>}
 
             <th style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>Time</th>
           </tr>
@@ -62,7 +65,7 @@ export const TasksTable: React.FC<Props> = ({ data: dayReport }) => {
               <tr>
                 <ScopeCell>{scopeTitle}</ScopeCell>
 
-                <ScopeCell />
+                {isWide && <ScopeCell />}
 
                 <ScopeCell css={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
                   {time !== undefined ? formatTotalTime(time) : ''}
@@ -73,11 +76,13 @@ export const TasksTable: React.FC<Props> = ({ data: dayReport }) => {
                 <tr key={id}>
                   <TaskCell>{summary}</TaskCell>
 
-                  <TaskCell style={{ textAlign: 'center', position: 'relative' }}>
-                    {isDone && (
-                      <Icon icon="check_c" css={{ ...centerStyles, color: '$success500' }} />
-                    )}
-                  </TaskCell>
+                  {isWide && (
+                    <TaskCell style={{ textAlign: 'center', position: 'relative' }}>
+                      {isDone && (
+                        <Icon icon="check_c" css={{ ...centerStyles, color: '$success500' }} />
+                      )}
+                    </TaskCell>
+                  )}
 
                   <TaskCell style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
                     {formatTotalTime(time)}

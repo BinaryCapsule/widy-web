@@ -1,8 +1,8 @@
-import { Box, darkTheme, styled, TruncatedText } from '@binarycapsule/ui-capsules';
+import { Box, darkTheme, styled, Text } from '@binarycapsule/ui-capsules';
 
 export type TaskVariant = 'todo' | 'completed' | 'active' | 'plan' | 'tomorrow';
 
-export const TaskSummary = styled(TruncatedText, {
+export const TaskSummary = styled(Text, {
   cursor: 'pointer',
 
   '&:hover': {
@@ -11,33 +11,48 @@ export const TaskSummary = styled(TruncatedText, {
 });
 
 export const StyledTask = styled(Box, {
-  display: 'flex',
+  display: 'grid',
+  gridTemplateAreas: `'checkbox summary summary'
+                      'actions actions actions'`,
+  gridTemplateRows: 'auto auto',
+  gridTemplateColumns: 'auto 1fr auto',
   alignItems: 'center',
   border: '1px solid',
   background: '$bg',
   borderRadius: '$medium',
-  padding: '8px 8px 8px 28px',
+  padding: '8px',
+  paddingLeft: '12px',
   fontSize: '$md',
   fontWeight: 500,
   borderColor: '$neutral300',
-  height: 44,
+  minHeight: 44,
   position: 'relative',
+
+  '@sm': {
+    gridTemplateAreas: `'checkbox summary actions'`,
+    gridTemplateRows: 'auto',
+    paddingLeft: '28px',
+  },
 
   variants: {
     isSelected: {
       true: {
         '&::before': {
-          content: '""',
           position: 'absolute',
           height: 23,
           width: 4,
           left: 0,
-          top: 10,
+          top: '50%',
+          transform: 'translateY(-50%)',
           borderRadius: '0 2px 2px 0',
           background: '$tertiary500',
 
           [`.${darkTheme} &`]: {
             background: '$primary500',
+          },
+
+          '@md': {
+            content: '""',
           },
         },
       },
@@ -209,4 +224,32 @@ export const StyledTask = styled(Box, {
       },
     },
   ],
+});
+
+export const CheckboxWrapper = styled(Box, {
+  gridArea: 'checkbox',
+
+  '@sm': {
+    alignSelf: 'center',
+  },
+});
+
+export const TaskSummaryWrapper = styled(Box, {
+  gridArea: 'summary',
+  flex: 1,
+  minWidth: 0,
+});
+
+export const TaskActionsWrapper = styled(Box, {
+  gridArea: 'actions',
+  justifySelf: 'end',
+  marginTop: '$2',
+  display: 'flex',
+  alignItems: 'center',
+
+  '@md': {
+    justifySelf: 'revert',
+    alignSelf: 'center',
+    marginTop: 0,
+  },
 });

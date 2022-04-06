@@ -71,10 +71,14 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
                             <Box
                               css={{
                                 position: 'absolute',
-                                top: isPlan ? 12 : 17,
-                                left: 6,
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                left: -24,
                                 height: 20,
                                 zIndex: 1,
+                                '@sm': {
+                                  left: 6,
+                                },
                               }}
                               {...provided.dragHandleProps}
                               aria-label="Drag a task"

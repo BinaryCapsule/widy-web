@@ -8,10 +8,10 @@ const Wrapper = styled('header', {
   background: '$bg',
   top: 0,
   zIndex: 1,
-  marginLeft: -4,
-  marginRight: -4,
-  paddingLeft: 4,
-  paddingRight: 4,
+  marginLeft: -24,
+  marginRight: -24,
+  paddingLeft: 24,
+  paddingRight: 24,
 });
 
 export const PageHeader: React.FC = ({ children }) => {

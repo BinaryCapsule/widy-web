@@ -20,7 +20,15 @@ export const Stats: React.FC<Props> = ({ data }) => {
   const { totalTime, completedTasks, tasks } = data;
 
   return (
-    <Flex css={{ my: '$4', mt: '$6', gridGap: '$4' }}>
+    <Flex
+      css={{
+        my: '$4',
+        mt: '$6',
+        gridGap: '$4',
+        flexDirection: 'column',
+        '@sm': { flexDirection: 'row' },
+      }}
+    >
       <Card>
         <Stat label="Total time worked">{formatTotalTime(totalTime)}</Stat>
       </Card>
