@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, CSSProp } from '@binarycapsule/ui-capsules';
+import React, { ComponentPropsWithoutRef, useState } from 'react';
+import { Box } from '@binarycapsule/ui-capsules';
 import { ScopeSelect } from '../../../ScopeSelect/ScopeSelect';
 import { useScopesOptions } from '../../../../api/useScopesQuery';
 import { useUpdateTaskMutation } from '../../../../api/useUpdateTaskMutation';
@@ -7,11 +7,11 @@ import { TaskDto } from '../../../../api/useDayQuery';
 import { UpsertScope } from '../../../UpsertScope/UpsertScope';
 import { UpsertScopeResponse } from '../../../../api/useUpsertScopeMutation';
 
-interface Props extends CSSProp {
+interface Props extends Pick<ComponentPropsWithoutRef<'div'>, 'style'> {
   task: TaskDto;
 }
 
-export const ScopeSelection: React.FC<Props> = ({ task, css }) => {
+export const ScopeSelection: React.FC<Props> = ({ task, style }) => {
   const [isScopesModalOpen, setIsScopesModalOpen] = useState(false);
 
   const scopesOptions = useScopesOptions();
@@ -28,7 +28,7 @@ export const ScopeSelection: React.FC<Props> = ({ task, css }) => {
 
   return (
     <>
-      <Box css={css}>
+      <Box style={style}>
         <ScopeSelect
           value={scopesOptions.find(scopeOpt => scopeOpt.value === task.scopeId) || null}
           onChange={opt => handleScopeChange(opt ? { id: opt.value } : null)}

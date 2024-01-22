@@ -51,13 +51,13 @@ export const TimerButton: React.FC<Props> = ({ task, size }) => {
 
   return (
     <StyledTimerButton
-      isActive={isActive}
+      $isActive={isActive}
       icon={isActive ? 'stop' : 'play'}
       onClick={handleClick}
       disabled={isUpdatingTask}
       size={size}
       aria-label={isActive ? 'Stop task' : 'Start task'}
-      css={{ mx: '$1' }}
+      style={{ margin: '0 4px' }}
     />
   );
 };

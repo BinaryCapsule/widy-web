@@ -1,12 +1,12 @@
-import React from 'react';
-import { Button, CSSProp, Splash } from '@binarycapsule/ui-capsules';
+import React, { ComponentPropsWithoutRef } from 'react';
+import { Button, Splash } from '@binarycapsule/ui-capsules';
 import { useMoveAllToPlanMutation } from '../../api/useMoveAllToPlanMutation';
 
-interface Props extends CSSProp {
+interface Props extends Pick<ComponentPropsWithoutRef<'button'>, 'style'> {
   dayId: number;
 }
 
-export const MoveAllToPlan: React.FC<Props> = ({ dayId, css }) => {
+export const MoveAllToPlan: React.FC<Props> = ({ dayId, style }) => {
   const { mutateAsync: moveAllToPlan, isLoading } = useMoveAllToPlanMutation({ dayId });
 
   const handleMoveAllToPlan = async () => {
@@ -22,7 +22,12 @@ export const MoveAllToPlan: React.FC<Props> = ({ dayId, css }) => {
   }
 
   return (
-    <Button onClick={() => handleMoveAllToPlan()} variant="ghostGray" leftIcon="plus_c" css={css}>
+    <Button
+      onClick={() => handleMoveAllToPlan()}
+      variant="ghostGray"
+      leftIcon="plus_c"
+      style={style}
+    >
       Add all to Plan
     </Button>
   );

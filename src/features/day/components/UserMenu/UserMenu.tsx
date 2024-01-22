@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useTheme } from 'styled-components';
 import {
   Box,
   Flex,
@@ -16,13 +17,15 @@ import { useHistory } from 'react-router-dom';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 
 export const UserMenu = () => {
+  const theme = useTheme();
+
   const { logout, user } = useAuth0();
 
   const history = useHistory();
 
   const { dayId } = useDayRouteParams();
 
-  const { isDarkTheme, setTheme, theme } = useUiCapsContext();
+  const { isDarkTheme, setTheme } = useUiCapsContext();
 
   const logoutWithRedirect = () =>
     logout({
@@ -51,13 +54,13 @@ export const UserMenu = () => {
         {userInfo && (
           <Box css={{ padding: '6px 12px', mt: -8 }}>
             {userInfo.primary && (
-              <Text as="p" size="md" css={{ fontWeight: 500 }}>
+              <Text as="p" size="md" style={{ fontWeight: 500 }}>
                 {userInfo.primary}
               </Text>
             )}
 
             {userInfo.secondary && (
-              <Text as="p" size="sm" css={{ color: '$neutral500' }}>
+              <Text as="p" size="sm" style={{ color: theme.colors.neutral500 }}>
                 {userInfo.secondary}
               </Text>
             )}

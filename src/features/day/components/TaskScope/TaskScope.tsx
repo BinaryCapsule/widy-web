@@ -1,13 +1,13 @@
-import React, { useMemo } from 'react';
-import { CSSProp, Text } from '@binarycapsule/ui-capsules';
+import React, { ComponentPropsWithoutRef, useMemo } from 'react';
+import { Text } from '@binarycapsule/ui-capsules';
 import { useScopesQuery } from '../../api/useScopesQuery';
 import { TaskDto } from '../../api/useDayQuery';
 
-interface Props extends CSSProp {
+interface Props extends Pick<ComponentPropsWithoutRef<'div'>, 'style'> {
   task: TaskDto;
 }
 
-export const TaskScope: React.FC<Props> = ({ task, css }) => {
+export const TaskScope: React.FC<Props> = ({ task, style }) => {
   const { data: scopes } = useScopesQuery();
 
   const taskScope = useMemo(() => {
@@ -25,7 +25,7 @@ export const TaskScope: React.FC<Props> = ({ task, css }) => {
   }
 
   return (
-    <Text variant="smallCaps" css={{ fontWeight: 500, fontSize: '13px', ...css }}>
+    <Text variant="smallCaps" style={{ fontWeight: 500, fontSize: '13px', ...style }}>
       {taskScope.shortCode}
     </Text>
   );

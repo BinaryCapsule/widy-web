@@ -1,15 +1,15 @@
-import React from 'react';
-import { Button, CSSProp, Flex, IllustratedIcon, Text, Tooltip } from '@binarycapsule/ui-capsules';
+import React, { ComponentPropsWithoutRef } from 'react';
+import { Button, Flex, IllustratedIcon, Text, Tooltip } from '@binarycapsule/ui-capsules';
 import { TaskDto } from '../../api/useDayQuery';
 import { useMoveToPlanMutation } from '../../api/useMoveToPlanMutation';
 
-interface Props extends CSSProp {
+interface Props extends Pick<ComponentPropsWithoutRef<'div'>, 'style'> {
   isButton?: boolean;
   dayId: number;
   task: TaskDto;
 }
 
-export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, css }) => {
+export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, style }) => {
   const { mutateAsync: moveToPlan, isLoading } = useMoveToPlanMutation({ dayId });
 
   const handleMoveToPlan = async () => {
@@ -23,8 +23,8 @@ export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, css }) => {
   return (
     <>
       {isButton ? (
-        <Flex direction="column" align="start" css={css}>
-          <Text variant="label" css={{ mb: '$1' }}>
+        <Flex $direction="column" $align="start" style={style}>
+          <Text variant="label" style={{ marginBottom: 4 }}>
             Timer
           </Text>
           <Button
@@ -41,13 +41,13 @@ export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, css }) => {
           <IllustratedIcon
             icon="circle_add"
             onClick={handleMoveToPlan}
-            primaryColor="$neutral300"
-            secondaryColor="$neutral500"
-            primaryColorHover="$pink100"
-            secondaryColorHover="$pink600"
+            primaryColor="neutral300"
+            secondaryColor="neutral500"
+            primaryColorHover="pink100"
+            secondaryColorHover="pink600"
             disabled={isLoading}
-            css={{
-              mx: '$1',
+            style={{
+              margin: '0 4px',
               opacity: isLoading ? 0.5 : 1,
               pointerEvents: isLoading ? 'none' : 'initial',
             }}

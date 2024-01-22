@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react';
 import { Editor } from '@binarycapsule/editor';
-import { Box, CSSProp, Text } from '@binarycapsule/ui-capsules';
+import { Box, Text } from '@binarycapsule/ui-capsules';
 import debounce from 'lodash.debounce';
 import { useUpdateTaskMutation } from '../../api/useUpdateTaskMutation';
 import { EditorWrapper } from './NotesEditor.styles';
 
-interface NotesEditorProps extends CSSProp {
+interface NotesEditorProps extends Pick<ComponentPropsWithoutRef<'div'>, 'style'> {
   taskId: number;
   notes: string;
 }
 
-const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, css }) => {
+const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, style }) => {
   const { mutateAsync: updateTask } = useUpdateTaskMutation();
 
   const [editorKey, setEditorKey] = useState(Date.now());
@@ -33,8 +33,8 @@ const NotesEditor: React.FC<NotesEditorProps> = ({ taskId, notes, css }) => {
   const debouncedSaveEditor = useRef(debounce(saveEditorValue, 300)).current;
 
   return (
-    <Box css={css}>
-      <Text variant="label" css={{ mb: '$1' }}>
+    <Box style={style}>
+      <Text variant="label" style={{ marginBottom: 4 }}>
         Notes
       </Text>
 

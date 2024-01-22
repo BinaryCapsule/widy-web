@@ -1,8 +1,9 @@
-import { Box, darkTheme, styled, TruncatedText } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
+import { Box, darkTheme, TruncatedText } from '@binarycapsule/ui-capsules';
 
 export type TaskVariant = 'todo' | 'completed' | 'active' | 'plan' | 'tomorrow';
 
-export const TaskSummary = styled(TruncatedText, {
+export const TaskSummary = styled(TruncatedText)({
   cursor: 'pointer',
 
   '&:hover': {
@@ -10,22 +11,30 @@ export const TaskSummary = styled(TruncatedText, {
   },
 });
 
-export const StyledTask = styled(Box, {
-  display: 'flex',
-  alignItems: 'center',
-  border: '1px solid',
-  background: '$bg',
-  borderRadius: '$medium',
-  padding: '8px 8px 8px 28px',
-  fontSize: '$md',
-  fontWeight: 500,
-  borderColor: '$neutral300',
-  height: 44,
-  position: 'relative',
+interface StyledTaskProps {
+  $isSelected: boolean;
+  $isDragging: boolean;
+  $variant: TaskVariant;
+}
 
-  variants: {
-    isSelected: {
-      true: {
+export const StyledTask = styled(Box)<StyledTaskProps>(
+  ({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    border: '1px solid',
+    background: '$bg',
+    borderRadius: theme.radii.medium,
+    padding: '8px 8px 8px 28px',
+    fontSize: theme.fontSizes.md,
+    fontWeight: 500,
+    borderColor: theme.colors.neutral300,
+    height: 44,
+    position: 'relative',
+  }),
+
+  ({ $isSelected, theme }) => {
+    if ($isSelected) {
+      return {
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -34,179 +43,211 @@ export const StyledTask = styled(Box, {
           left: 0,
           top: 10,
           borderRadius: '0 2px 2px 0',
-          background: '$tertiary500',
+          background: theme.colors.tertiary500,
 
-          [`.${darkTheme} &`]: {
-            background: '$primary500',
+          '.darkTheme &': {
+            background: theme.colors.primary500,
           },
         },
-      },
-    },
+      };
+    }
 
-    isDragging: {
-      true: {},
-    },
-
-    variant: {
-      todo: {
-        borderColor: '$neutral300',
-        background: '$bg',
-
-        '&:hover': {
-          background: '$neutral100',
-        },
-      },
-
-      active: {
-        borderColor: '$tertiary100',
-        boxShadow: '0 0 0 4px $colors$tertiary300',
-        background: 'bg',
-
-        '&:hover': {
-          background: '$neutral100',
-        },
-
-        '&&&::before': {
-          background: '$tertiary500',
-        },
-      },
-
-      completed: {
-        borderColor: '$neutral300',
-        background: '$neutral100',
-        color: '$neutral500',
-      },
-
-      plan: {
-        my: 0,
-        borderRadius: 0,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        borderTopColor: 'transparent',
-        background: '$bg',
-      },
-
-      tomorrow: {
-        my: 0,
-        borderRadius: 0,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        background: '$bg',
-        borderTopColor: 'transparent',
-        p: 8,
-      },
-    },
+    return {};
   },
 
-  compoundVariants: [
-    {
-      isSelected: true,
-      variant: 'todo',
-      css: {
-        borderColor: '$tertiary500',
-        background: '$tertiary50',
-
-        '&:hover': {
-          background: '$tertiary100',
-        },
-
-        [`.${darkTheme} &`]: {
-          borderColor: '$primary500',
-          background: '$neutral50',
+  ({ $variant, theme }) => {
+    switch ($variant) {
+      case 'todo':
+        return {
+          borderColor: theme.colors.neutral300,
+          background: theme.colors.bg,
 
           '&:hover': {
             background: '$neutral100',
           },
-        },
-      },
-    },
+        };
 
-    {
-      isSelected: true,
-      variant: 'active',
-      css: {
-        borderColor: '$tertiary500',
-        background: '$tertiary50',
-
-        '&:hover': {
-          background: '$tertiary100',
-        },
-
-        [`.${darkTheme} &`]: {
-          background: '$neutral50',
+      case 'active':
+        return {
+          borderColor: theme.colors.tertiary100,
+          boxShadow: `0 0 0 4px ${theme.colors.tertiary300}`,
+          background: 'bg',
 
           '&:hover': {
-            background: '$neutral100',
+            background: theme.colors.neutral100,
           },
-        },
-      },
-    },
 
-    {
-      isSelected: true,
-      variant: 'completed',
-      css: {
-        borderColor: '$tertiary500',
-        background: '$tertiary50',
+          '&&&::before': {
+            background: theme.colors.tertiary500,
+          },
+        };
 
-        [`.${darkTheme} &`]: {
-          borderColor: '$primary500',
-          background: '$neutral100',
-        },
-      },
-    },
+      case 'completed':
+        return {
+          borderColor: theme.colors.neutral300,
+          background: theme.colors.neutral100,
+          color: theme.colors.neutral500,
+        };
 
-    {
-      isSelected: true,
-      variant: 'plan',
-      css: {
-        background: '$neutral100',
+      case 'plan': {
+        return {
+          marginTop: 0,
+          marginBottom: 0,
+          borderRadius: 0,
+          borderLeftWidth: 0,
+          borderRightWidth: 0,
+          borderTopColor: 'transparent',
+          background: theme.colors.bg,
+        };
+      }
 
-        [`.${darkTheme} &`]: {
-          borderColor: '$primary500',
-          borderTop: '1px solid $primary500',
-          background: '$bg',
-        },
-      },
-    },
+      case 'tomorrow': {
+        return {
+          marginTop: 0,
+          marginBottom: 0,
+          borderRadius: 0,
+          borderLeftWidth: 0,
+          borderRightWidth: 0,
+          background: theme.colors.bg,
+          borderTopColor: 'transparent',
+          padding: 8,
+        };
+      }
+      default:
+        return {};
+    }
+  },
 
-    {
-      isDragging: true,
-      variant: 'plan',
-      css: {
-        borderRadius: 'medium',
-        borderTopWidth: 1,
-        borderTopColor: '$neutral300',
-      },
-    },
+  ({ $variant, $isSelected, theme }) => {
+    switch ($variant) {
+      case 'todo':
+        if ($isSelected) {
+          return {
+            borderColor: theme.colors.tertiary500,
+            background: theme.colors.tertiary50,
 
-    {
-      isSelected: true,
-      variant: 'tomorrow',
-      css: {
-        background: '$neutral100',
+            '&:hover': {
+              background: theme.colors.tertiary100,
+            },
 
-        '&&&::before': {
-          background: '$secondary400',
-        },
+            '.darkTheme &': {
+              borderColor: theme.colors.primary500,
+              background: theme.colors.neutral50,
 
-        [`.${darkTheme} &`]: {
-          borderColor: '$secondary400',
-          borderTopWidth: 1,
-          background: '$bg',
-        },
-      },
-    },
+              '&:hover': {
+                background: theme.colors.neutral100,
+              },
+            },
+          };
+        }
 
-    {
-      isDragging: true,
-      variant: 'tomorrow',
-      css: {
-        borderRadius: 'medium',
-        borderTopWidth: 1,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-      },
-    },
-  ],
-});
+        return {};
+
+      case 'active':
+        if ($isSelected) {
+          return {
+            borderColor: theme.colors.tertiary500,
+            background: theme.colors.tertiary50,
+
+            '&:hover': {
+              background: theme.colors.tertiary100,
+            },
+
+            [`.${darkTheme} &`]: {
+              background: theme.colors.neutral50,
+
+              '&:hover': {
+                background: theme.colors.neutral100,
+              },
+            },
+          };
+        }
+
+        return {};
+
+      case 'completed':
+        if ($isSelected) {
+          return {
+            borderColor: theme.colors.tertiary500,
+            background: theme.colors.tertiary50,
+
+            '.darkTheme &': {
+              borderColor: theme.colors.primary500,
+              background: theme.colors.neutral100,
+            },
+          };
+        }
+
+        return {};
+
+      case 'plan': {
+        if ($isSelected) {
+          return {
+            background: theme.colors.neutral100,
+
+            '.darkTheme &': {
+              borderColor: theme.colors.primary500,
+              borderTop: `1px solid ${theme.colors.primary500}`,
+              background: theme.colors.bg,
+            },
+          };
+        }
+
+        return {};
+      }
+
+      case 'tomorrow': {
+        if ($isSelected) {
+          return {
+            background: theme.colors.neutral100,
+
+            '&&&::before': {
+              background: theme.colors.secondary400,
+            },
+
+            '.darkTheme &': {
+              borderColor: theme.colors.secondary400,
+              borderTopWidth: 1,
+              background: theme.colors.bg,
+            },
+          };
+        }
+
+        return {};
+      }
+
+      default:
+        return {};
+    }
+  },
+
+  ({ $variant, $isDragging, theme }) => {
+    switch ($variant) {
+      case 'plan':
+        if ($isDragging) {
+          return {
+            borderRadius: 'medium',
+            borderTopWidth: 1,
+            borderTopColor: theme.colors.neutral300,
+          };
+        }
+
+        return {};
+
+      case 'tomorrow':
+        if ($isDragging) {
+          return {
+            borderRadius: 'medium',
+            borderTopWidth: 1,
+            borderLeftWidth: 1,
+            borderRightWidth: 1,
+          };
+        }
+
+        return {};
+
+      default:
+        return {};
+    }
+  },
+);

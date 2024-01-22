@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { ComponentPropsWithoutRef, useState } from 'react';
 import { useActiveTaskQuery } from '../../api/useActiveTaskQuery';
 import { SectionVariant, TaskDto, useDayQuery } from '../../api/useDayQuery';
-import { Box, CSSProp, Flex, IconButton, Text } from '@binarycapsule/ui-capsules';
+import { Box, Flex, IconButton, Text } from '@binarycapsule/ui-capsules';
 import { TimerButton } from '../TimerButton/TimerButton';
 import { Time } from './components/Time/Time';
 import moment from 'moment';
@@ -9,11 +9,11 @@ import { RegisterTime } from '../RegisterTime/RegisterTime';
 import { useActiveTaskTick } from '../../../../stores/activeTaskTick';
 import { Launcher } from '../Launcher/Launcher';
 
-interface Props extends CSSProp {
+interface Props extends Pick<ComponentPropsWithoutRef<'div'>, 'style'> {
   task: TaskDto;
 }
 
-export const Timer: React.FC<Props> = ({ task, css }) => {
+export const Timer: React.FC<Props> = ({ task, style }) => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const { data: activeTaskId } = useActiveTaskQuery();
@@ -38,8 +38,8 @@ export const Timer: React.FC<Props> = ({ task, css }) => {
 
   return (
     <>
-      <Box css={css}>
-        <Text variant="label" css={{ mb: '$1' }}>
+      <Box style={style}>
+        <Text variant="label" style={{ marginBottom: 4 }}>
           Timer
         </Text>
 
@@ -48,12 +48,12 @@ export const Timer: React.FC<Props> = ({ task, css }) => {
             <Launcher isButton task={task} />
           </Box>
         ) : (
-          <Flex align="center">
+          <Flex $align="center">
             {!task.isDone && (
               <>
                 <TimerButton task={task} size={48} />
 
-                <Box css={{ mr: '$3' }} />
+                <Box style={{ marginRight: 12 }} />
               </>
             )}
 
@@ -63,7 +63,7 @@ export const Timer: React.FC<Props> = ({ task, css }) => {
                   ? task.time + moment().diff(task.start, 'seconds')
                   : task.time
               }
-              css={{ mr: '$1' }}
+              style={{ marginRight: 4 }}
             />
 
             {!isTaskActive && (

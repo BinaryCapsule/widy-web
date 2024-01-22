@@ -1,69 +1,76 @@
-import { darkTheme, IllustratedIcon, styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
+import { darkTheme, IllustratedIcon } from '@binarycapsule/ui-capsules';
 
-export const StyledTimerButton = styled(IllustratedIcon, {
-  '&&&': {
-    svg: {
-      path: {
-        '&:first-of-type': {
-          fill: '$neutral300',
+interface StyledTimerButtonProps {
+  $isActive: boolean;
+}
 
-          [`.${darkTheme} &`]: {
-            fill: '$neutral600',
-          },
-        },
-
-        '&:last-of-type': {
-          fill: '$neutral600',
-
-          [`.${darkTheme} &`]: {
-            fill: '$neutral100',
-          },
-        },
-      },
-    },
-
-    '&:hover': {
+export const StyledTimerButton = styled(IllustratedIcon)<StyledTimerButtonProps>(
+  ({ theme }) => ({
+    '&&&': {
       svg: {
         path: {
           '&:first-of-type': {
-            fill: '$neutral400',
+            fill: theme.colors.neutral300,
 
             [`.${darkTheme} &`]: {
-              fill: '$neutral400',
+              fill: theme.colors.neutral600,
             },
           },
 
           '&:last-of-type': {
-            fill: '$neutral700',
+            fill: theme.colors.neutral600,
 
             [`.${darkTheme} &`]: {
-              fill: '$neutral700',
+              fill: theme.colors.neutral100,
+            },
+          },
+        },
+      },
+
+      '&:hover': {
+        svg: {
+          path: {
+            '&:first-of-type': {
+              fill: theme.colors.neutral400,
+
+              [`.${darkTheme} &`]: {
+                fill: theme.colors.neutral400,
+              },
+            },
+
+            '&:last-of-type': {
+              fill: theme.colors.neutral700,
+
+              [`.${darkTheme} &`]: {
+                fill: theme.colors.neutral700,
+              },
             },
           },
         },
       },
     },
-  },
+  }),
 
-  variants: {
-    isActive: {
-      true: {
+  ({ $isActive, theme }) => {
+    if ($isActive) {
+      return {
         '&&&': {
           svg: {
             path: {
               '&:first-of-type': {
-                fill: '$tertiary400',
+                fill: theme.colors.tertiary400,
 
                 [`.${darkTheme} &`]: {
-                  fill: '$tertiary400',
+                  fill: theme.colors.tertiary400,
                 },
               },
 
               '&:last-of-type': {
-                fill: '$tertiary900',
+                fill: theme.colors.tertiary900,
 
                 [`.${darkTheme} &`]: {
-                  fill: '$neutral50',
+                  fill: theme.colors.neutral50,
                 },
               },
             },
@@ -73,25 +80,27 @@ export const StyledTimerButton = styled(IllustratedIcon, {
             svg: {
               path: {
                 '&:first-of-type': {
-                  fill: '$tertiary500',
+                  fill: theme.colors.tertiary500,
 
                   [`.${darkTheme} &`]: {
-                    fill: '$tertiary500',
+                    fill: theme.colors.tertiary500,
                   },
                 },
 
                 '&:last-of-type': {
-                  fill: '$tertiary900',
+                  fill: theme.colors.tertiary900,
 
                   [`.${darkTheme} &`]: {
-                    fill: '$neutral50',
+                    fill: theme.colors.neutral50,
                   },
                 },
               },
             },
           },
         },
-      },
-    },
+      };
+    }
+
+    return {};
   },
-});
+);

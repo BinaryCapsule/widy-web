@@ -23,7 +23,7 @@ interface Props {
   onRequestClose(): void;
 }
 
-export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
+export const RegisterTime = ({ task, onRequestClose }: Props) => {
   const { mutateAsync: updateTask, isLoading } = useUpdateTaskMutation();
 
   const {
@@ -63,40 +63,40 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalBody>
           <Flex>
-            <Flex align="center">
-              <Flex css={{ width: 68 }}>
+            <Flex $align="center">
+              <Flex style={{ width: 68 }}>
                 <Input {...register('hours')} type="number" />
               </Flex>
 
-              <Text css={{ ml: '$2' }}>h</Text>
+              <Text style={{ marginLeft: 8 }}>h</Text>
             </Flex>
 
-            <Flex align="center" css={{ ml: '$4' }}>
-              <Flex css={{ width: 68 }}>
+            <Flex $align="center" style={{ marginLeft: 16 }}>
+              <Flex style={{ width: 68 }}>
                 <Input {...register('minutes')} type="number" />
               </Flex>
 
-              <Text css={{ ml: '$2' }}>min</Text>
+              <Text style={{ marginLeft: 8 }}>min</Text>
             </Flex>
           </Flex>
 
           {errors.hours?.message && (
-            <Text size="sm" css={{ color: '$error500', mt: '$1' }}>
+            <Text size="sm" color="error500" style={{ marginTop: 4 }}>
               {errors.hours.message}
             </Text>
           )}
 
           {errors.minutes?.message && (
-            <Text size="sm" css={{ color: '$error500', mt: '$1' }}>
+            <Text size="sm" color="error500" style={{ marginTop: 4 }}>
               {errors.minutes.message}
             </Text>
           )}
 
-          <Text variant="label" css={{ mt: '$5', mb: '$1' }}>
+          <Text variant="label" style={{ marginTop: 20, marginBottom: 4 }}>
             Suggestions
           </Text>
 
-          <Flex wrap="wrap">
+          <Flex $wrap="wrap">
             {suggestions.map(({ label, hours, minutes }) => (
               <Button
                 key={label}
@@ -106,7 +106,7 @@ export const RegisterTime: React.FC<Props> = ({ task, onRequestClose }) => {
                   setValue('hours', hours);
                   setValue('minutes', minutes);
                 }}
-                css={{ m: '$1' }}
+                style={{ margin: 4 }}
               >
                 {label}
               </Button>

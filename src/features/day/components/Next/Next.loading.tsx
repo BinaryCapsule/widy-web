@@ -4,24 +4,24 @@ import { Box, Skeleton } from '@binarycapsule/ui-capsules';
 
 export const NextLoading = () => {
   return (
-    <Box css={{ my: '$5' }}>
+    <Box style={{ margin: '20px 0' }}>
       <Skeleton
-        circular
-        css={{
+        $circular
+        style={{
           height: 32,
           width: 100,
-          mb: '$3',
-          ml: 'auto',
+          marginBottom: 12,
+          marginLeft: 'auto',
         }}
       />
 
       {times(5).map(key => (
         <Skeleton
           key={key}
-          circular
-          css={{
+          $circular
+          style={{
             height: 32,
-            mb: '$3',
+            marginBottom: 12,
           }}
         />
       ))}

@@ -13,8 +13,8 @@ export const BoardTitle = () => {
   if (isLoading) {
     return (
       <Skeleton
-        circular
-        css={{
+        $circular
+        style={{
           height: 16,
           width: 100,
         }}

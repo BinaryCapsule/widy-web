@@ -1,22 +1,23 @@
-import { darkTheme, IllustratedIcon, styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
+import { darkTheme, IllustratedIcon } from '@binarycapsule/ui-capsules';
 
-export const StyledLauncher = styled(IllustratedIcon, {
+export const StyledLauncher = styled(IllustratedIcon)(({ theme }) => ({
   '&&&': {
     svg: {
       path: {
         '&:first-of-type': {
-          fill: '$neutral300',
+          fill: theme.colors.neutral300,
 
           [`.${darkTheme} &`]: {
-            fill: '$neutral400',
+            fill: theme.colors.neutral400,
           },
         },
 
         '&:last-of-type': {
-          fill: '$neutral500',
+          fill: theme.colors.neutral500,
 
           [`.${darkTheme} &`]: {
-            fill: '$neutral600',
+            fill: theme.colors.neutral600,
           },
         },
       },
@@ -26,22 +27,22 @@ export const StyledLauncher = styled(IllustratedIcon, {
       svg: {
         path: {
           '&:first-of-type': {
-            fill: '$primary200',
+            fill: theme.colors.primary200,
 
             [`.${darkTheme} &`]: {
-              fill: '$primary400',
+              fill: theme.colors.primary400,
             },
           },
 
           '&:last-of-type': {
-            fill: '$primary500',
+            fill: theme.colors.primary500,
 
             [`.${darkTheme} &`]: {
-              fill: '$primary600',
+              fill: theme.colors.primary600,
             },
           },
         },
       },
     },
   },
-});
+}));

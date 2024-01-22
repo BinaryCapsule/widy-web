@@ -12,21 +12,21 @@ export const SectionsLoading: React.FC<Props> = ({ count = 3 }) => {
       {times(count).map(key => (
         <Box key={key} css={{ mb: '$3' }}>
           <Skeleton
-            circular
-            css={{
+            $circular
+            style={{
               height: 12,
               width: 100,
-              mb: '$3',
+              marginBottom: 12,
             }}
           />
 
           {times(3).map(key => (
             <Skeleton
               key={key}
-              circular
-              css={{
+              $circular
+              style={{
                 height: 32,
-                mb: '$3',
+                marginBottom: 12,
               }}
             />
           ))}
