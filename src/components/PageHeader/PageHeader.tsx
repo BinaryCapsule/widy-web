@@ -1,7 +1,8 @@
 import React from 'react';
-import { Flex, styled } from '@binarycapsule/ui-capsules';
+import { Flex } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-const Wrapper = styled('header', {
+const Wrapper = styled.header({
   paddingTop: 48,
   position: 'sticky',
   alignItems: 'center',
@@ -17,7 +18,7 @@ const Wrapper = styled('header', {
 export const PageHeader: React.FC = ({ children }) => {
   return (
     <Wrapper>
-      <Flex align="start" justify="between">
+      <Flex $align="start" $justify="between">
         {children}
       </Flex>
     </Wrapper>

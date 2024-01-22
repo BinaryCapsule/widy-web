@@ -1,5 +1,6 @@
 import { DayReportDto } from '../../../../api/useDayReportQuery';
 import { SERIES_COLORS } from '../../../../../../common/constants';
+import { useTheme } from 'styled-components';
 
 export const timePerSection = (data: DayReportDto) => {
   const { tasks, sections } = data;
@@ -28,6 +29,8 @@ interface SectionsChartParam {
 }
 
 export const useSectionsChart = ({ data }: SectionsChartParam) => {
+  const theme = useTheme();
+
   if (!data) {
     return null;
   }
@@ -37,7 +40,7 @@ export const useSectionsChart = ({ data }: SectionsChartParam) => {
   return Object.values(sectionsTime).map(({ title, time, taskCount }, index) => ({
     label: title,
     value: time,
-    color: SERIES_COLORS[index % SERIES_COLORS.length],
+    color: theme.colors[SERIES_COLORS[index % SERIES_COLORS.length]],
     taskCount,
   }));
 };

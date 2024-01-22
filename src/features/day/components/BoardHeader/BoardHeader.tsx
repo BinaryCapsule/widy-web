@@ -28,14 +28,14 @@ export const BoardHeader = () => {
 
       <BoardTitle />
 
-      <Flex align="center">
+      <Flex $align="center">
         {dayId && dayId !== 'tomorrow' && (
           <Button
             leftIcon="chart_pie"
             iconVariant="outline"
             variant="ghostGray"
             onClick={() => history.push(`/report/${dayId}`)}
-            css={{ mr: '$2' }}
+            style={{ marginRight: 8 }}
           >
             Report
           </Button>

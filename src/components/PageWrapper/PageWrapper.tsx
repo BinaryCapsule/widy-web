@@ -1,6 +1,6 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const PageWrapper = styled('main', {
+export const PageWrapper = styled.main(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   flex: 1,
@@ -8,7 +8,7 @@ export const PageWrapper = styled('main', {
   isolation: 'isolate',
   overflow: 'auto',
 
-  '@md': {
+  [theme.media.md]: {
     padding: '0 48px 48px',
   },
-});
+}));

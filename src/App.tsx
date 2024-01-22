@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { SplashScreen } from './components/SplashScreen/SplashScreen';
-import { useGlobalStyles } from '@binarycapsule/ui-capsules';
 import { NoInternet } from './components/NoInternet/NoInternet';
 import { version } from '../package.json';
 
@@ -21,8 +20,6 @@ const Settings = lazy(() => import('./features/settings/Settings'));
 
 export const App = () => {
   const { isLoading, error } = useAuth0();
-
-  useGlobalStyles();
 
   useLayoutEffect(() => {
     // Remove initial splash screen (see index.html)

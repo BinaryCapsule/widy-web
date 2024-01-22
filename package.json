@@ -5,11 +5,10 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
     "@binarycapsule/editor": "^3.0.4",
-    "@binarycapsule/ui-capsules": "^6.3.5",
+    "@binarycapsule/ui-capsules": "^7.0.0",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.8.8",
     "@radix-ui/react-avatar": "^0.1.3",
-    "@stitches/react": "^1.2.6",
     "history": "^5.2.0",
     "immer": "^9.0.12",
     "lodash.debounce": "^4.0.8",
@@ -23,6 +22,7 @@
     "react-query": "^3.34.14",
     "react-router-dom": "^5.3.0",
     "react-use": "^17.3.2",
+    "styled-components": "^6.1.8",
     "yup": "^0.32.11",
     "zustand": "^3.6.9"
   },

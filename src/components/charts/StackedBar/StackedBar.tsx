@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import { Box, darkTheme, Flex, styled, Text, Tooltip } from '@binarycapsule/ui-capsules';
+import { Box, Flex, Text, Tooltip } from '@binarycapsule/ui-capsules';
+import { styled, useTheme } from 'styled-components';
 
 interface TooltipContentProps {
   label: string;
@@ -7,22 +8,25 @@ interface TooltipContentProps {
   color: string;
 }
 
-const TooltipText = styled(Text, {
-  color: '$neutral100',
+const TooltipText = styled(Text)(({ theme }) => ({
+  color: theme.colors.neutral100,
 
-  [`.${darkTheme} &`]: {
-    color: '$neutral700',
+  '.darkTheme &': {
+    color: theme.colors.neutral700,
   },
-});
+}));
 
 const TooltipContent: React.FC<TooltipContentProps> = ({ label, value, color }) => {
+  const theme = useTheme();
   return (
-    <Flex align="center">
-      <Box css={{ width: 8, height: 9, bg: color, mr: '$1' }} />
+    <Flex $align="center">
+      <Box style={{ width: 8, height: 9, background: color, marginRight: 4 }} />
 
-      <TooltipText css={{ fontSize: '$sm', mr: '$1' }}>{`${label}:`}</TooltipText>
+      <TooltipText style={{ fontSize: theme.fontSizes.sm, marginRight: 4 }}>
+        {`${label}:`}
+      </TooltipText>
 
-      <TooltipText css={{ fontSize: '$sm', fontWeight: 600 }}>{value}</TooltipText>
+      <TooltipText style={{ fontSize: theme.fontSizes.sm, fontWeight: 600 }}>{value}</TooltipText>
     </Flex>
   );
 };
@@ -37,6 +41,8 @@ export interface StackedBarProps {
 }
 
 export const StackedBar: React.FC<StackedBarProps> = ({ data, formatter }) => {
+  const theme = useTheme();
+
   const [hovered, setHovered] = useState<number | null>(null);
 
   const total = useMemo(() => {
@@ -45,8 +51,8 @@ export const StackedBar: React.FC<StackedBarProps> = ({ data, formatter }) => {
 
   return (
     <Flex
-      direction="row"
-      css={{ height: 24, width: '100%', overflow: 'hidden', borderRadius: '$medium' }}
+      $direction="row"
+      style={{ height: 24, width: '100%', overflow: 'hidden', borderRadius: theme.radii.medium }}
     >
       {data.map(({ label, value, color }, index) => {
         return (
@@ -63,12 +69,12 @@ export const StackedBar: React.FC<StackedBarProps> = ({ data, formatter }) => {
             <Flex
               onMouseEnter={() => setHovered(index)}
               onMouseLeave={() => setHovered(null)}
-              css={{
-                bg: color,
+              style={{
+                background: color,
                 flex: value / total,
                 height: 32,
                 opacity: hovered !== null && hovered !== index ? 0.3 : 1,
-                ml: index !== 0 ? 1 : 0,
+                marginLeft: index !== 0 ? 1 : 0,
               }}
             />
           </Tooltip>

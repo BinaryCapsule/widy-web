@@ -8,7 +8,7 @@ import {
   MenuItem,
   MenuList,
   Text,
-  useTheme,
+  useUiCapsContext,
 } from '@binarycapsule/ui-capsules';
 import { MenuTrigger } from './components/MenuTrigger/MenuTrigger';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -22,7 +22,7 @@ export const UserMenu = () => {
 
   const { dayId } = useDayRouteParams();
 
-  const { isDark, setTheme } = useTheme();
+  const { isDarkTheme, setTheme, theme } = useUiCapsContext();
 
   const logoutWithRedirect = () =>
     logout({
@@ -67,31 +67,36 @@ export const UserMenu = () => {
         <MenuItem
           onSelect={() => history.push(`/settings/scopes${dayId ? `?dayId=${dayId}` : ''}`)}
         >
-          <Flex align="center">
-            <Icon icon="cog" size={18} variant="outline" css={{ color: '$neutral500', mr: '$2' }} />
+          <Flex $align="center">
+            <Icon
+              icon="cog"
+              size={18}
+              variant="outline"
+              style={{ color: theme.colors.neutral500, marginRight: 8 }}
+            />
             Settings
           </Flex>
         </MenuItem>
 
-        <MenuItem onSelect={() => setTheme(isDark ? 'light' : 'dark')}>
-          <Flex align="center">
+        <MenuItem onSelect={() => setTheme(isDarkTheme ? 'light' : 'dark')}>
+          <Flex $align="center">
             <Icon
-              icon={isDark ? 'sun' : 'moon'}
+              icon={isDarkTheme ? 'sun' : 'moon'}
               size={18}
               variant="outline"
-              css={{ color: '$neutral500', mr: '$2' }}
+              style={{ color: theme.colors.neutral500, marginRight: 8 }}
             />
-            {isDark ? 'Light theme' : 'Dark theme'}
+            {isDarkTheme ? 'Light theme' : 'Dark theme'}
           </Flex>
         </MenuItem>
 
         <MenuItem onSelect={logoutWithRedirect}>
-          <Flex align="center">
+          <Flex $align="center">
             <Icon
               icon="logout"
               size={18}
               variant="outline"
-              css={{ color: '$neutral500', mr: '$2' }}
+              style={{ color: theme.colors.neutral500, marginRight: 8 }}
             />
             Log out
           </Flex>
