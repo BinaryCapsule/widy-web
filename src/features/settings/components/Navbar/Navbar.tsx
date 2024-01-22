@@ -31,7 +31,7 @@ export const Navbar = () => {
           aria-label="Close"
         />
 
-        <Brand css={{ mb: '$5' }} />
+        <Brand style={{ marginBottom: 20 }} />
 
         <nav>
           <NavHeading>Settings</NavHeading>

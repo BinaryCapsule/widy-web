@@ -50,7 +50,7 @@ export const DaysList = () => {
 
   return (
     <DaysListWrapper>
-      <Flex direction="column">
+      <Flex $direction="column">
         {data.pages.map(page =>
           page.items.map(({ id, day }) => {
             return (
@@ -70,7 +70,7 @@ export const DaysList = () => {
       </Flex>
 
       {hasNextPage && (
-        <Flex justify="center" css={{ mt: '$5' }}>
+        <Flex $justify="center" css={{ marginTop: 20 }}>
           <Button
             variant="ghostGray"
             size="small"

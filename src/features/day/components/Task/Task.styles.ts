@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { Box, darkTheme, TruncatedText } from '@binarycapsule/ui-capsules';
+import { Box, TruncatedText } from '@binarycapsule/ui-capsules';
 
 export type TaskVariant = 'todo' | 'completed' | 'active' | 'plan' | 'tomorrow';
 
@@ -153,7 +153,7 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
               background: theme.colors.tertiary100,
             },
 
-            [`.${darkTheme} &`]: {
+            '.darkTheme &': {
               background: theme.colors.neutral50,
 
               '&:hover': {

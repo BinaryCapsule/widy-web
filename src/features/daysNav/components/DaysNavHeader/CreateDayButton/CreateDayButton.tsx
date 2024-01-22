@@ -33,7 +33,7 @@ export const CreateDayButton: React.FC = () => {
       onClick={handleCreateDay}
       isLoading={isLoading}
       disabled={isTodayCreated}
-      noDays={!firstDay}
+      $noDays={!firstDay}
     >
       Add day
     </StyledButton>

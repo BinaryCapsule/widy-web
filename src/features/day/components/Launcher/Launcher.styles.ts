@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { darkTheme, IllustratedIcon } from '@binarycapsule/ui-capsules';
+import { IllustratedIcon } from '@binarycapsule/ui-capsules';
 
 export const StyledLauncher = styled(IllustratedIcon)(({ theme }) => ({
   '&&&': {
@@ -8,7 +8,7 @@ export const StyledLauncher = styled(IllustratedIcon)(({ theme }) => ({
         '&:first-of-type': {
           fill: theme.colors.neutral300,
 
-          [`.${darkTheme} &`]: {
+          '.darkTheme &': {
             fill: theme.colors.neutral400,
           },
         },
@@ -16,7 +16,7 @@ export const StyledLauncher = styled(IllustratedIcon)(({ theme }) => ({
         '&:last-of-type': {
           fill: theme.colors.neutral500,
 
-          [`.${darkTheme} &`]: {
+          '.darkTheme &': {
             fill: theme.colors.neutral600,
           },
         },
@@ -29,7 +29,7 @@ export const StyledLauncher = styled(IllustratedIcon)(({ theme }) => ({
           '&:first-of-type': {
             fill: theme.colors.primary200,
 
-            [`.${darkTheme} &`]: {
+            '.darkTheme &': {
               fill: theme.colors.primary400,
             },
           },
@@ -37,7 +37,7 @@ export const StyledLauncher = styled(IllustratedIcon)(({ theme }) => ({
           '&:last-of-type': {
             fill: theme.colors.primary500,
 
-            [`.${darkTheme} &`]: {
+            '.darkTheme &': {
               fill: theme.colors.primary600,
             },
           },

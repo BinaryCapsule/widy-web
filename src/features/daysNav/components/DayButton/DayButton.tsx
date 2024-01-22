@@ -14,11 +14,11 @@ export const DayButton: React.FC<Props> = ({ isSelected, isToday, onClick, child
   const theme = useTheme();
 
   return (
-    <Box as="label" css={{ my: '$1' }}>
+    <Box as="label" style={{ margin: '4px 0' }}>
       <StyledInput type="radio" name="day-button" checked={isSelected} onChange={onClick} />
 
       <StyledDayButton className="day-button">
-        <Content isToday={isToday}>
+        <Content $isToday={isToday}>
           {isToday && (
             <Badge style={{ color: theme.colors.blue50, background: theme.colors.blue500 }}>
               Today

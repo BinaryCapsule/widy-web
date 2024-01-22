@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { darkTheme, IllustratedIcon } from '@binarycapsule/ui-capsules';
+import { IllustratedIcon } from '@binarycapsule/ui-capsules';
 
 interface StyledTimerButtonProps {
   $isActive: boolean;
@@ -13,7 +13,7 @@ export const StyledTimerButton = styled(IllustratedIcon)<StyledTimerButtonProps>
           '&:first-of-type': {
             fill: theme.colors.neutral300,
 
-            [`.${darkTheme} &`]: {
+            '.darkTheme &': {
               fill: theme.colors.neutral600,
             },
           },
@@ -21,7 +21,7 @@ export const StyledTimerButton = styled(IllustratedIcon)<StyledTimerButtonProps>
           '&:last-of-type': {
             fill: theme.colors.neutral600,
 
-            [`.${darkTheme} &`]: {
+            '.darkTheme &': {
               fill: theme.colors.neutral100,
             },
           },
@@ -34,7 +34,7 @@ export const StyledTimerButton = styled(IllustratedIcon)<StyledTimerButtonProps>
             '&:first-of-type': {
               fill: theme.colors.neutral400,
 
-              [`.${darkTheme} &`]: {
+              '.darkTheme &': {
                 fill: theme.colors.neutral400,
               },
             },
@@ -42,7 +42,7 @@ export const StyledTimerButton = styled(IllustratedIcon)<StyledTimerButtonProps>
             '&:last-of-type': {
               fill: theme.colors.neutral700,
 
-              [`.${darkTheme} &`]: {
+              '.darkTheme &': {
                 fill: theme.colors.neutral700,
               },
             },
@@ -61,7 +61,7 @@ export const StyledTimerButton = styled(IllustratedIcon)<StyledTimerButtonProps>
               '&:first-of-type': {
                 fill: theme.colors.tertiary400,
 
-                [`.${darkTheme} &`]: {
+                '.darkTheme &': {
                   fill: theme.colors.tertiary400,
                 },
               },
@@ -69,7 +69,7 @@ export const StyledTimerButton = styled(IllustratedIcon)<StyledTimerButtonProps>
               '&:last-of-type': {
                 fill: theme.colors.tertiary900,
 
-                [`.${darkTheme} &`]: {
+                '.darkTheme &': {
                   fill: theme.colors.neutral50,
                 },
               },
@@ -82,7 +82,7 @@ export const StyledTimerButton = styled(IllustratedIcon)<StyledTimerButtonProps>
                 '&:first-of-type': {
                   fill: theme.colors.tertiary500,
 
-                  [`.${darkTheme} &`]: {
+                  '.darkTheme &': {
                     fill: theme.colors.tertiary500,
                   },
                 },
@@ -90,7 +90,7 @@ export const StyledTimerButton = styled(IllustratedIcon)<StyledTimerButtonProps>
                 '&:last-of-type': {
                   fill: theme.colors.tertiary900,
 
-                  [`.${darkTheme} &`]: {
+                  '.darkTheme &': {
                     fill: theme.colors.neutral50,
                   },
                 },

@@ -24,7 +24,7 @@ export const DaysNav = () => {
         <Overlay onClick={() => setDaysNavOpen(false)} css={{ '@md': { display: 'none' } }} />
       )}
 
-      <DaysNavWrapper as="nav" isOpen={isDaysNavOpen}>
+      <DaysNavWrapper as="nav" $isOpen={isDaysNavOpen}>
         <CloseButton
           icon="x"
           variant="ghostGray"
@@ -34,9 +34,9 @@ export const DaysNav = () => {
         />
 
         <StickyHeader>
-          <Brand css={{ mb: '$5' }} />
+          <Brand style={{ marginBottom: 20 }} />
 
-          <NextButton css={{ mb: '$5' }} />
+          <NextButton style={{ marginBottom: 20 }} />
 
           <DaysNavHeader />
         </StickyHeader>

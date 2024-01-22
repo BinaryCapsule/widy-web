@@ -1,35 +1,41 @@
-import { darkTheme, styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const StyledNextButton = styled('button', {
-  height: 32,
-  borderRadius: '$medium',
-  border: '1px dashed $secondary200',
-  background: '$bg',
-  fontSize: '0.8125rem',
-  fontWeight: 500,
-  color: '$secondary700',
-  padding: '0 8px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  cursor: 'pointer',
-  flexShrink: 0,
-  userSelect: 'none',
-  position: 'relative',
-  width: '100%',
+interface StyledNextButtonProps {
+  $isSelected: boolean;
+}
 
-  '&:hover': {
-    border: '1px dashed $secondary700',
+export const StyledNextButton = styled.button<StyledNextButtonProps>(
+  ({ theme }) => ({
+    height: 32,
+    borderRadius: '$medium',
+    border: `1px dashed ${theme.colors.secondary200}`,
+    background: '$bg',
+    fontSize: '0.8125rem',
+    fontWeight: 500,
+    color: theme.colors.secondary700,
+    padding: '0 8px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    cursor: 'pointer',
+    flexShrink: 0,
+    userSelect: 'none',
+    position: 'relative',
+    width: '100%',
 
-    [`.${darkTheme} &`]: {
-      border: '1px dashed $secondary500',
+    '&:hover': {
+      border: `1px dashed ${theme.colors.secondary700}`,
+
+      '.darkTheme &': {
+        border: `1px dashed ${theme.colors.secondary500}`,
+      },
     },
-  },
+  }),
 
-  variants: {
-    isSelected: {
-      true: {
-        background: '$secondary50',
+  ({ $isSelected, theme }) => {
+    if ($isSelected) {
+      return {
+        background: theme.colors.secondary50,
 
         '&::before': {
           content: '""',
@@ -39,9 +45,11 @@ export const StyledNextButton = styled('button', {
           left: 0,
           top: 6,
           borderRadius: '0 2px 2px 0',
-          background: '$secondary500',
+          background: theme.colors.secondary500,
         },
-      },
-    },
+      };
+    }
+
+    return {};
   },
-});
+);

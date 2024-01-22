@@ -1,25 +1,25 @@
-import { darkTheme, styled } from '@binarycapsule/ui-capsules';
 import React from 'react';
+import { styled } from 'styled-components';
 
 interface Props {
   size?: number;
 }
 
-export const PathBackdrop = styled('path', {
-  fill: '$neutral500',
-});
+export const PathBackdrop = styled.path(({ theme }) => ({
+  fill: theme.colors.neutral500,
+}));
 
-export const PathBackground = styled('path', {
-  fill: '$bg',
-});
+export const PathBackground = styled.path(({ theme }) => ({
+  fill: theme.colors.bg,
+}));
 
-export const ColoredSheet = styled('path', {
-  fill: '$tertiary200',
+export const ColoredSheet = styled.path(({ theme }) => ({
+  fill: theme.colors.tertiary200,
 
-  [`.${darkTheme} &`]: {
-    fill: '$neutral200',
+  '.darkTheme &': {
+    fill: theme.colors.neutral200,
   },
-});
+}));
 
 export const IllustrationTodoList: React.FC<Props> = ({ size = 300 }) => (
   <svg

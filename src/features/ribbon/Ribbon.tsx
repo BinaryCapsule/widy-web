@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, darkTheme, styled } from '@binarycapsule/ui-capsules';
+import { Box, styled } from '@binarycapsule/ui-capsules';
 import { useRibbon } from './useRibbon';
 
 const StyledRibbon = styled(Box, {
@@ -9,7 +9,7 @@ const StyledRibbon = styled(Box, {
   flexShrink: 0,
   display: 'none',
 
-  [`.${darkTheme} &`]: {
+  '.darkTheme &': {
     background: '$neutral300',
   },
 
@@ -22,7 +22,7 @@ const StyledRibbon = styled(Box, {
       true: {
         background: '$tertiary400',
 
-        [`.${darkTheme} &`]: {
+        '.darkTheme &': {
           background: '$tertiary300',
         },
       },
