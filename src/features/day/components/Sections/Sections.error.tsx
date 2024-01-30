@@ -11,10 +11,10 @@ export const SectionsError = () => {
   const history = useHistory();
 
   return (
-    <Flex $direction="column" $align="center" style={{ marginTop: 32 }}>
+    <Flex direction="column" align="center" style={{ marginTop: 32 }}>
       <OldPcIllustration />
 
-      <Flex $align="center" style={{ color: theme.colors.error600, marginTop: 12 }}>
+      <Flex align="center" style={{ color: theme.colors.error600, marginTop: 12 }}>
         <Icon icon="exclamation_c" style={{ marginRight: 4 }} />
 
         <Text style={{ color: 'inherit', fontWeight: 500 }}>{GENERIC_ERROR_MSG}</Text>

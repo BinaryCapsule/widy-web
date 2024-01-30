@@ -28,7 +28,7 @@ export const BoardHeader = () => {
 
       <BoardTitle />
 
-      <Flex $align="center">
+      <Flex align="center">
         {dayId && dayId !== 'tomorrow' && (
           <Button
             leftIcon="chart_pie"

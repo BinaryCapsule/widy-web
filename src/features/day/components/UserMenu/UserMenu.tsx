@@ -52,7 +52,7 @@ export const UserMenu = () => {
 
       <MenuList>
         {userInfo && (
-          <Box css={{ padding: '6px 12px', mt: -8 }}>
+          <Box style={{ padding: '6px 12px', marginTop: -8 }}>
             {userInfo.primary && (
               <Text as="p" size="md" style={{ fontWeight: 500 }}>
                 {userInfo.primary}
@@ -70,7 +70,7 @@ export const UserMenu = () => {
         <MenuItem
           onSelect={() => history.push(`/settings/scopes${dayId ? `?dayId=${dayId}` : ''}`)}
         >
-          <Flex $align="center">
+          <Flex align="center">
             <Icon
               icon="cog"
               size={18}
@@ -82,7 +82,7 @@ export const UserMenu = () => {
         </MenuItem>
 
         <MenuItem onSelect={() => setTheme(isDarkTheme ? 'light' : 'dark')}>
-          <Flex $align="center">
+          <Flex align="center">
             <Icon
               icon={isDarkTheme ? 'sun' : 'moon'}
               size={18}
@@ -94,7 +94,7 @@ export const UserMenu = () => {
         </MenuItem>
 
         <MenuItem onSelect={logoutWithRedirect}>
-          <Flex $align="center">
+          <Flex align="center">
             <Icon
               icon="logout"
               size={18}

@@ -10,8 +10,8 @@ export const DaysListError: React.FC<Props> = ({ onRetry }) => {
   const theme = useTheme();
 
   return (
-    <Flex $direction="column" style={{ alignItems: 'center' }}>
-      <Flex $align="center">
+    <Flex direction="column" style={{ alignItems: 'center' }}>
+      <Flex align="center">
         <Icon icon="exclamation_c" style={{ color: theme.colors.error600, marginRight: 8 }} />
         <Text color="error600" style={{ fontWeight: 500 }}>
           Something went wrong

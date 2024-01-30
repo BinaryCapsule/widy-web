@@ -7,7 +7,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 
 const Settings = () => {
   return (
-    <Flex css={{ height: '100%' }}>
+    <Flex style={{ height: '100%' }}>
       <Navbar />
 
       <Switch>

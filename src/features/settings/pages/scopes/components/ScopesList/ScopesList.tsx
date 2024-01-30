@@ -1,5 +1,6 @@
-import { Box } from '@binarycapsule/ui-capsules';
 import React, { useState } from 'react';
+import { useTheme } from 'styled-components';
+import { Box } from '@binarycapsule/ui-capsules';
 import { Scope } from '../Scope/Scope';
 import { ScopeDto, useScopesQuery } from '../../../../../day/api/useScopesQuery';
 import { UpsertScope } from '../../../../../day/components/UpsertScope/UpsertScope';
@@ -11,6 +12,8 @@ interface Props {
 }
 
 export const ScopesList: React.FC<Props> = ({ filter }) => {
+  const theme = useTheme();
+
   const { isLoading, isError, data } = useScopesQuery();
 
   const [scope, setScope] = useState<ScopeDto | null>(null);
@@ -53,7 +56,13 @@ export const ScopesList: React.FC<Props> = ({ filter }) => {
   }
 
   return (
-    <Box css={{ border: '1px solid $neutral300', borderRadius: '$medium', overflow: 'hidden' }}>
+    <Box
+      style={{
+        border: '1px solid $neutral300',
+        borderRadius: theme.radii.medium,
+        overflow: 'hidden',
+      }}
+    >
       {filteredScopes.map(scope => (
         <Scope key={scope.id} scope={scope} onEdit={setScope} onArchive={archiveScope} />
       ))}

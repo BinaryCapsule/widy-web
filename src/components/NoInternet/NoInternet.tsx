@@ -6,7 +6,7 @@ export const NoInternet = () => {
   return (
     <Offline>
       <Modal contentLabel="Offline-modal" isOpen size="small">
-        <Flex $direction="column" $align="center" style={{ padding: 20, paddingTop: 12 }}>
+        <Flex direction="column" align="center" style={{ padding: 20, paddingTop: 12 }}>
           <IllustratedIcon
             icon="wifi_off"
             primaryColor="neutral300"

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Card as BaseCard, Flex, Stat, styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
+import { Card as BaseCard, Flex, Stat } from '@binarycapsule/ui-capsules';
 import { DayReportDto } from '../../../../api/useDayReportQuery';
 import { formatTotalTime } from '../../../../../../utils/time';
 
-const Card = styled(BaseCard, {
-  padding: '$4',
+const Card = styled(BaseCard)({
+  padding: 16,
   flex: 1,
 });
 
@@ -20,7 +21,7 @@ export const Stats: React.FC<Props> = ({ data }) => {
   const { totalTime, completedTasks, tasks } = data;
 
   return (
-    <Flex css={{ my: '$4', mt: '$6', gridGap: '$4' }}>
+    <Flex style={{ margin: '24 0 16', gap: 16 }}>
       <Card>
         <Stat label="Total time worked">{formatTotalTime(totalTime)}</Stat>
       </Card>

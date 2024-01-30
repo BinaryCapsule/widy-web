@@ -16,7 +16,7 @@ export const NextButton = ({ style }: Props) => {
       onClick={() => history.push('/day/tomorrow')}
       style={style}
     >
-      <Flex as="span" $align="center">
+      <Flex as="span" align="center">
         <Icon icon="calendar" variant="outline" size={14} style={{ marginRight: 4 }} />
         <span>Next</span>
       </Flex>

@@ -12,31 +12,31 @@ export const DayReport = () => {
   const { isLoading, isFetching, data } = useDayReport();
 
   return (
-    <Box css={{ position: 'relative' }}>
+    <Box>
       <DayReportHeader />
-
-      {isFetching && !isLoading && (
-        <Box css={{ position: 'absolute' }}>
-          <Spinner variant="dark" />
-        </Box>
-      )}
 
       {isLoading && <DayReportLoading />}
 
       {data && data.totalTime === 0 ? (
-        <Flex direction="column" align="center" css={{ mt: '$6' }}>
+        <Flex direction="column" align="center" style={{ marginTop: 24 }}>
           <IllustrationBoss size={300} />
 
-          <Text css={{ color: '$neutral500' }}>You have not tracked any time on this day</Text>
+          <Text color="neutral500">You have not tracked any time on this day</Text>
         </Flex>
       ) : (
-        <>
+        <Box style={{ marginTop: 24, position: 'relative' }}>
+          {isFetching && !isLoading && (
+            <Box style={{ position: 'absolute', top: -32, right: 6 }}>
+              <Spinner variant="dark" />
+            </Box>
+          )}
+
           <Stats data={data} />
 
           <SectionsChart data={data} />
 
           <TasksTable data={data} />
-        </>
+        </Box>
       )}
     </Box>
   );

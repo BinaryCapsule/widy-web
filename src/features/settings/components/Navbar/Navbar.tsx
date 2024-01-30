@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
 import { NavHeading, NavItems, StyledNavbar, StyledNavLink } from './Navbar.styles';
 import { Brand } from '../../../daysNav/components/Brand/Brand';
 import { useQueryString } from '../../../../hooks/useQueryString';
@@ -7,6 +8,8 @@ import { CloseButton } from '../../../daysNav/DaysNav.styles';
 import { Overlay } from '../../../../components/Overlay/Overlay';
 
 export const Navbar = () => {
+  const theme = useTheme();
+
   const queryString = useQueryString();
 
   const dayId = queryString.get('dayId');
@@ -19,10 +22,13 @@ export const Navbar = () => {
   return (
     <>
       {isOpen && (
-        <Overlay onClick={() => setNavbarOpen(false)} css={{ '@md': { display: 'none' } }} />
+        <Overlay
+          onClick={() => setNavbarOpen(false)}
+          css={{ [theme.media.md]: { display: 'none' } }}
+        />
       )}
 
-      <StyledNavbar isOpen={isOpen}>
+      <StyledNavbar $isOpen={isOpen}>
         <CloseButton
           icon="x"
           variant="ghostGray"

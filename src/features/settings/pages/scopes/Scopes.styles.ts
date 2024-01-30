@@ -1,13 +1,13 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const Actions = styled('div', {
+export const Actions = styled.div(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  my: '$6',
-  gap: '$4',
+  margin: '24px 0',
+  gap: 16,
   alignItems: 'stretch',
 
-  '@sm': {
+  [theme.media.sm]: {
     flexDirection: 'row',
   },
-});
+}));

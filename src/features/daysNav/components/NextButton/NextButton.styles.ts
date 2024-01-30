@@ -7,9 +7,9 @@ interface StyledNextButtonProps {
 export const StyledNextButton = styled.button<StyledNextButtonProps>(
   ({ theme }) => ({
     height: 32,
-    borderRadius: '$medium',
+    borderRadius: theme.radii.medium,
     border: `1px dashed ${theme.colors.secondary200}`,
-    background: '$bg',
+    background: theme.colors.bg,
     fontSize: '0.8125rem',
     fontWeight: 500,
     color: theme.colors.secondary700,

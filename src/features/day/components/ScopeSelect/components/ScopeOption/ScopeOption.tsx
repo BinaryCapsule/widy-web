@@ -2,30 +2,26 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { Box, Flex, Text } from '@binarycapsule/ui-capsules';
 
-const OptionWrapper = styled(Box)(({ theme }) => ({
+interface OptionWrapperProps {
+  $isFocused: boolean;
+}
+
+const OptionWrapper = styled(Box)<OptionWrapperProps>(({ theme, $isFocused }) => ({
   display: 'flex',
   cursor: 'pointer',
   fontWeight: 500,
   color: theme.colors.neutral700,
-  background: theme.colors.bg,
+  background: $isFocused ? theme.colors.neutral200 : theme.colors.bg,
   height: 'auto',
   padding: 8,
-
-  variants: {
-    isFocused: {
-      true: {
-        background: theme.colors.neutral200,
-      },
-    },
-  },
 }));
 
 export const ScopeOption: React.FC<any> = ({ innerProps, isFocused, innerRef, data }) => {
   const { label, shortCode } = data;
 
   return (
-    <OptionWrapper isFocused={isFocused} ref={innerRef} {...innerProps}>
-      <Flex $align="baseline" style={{ width: '100%' }}>
+    <OptionWrapper $isFocused={isFocused} ref={innerRef} {...innerProps}>
+      <Flex align="baseline" style={{ width: '100%' }}>
         <Flex style={{ flex: 1 }}>
           <Text style={{ marginRight: 4, fontWeight: 500 }}>{label}&nbsp;</Text>
         </Flex>

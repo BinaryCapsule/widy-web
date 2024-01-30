@@ -48,7 +48,7 @@ export const Timer: React.FC<Props> = ({ task, style }) => {
             <Launcher isButton task={task} />
           </Box>
         ) : (
-          <Flex $align="center">
+          <Flex align="center">
             {!task.isDone && (
               <>
                 <TimerButton task={task} size={48} />

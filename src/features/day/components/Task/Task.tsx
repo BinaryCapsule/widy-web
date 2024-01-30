@@ -83,7 +83,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
         />
       )}
 
-      <Box css={{ flex: 1, minWidth: 0 }}>
+      <Box style={{ flex: 1, minWidth: 0 }}>
         <Box
           onClick={onTaskClick}
           onKeyDown={onTaskKeyDown}

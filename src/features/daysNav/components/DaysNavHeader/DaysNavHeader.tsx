@@ -6,8 +6,8 @@ interface Props extends Pick<ComponentPropsWithoutRef<'div'>, 'style'> {}
 
 export const DaysNavHeader = ({ style }: Props) => {
   return (
-    <Flex $justify="between" $align="center" style={style}>
-      <Text css={{ fontWeight: 600 }}>Days</Text>
+    <Flex justify="between" align="center" style={style}>
+      <Text style={{ fontWeight: 600 }}>Days</Text>
 
       <CreateDayButton />
     </Flex>

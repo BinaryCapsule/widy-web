@@ -8,11 +8,11 @@ export const StyledButton = styled.button(({ theme }) => ({
   gap: 4,
 
   '&:hover': {
-    bg: theme.colors.neutral200,
+    background: theme.colors.neutral200,
   },
 
   '&[data-reach-menu-button][aria-expanded="true"]': {
-    bg: theme.colors.neutral200,
+    background: theme.colors.neutral200,
   },
 
   '&:focus': {

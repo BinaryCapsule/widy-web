@@ -4,12 +4,12 @@ import { NoDaysIllustration } from '../../img/NoDaysIllustration';
 
 export const DayEmpty = () => {
   return (
-    <Box css={{ textAlign: 'center' }}>
-      <Box css={{ maxWidth: 800, margin: '40px auto' }}>
+    <Box style={{ textAlign: 'center' }}>
+      <Box style={{ maxWidth: 800, margin: '40px auto' }}>
         <NoDaysIllustration />
       </Box>
 
-      <Text as="h1" size="2xl" css={{ fontWeight: 500, mb: '$2' }}>
+      <Text as="h1" size="2xl" style={{ fontWeight: 500, marginBottom: 4 }}>
         <span role="img" aria-label="tada">
           🎉
         </span>{' '}
@@ -19,7 +19,7 @@ export const DayEmpty = () => {
         </span>
       </Text>
 
-      <Text as="p" css={{ mb: '$1' }}>
+      <Text as="p" style={{ marginBottom: 4 }}>
         WIDY will help you to track your daily work.
       </Text>
 

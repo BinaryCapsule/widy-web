@@ -1,9 +1,11 @@
-import { Flex, styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
+import { Flex } from '@binarycapsule/ui-capsules';
 
-export const ScopeContainer = styled(Flex, {
-  padding: '$4',
+export const ScopeContainer = styled(Flex)(({ theme }) => ({
+  padding: 16,
+  alignItems: 'center',
 
   '&:nth-child(odd)': {
-    background: '$neutral100',
+    background: theme.colors.neutral100,
   },
-});
+}));

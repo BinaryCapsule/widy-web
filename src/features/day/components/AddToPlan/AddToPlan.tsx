@@ -23,7 +23,7 @@ export const AddToPlan: React.FC<Props> = ({ isButton, dayId, task, style }) => 
   return (
     <>
       {isButton ? (
-        <Flex $direction="column" $align="start" style={style}>
+        <Flex direction="column" align="start" style={style}>
           <Text variant="label" style={{ marginBottom: 4 }}>
             Timer
           </Text>

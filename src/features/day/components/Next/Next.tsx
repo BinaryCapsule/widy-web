@@ -70,13 +70,13 @@ export const Next = () => {
           leftIcon="plus"
           variant="ghostGray"
           onClick={() => setShowAddTask(true)}
-          css={{ mt: '$2' }}
+          style={{ marginTop: 8 }}
         >
           Add task
         </Button>
       </Box>
 
-      <Flex $justify="center">
+      <Flex justify="center">
         <Text variant="helper" style={{ textAlign: 'center' }}>
           These tasks will be added to the plan in the next working day.
         </Text>

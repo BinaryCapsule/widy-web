@@ -10,7 +10,7 @@ export const Time = ({ time, style }: Props) => {
   const { hours, minutes, seconds } = getTotalTime(time);
 
   return (
-    <Flex $align="baseline" style={style}>
+    <Flex align="baseline" style={style}>
       {hours > 0 && (
         <>
           <Text size="xl" style={{ marginRight: 4 }}>
@@ -23,7 +23,7 @@ export const Time = ({ time, style }: Props) => {
         <Text size="xl" style={{ marginRight: 4 }}>
           {minutes}
         </Text>
-        <Text css={{ marginRight: 8 }}>min</Text>
+        <Text style={{ marginRight: 8 }}>min</Text>
       </>
       <>
         <Text size="xl" style={{ marginRight: 4 }}>

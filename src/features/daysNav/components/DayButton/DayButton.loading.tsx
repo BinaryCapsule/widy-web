@@ -10,8 +10,8 @@ export const DayButtonLoading = ({ style }: Props) => {
       <StyledDayButton>
         <Content $isToday={false}>
           <Skeleton
-            $circular
-            css={{
+            isRound
+            style={{
               height: 12,
               width: 100,
             }}

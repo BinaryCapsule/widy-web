@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTheme } from 'styled-components';
 import { TopBar } from '../../components/Topbar/TopBar';
 import { Main } from '../../components/Main/Main';
 import { Box, Button, Input, Spinner } from '@binarycapsule/ui-capsules';
@@ -8,6 +9,8 @@ import { useScopesQuery } from '../../../day/api/useScopesQuery';
 import { Actions } from './Scopes.styles';
 
 export const Scopes = () => {
+  const theme = useTheme();
+
   const [filter, setFilter] = useState('');
 
   const { isLoading, isFetching } = useScopesQuery();
@@ -20,7 +23,7 @@ export const Scopes = () => {
         <TopBar title="Scopes" subTitle="Manage your task scopes below" />
 
         {isFetching && !isLoading && (
-          <Box css={{ position: 'absolute' }}>
+          <Box style={{ position: 'absolute' }}>
             <Spinner variant="dark" />
           </Box>
         )}
@@ -31,7 +34,10 @@ export const Scopes = () => {
             onClick={() => {
               setIsAddScopeModalOpen(true);
             }}
-            css={{ width: '100%', '@sm': { width: 'revert', mr: 'auto' } }}
+            css={{
+              width: '100%',
+              [theme.media.sm]: { '&&': { width: 'revert', marginRight: 'auto' } },
+            }}
           >
             New scope
           </Button>
@@ -42,7 +48,7 @@ export const Scopes = () => {
             onChange={evt => {
               setFilter(evt.target.value);
             }}
-            css={{ width: '100%', '@sm': { width: 250 } }}
+            css={{ width: '100%', [theme.media.sm]: { '&&': { width: 250 } } }}
           />
         </Actions>
 

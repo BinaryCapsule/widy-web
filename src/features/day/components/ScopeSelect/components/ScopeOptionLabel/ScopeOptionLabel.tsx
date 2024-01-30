@@ -8,7 +8,7 @@ interface Props {
 
 export const ScopeOptionLabel: React.FC<Props> = ({ label, shortCode }) => {
   return (
-    <Flex $align="baseline" style={{ width: '100%' }}>
+    <Flex align="baseline" style={{ width: '100%' }}>
       <Box style={{ flex: 1 }}>
         <TruncatedText mr="4">{label}&nbsp;</TruncatedText>
       </Box>

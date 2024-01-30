@@ -1,10 +1,12 @@
 import { css, keyframes, styled } from 'styled-components';
 import { Button } from '@binarycapsule/ui-capsules';
+import { ThemeType } from '../../../../../styled-components';
 
-const ripple = keyframes({
-  '0%': { boxShadow: '$colors$primary500 0px 0px 0px 0px' },
-  '100%': { boxShadow: 'rgb(0 0 0 / 0%) 0px 0px 0px 10px' },
-});
+const ripple = ({ theme }: { theme: ThemeType }) =>
+  keyframes({
+    '0%': { boxShadow: `${theme.colors.primary500} 0px 0px 0px 0px` },
+    '100%': { boxShadow: 'rgb(0 0 0 / 0%) 0px 0px 0px 10px' },
+  });
 
 interface StyledButtonProps {
   $noDays: boolean;

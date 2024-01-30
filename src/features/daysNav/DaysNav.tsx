@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTheme } from 'styled-components';
 import { CloseButton, DaysNavWrapper, StickyHeader } from './DaysNav.styles';
 import { DaysNavHeader } from './components/DaysNavHeader/DaysNavHeader';
 import { Brand } from './components/Brand/Brand';
@@ -9,6 +10,8 @@ import { useDaysNavStore } from './stores/daysNavStore';
 import { Overlay } from '../../components/Overlay/Overlay';
 
 export const DaysNav = () => {
+  const theme = useTheme();
+
   const { pathname } = useLocation();
 
   const isDaysNavOpen = useDaysNavStore(state => state.isOpen);
@@ -21,7 +24,10 @@ export const DaysNav = () => {
   return (
     <>
       {isDaysNavOpen && (
-        <Overlay onClick={() => setDaysNavOpen(false)} css={{ '@md': { display: 'none' } }} />
+        <Overlay
+          onClick={() => setDaysNavOpen(false)}
+          css={{ [theme.media.md]: { display: 'none' } }}
+        />
       )}
 
       <DaysNavWrapper as="nav" $isOpen={isDaysNavOpen}>

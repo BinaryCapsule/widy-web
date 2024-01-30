@@ -9,7 +9,7 @@ interface Props extends Pick<ComponentPropsWithoutRef<'div'>, 'style'> {}
 export const Brand: React.FC<Props> = ({ style }) => {
   return (
     <Link to="/day" aria-label="Widy home">
-      <Flex $align="end" style={style}>
+      <Flex align="end" style={style}>
         <IconWidy size={30} style={{ marginRight: 8 }} />
 
         <IconWidyText size={60} />

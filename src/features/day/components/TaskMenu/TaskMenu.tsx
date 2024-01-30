@@ -59,7 +59,7 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
         />
         <MenuList>
           <MenuItem onSelect={() => setShowRenameTask(true)}>
-            <Flex $align="center">
+            <Flex align="center">
               <Icon
                 icon="pencil"
                 size={18}
@@ -72,7 +72,7 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
 
           {canRegisterTime && (
             <MenuItem onSelect={() => setShowRegisterTime(true)}>
-              <Flex $align="center">
+              <Flex align="center">
                 <Icon
                   icon="clock"
                   size={18}
@@ -94,7 +94,7 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
                 }
               }}
             >
-              <Flex $align="center">
+              <Flex align="center">
                 <Icon
                   icon="calendar"
                   size={18}
@@ -108,7 +108,7 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
 
           {canMove && (
             <MenuItem onSelect={() => setShowMoveTask(true)}>
-              <Flex $align="center">
+              <Flex align="center">
                 <Icon
                   icon="switch_v"
                   size={18}
@@ -121,7 +121,7 @@ export const TaskMenu: React.FC<Props> = ({ task, variant }) => {
           )}
 
           <MenuItem onSelect={() => setShowDeleteTask(true)}>
-            <Flex $align="center">
+            <Flex align="center">
               <Icon
                 icon="trash"
                 size={18}

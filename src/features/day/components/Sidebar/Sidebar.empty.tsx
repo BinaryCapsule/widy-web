@@ -9,7 +9,7 @@ export const SidebarEmpty = () => {
 
   return (
     <SidebarWrapper>
-      <Flex $direction="column" $align="center" style={{ marginTop: 32 }}>
+      <Flex direction="column" align="center" style={{ marginTop: 32 }}>
         <IllustrationTodoList />
 
         <Text

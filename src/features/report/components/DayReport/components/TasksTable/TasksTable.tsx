@@ -1,11 +1,12 @@
 import React from 'react';
-import { Card, Icon, styled } from '@binarycapsule/ui-capsules';
+import { styled, useTheme } from 'styled-components';
+import { Card, Icon } from '@binarycapsule/ui-capsules';
 import { DayReportDto } from '../../../../api/useDayReportQuery';
 import { Table } from '../../../../../../components/Table/Table';
 import { formatTotalTime } from '../../../../../../utils/time';
 import { useTasksTable } from './useTasksTable';
 
-const centerStyles = {
+const centerStyles: React.CSSProperties = {
   position: 'absolute',
   top: 0,
   left: 0,
@@ -16,12 +17,12 @@ const centerStyles = {
   margin: 'auto',
 };
 
-const ScopeCell = styled('td', {
+const ScopeCell = styled.td({
   fontWeight: '600 !important',
 });
 
-const TaskCell = styled('td', {
-  paddingLeft: '$6 !important',
+const TaskCell = styled.td({
+  paddingLeft: '24px !important',
 });
 
 interface Props {
@@ -29,6 +30,8 @@ interface Props {
 }
 
 export const TasksTable: React.FC<Props> = ({ data: dayReport }) => {
+  const theme = useTheme();
+
   const data = useTasksTable({ data: dayReport });
 
   if (!data) {
@@ -36,7 +39,7 @@ export const TasksTable: React.FC<Props> = ({ data: dayReport }) => {
   }
 
   return (
-    <Card css={{ margin: '16px 0' }}>
+    <Card style={{ margin: '16px 0' }}>
       <Table>
         <colgroup>
           <col width="100%" />
@@ -64,7 +67,7 @@ export const TasksTable: React.FC<Props> = ({ data: dayReport }) => {
 
                 <ScopeCell />
 
-                <ScopeCell css={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
+                <ScopeCell style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
                   {time !== undefined ? formatTotalTime(time) : ''}
                 </ScopeCell>
               </tr>
@@ -75,7 +78,10 @@ export const TasksTable: React.FC<Props> = ({ data: dayReport }) => {
 
                   <TaskCell style={{ textAlign: 'center', position: 'relative' }}>
                     {isDone && (
-                      <Icon icon="check_c" css={{ ...centerStyles, color: '$success500' }} />
+                      <Icon
+                        icon="check_c"
+                        style={{ ...centerStyles, color: theme.colors.success500 }}
+                      />
                     )}
                   </TaskCell>
 

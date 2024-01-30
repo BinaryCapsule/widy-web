@@ -1,37 +1,46 @@
 import React from 'react';
-import { Box, styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
+import { Box } from '@binarycapsule/ui-capsules';
 import { useRibbon } from './useRibbon';
 
-const StyledRibbon = styled(Box, {
-  width: 12,
-  height: '100%',
-  background: '$neutral500',
-  flexShrink: 0,
-  display: 'none',
+interface StyledRibbonProps {
+  $isActive: boolean;
+}
 
-  '.darkTheme &': {
-    background: '$neutral300',
-  },
+const StyledRibbon = styled(Box)<StyledRibbonProps>(
+  ({ theme }) => ({
+    width: 12,
+    height: '100%',
+    background: theme.colors.neutral500,
+    flexShrink: 0,
+    display: 'none',
 
-  '@md': {
-    display: 'block',
-  },
+    '.darkTheme &': {
+      background: theme.colors.neutral300,
+    },
 
-  variants: {
-    isActive: {
-      true: {
-        background: '$tertiary400',
+    [theme.media.md]: {
+      display: 'block',
+    },
+  }),
+
+  ({ $isActive, theme }) => {
+    if ($isActive) {
+      return {
+        background: theme.colors.tertiary400,
 
         '.darkTheme &': {
-          background: '$tertiary300',
+          background: theme.colors.tertiary300,
         },
-      },
-    },
+      };
+    }
+
+    return {};
   },
-});
+);
 
 export const Ribbon = () => {
   const { isActive } = useRibbon();
 
-  return <StyledRibbon isActive={isActive} />;
+  return <StyledRibbon $isActive={isActive} />;
 };

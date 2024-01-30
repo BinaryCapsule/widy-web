@@ -22,14 +22,14 @@ const Landing = () => {
   return (
     <Flex
       direction="column"
-      css={{
+      style={{
         height: '100%',
         maxWidth: 800,
-        mx: 'auto',
-        px: '$6',
+        margin: '0 auto',
+        padding: '0 24px',
       }}
     >
-      <Flex justify="end" css={{ py: '$5' }}>
+      <Flex justify="end" style={{ padding: '20px 0' }}>
         <Button
           variant="ghostGray"
           leftIcon="login"
@@ -43,27 +43,27 @@ const Landing = () => {
           <Button
             variant="secondary"
             onClick={() => loginWithRedirect({ screen_hint: 'signup' })}
-            css={{ ml: '$2' }}
+            style={{ marginLeft: 8 }}
           >
             Sign up
           </Button>
         )}
       </Flex>
 
-      <Box css={{ flex: 1, position: 'relative' }}>
-        <Flex align="end" css={{ mb: '$2' }}>
+      <Box style={{ flex: 1, position: 'relative' }}>
+        <Flex align="end" style={{ marginBottom: 8 }}>
           <IconWidy size={isWide ? 90 : 60} />
-          <IconWidyText size={isWide ? 180 : 120} css={{ ml: '$3' }} />
+          <IconWidyText size={isWide ? 180 : 120} style={{ marginLeft: 12 }} />
         </Flex>
 
-        <Text size={isWide ? '4xl' : '2xl'} css={{ fontWeight: 500, mb: '$2' }}>
+        <Text size={isWide ? '4xl' : '2xl'} style={{ fontWeight: 500, marginBottom: 8 }}>
           What I did Yesterday?
         </Text>
 
         <StyledHeroIllustration />
       </Box>
 
-      <Flex justify="end" css={{ py: '$5' }}>
+      <Flex justify="end" style={{ padding: '20px 0' }}>
         <IconButton
           as="a"
           href="https://github.com/BinaryCapsule/widy-web"

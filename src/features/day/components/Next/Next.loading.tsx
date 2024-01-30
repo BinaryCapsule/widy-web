@@ -6,24 +6,17 @@ export const NextLoading = () => {
   return (
     <Box style={{ margin: '20px 0' }}>
       <Skeleton
-        $circular
+        isRound
+        width={100}
+        height={32}
         style={{
-          height: 32,
-          width: 100,
           marginBottom: 12,
           marginLeft: 'auto',
         }}
       />
 
       {times(5).map(key => (
-        <Skeleton
-          key={key}
-          $circular
-          style={{
-            height: 32,
-            marginBottom: 12,
-          }}
-        />
+        <Skeleton key={key} isRound height={32} style={{ marginBottom: 12 }} />
       ))}
     </Box>
   );

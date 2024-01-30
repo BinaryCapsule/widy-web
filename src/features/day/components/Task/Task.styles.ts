@@ -22,7 +22,7 @@ export const StyledTask = styled(Box)<StyledTaskProps>(
     display: 'flex',
     alignItems: 'center',
     border: '1px solid',
-    background: '$bg',
+    background: theme.colors.bg,
     borderRadius: theme.radii.medium,
     padding: '8px 8px 8px 28px',
     fontSize: theme.fontSizes.md,

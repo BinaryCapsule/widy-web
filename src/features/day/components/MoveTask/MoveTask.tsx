@@ -78,7 +78,7 @@ export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) =>
         <ModalCloseButton onClick={onRequestClose} />
 
         <ModalBody>
-          <Flex $direction="column" role="radiogroup">
+          <Flex direction="column" role="radiogroup">
             {sectionOpts.map(({ id, label }, index) => (
               <RadioPicker
                 key={id}

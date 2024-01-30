@@ -19,7 +19,7 @@ const TooltipText = styled(Text)(({ theme }) => ({
 const TooltipContent: React.FC<TooltipContentProps> = ({ label, value, color }) => {
   const theme = useTheme();
   return (
-    <Flex $align="center">
+    <Flex align="center">
       <Box style={{ width: 8, height: 9, background: color, marginRight: 4 }} />
 
       <TooltipText style={{ fontSize: theme.fontSizes.sm, marginRight: 4 }}>
@@ -51,7 +51,7 @@ export const StackedBar: React.FC<StackedBarProps> = ({ data, formatter }) => {
 
   return (
     <Flex
-      $direction="row"
+      direction="row"
       style={{ height: 24, width: '100%', overflow: 'hidden', borderRadius: theme.radii.medium }}
     >
       {data.map(({ label, value, color }, index) => {

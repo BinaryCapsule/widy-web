@@ -1,12 +1,12 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const Main = styled('main', {
+export const Main = styled.main(({ theme }) => ({
   padding: '48px 24px',
   flex: 1,
   overflowY: 'auto',
   position: 'relative',
 
-  '@sm': {
+  [theme.media.sm]: {
     padding: 48,
   },
-});
+}));

@@ -63,7 +63,7 @@ export const RegisterTime = ({ task, onRequestClose }: Props) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalBody>
           <Flex>
-            <Flex $align="center">
+            <Flex align="center">
               <Flex style={{ width: 68 }}>
                 <Input {...register('hours')} type="number" />
               </Flex>
@@ -71,7 +71,7 @@ export const RegisterTime = ({ task, onRequestClose }: Props) => {
               <Text style={{ marginLeft: 8 }}>h</Text>
             </Flex>
 
-            <Flex $align="center" style={{ marginLeft: 16 }}>
+            <Flex align="center" style={{ marginLeft: 16 }}>
               <Flex style={{ width: 68 }}>
                 <Input {...register('minutes')} type="number" />
               </Flex>
@@ -96,7 +96,7 @@ export const RegisterTime = ({ task, onRequestClose }: Props) => {
             Suggestions
           </Text>
 
-          <Flex $wrap="wrap">
+          <Flex wrap="wrap">
             {suggestions.map(({ label, hours, minutes }) => (
               <Button
                 key={label}
