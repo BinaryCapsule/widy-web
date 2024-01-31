@@ -1,3 +1,12 @@
+## [0.10.7](https://github.com/BinaryCapsule/widy-web/compare/v0.10.6...v0.10.7) (2024-01-31)
+
+
+### Bug Fixes
+
+* migrate to caps v7 ([37f8123](https://github.com/BinaryCapsule/widy-web/commit/37f81239abc0594e13d14d7974f7dd3af7a68c79))
+
+
+
 ## [0.10.6](https://github.com/BinaryCapsule/widy-web/compare/v0.10.5...v0.10.6) (2022-03-21)
 
 
@@ -33,15 +42,6 @@
 
 * responsive designs ([052c6e1](https://github.com/BinaryCapsule/widy-web/commit/052c6e165734deaeb35b1bd13ea8096fd2e12ab1))
 * upgrade caps -> fix select text color ([dae0a24](https://github.com/BinaryCapsule/widy-web/commit/dae0a24d6784725b74a6852ce41f1de086ef80e4))
-
-
-
-## [0.10.2](https://github.com/BinaryCapsule/widy-web/compare/v0.10.1...v0.10.2) (2022-02-07)
-
-
-### Bug Fixes
-
-* revert font size 16px ([ff717b2](https://github.com/BinaryCapsule/widy-web/commit/ff717b2db549e3087ac1a6d6ecef49a50839cd4e))
 
 
 
