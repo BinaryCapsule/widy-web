@@ -2,14 +2,14 @@
   "name": "widy-web",
   "version": "0.10.6",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
     "@binarycapsule/editor": "^3.0.4",
-    "@binarycapsule/ui-capsules": "^6.3.5",
+    "@binarycapsule/ui-capsules": "^7.0.4",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.8.8",
     "@radix-ui/react-avatar": "^0.1.3",
-    "@stitches/react": "^1.2.6",
     "history": "^5.2.0",
     "immer": "^9.0.12",
     "lodash.debounce": "^4.0.8",
@@ -23,6 +23,7 @@
     "react-query": "^3.34.14",
     "react-router-dom": "^5.3.0",
     "react-use": "^17.3.2",
+    "styled-components": "^6.1.8",
     "yup": "^0.32.11",
     "zustand": "^3.6.9"
   },
@@ -51,7 +52,7 @@
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.6",
-    "@types/node": "^17.0.15",
+    "@types/node": "^20.11.5",
     "@types/react": "^17.0.39",
     "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-detect-offline": "^2.4.1",
@@ -61,6 +62,7 @@
     "@typescript-eslint/parser": "^5.10.2",
     "@vitejs/plugin-react": "^1.1.4",
     "@vitejs/plugin-react-refresh": "^1.3.6",
+    "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -71,10 +73,9 @@
     "lint-staged": "^12.3.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
-    "react-query-devtools": "^2.6.3",
     "rollup-plugin-visualizer": "^5.5.4",
     "typescript": "~4.5.5",
-    "vite": "^2.7.13"
+    "vite": "^5.0.12"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": "eslint --fix",

@@ -14,10 +14,10 @@ export const Scope: React.FC<Props> = ({ scope, onEdit, onArchive }) => {
   const { name, shortCode } = scope;
 
   return (
-    <ScopeContainer align="center">
+    <ScopeContainer>
       <ScopeCode>{shortCode}</ScopeCode>
 
-      <Text css={{ flex: 1 }}>{name}</Text>
+      <Text style={{ flex: 1 }}>{name}</Text>
 
       <Flex>
         <Tooltip label="Edit">
@@ -28,7 +28,7 @@ export const Scope: React.FC<Props> = ({ scope, onEdit, onArchive }) => {
             size="small"
             variant="ghostGray"
             aria-label="Edit"
-            css={{ mr: '$3' }}
+            style={{ marginRight: 12 }}
           />
         </Tooltip>
 

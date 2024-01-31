@@ -1,52 +1,49 @@
-import { IconButton, styled } from '@binarycapsule/ui-capsules';
 import { NavLink } from 'react-router-dom';
+import { styled } from 'styled-components';
+import { IconButton } from '@binarycapsule/ui-capsules';
 
-export const StyledNavbar = styled('div', {
+interface StyledNavbarProps {
+  $isOpen: boolean;
+}
+
+export const StyledNavbar = styled.div<StyledNavbarProps>(({ theme, $isOpen }) => ({
   position: 'fixed',
   width: 254,
   height: '100%',
   flexShrink: 0,
   padding: '48px 24px 24px',
-  background: '$neutral100',
-  display: 'none',
+  background: theme.colors.neutral100,
+  display: $isOpen ? 'flex' : 'none',
   flexDirection: 'column',
   zIndex: 1,
-  boxShadow: '$500',
+  boxShadow: theme.shadows['500'],
 
-  '@md': {
+  [theme.media.md]: {
     position: 'relative',
     boxShadow: 'revert',
     display: 'flex',
-    borderRight: '1px solid $neutral200',
+    borderRight: `1px solid ${theme.colors.neutral200}`,
   },
+}));
 
-  variants: {
-    isOpen: {
-      true: {
-        display: 'flex',
-      },
-    },
-  },
-});
-
-export const NavHeading = styled('h2', {
-  color: '$neutral600',
-  fontSize: '$md',
+export const NavHeading = styled.h2(({ theme }) => ({
+  color: theme.colors.neutral600,
+  fontSize: theme.fontSizes.md,
   textTransform: 'uppercase',
   fontWeight: 600,
   letterSpacing: '0.5px',
   marginTop: 24,
-});
+}));
 
-export const NavItems = styled('ul', {
+export const NavItems = styled.ul({
   margin: '12px 0 16px -12px',
   listStyleType: 'none',
   paddingLeft: 0,
 });
 
-export const StyledNavLink = styled(NavLink, {
+export const StyledNavLink = styled(NavLink)(({ theme }) => ({
   display: 'inline-block',
-  padding: '$2 $3',
+  padding: '8px 12px',
   width: '100%',
   position: 'relative',
   fontWeight: 500,
@@ -56,12 +53,12 @@ export const StyledNavLink = styled(NavLink, {
   height: 36,
 
   '&.active': {
-    background: '$primary200',
-    color: '$primary700',
+    background: theme.colors.primary200,
+    color: theme.colors.primary700,
   },
 
   '&:hover': {
-    background: '$primary200',
+    background: theme.colors.primary200,
   },
 
   '&.active::before': {
@@ -72,24 +69,24 @@ export const StyledNavLink = styled(NavLink, {
     left: 0,
     top: 8,
     borderRadius: '0 2px 2px 0',
-    background: '$primary500',
+    background: theme.colors.primary500,
   },
 
   '&[data-focus-visible-added]:focus': {
     outlineWidth: '2px',
     outlineStyle: 'solid',
-    outlineColor: '$colors$primary500',
+    outlineColor: theme.colors.primary500,
     outlineOffset: '-1px',
     zIndex: 1,
   },
-});
+}));
 
-export const CloseButton = styled(IconButton, {
+export const CloseButton = styled(IconButton)(({ theme }) => ({
   position: 'absolute',
   top: 12,
   right: 12,
 
-  '@md': {
+  [theme.media.md]: {
     display: 'none',
   },
-});
+}));

@@ -1,6 +1,7 @@
-import { Box, styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
+import { Box } from '@binarycapsule/ui-capsules';
 
-export const SectionHeader = styled(Box, {
+export const SectionHeader = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',

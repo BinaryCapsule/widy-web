@@ -8,7 +8,7 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 
 const Report = () => {
   return (
-    <Flex css={{ height: '100%' }}>
+    <Flex style={{ height: '100%' }}>
       <Ribbon />
 
       <DaysNav />

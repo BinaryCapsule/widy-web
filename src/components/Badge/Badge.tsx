@@ -1,7 +1,7 @@
-import React from 'react';
-import { CSSProp, styled } from '@binarycapsule/ui-capsules';
+import React, { ComponentPropsWithoutRef } from 'react';
+import { styled } from 'styled-components';
 
-const StyledBadge = styled('div', {
+const StyledBadge = styled.div({
   display: 'flex',
   alignItems: 'center',
   borderRadius: '999px',
@@ -12,6 +12,10 @@ const StyledBadge = styled('div', {
   padding: '0 4px',
 });
 
-export const Badge: React.FC<CSSProp> = ({ children, css }) => {
-  return <StyledBadge css={css}>{children}</StyledBadge>;
+interface Props extends ComponentPropsWithoutRef<'div'> {
+  children: React.ReactNode;
+}
+
+export const Badge = ({ children, ...rest }: Props) => {
+  return <StyledBadge {...rest}>{children}</StyledBadge>;
 };

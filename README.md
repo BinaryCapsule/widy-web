@@ -37,7 +37,7 @@ UI components from the [UI-Capsules kit](https://uic.binarycapsule.tech/).
 - [React](https://beta.reactjs.org/)
 - [React Query](https://react-query.tanstack.com/)
 - [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd)
-- [Stitches](https://stitches.dev/)
+- [Styled-Components](https://styled-components.com/)
 - [React Hook Form](https://react-hook-form.com/)
 - [Vite](https://vitejs.dev/)
 - [Netlify](https://www.netlify.com/)

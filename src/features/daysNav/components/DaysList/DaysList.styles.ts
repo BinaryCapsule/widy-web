@@ -1,8 +1,8 @@
-import { Box, styled } from '@binarycapsule/ui-capsules';
+import { Box } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const DaysListWrapper = styled(Box, {
+export const DaysListWrapper = styled(Box)(({ theme }) => ({
   overflowY: 'auto',
-  px: '$5',
-  pb: '$6',
-  background: '$neutral100',
-});
+  padding: '0 20px 24px',
+  background: theme.colors.neutral100,
+}));

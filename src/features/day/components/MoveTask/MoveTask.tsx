@@ -88,7 +88,7 @@ export const MoveTask: React.FC<Props> = ({ task, isLaunch, onRequestClose }) =>
                 onChange={() => {
                   formBag.setValue('sectionId', id);
                 }}
-                css={{ mb: index !== sectionOpts.length - 1 ? 16 : 0 }}
+                style={{ marginBottom: index !== sectionOpts.length - 1 ? 16 : 0 }}
               />
             ))}
           </Flex>

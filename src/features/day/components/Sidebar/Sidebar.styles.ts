@@ -1,25 +1,30 @@
-import { darkTheme, IconButton, styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
+import { IconButton } from '@binarycapsule/ui-capsules';
 
 const sidebarWidth = 360;
 
-export const SidebarWrapper = styled('aside', {
+interface SidebarWrapperProps {
+  $isOpen?: boolean;
+}
+
+export const SidebarWrapper = styled('aside')<SidebarWrapperProps>(({ theme, $isOpen }) => ({
   position: 'fixed',
   right: 0,
   height: '100%',
   minWidth: sidebarWidth,
   flex: 1,
-  background: '$yellow50',
+  background: theme.colors.yellow50,
   padding: '38px 24px',
-  borderLeft: '1px solid $yellow100',
-  boxShadow: '$500',
-  display: 'none',
+  borderLeft: `1px solid ${theme.colors.yellow100}`,
+  boxShadow: theme.shadows['500'],
+  display: $isOpen ? 'block' : 'none',
 
-  [`.${darkTheme} &`]: {
-    background: '$neutral100',
-    borderLeft: '1px solid $neutral200',
+  '.darkTheme &': {
+    background: theme.colors.neutral100,
+    borderLeft: `1px solid ${theme.colors.neutral200}`,
   },
 
-  '@xl': {
+  [theme.media.xl]: {
     position: 'relative',
     right: 'revert',
     transform: 'revert',
@@ -27,22 +32,14 @@ export const SidebarWrapper = styled('aside', {
     padding: '38px 32px',
     display: 'block',
   },
+}));
 
-  variants: {
-    isOpen: {
-      true: {
-        display: 'block',
-      },
-    },
-  },
-});
-
-export const CloseButton = styled(IconButton, {
+export const CloseButton = styled(IconButton)(({ theme }) => ({
   position: 'absolute',
   top: 12,
   right: 12,
 
-  '@xl': {
+  [theme.media.xl]: {
     display: 'none',
   },
-});
+}));

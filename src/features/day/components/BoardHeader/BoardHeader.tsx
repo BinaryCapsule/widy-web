@@ -35,7 +35,7 @@ export const BoardHeader = () => {
             iconVariant="outline"
             variant="ghostGray"
             onClick={() => history.push(`/report/${dayId}`)}
-            css={{ mr: '$2' }}
+            style={{ marginRight: 8 }}
           >
             Report
           </Button>

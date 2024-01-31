@@ -1,15 +1,18 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
 import { Icon } from '@binarycapsule/ui-capsules';
 import { StyledSidebar } from './Sidebar.styles';
 
 export const Sidebar = () => {
+  const theme = useTheme();
+
   return (
     <StyledSidebar>
       <Icon
         icon="cog"
         size={100}
-        css={{
-          color: '$neutral300',
+        style={{
+          color: theme.colors.neutral300,
           position: 'absolute',
           top: 0,
           right: 0,

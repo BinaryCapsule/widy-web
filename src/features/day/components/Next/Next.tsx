@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTheme } from 'styled-components';
 import { Box, Button, Flex, Text } from '@binarycapsule/ui-capsules';
 import { useTomorrowQuery } from '../../api/useTomorrowQuery';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
@@ -12,6 +13,8 @@ import { Task } from '../Task/Task';
 import { NextLoading } from './Next.loading';
 
 export const Next = () => {
+  const theme = useTheme();
+
   const { isLoading, data } = useTomorrowQuery();
 
   const [showAddTask, setShowAddTask] = useState(false);
@@ -34,15 +37,15 @@ export const Next = () => {
 
   return (
     <>
-      <Box css={{ my: '$6' }}>
+      <Box style={{ margin: '24px 0' }}>
         <SectionHeader
-          css={{
-            borderBottom: tasks.length > 0 ? '1px solid $neutral300' : 'none',
+          style={{
+            borderBottom: tasks.length > 0 ? `1px solid ${theme.colors.neutral300}` : 'none',
             height: tasks.length === 0 || (tasks.length > 0 && !todayDayId) ? 0 : 48,
           }}
         >
           {tasks.length > 0 && !!todayDayId && (
-            <MoveAllToPlan dayId={todayDayId} css={{ ml: 'auto' }} />
+            <MoveAllToPlan dayId={todayDayId} style={{ marginLeft: 'auto' }} />
           )}
         </SectionHeader>
 
@@ -67,14 +70,14 @@ export const Next = () => {
           leftIcon="plus"
           variant="ghostGray"
           onClick={() => setShowAddTask(true)}
-          css={{ mt: '$2' }}
+          style={{ marginTop: 8 }}
         >
           Add task
         </Button>
       </Box>
 
       <Flex justify="center">
-        <Text variant="helper" css={{ textAlign: 'center' }}>
+        <Text variant="helper" style={{ textAlign: 'center' }}>
           These tasks will be added to the plan in the next working day.
         </Text>
       </Flex>

@@ -1,17 +1,17 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const Table = styled('table', {
+export const Table = styled.table(({ theme }) => ({
   width: '100%',
-  background: '$bg',
-  fontFamily: '$inter',
+  background: theme.colors.bg,
+  fontFamily: theme.fonts.inter,
   fontWeight: 400,
-  fontSize: '$md',
-  color: '$neutral700',
+  fontSize: theme.fontSizes.md,
+  color: theme.colors.neutral700,
   borderCollapse: 'collapse',
 
   caption: {
-    fontSize: '$lg',
-    lineHeight: '$lg',
+    fontSize: theme.fontSizes.lg,
+    lineHeight: theme.lineHeights.lg,
     fontWeight: 600,
   },
 
@@ -21,16 +21,16 @@ export const Table = styled('table', {
 
       th: {
         fontWeight: 600,
-        fontSize: '$sm',
-        lineHeight: '$sm',
-        color: '$neutral500',
-        letterSpacing: '$wide',
+        fontSize: theme.fontSizes.sm,
+        lineHeight: theme.lineHeights.sm,
+        color: theme.colors.neutral500,
+        letterSpacing: theme.letterSpacings.wide,
         textTransform: 'uppercase',
-        background: '$neutral100',
+        background: theme.colors.neutral100,
         padding: '10px 24px',
         whiteSpace: 'nowrap',
-        borderTop: '1px solid $colors$neutral200',
-        borderBottom: '1px solid $colors$neutral200',
+        borderTop: `1px solid ${theme.colors.neutral200}`,
+        borderBottom: `1px solid ${theme.colors.neutral200}`,
 
         '&:first-of-type': {
           paddingLeft: 16,
@@ -46,7 +46,7 @@ export const Table = styled('table', {
   tbody: {
     tr: {
       padding: '10px 16px',
-      borderBottom: '1px solid $colors$neutral200',
+      borderBottom: `1px solid ${theme.colors.neutral200}`,
 
       td: {
         fontWeight: 500,
@@ -62,4 +62,4 @@ export const Table = styled('table', {
       },
     },
   },
-});
+}));

@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useTheme } from 'styled-components';
 import {
   Box,
   Flex,
@@ -8,7 +9,7 @@ import {
   MenuItem,
   MenuList,
   Text,
-  useTheme,
+  useUiCapsContext,
 } from '@binarycapsule/ui-capsules';
 import { MenuTrigger } from './components/MenuTrigger/MenuTrigger';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -16,13 +17,15 @@ import { useHistory } from 'react-router-dom';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 
 export const UserMenu = () => {
+  const theme = useTheme();
+
   const { logout, user } = useAuth0();
 
   const history = useHistory();
 
   const { dayId } = useDayRouteParams();
 
-  const { isDark, setTheme } = useTheme();
+  const { isDarkTheme, setTheme } = useUiCapsContext();
 
   const logoutWithRedirect = () =>
     logout({
@@ -49,15 +52,15 @@ export const UserMenu = () => {
 
       <MenuList>
         {userInfo && (
-          <Box css={{ padding: '6px 12px', mt: -8 }}>
+          <Box style={{ padding: '6px 12px', marginTop: -8 }}>
             {userInfo.primary && (
-              <Text as="p" size="md" css={{ fontWeight: 500 }}>
+              <Text as="p" size="md" style={{ fontWeight: 500 }}>
                 {userInfo.primary}
               </Text>
             )}
 
             {userInfo.secondary && (
-              <Text as="p" size="sm" css={{ color: '$neutral500' }}>
+              <Text as="p" size="sm" style={{ color: theme.colors.neutral500 }}>
                 {userInfo.secondary}
               </Text>
             )}
@@ -68,20 +71,25 @@ export const UserMenu = () => {
           onSelect={() => history.push(`/settings/scopes${dayId ? `?dayId=${dayId}` : ''}`)}
         >
           <Flex align="center">
-            <Icon icon="cog" size={18} variant="outline" css={{ color: '$neutral500', mr: '$2' }} />
+            <Icon
+              icon="cog"
+              size={18}
+              variant="outline"
+              style={{ color: theme.colors.neutral500, marginRight: 8 }}
+            />
             Settings
           </Flex>
         </MenuItem>
 
-        <MenuItem onSelect={() => setTheme(isDark ? 'light' : 'dark')}>
+        <MenuItem onSelect={() => setTheme(isDarkTheme ? 'light' : 'dark')}>
           <Flex align="center">
             <Icon
-              icon={isDark ? 'sun' : 'moon'}
+              icon={isDarkTheme ? 'sun' : 'moon'}
               size={18}
               variant="outline"
-              css={{ color: '$neutral500', mr: '$2' }}
+              style={{ color: theme.colors.neutral500, marginRight: 8 }}
             />
-            {isDark ? 'Light theme' : 'Dark theme'}
+            {isDarkTheme ? 'Light theme' : 'Dark theme'}
           </Flex>
         </MenuItem>
 
@@ -91,7 +99,7 @@ export const UserMenu = () => {
               icon="logout"
               size={18}
               variant="outline"
-              css={{ color: '$neutral500', mr: '$2' }}
+              style={{ color: theme.colors.neutral500, marginRight: 8 }}
             />
             Log out
           </Flex>

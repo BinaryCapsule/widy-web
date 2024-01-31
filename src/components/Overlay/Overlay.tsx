@@ -1,6 +1,6 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const Overlay = styled('div', {
+export const Overlay = styled.div({
   position: 'fixed',
   inset: 0,
   zIndex: 1,

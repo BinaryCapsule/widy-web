@@ -35,7 +35,7 @@ export const Launcher: React.FC<Props> = ({ task, size, isButton }) => {
             onClick={() => setShowLaunchTaskModal(true)}
             size={size}
             aria-label="Launch task"
-            css={{ mx: '$1' }}
+            style={{ margin: '0 4px' }}
           />
         )}
       </Tooltip>

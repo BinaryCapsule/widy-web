@@ -68,8 +68,10 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
   };
 
   return (
-    <StyledTask variant={variant} isSelected={isSelected} isDragging={isDragging}>
-      {(variant === 'plan' || variant === 'tomorrow') && <PlanCheckBox css={{ mr: '$3', ml: 2 }} />}
+    <StyledTask $variant={variant} $isSelected={isSelected} $isDragging={isDragging}>
+      {(variant === 'plan' || variant === 'tomorrow') && (
+        <PlanCheckBox style={{ marginRight: 12, marginLeft: 2 }} />
+      )}
 
       {variant !== 'plan' && variant !== 'tomorrow' && (
         <Checkbox
@@ -81,7 +83,7 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
         />
       )}
 
-      <Box css={{ flex: 1, minWidth: 0 }}>
+      <Box style={{ flex: 1, minWidth: 0 }}>
         <Box
           onClick={onTaskClick}
           onKeyDown={onTaskKeyDown}
@@ -89,11 +91,11 @@ export const Task: React.FC<Props> = ({ task, variant, isSelected, isDragging, t
           tabIndex={0}
           aria-label={`Task ${variant} - ${task.summary}`}
         >
-          <TaskSummary css={{ fontWeight: 500, color: 'inherit' }}>{task.summary}</TaskSummary>
+          <TaskSummary style={{ fontWeight: 500, color: 'inherit' }}>{task.summary}</TaskSummary>
         </Box>
       </Box>
 
-      <TaskScope task={task} css={{ mr: '$1' }} />
+      <TaskScope task={task} style={{ marginRight: 4 }} />
 
       {variant === 'plan' && <Launcher task={task} />}
 

@@ -1,15 +1,15 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const StyledSidebar = styled('aside', {
+export const StyledSidebar = styled.aside(({ theme }) => ({
   flex: '1 0 0',
   height: '100%',
   flexShrink: 0,
-  background: '$neutral100',
-  borderLeft: '1px solid $neutral200',
+  background: theme.colors.neutral100,
+  borderLeft: `1px solid ${theme.colors.neutral200}`,
   position: 'relative',
   display: 'none',
 
-  '@xl': {
+  [theme.media.xl]: {
     display: 'block',
   },
-});
+}));

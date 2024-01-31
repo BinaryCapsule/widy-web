@@ -11,15 +11,7 @@ export const BoardTitle = () => {
   const { dayId } = useDayRouteParams();
 
   if (isLoading) {
-    return (
-      <Skeleton
-        circular
-        css={{
-          height: 16,
-          width: 100,
-        }}
-      />
-    );
+    return <Skeleton isRound width={100} height={16} />;
   }
 
   if (dayId === 'tomorrow') {

@@ -1,11 +1,13 @@
-import React from 'react';
-import { CSSProp, Flex, Text } from '@binarycapsule/ui-capsules';
+import React, { ComponentPropsWithoutRef } from 'react';
+import { Flex, Text } from '@binarycapsule/ui-capsules';
 import { CreateDayButton } from './CreateDayButton/CreateDayButton';
 
-export const DaysNavHeader: React.FC<CSSProp> = ({ css }) => {
+interface Props extends Pick<ComponentPropsWithoutRef<'div'>, 'style'> {}
+
+export const DaysNavHeader = ({ style }: Props) => {
   return (
-    <Flex justify="between" align="center" css={css}>
-      <Text css={{ fontWeight: 600 }}>Days</Text>
+    <Flex justify="between" align="center" style={style}>
+      <Text style={{ fontWeight: 600 }}>Days</Text>
 
       <CreateDayButton />
     </Flex>

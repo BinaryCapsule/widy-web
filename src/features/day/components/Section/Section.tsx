@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTheme } from 'styled-components';
 import { Box, Button, Icon, Text } from '@binarycapsule/ui-capsules';
 import { SectionVariant, useDayQuery } from '../../api/useDayQuery';
 import { SectionEmpty } from './Section.empty';
@@ -18,6 +19,8 @@ interface Props {
 }
 
 export const Section: React.FC<Props> = ({ sectionId }) => {
+  const theme = useTheme();
+
   const { taskId: routeTaskId } = useDayRouteParams();
 
   const { data } = useDayQuery();
@@ -38,11 +41,14 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
 
   return (
     <>
-      <Box as="section" css={{ my: '$5' }}>
+      <Box as="section" style={{ margin: '20px 0' }}>
         <SectionHeader
-          css={{ borderBottom: isPlan && tasks.length > 0 ? '1px solid $neutral300' : 'none' }}
+          style={{
+            borderBottom:
+              isPlan && tasks.length > 0 ? `1px solid ${theme.colors.neutral300}` : 'none',
+          }}
         >
-          <Text css={{ fontWeight: 600 }}>
+          <Text style={{ fontWeight: 600 }}>
             {sectionTitleMap[section.title as keyof typeof sectionTitleMap]}
           </Text>
 
@@ -66,10 +72,14 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
                       {(provided, snapshot) => (
                         <div ref={provided.innerRef} {...provided.draggableProps}>
                           <Box
-                            css={{ position: 'relative', py: isPlan ? 0 : 4, isolation: 'isolate' }}
+                            style={{
+                              position: 'relative',
+                              padding: isPlan ? 0 : '4px 0',
+                              isolation: 'isolate',
+                            }}
                           >
                             <Box
-                              css={{
+                              style={{
                                 position: 'absolute',
                                 top: isPlan ? 12 : 17,
                                 left: 6,
@@ -79,7 +89,7 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
                               {...provided.dragHandleProps}
                               aria-label="Drag a task"
                             >
-                              <Icon icon="grip" css={{ color: '$neutral400' }} />
+                              <Icon icon="grip" style={{ color: theme.colors.neutral400 }} />
                             </Box>
 
                             <Task
@@ -105,7 +115,7 @@ export const Section: React.FC<Props> = ({ sectionId }) => {
           leftIcon="plus"
           variant="ghostGray"
           onClick={() => setShowAddTask(true)}
-          css={{ mt: '$2' }}
+          style={{ marginTop: 8 }}
         >
           {isPlan ? 'Add to Plan' : 'Add task'}
         </Button>

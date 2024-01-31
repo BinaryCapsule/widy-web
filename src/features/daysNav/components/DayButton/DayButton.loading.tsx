@@ -1,15 +1,17 @@
-import { Box, CSSProp, Skeleton } from '@binarycapsule/ui-capsules';
-import React from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
+import { Box, Skeleton } from '@binarycapsule/ui-capsules';
 import { Content, StyledDayButton } from './DayButton.styles';
 
-export const DayButtonLoading: React.FC<CSSProp> = ({ css }) => {
+interface Props extends Pick<ComponentPropsWithoutRef<'div'>, 'style'> {}
+
+export const DayButtonLoading = ({ style }: Props) => {
   return (
-    <Box css={css}>
+    <Box style={style}>
       <StyledDayButton>
-        <Content isToday={false}>
+        <Content $isToday={false}>
           <Skeleton
-            circular
-            css={{
+            isRound
+            style={{
               height: 12,
               width: 100,
             }}

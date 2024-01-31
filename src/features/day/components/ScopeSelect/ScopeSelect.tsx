@@ -47,7 +47,7 @@ export const ScopeSelect: React.FC<Props> = ({ isPortal, value, onChange, onCrea
         size="small"
         variant="ghostGray"
         onClick={onCreateScope}
-        css={{ mt: '$1' }}
+        style={{ marginTop: 4 }}
       >
         Create new scope
       </Button>

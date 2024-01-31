@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useDayQuery } from '../../api/useDayQuery';
 import { EditableTaskSummary } from './components/EditableTaskSummary/EditableTaskSummary';
@@ -11,7 +11,7 @@ import { AddToPlan } from '../AddToPlan/AddToPlan';
 import { useTodayDayId } from '../../hooks/useTodayDayId';
 import { useSidebarStore } from '../../stores/sidebarStore';
 
-const NotesEditor = lazy(() => import('../NotesEditor/NotesEditor'));
+// const NotesEditor = lazy(() => import('../NotesEditor/NotesEditor'));
 
 export const Sidebar = () => {
   const { dayId, taskId } = useDayRouteParams();
@@ -46,7 +46,7 @@ export const Sidebar = () => {
   const { id, summary, notes } = task;
 
   return (
-    <SidebarWrapper isOpen={isSidebarOpen}>
+    <SidebarWrapper $isOpen={isSidebarOpen}>
       <CloseButton
         icon="x"
         variant="ghostGray"
@@ -55,19 +55,19 @@ export const Sidebar = () => {
         aria-label="Close"
       />
 
-      <EditableTaskSummary key={taskId} taskId={id} summary={summary} css={{ ml: -10 }} />
+      <EditableTaskSummary key={taskId} taskId={id} summary={summary} style={{ marginLeft: -10 }} />
 
-      <ScopeSelection task={task} css={{ mt: '$4' }} />
+      <ScopeSelection task={task} style={{ marginTop: 16 }} />
 
       {todayDayId && dayId === 'tomorrow' && (
-        <AddToPlan isButton dayId={todayDayId} task={task} css={{ mt: '$4' }} />
+        <AddToPlan isButton dayId={todayDayId} task={task} style={{ marginTop: 16 }} />
       )}
 
-      {dayId !== 'tomorrow' && <Timer task={task} css={{ mt: '$4' }} />}
+      {dayId !== 'tomorrow' && <Timer task={task} style={{ marginTop: 16 }} />}
 
-      <Suspense fallback={null}>
-        <NotesEditor taskId={id} notes={notes} css={{ mt: '$4' }} />
-      </Suspense>
+      {/*<Suspense fallback={null}>*/}
+      {/*  <NotesEditor taskId={id} notes={notes} style={{ marginTop: 16 }} />*/}
+      {/*</Suspense>*/}
     </SidebarWrapper>
   );
 };

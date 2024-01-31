@@ -33,6 +33,7 @@
     ],
     "no-debugger": "warn",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-interface": "off",
     "consistent-return": "error",
     "object-shorthand": "error"
   }

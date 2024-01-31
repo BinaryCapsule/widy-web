@@ -60,9 +60,9 @@ export const UpsertScope: React.FC<Props> = ({ scope, onUpsertScope, onClose }) 
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalBody>
-          {error && <Alert variant="error" message={error.message} css={{ mb: '$3' }} />}
+          {error && <Alert variant="error" message={error.message} style={{ marginBottom: 12 }} />}
 
-          <Box css={{ mb: '$3' }}>
+          <Box style={{ marginBottom: 12 }}>
             <Input
               label="Name"
               {...register('name')}

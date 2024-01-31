@@ -1,13 +1,13 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const StyledDayButton = styled('div', {
+export const StyledDayButton = styled.div(({ theme }) => ({
   height: 42,
-  borderRadius: '$medium',
-  border: '1px solid $neutral200',
-  background: '$bg',
+  borderRadius: theme.radii.medium,
+  border: `1px solid ${theme.colors.neutral200}`,
+  background: theme.colors.bg,
   fontSize: '0.8125rem',
   fontWeight: 500,
-  color: '$neutral700',
+  color: theme.colors.neutral700,
   padding: '0 8px 0 16px',
   display: 'flex',
   alignItems: 'center',
@@ -19,26 +19,34 @@ export const StyledDayButton = styled('div', {
 
   '@media (hover: hover)': {
     '&:hover': {
-      background: '$primary200',
+      background: theme.colors.primary200,
     },
   },
-});
+}));
 
-export const Content = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
+interface ContentProps {
+  $isToday: boolean;
+}
 
-  variants: {
-    isToday: {
-      true: {
-        marginTop: '$1',
-      },
-    },
+export const Content = styled.div<ContentProps>(
+  {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
-});
 
-export const StyledInput = styled('input', {
+  ({ $isToday }) => {
+    if ($isToday) {
+      return {
+        marginTop: 4,
+      };
+    }
+
+    return {};
+  },
+);
+
+export const StyledInput = styled.input(({ theme }) => ({
   position: 'absolute',
   opacity: 0,
   cursor: 'pointer',
@@ -48,15 +56,15 @@ export const StyledInput = styled('input', {
   '&[data-focus-visible-added]:focus': {
     '& ~ .day-button': {
       outline: 'none',
-      boxShadow: '0 0 0 4px $colors$primary300',
+      boxShadow: `0 0 0 4px ${theme.colors.primary300}`,
     },
   },
 
   '&:checked': {
     '~ .day-button': {
-      background: '$primary200',
-      color: '$primary800',
-      borderColor: '$primary200',
+      background: theme.colors.primary200,
+      color: theme.colors.primary800,
+      borderColor: theme.colors.primary200,
 
       '&::before': {
         content: '""',
@@ -66,8 +74,8 @@ export const StyledInput = styled('input', {
         left: 0,
         top: 8,
         borderRadius: '0 2px 2px 0',
-        background: '$primary500',
+        background: theme.colors.primary500,
       },
     },
   },
-});
+}));

@@ -89,7 +89,7 @@ export const AddTask: React.FC<Props> = ({ sectionId, onClose }) => {
               helpText={errors.summary?.message}
             />
 
-            <Box css={{ mb: '$4' }} />
+            <Box style={{ marginBottom: 16 }} />
 
             <Controller
               name="scope"

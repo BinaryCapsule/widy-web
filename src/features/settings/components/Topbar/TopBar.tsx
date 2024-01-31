@@ -21,7 +21,7 @@ export const TopBar: React.FC<Props> = ({ title, subTitle }) => {
   const setNavbarOpen = useNavbarStore(state => state.setIsOpen);
 
   return (
-    <Flex as="header" css={{ position: 'relative' }}>
+    <Flex as="header" style={{ position: 'relative' }}>
       <MenuButton
         icon="menu"
         variant="ghostGray"
@@ -38,7 +38,7 @@ export const TopBar: React.FC<Props> = ({ title, subTitle }) => {
         variant="ghostGray"
         iconVariant="outline"
         onClick={() => history.push(`/day${dayId ? `/${dayId}` : ''}`)}
-        css={{ ml: 'auto' }}
+        style={{ marginLeft: 'auto' }}
       >
         Exit
       </Button>

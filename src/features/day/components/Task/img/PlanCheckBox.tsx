@@ -1,11 +1,13 @@
-import React from 'react';
-import { Box, CSSProp } from '@binarycapsule/ui-capsules';
+import React, { ComponentPropsWithoutRef } from 'react';
+import { Box } from '@binarycapsule/ui-capsules';
 
-export const PlanCheckBox: React.FC<CSSProp> = ({ css }) => {
+export const PlanCheckBox: React.FC<Pick<ComponentPropsWithoutRef<'div'>, 'style'>> = ({
+  style,
+}) => {
   const color = '#9fa5b2';
 
   return (
-    <Box css={{ width: 20, height: 20, ...css }}>
+    <Box style={{ width: 20, height: 20, ...style }}>
       <svg
         viewBox="0 0 20 20"
         width={20}

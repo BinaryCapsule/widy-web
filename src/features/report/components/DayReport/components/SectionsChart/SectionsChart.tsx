@@ -19,9 +19,9 @@ export const SectionsChart: React.FC<Props> = ({ data: dayReport }) => {
   }
 
   return (
-    <Card css={{ my: '$4' }}>
-      <Box css={{ padding: '$4' }}>
-        <Text as="p" size="lg" css={{ fontWeight: 600, mb: '$2' }}>
+    <Card style={{ margin: '16px 0' }}>
+      <Box style={{ padding: 16 }}>
+        <Text as="p" size="lg" style={{ fontWeight: 600, marginBottom: 8 }}>
           Sections
         </Text>
 
@@ -45,7 +45,7 @@ export const SectionsChart: React.FC<Props> = ({ data: dayReport }) => {
           {data.map(({ color, value, label }) => (
             <tr key={label}>
               <td style={{ textAlign: 'left', display: 'flex', alignItems: 'center' }}>
-                <Dot backgroundColor={color} css={{ mr: '$2' }} />
+                <Dot backgroundColor={color} style={{ marginRight: 8 }} />
                 {label}
               </td>
 

@@ -1,22 +1,22 @@
-import { styled } from '@binarycapsule/ui-capsules';
+import { styled } from 'styled-components';
 
-export const StyledButton = styled('button', {
+export const StyledButton = styled.button(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  padding: '$1',
-  borderRadius: '$full',
+  padding: 4,
+  borderRadius: theme.radii.full,
   gap: 4,
 
   '&:hover': {
-    bg: '$neutral200',
+    background: theme.colors.neutral200,
   },
 
   '&[data-reach-menu-button][aria-expanded="true"]': {
-    bg: '$neutral200',
+    background: theme.colors.neutral200,
   },
 
   '&:focus': {
-    outlineColor: '$colors$primary500',
+    outlineColor: theme.colors.primary500,
     outlineOffset: '3px',
   },
-});
+}));

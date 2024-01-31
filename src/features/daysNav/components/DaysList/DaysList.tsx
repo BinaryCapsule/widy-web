@@ -70,7 +70,7 @@ export const DaysList = () => {
       </Flex>
 
       {hasNextPage && (
-        <Flex justify="center" css={{ mt: '$5' }}>
+        <Flex justify="center" style={{ marginTop: 20 }}>
           <Button
             variant="ghostGray"
             size="small"
