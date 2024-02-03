@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useDayRouteParams } from '../../hooks/useDayRouteParams';
 import { useDayQuery } from '../../api/useDayQuery';
 import { EditableTaskSummary } from './components/EditableTaskSummary/EditableTaskSummary';
@@ -11,7 +11,7 @@ import { AddToPlan } from '../AddToPlan/AddToPlan';
 import { useTodayDayId } from '../../hooks/useTodayDayId';
 import { useSidebarStore } from '../../stores/sidebarStore';
 
-// const NotesEditor = lazy(() => import('../NotesEditor/NotesEditor'));
+const NotesEditor = lazy(() => import('../NotesEditor/NotesEditor'));
 
 export const Sidebar = () => {
   const { dayId, taskId } = useDayRouteParams();
@@ -65,9 +65,9 @@ export const Sidebar = () => {
 
       {dayId !== 'tomorrow' && <Timer task={task} style={{ marginTop: 16 }} />}
 
-      {/*<Suspense fallback={null}>*/}
-      {/*  <NotesEditor taskId={id} notes={notes} style={{ marginTop: 16 }} />*/}
-      {/*</Suspense>*/}
+      <Suspense fallback={null}>
+        <NotesEditor taskId={id} notes={notes} style={{ marginTop: 16 }} />
+      </Suspense>
     </SidebarWrapper>
   );
 };
