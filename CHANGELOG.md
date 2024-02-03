@@ -1,3 +1,12 @@
+# [0.11.0](https://github.com/BinaryCapsule/widy-web/compare/v0.10.7...v0.11.0) (2024-02-03)
+
+
+### Features
+
+* upgrade editor ([41a5358](https://github.com/BinaryCapsule/widy-web/commit/41a535801140ab4d71d89f118991e0921e03d180))
+
+
+
 ## [0.10.7](https://github.com/BinaryCapsule/widy-web/compare/v0.10.6...v0.10.7) (2024-01-31)
 
 
@@ -32,16 +41,6 @@
 ### Bug Fixes
 
 * navbar overlay ([#45](https://github.com/BinaryCapsule/widy-web/issues/45)) ([9c5b09c](https://github.com/BinaryCapsule/widy-web/commit/9c5b09c63a9831f59abdb6e20d2f91db776d643f))
-
-
-
-## [0.10.3](https://github.com/BinaryCapsule/widy-web/compare/v0.10.2...v0.10.3) (2022-03-06)
-
-
-### Bug Fixes
-
-* responsive designs ([052c6e1](https://github.com/BinaryCapsule/widy-web/commit/052c6e165734deaeb35b1bd13ea8096fd2e12ab1))
-* upgrade caps -> fix select text color ([dae0a24](https://github.com/BinaryCapsule/widy-web/commit/dae0a24d6784725b74a6852ce41f1de086ef80e4))
 
 
 
