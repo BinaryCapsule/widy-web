@@ -8,10 +8,12 @@ This is the frontend code of the Widy web app (a React SPA).
 
 It consumes the Widy API ([repo](https://github.com/BinaryCapsule/widy-api)).
 
-> 🚨 Note: This app is actually my personal **breakable toy** 🧫🧪
+> [!WARNING]  
+> **This App is a Breakable Toy**
 >
-> Also, the api is hosted on a free Heroku dyno and therefore may go to sleep
-> during periods of inactivity.
+> This application is intentionally designed as a breakable toy for learning and
+> experimentation purposes. It is not intended for production use or as a
+> replacement for a fully-featured, stable application.
 
 <table>
   <tr>
@@ -30,7 +32,7 @@ Widy is a productivity app. It has three main features:
 2. Helps you track your daily work.
 3. Generates handy reports.
 
-UI components from the [UI-Capsules kit](https://uic.binarycapsule.tech/).
+UI components from the [UI-Capsules kit](https://uic.josenunes.dev/).
 
 ## Tech stack:
 
@@ -47,8 +49,8 @@ UI components from the [UI-Capsules kit](https://uic.binarycapsule.tech/).
 
 This app also uses two of my other projects:
 
-- [UI-Capsules](https://uic.binarycapsule.tech/)
-- [BC Editor](https://editor.binarycapsule.tech/)
+- [UI-Capsules](https://uic.josenunes.dev/)
+- [BC Editor](https://editor.josenunes.dev/)
 
 ## Licensing
 
